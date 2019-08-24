@@ -1,18 +1,28 @@
 package com.example.mapbox;
 
+import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mapbox.android.core.location.LocationEngine;
+import com.mapbox.android.core.location.LocationEngineCallback;
+import com.mapbox.android.core.location.LocationEngineProvider;
+import com.mapbox.android.core.location.LocationEngineRequest;
+import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.mapboxsdk.Mapbox;
-import com.mapbox.mapboxsdk.annotations.Icon;
-import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -30,13 +40,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Date;
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener {
     private PermissionsManager permissionsManager;
     private MapView mapView;
     private MapboxMap map;
+    private Button test;
+    private String postCode;
+    private LocationEngine locationEngine;
+    private TextView risk;
+    private LocationChangeListeningActivityLocationCallback callback =
+            new LocationChangeListeningActivityLocationCallback(this);
+    private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 3000L;
+    private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 500;
+    private JSONObject j = new JSONObject();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +63,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-
+        test = findViewById(R.id.btn_findmore);
+        risk = (TextView)findViewById(R.id.text_riskrate);
+        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
+        getDetailAsyncTask.execute("3125");
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
@@ -67,6 +89,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         return false;
                     }
                 });
+            }
+        });
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mapView.setVisibility(View.INVISIBLE);
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, new
+                        details()).commit();
             }
         });
     }
@@ -169,10 +200,26 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 // Set the component's render mode
             locationComponent.setRenderMode(RenderMode.COMPASS);
+            initLocationEngine();
         } else {
             permissionsManager = new PermissionsManager(this);
             permissionsManager.requestLocationPermissions(this);
         }
+    }
+
+    /**
+     * Set up the LocationEngine and the parameters for querying the device's location
+     */
+    @SuppressLint("MissingPermission")
+    private void initLocationEngine() {
+        locationEngine = LocationEngineProvider.getBestLocationEngine(this);
+
+        LocationEngineRequest request = new LocationEngineRequest.Builder(DEFAULT_INTERVAL_IN_MILLISECONDS)
+                .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)
+                .setMaxWaitTime(DEFAULT_MAX_WAIT_TIME).build();
+
+        locationEngine.requestLocationUpdates(request, callback, getMainLooper());
+        locationEngine.getLastLocation(callback);
     }
 
     /*
@@ -234,4 +281,110 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         map.addMarker(markerOptions);
     }
 
+
+    private static class LocationChangeListeningActivityLocationCallback
+            implements LocationEngineCallback<LocationEngineResult> {
+
+        private final WeakReference<MainActivity> activityWeakReference;
+
+        LocationChangeListeningActivityLocationCallback(MainActivity activity) {
+            this.activityWeakReference = new WeakReference<>(activity);
+        }
+
+        /**
+         * The LocationEngineCallback interface's method which fires when the device's location has changed.
+         *
+         * @param result the LocationEngineResult object which has the last known location within it.
+         */
+        @Override
+        public void onSuccess(LocationEngineResult result) {
+            MainActivity activity = activityWeakReference.get();
+
+            if (activity != null) {
+                Location location = result.getLastLocation();
+
+                if (location == null) {
+                    return;
+                }
+
+// Create a Toast which displays the new location's coordinates
+                Log.i("coordinate",result.toString());
+                Toast.makeText(activity,
+                        String.valueOf(result.getLastLocation().getLatitude()),
+
+                        Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(activity,
+                        String.valueOf(result.getLastLocation().getLongitude()),
+                        Toast.LENGTH_SHORT).show();
+
+// Pass the new location to the Maps SDK's LocationComponent
+                if (activity.map != null && result.getLastLocation() != null) {
+                    activity.map.getLocationComponent().forceLocationUpdate(result.getLastLocation());
+                }
+                try {
+                    activity.getCurrentPostCode(result.getLastLocation().getLatitude(),
+                            result.getLastLocation().getLongitude());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        /**
+         * The LocationEngineCallback interface's method which fires when the device's location can't be captured
+         *
+         * @param exception the exception message
+         */
+        @Override
+        public void onFailure(@NonNull Exception exception) {
+            Log.d("LocationChangeActivity", exception.getLocalizedMessage());
+            MainActivity activity = activityWeakReference.get();
+            if (activity != null) {
+                Toast.makeText(activity, exception.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+
+    public void getCurrentPostCode(double  latitude,double longtitude) throws IOException {
+        Geocoder geocoder = new Geocoder(this);
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude,longtitude,1);
+            if (addresses.size() > 0) {
+                Address address = addresses.get(0);
+                postCode = address.getPostalCode();
+                Log.i("postcode",postCode);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+    }
+    private class getDetailAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+
+            return Restful.findByPostcode(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String details) {
+            JSONArray jsonArray = null;
+            try {
+                jsonArray = new JSONArray(details);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                j = jsonArray.getJSONObject(0);
+                risk.setText(j.getString("bushfireRiskRating"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

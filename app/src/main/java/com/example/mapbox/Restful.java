@@ -11,13 +11,14 @@ public class Restful {
             "https://disastermateapi.azurewebsites.net";
 
     public static String findByPostcode(String postcode) {
-        final String methodPath = "/test.json?postcode=" + postcode;
+        final String methodPath = "/predictions.json?postcode=" + postcode;
         URL url = null;
         HttpURLConnection conn = null;
         String textResult = "";
 //Making HTTP request
         try {
             url = new URL(BASE_URL + methodPath);
+            Log.i("url",url.toString());
 //open the connection
             conn = (HttpURLConnection) url.openConnection();
 //set the timeout
