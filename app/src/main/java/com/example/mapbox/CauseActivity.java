@@ -30,6 +30,8 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
     private EditText slopeangle_text;
     private EditText ignitionsource_text;
 
+    private EditText temporary;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,24 +70,52 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
         switch(v.getId()){
             case R.id.fuel_load:
                 fuelload_text.setVisibility(View.VISIBLE);
+                if(temporary!=null){
+                    temporary.setVisibility(View.GONE);
+                }
+                temporary = fuelload_text;
                 break;
             case R.id.fuel_moisture:
                 fuelmoisture_text.setVisibility(View.VISIBLE);
+                if(temporary!=null){
+                    temporary.setVisibility(View.GONE);
+                }
+                temporary = fuelmoisture_text;
                 break;
             case R.id.wind_speed:
                 windspeed_text.setVisibility(View.VISIBLE);
+                if(temporary!=null){
+                    temporary.setVisibility(View.GONE);
+                }
+                temporary = windspeed_text;
                 break;
             case R.id.ambient_temperature:
                 ambienttemperature_text.setVisibility(View.VISIBLE);
+                if(temporary!=null){
+                    temporary.setVisibility(View.GONE);
+                }
+                temporary = ambienttemperature_text;
                 break;
             case R.id.relative_humidity:
                 relativehumidity_text.setVisibility(View.VISIBLE);
+                if(temporary!=null){
+                    temporary.setVisibility(View.GONE);
+                }
+                temporary = relativehumidity_text;
                 break;
             case R.id.slope_angle:
                 slopeangle_text.setVisibility(View.VISIBLE);
+                if(temporary!=null){
+                    temporary.setVisibility(View.GONE);
+                }
+                temporary = slopeangle_text;
                 break;
             case R.id.ignition_source:
                 ignitionsource_text.setVisibility(View.VISIBLE);
+                if(temporary!=null){
+                    temporary.setVisibility(View.GONE);
+                }
+                temporary = ignitionsource_text;
         }
 
     }
