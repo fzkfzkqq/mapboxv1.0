@@ -87,11 +87,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="What causes the bushfire?"/>
+
                     <Button
-                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/btn_c_findmore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Find More"/>
+                        android:layout_gravity="center_horizontal"
+                        android:text="Find More" />
                 </LinearLayout>
                 <View
                     android:layout_marginTop="5dp"

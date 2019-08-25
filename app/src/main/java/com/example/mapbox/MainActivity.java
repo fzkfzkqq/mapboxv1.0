@@ -2,6 +2,7 @@ package com.example.mapbox;
 
 import android.annotation.SuppressLint;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 3000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 500;
     private JSONObject j = new JSONObject();
+
+//TODO: Nik
+    private Button btn_c_findmore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView.onCreate(savedInstanceState);
         test = findViewById(R.id.btn_findmore);
         risk = (TextView)findViewById(R.id.text_riskrate);
+
+
+        btn_c_findmore = findViewById(R.id.btn_c_findmore);
+
+        btn_c_findmore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,CauseActivity.class);
+                startActivityForResult(intent, 1);
+
+            }
+        });
+
+
         getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
         getDetailAsyncTask.execute("3125");
         mapView.getMapAsync(new OnMapReadyCallback() {
@@ -80,15 +100,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     }
                 });
-                //addMarker(mapboxMap);
-                GetParks getpark = new GetParks();
-                getpark.execute();
-                mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(@NonNull Marker marker) {
-                        return false;
-                    }
-                });
+                //TODO: 1. see the other TODO code at line 236
+//                //addMarker(mapboxMap);
+//                GetParks getpark = new GetParks();
+//                getpark.execute();
+//                mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
+//                    @Override
+//                    public boolean onMarkerClick(@NonNull Marker marker) {
+//                        return false;
+//                    }
+//                });
             }
         });
         test.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         details()).commit();
             }
         });
+
+
     }
 
 
@@ -232,54 +255,54 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapboxMap.addMarker(markerOptions);
     }
 */
-
-    //here is to get the parks using AsyncTask method
-    private class GetParks extends AsyncTask<Void, Void, String> {
-        @Override
-        protected String doInBackground(Void... params) {
-
-            return Restful.findAllBFRecords();
-        }
-        @Override
-        protected void onPostExecute(String details) {
-            JSONArray jsonArray = null;
-            try {
-                jsonArray = new JSONArray(details);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            if (jsonArray.length() > 0 ) {
-                for (int i = 0; i < jsonArray.length();i++)
-                {
-                    try {
-                        JSONObject j = jsonArray.getJSONObject(i);
-                        Double lat  = (Double)(j.getDouble("latitude"));
-                        Double longti = (Double)(j.getDouble("longitude"));
-                        LatLng latLng = new LatLng(lat,longti);
-                        String snippet = "power:" + ((Double)j.getDouble("power")).toString()+
-                                "\nLongitude:" + longti.toString()+
-                                "\nDatetime:" + j.get("datetime")+
-                                "\nlatitude:" + lat.toString()+
-                                "\ntemp:" + ((Double)j.getDouble("temp_kelvin")).toString();
-                        fireMarks(latLng,snippet);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }}
-    //here is to put marks for parks
-    private void fireMarks(LatLng latLng,String snippet) {
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("fire");
-        markerOptions.snippet(snippet);
-        //IconFactory iconFactory = IconFactory.getInstance(getActivity());
-        //Icon icon = iconFactory.fromResource(R.drawable.mapbox_compass_icon);
-        //markerOptions.setIcon(icon);
-        map.addMarker(markerOptions);
-    }
+//TODO: 1. jsonArray shows a null pointer exception due to json being changed to GeoJson
+//    //here is to get the parks using AsyncTask method
+//    private class GetParks extends AsyncTask<Void, Void, String> {
+//        @Override
+//        protected String doInBackground(Void... params) {
+//
+//            return Restful.findAllBFRecords();
+//        }
+//        @Override
+//        protected void onPostExecute(String details) {
+//            JSONArray jsonArray = null;
+//            try {
+//                jsonArray = new JSONArray(details);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            if (jsonArray.length() > 0 ) {
+//                for (int i = 0; i < jsonArray.length();i++)
+//                {
+//                    try {
+//                        JSONObject j = jsonArray.getJSONObject(i);
+//                        Double lat  = (Double)(j.getDouble("latitude"));
+//                        Double longti = (Double)(j.getDouble("longitude"));
+//                        LatLng latLng = new LatLng(lat,longti);
+//                        String snippet = "power:" + ((Double)j.getDouble("power")).toString()+
+//                                "\nLongitude:" + longti.toString()+
+//                                "\nDatetime:" + j.get("datetime")+
+//                                "\nlatitude:" + lat.toString()+
+//                                "\ntemp:" + ((Double)j.getDouble("temp_kelvin")).toString();
+//                        fireMarks(latLng,snippet);
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }}
+//    //here is to put marks for parks
+//    private void fireMarks(LatLng latLng,String snippet) {
+//        MarkerOptions markerOptions = new MarkerOptions();
+//        markerOptions.position(latLng);
+//        markerOptions.title("fire");
+//        markerOptions.snippet(snippet);
+//        //IconFactory iconFactory = IconFactory.getInstance(getActivity());
+//        //Icon icon = iconFactory.fromResource(R.drawable.mapbox_compass_icon);
+//        //markerOptions.setIcon(icon);
+//        map.addMarker(markerOptions);
+//    }
 
 
     private static class LocationChangeListeningActivityLocationCallback
@@ -309,14 +332,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 // Create a Toast which displays the new location's coordinates
                 Log.i("coordinate",result.toString());
-                Toast.makeText(activity,
-                        String.valueOf(result.getLastLocation().getLatitude()),
+                //TODO: 2. The toast location keeps showing with even small changes in location
+//                Toast.makeText(activity,
+//                        String.valueOf(result.getLastLocation().getLatitude()),
+//                        Toast.LENGTH_SHORT).show();
 
-                        Toast.LENGTH_SHORT).show();
-
-                Toast.makeText(activity,
-                        String.valueOf(result.getLastLocation().getLongitude()),
-                        Toast.LENGTH_SHORT).show();
+                        //TODO: 2. The toast location keeps showing with even small changes in location
+//                        Toast.makeText(activity,
+//                        String.valueOf(result.getLastLocation().getLongitude()),
+//                        Toast.LENGTH_SHORT).show();
 
 // Pass the new location to the Maps SDK's LocationComponent
                 if (activity.map != null && result.getLastLocation() != null) {

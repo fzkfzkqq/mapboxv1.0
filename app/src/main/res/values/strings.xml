@@ -2,5 +2,11 @@
     <string name="app_name">mapbox</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fuelload">Fuel load describes the amount of combustibles in the landscape. For example, bark, the more the number of small leaves, the stronger the burning will be. Loose fuel is easier to burn than compacted fuel because loose fuel oxygen is more abundant. </string>
+    <string name="fuelmoisture">Dry fuel will burn quickly, but damp or wet fuel may not burn at all. As a consequence, the time since rainfall and the amount of rain received is an important consideration in assessing bushfire danger. Often a measure of the drought factor, or moisture deficit, will be used as an indicator of extreme bushfire weather conditions.</string>
+    <string name="windspeed">Wind will blow the flame onto the fuel, ignite the new fuel, and continue to bring oxygen, thus promoting the rapid spread of the flame. Spotting can occur up to 30km downwind from the fire front. </string>
+    <string name="ambienttemperature">The higher the temperature the more likely it is that a fire will start or continue to burn. This is because the fuel is closer to its ignition point at high temperatures and pre-heated fuel loads burn faster. </string>
+    <string name="relativehumidity">Dry air promotes a greater intensity fire than moist air. Plants become more flammable at a low humidity because they release their moisture more easily. </string>
+    <string name="slopeangle">Fires pre-heat their fuel source through radiation and convection. As a result, fires accelerate when travelling uphill and decelerate travelling downhill. The steepness of the slope plays an important role in the rate of fire spread.</string>
+    <string name="ignitionsource">Bushfires can originate from both human activity and natural causes with lightning the predominant natural source, accounting for about half of all ignitions in Australia. Fires of human origin currently account for the remainder and are classified as accidental or deliberate.  </string>
 </resources>
