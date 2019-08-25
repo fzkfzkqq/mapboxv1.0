@@ -1,18 +1,19 @@
 package com.example.mapbox;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.mapbox.mapboxsdk.maps.MapView;
-
-import org.w3c.dom.Text;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 public class CauseActivity extends AppCompatActivity implements View.OnClickListener {
+
 
     private Button fuel_load;
     private Button fuel_moisture;
@@ -22,19 +23,20 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
     private Button slope_angle;
     private Button ignition_source;
 
-    private EditText fuelload_text;
-    private EditText fuelmoisture_text;
-    private EditText windspeed_text;
-    private EditText ambienttemperature_text;
-    private EditText relativehumidity_text;
-    private EditText slopeangle_text;
-    private EditText ignitionsource_text;
+    private TextView fuelload_text;
+    private TextView fuelmoisture_text;
+    private TextView windspeed_text;
+    private TextView ambienttemperature_text;
+    private TextView relativehumidity_text;
+    private TextView slopeangle_text;
+    private TextView ignitionsource_text;
 
-    private EditText temporary;
+    private TextView temporary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Causes");
         setContentView(R.layout.causes);
 
         fuel_load = findViewById(R.id.fuel_load);

@@ -6,16 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/backgroundclr">
 
-        <com.mapbox.mapboxsdk.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            mapbox:mapbox_cameraTargetLat="-37"
-            mapbox:mapbox_cameraTargetLng="145"
-            mapbox:mapbox_cameraZoom="6"
-            android:layout_weight="6"/>
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="6"
+        mapbox:mapbox_cameraZoom="7" />
+
+
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="0dp"
@@ -25,6 +26,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/cardwhite"
                 >
                 <TextView
                     android:textSize="20dp"
@@ -63,6 +71,8 @@
                         android:text="Historical bushfire"
                         android:id="@+id/btn_historical_bf"/>
                 </LinearLayout>
+            </LinearLayout>
+
                 <View
                     android:layout_marginTop="5dp"
                     android:layout_gravity="center"
@@ -74,7 +84,8 @@
                     android:layout_marginTop="5dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent">
+                    android:layout_height="fill_parent"
+                    android:background="@color/cardwhite">
                     <TextView
                         android:textStyle="bold"
                         android:textSize="20dp"
@@ -95,6 +106,7 @@
                         android:layout_gravity="center_horizontal"
                         android:text="Find More" />
                 </LinearLayout>
+
                 <View
                     android:layout_marginTop="5dp"
                     android:layout_gravity="center"
@@ -105,7 +117,8 @@
                     android:layout_marginTop="5dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent">
+                    android:layout_height="fill_parent"
+                    android:background="@color/cardwhite">
                     <TextView
                         android:textSize="20dp"
                         android:textStyle="bold"

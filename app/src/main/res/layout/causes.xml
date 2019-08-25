@@ -3,185 +3,260 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundclr"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:animateLayoutChanges="true">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        />
 
-            <TextView
-                android:layout_width="176dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:text="Causes"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+    <TextView
+        android:layout_width="176dp"
+        android:layout_height="176dp"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:text="Click to learn more"
+        android:textStyle="bold" />
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
 
-
-
-        <Button
-            android:id="@+id/fuel_load"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fuel Load"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardwhite"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp"
+                >
+
+                <Button
+                    android:id="@+id/fuel_load"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/fuelload"
+                    android:text="Fuel Load"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
 
 
-        <EditText
-            android:id="@+id/fuel_load_text"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="@string/fuelload"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/fuel_load_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="@string/fuelload"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/fuel_moisture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fuel Moisture"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardwhite"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
 
-        <EditText
-            android:id="@+id/fuel_moisture_text"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="@string/fuelmoisture"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:visibility="gone"/>
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/fuel_moisture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/moisture"
+                    android:text="Fuel Moisture"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+                <TextView
+                    android:id="@+id/fuel_moisture_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="@string/fuelmoisture"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardwhite"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/wind_speed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/windspeed"
+                    android:text="Wind Speed"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+                <TextView
+                    android:id="@+id/wind_speed_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="@string/windspeed"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardwhite"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ambient_temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/ambienttemperature"
+                    android:text="Ambient Temperature"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+                <TextView
+                    android:id="@+id/ambient_temperature_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="@string/ambienttemperature"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
+            </LinearLayout>
 
 
-        <Button
-            android:id="@+id/wind_speed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wind Speed"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardwhite"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
 
-        <EditText
-            android:id="@+id/wind_speed_text"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="@string/windspeed"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:visibility="gone"/>
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/ambient_temperature"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ambient Temperature"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+                <Button
+                    android:id="@+id/relative_humidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/relativehumidity"
+                    android:text="Relative Humidity"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
 
-        <EditText
-            android:id="@+id/ambient_temperature_text"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="@string/ambienttemperature"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/relative_humidity_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="@string/relativehumidity"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/relative_humidity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Relative Humidity"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
 
-        <EditText
-            android:id="@+id/relative_humidity_text"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="@string/relativehumidity"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:visibility="gone"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardwhite"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
 
-        <Button
-            android:id="@+id/slope_angle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Slope Angle"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp"
-            tools:layout_editor_absoluteX="0dp"
+                android:orientation="vertical">
 
-            tools:layout_editor_absoluteY="0dp" />
+                <Button
+                    android:id="@+id/slope_angle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/slopeangle"
+                    android:text="Slope Angle"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
 
-        <EditText
-            android:id="@+id/slope_angle_text"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="@string/slopeangle"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:visibility="gone"/>
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
 
-        <Button
-            android:id="@+id/ignition_source"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ignition Source"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+                <TextView
+                    android:id="@+id/slope_angle_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="@string/slopeangle"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/ignitionsource_text"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="@string/ignitionsource"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:visibility="gone"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardwhite"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ignition_source"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/ignitionsource"
+                    android:text="Ignition Source"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+                <TextView
+                    android:id="@+id/ignitionsource_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="@string/ignitionsource"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.v7.widget.LinearLayoutCompat>

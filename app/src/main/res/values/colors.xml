@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#201A1A</color>
+    <color name="colorPrimaryDark">#090404</color>
+    <color name="colorAccent">#FFEB3B</color>
+    <color name="backgroundclr">#3672A2</color>
+    <color name="cardwhite">#FFFFFF</color>
+    <color name="fuelload">#FFFFFF</color>
+    <color name="moisture">#BBBBBE</color>
+    <color name="windspeed">#ADACAC</color>
+    <color name="ambienttemperature">#868686</color>
+    <color name="relativehumidity">#696969</color>
+    <color name="slopeangle">#555558</color>
+    <color name="ignitionsource">#474A4B</color>
+
 </resources>
