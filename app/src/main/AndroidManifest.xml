@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Historic"></activity>
         <activity
             android:name=".Welcome"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -30,7 +31,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActionActivity" />
-        <activity android:name=".CauseActivity"></activity>
+        <activity android:name=".CauseActivity" />
+        <activity android:name=".Details" />
     </application>
 
 </manifest>

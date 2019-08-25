@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +24,6 @@ import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.mapboxsdk.Mapbox;
-import com.mapbox.mapboxsdk.annotations.Marker;
-import com.mapbox.mapboxsdk.annotations.MarkerOptions;
-import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.location.modes.CameraMode;
@@ -129,10 +125,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mapView.setVisibility(View.INVISIBLE);
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, new
-                        details()).commit();
+//                mapView.setVisibility(View.INVISIBLE);
+//                FragmentManager fragmentManager = getFragmentManager();
+//                fragmentManager.beginTransaction().replace(R.id.content_frame, new
+//                        Details()).commit();
+
+                Intent intent = new Intent(MainActivity.this,Details.class);
+                startActivity(intent);
             }
         });
 
@@ -278,10 +277,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //            return Restful.findAllBFRecords();
 //        }
 //        @Override
-//        protected void onPostExecute(String details) {
+//        protected void onPostExecute(String Details) {
 //            JSONArray jsonArray = null;
 //            try {
-//                jsonArray = new JSONArray(details);
+//                jsonArray = new JSONArray(Details);
 //            } catch (JSONException e) {
 //                e.printStackTrace();
 //            }
