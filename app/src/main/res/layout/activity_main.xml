@@ -13,14 +13,20 @@
         android:id="@+id/mapView"
         android:layout_width="fill_parent"
         android:layout_height="0px"
-        android:layout_weight="6"
-        mapbox:mapbox_cameraZoom="7" />
+        android:layout_weight="7.5"
+        mapbox:mapbox_cameraZoom="7"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+
+        />
 
 
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_weight="6"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,6 +39,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/cardwhite"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 >
                 <TextView
                     android:textSize="20dp"
@@ -73,19 +81,14 @@
                 </LinearLayout>
             </LinearLayout>
 
-                <View
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="3px"
-                    android:background="@android:color/darker_gray"  />
-
                 <LinearLayout
                     android:layout_marginTop="5dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/cardwhite">
+                    android:background="@color/cardwhite"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp">
                     <TextView
                         android:textStyle="bold"
                         android:textSize="20dp"
@@ -107,25 +110,26 @@
                         android:text="Find More" />
                 </LinearLayout>
 
-                <View
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="3px"
-                    android:background="@android:color/darker_gray"  />
+
                 <LinearLayout
                     android:layout_marginTop="5dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/cardwhite">
+                    android:background="@color/cardwhite"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    >
                     <TextView
                         android:textSize="20dp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="Action"/>
+                        android:text="Action"
+
+                        />
                     <TextView
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
