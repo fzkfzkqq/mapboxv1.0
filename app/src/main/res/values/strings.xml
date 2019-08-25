@@ -35,4 +35,8 @@ Your insurance will be the most important single aspect of recovering from a fir
 If you cannot remain in your property, find an accommodation or local safe zone
 Clean up your property and get the air
 Contact local police. Inform them that your property has been involved in a fire and is vacant. </string>
+
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
