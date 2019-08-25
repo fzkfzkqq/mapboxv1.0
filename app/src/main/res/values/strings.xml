@@ -9,4 +9,30 @@
     <string name="relativehumidity">Dry air promotes a greater intensity fire than moist air. Plants become more flammable at a low humidity because they release their moisture more easily. </string>
     <string name="slopeangle">Fires pre-heat their fuel source through radiation and convection. As a result, fires accelerate when travelling uphill and decelerate travelling downhill. The steepness of the slope plays an important role in the rate of fire spread.</string>
     <string name="ignitionsource">Bushfires can originate from both human activity and natural causes with lightning the predominant natural source, accounting for about half of all ignitions in Australia. Fires of human origin currently account for the remainder and are classified as accidental or deliberate.  </string>
+
+    <string name="before">Close all doors and windows
+Move doormats and outdoor furniture away from the house
+Block the downpipes and partially fill the gutters with water
+Move stock or large animals to large paddocks with short grass
+Turn off gas supply
+Prepare fire ready kit
+Plan the evacuation route
+Leave early  </string>
+
+    <string name="during">If your clothes catch fire, stop, drop and roll
+Get down low and stay out of smoke.
+Use the back of your hand to check doors for heat before opening
+If it is safe, close doors to slow down the spread of fire and smoke.
+Alert other people on your way out.
+Get out and stay out.
+Meet at a safe place such as the letterbox or footpath outside your home.
+Call 000 (triple zero) from a mobile phone or a neighbour’s phone. Ask for FIRE when the call is connected.
+  </string>
+
+    <string name="after">Check if it is safe to stay at home
+Inspect and repair or reconnect the fire, gas, electricity, water supply and/or telephone line
+Your insurance will be the most important single aspect of recovering from a fire loss
+If you cannot remain in your property, find an accommodation or local safe zone
+Clean up your property and get the air
+Contact local police. Inform them that your property has been involved in a fire and is vacant. </string>
 </resources>

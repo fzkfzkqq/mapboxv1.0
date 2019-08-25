@@ -59,8 +59,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 500;
     private JSONObject j = new JSONObject();
 
+
+
 //TODO: Nik
     private Button btn_c_findmore;
+    private Button btn_action_exp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +73,28 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         test = findViewById(R.id.btn_findmore);
-        risk = (TextView)findViewById(R.id.text_riskrate);
+        risk = (TextView) findViewById(R.id.text_riskrate);
 
 
         btn_c_findmore = findViewById(R.id.btn_c_findmore);
+        btn_action_exp = findViewById(R.id.btn_action_exp);
 
         btn_c_findmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,CauseActivity.class);
+                Intent intent = new Intent(MainActivity.this, CauseActivity.class);
                 startActivityForResult(intent, 1);
 
+            }
+        });
+
+
+        btn_action_exp.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ActionActivity.class);
+                startActivityForResult(intent, 1);
             }
         });
 

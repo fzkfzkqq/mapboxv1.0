@@ -12,5 +12,8 @@
     <color name="relativehumidity">#696969</color>
     <color name="slopeangle">#555558</color>
     <color name="ignitionsource">#474A4B</color>
+    <color name="before">#156F19</color>
+    <color name="during">#AF1B11</color>
+    <color name="after">#FF9800</color>
 
 </resources>
