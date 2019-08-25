@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //TODO: Nik
     private Button btn_c_findmore;
     private Button btn_action_exp;
+    private Button btn_historical_bf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         btn_c_findmore = findViewById(R.id.btn_c_findmore);
         btn_action_exp = findViewById(R.id.btn_action_exp);
+        btn_historical_bf = findViewById(R.id.btn_historical_bf);
+
 
         btn_c_findmore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +97,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+        btn_historical_bf.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Historic.class);
+                startActivityForResult(intent, 1);
+            }
+        });
 
         getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
         getDetailAsyncTask.execute("3125");
