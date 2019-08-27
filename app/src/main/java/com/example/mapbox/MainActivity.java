@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         btn_action_exp = findViewById(R.id.btn_action_exp);
         btn_historical_bf = findViewById(R.id.btn_historical_bf);
         input_postcode = findViewById(R.id.search_location);
-        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
+
 
         btn_c_findmore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,11 +167,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         });
-        getDetailAsyncTask.execute(postCode);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
                 map = mapboxMap;
+
                 mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
@@ -182,8 +182,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 // Set up a new symbol layer for displaying the searched location's feature coordinates
                         setupLayer(style);
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
-
-
                     }
                 });
                 //TODO: 1. see the other TODO code at line 236
@@ -555,6 +553,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Address address = addresses.get(0);
                 postCode = address.getPostalCode();
                 Log.i("postcode",postCode);
+                getDetailAsyncTask getDetailAsyncTask = new getDetailAsyncTask();
+                getDetailAsyncTask.execute(postCode);
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
