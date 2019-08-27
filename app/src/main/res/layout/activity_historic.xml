@@ -14,6 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         mapbox:mapbox_cameraZoom="7"
+        mapbox:mapbox_cameraTargetLat="-37.48"
+        mapbox:mapbox_cameraTargetLng="144.57"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginStart="5dp"
