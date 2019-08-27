@@ -148,19 +148,26 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(View v) {
                 Address search_add;
                 try {
-                    search_add = geocoder.getFromLocationName(input_postcode.getText().toString(),1).get(0);
-                    getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
-                    getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
+                    if (!geocoder.getFromLocationName(input_postcode.getText().toString(),1).isEmpty())
+                    {
+                        search_add = geocoder.getFromLocationName(input_postcode.getText().toString(),1).get(0);
+                        getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
+                        getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
 
-                    map.addMarker(new MarkerOptions()
-                            .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                            .title(search_add.getPostalCode()));
-                    CameraPosition position = new CameraPosition.Builder()
-                            .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
-                            .build(); // Creates a CameraPosition from the builder
+                        map.addMarker(new MarkerOptions()
+                                .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
+                                .title(search_add.getPostalCode()));
+                        CameraPosition position = new CameraPosition.Builder()
+                                .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
+                                .build(); // Creates a CameraPosition from the builder
 
-                    map.animateCamera(CameraUpdateFactory
-                            .newCameraPosition(position), 7000);
+                        map.animateCamera(CameraUpdateFactory
+                                .newCameraPosition(position), 7000);
+                    }
+                    else {
+                        input_postcode.setError("No address find");
+                        input_postcode.setText("");
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                     input_postcode.setError("No address find");
