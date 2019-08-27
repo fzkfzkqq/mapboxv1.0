@@ -73,7 +73,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 3000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 500;
     private JSONObject j = new JSONObject();
-    private static final String EARTHQUAKE_SOURCE_URL = "https://disastermateapi.azurewebsites.net/historicalbushfires.json";
+    private static final String EARTHQUAKE_SOURCE_URL = "https://disastermateapi.azurewebsites.net/historicalbushfires.geojson";
     private static final String EARTHQUAKE_SOURCE_ID = "earthquakes";
     private static final String HEATMAP_LAYER_ID = "earthquakes-heat";
     private static final String HEATMAP_LAYER_SOURCE = "earthquakes";
