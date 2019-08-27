@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
+
     android:background="@color/backgroundclr">
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,6 +27,8 @@
             />
 
     </LinearLayout>
+
+
 
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
