@@ -1,1 +1,191 @@
-<?xml version="1.0" encoding="utf-8"?><android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"    xmlns:mapbox="http://schemas.android.com/apk/res-auto"    xmlns:tools="http://schemas.android.com/tools"    android:layout_width="match_parent"    android:layout_height="match_parent"    xmlns:app="http://schemas.android.com/apk/res-auto"    android:orientation="vertical"    tools:context=".MainActivity"    android:background="@color/backgroundclr">    <FrameLayout        xmlns:android="http://schemas.android.com/apk/res/android"        xmlns:mapbox="http://schemas.android.com/apk/res-auto"        android:layout_width="fill_parent"        android:layout_height="100dp"        android:layout_weight="7"        android:layout_marginStart="5dp"        android:layout_marginEnd="5dp"        android:layout_marginBottom="5dp"        android:layout_marginTop="5dp"        android:orientation="vertical">        <com.mapbox.mapboxsdk.maps.MapView            android:id="@+id/mapView"            android:layout_width="match_parent"            android:layout_height="match_parent"            mapbox:mapbox_cameraZoom="15" />        <android.support.design.widget.FloatingActionButton            android:id="@+id/back_to_camera_tracking_mode"            android:layout_width="wrap_content"            android:layout_height="wrap_content"            android:layout_gravity="end|bottom"            android:src="@drawable/flag"            android:contentDescription="submit"            android:layout_margin="16dp" />    </FrameLayout>    <ScrollView            android:layout_width="fill_parent"            android:layout_height="0dp"            android:layout_weight="6"            >            <LinearLayout                android:layout_width="match_parent"                android:layout_height="wrap_content"                android:orientation="vertical"                >            <LinearLayout                android:layout_width="match_parent"                android:layout_height="wrap_content"                android:orientation="vertical"                android:background="@color/cardwhite"                android:layout_marginStart="5dp"                android:layout_marginEnd="5dp"                >                <TextView                    android:textSize="20dp"                    android:textStyle="bold"                    android:layout_width="wrap_content"                    android:layout_height="wrap_content"                    android:layout_gravity="center_horizontal"                    android:text="Possiblity"/>                <TextView                    android:layout_gravity="center_horizontal"                    android:layout_width="wrap_content"                    android:layout_height="wrap_content"                    android:text="The possibility of happening a bush fire here is :"/>                <TextView                    android:id="@+id/text_riskrate"                    android:layout_width="wrap_content"                    android:layout_height="wrap_content"                    android:text="Risk rate"                    android:textSize="28dp"                    android:background="@color/mapbox_blue"                    android:layout_gravity="center_horizontal"/>                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="wrap_content"                    android:layout_gravity="center_horizontal">                    <Button                        android:layout_width="0dp"                        android:layout_height="match_parent"                        android:layout_weight="1"                        android:text="Find More"                        android:id="@+id/btn_findmore"/>                    <Button                        android:layout_width="0dp"                        android:layout_height="match_parent"                        android:layout_weight="1"                        android:text="Historical bushfire"                        android:id="@+id/btn_historical_bf"/>                </LinearLayout>            </LinearLayout>                <LinearLayout                    android:layout_marginTop="5dp"                    android:orientation="vertical"                    android:layout_width="match_parent"                    android:layout_height="fill_parent"                    android:background="@color/cardwhite"                    android:layout_marginStart="5dp"                    android:layout_marginEnd="5dp">                    <TextView                        android:textStyle="bold"                        android:textSize="20dp"                        android:layout_width="wrap_content"                        android:layout_height="wrap_content"                        android:layout_gravity="center_horizontal"                        android:text="Cause"/>                    <TextView                        android:layout_gravity="center_horizontal"                        android:layout_width="wrap_content"                        android:layout_height="wrap_content"                        android:text="What causes the bushfire?"/>                    <Button                        android:id="@+id/btn_c_findmore"                        android:layout_width="wrap_content"                        android:layout_height="wrap_content"                        android:layout_gravity="center_horizontal"                        android:text="Find More" />                </LinearLayout>                <LinearLayout                    android:layout_marginTop="5dp"                    android:orientation="vertical"                    android:layout_width="match_parent"                    android:layout_height="fill_parent"                    android:background="@color/cardwhite"                    android:layout_marginBottom="5dp"                    android:layout_marginStart="5dp"                    android:layout_marginEnd="5dp"                    >                    <TextView                        android:textSize="20dp"                        android:textStyle="bold"                        android:layout_width="wrap_content"                        android:layout_height="wrap_content"                        android:layout_gravity="center_horizontal"                        android:text="Action"                        />                    <TextView                        android:layout_gravity="center_horizontal"                        android:layout_width="wrap_content"                        android:layout_height="wrap_content"                        android:text="What actions can I take?"/>                    <Button                        android:layout_gravity="center_horizontal"                        android:layout_width="wrap_content"                        android:layout_height="wrap_content"                        android:text="Explore"                        android:id="@+id/btn_action_exp"/>                </LinearLayout>            </LinearLayout>        </ScrollView>        <FrameLayout            android:visibility="gone"            android:id="@+id/content_frame"            android:layout_width="match_parent"            android:layout_height="match_parent" /></android.support.v7.widget.LinearLayoutCompat>
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+
+    android:background="@color/backgroundclr">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@android:drawable/ic_search_category_default"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_location"
+            android:inputType="textPostalAddress"
+            android:hint="Search address here"
+            />
+
+    </LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="8"
+
+    android:orientation="vertical">
+
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="7.5"
+        mapbox:mapbox_cameraZoom="7"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="vertical"/>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/back_to_camera_tracking_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/flag"
+            android:contentDescription="submit"
+            android:layout_margin="16dp" />
+
+    </LinearLayout>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/cardwhite"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                >
+                <TextView
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Possiblity"/>
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The possibility of happening a bush fire here is :"/>
+                <TextView
+                    android:id="@+id/text_riskrate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Risk rate"
+                    android:textSize="28dp"
+                    android:background="@color/mapbox_blue"
+                    android:layout_gravity="center_horizontal"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Find More"
+                        android:id="@+id/btn_findmore"/>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Historical bushfire"
+                        android:id="@+id/btn_historical_bf"/>
+                </LinearLayout>
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/cardwhite"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp">
+                    <TextView
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Cause"/>
+                    <TextView
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="What causes the bushfire?"/>
+
+                    <Button
+                        android:id="@+id/btn_c_findmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Find More" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/cardwhite"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    >
+                    <TextView
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Action"
+
+                        />
+                    <TextView
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="What actions can I take?"/>
+                    <Button
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explore"
+                        android:id="@+id/btn_action_exp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+</android.support.v7.widget.LinearLayoutCompat>

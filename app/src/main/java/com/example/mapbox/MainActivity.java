@@ -1,23 +1,23 @@
 package com.example.mapbox;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
+import android.app.Activity;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
+import android.widget.Toolbar;
 
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
@@ -26,7 +26,15 @@ import com.mapbox.android.core.location.LocationEngineRequest;
 import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
+import com.mapbox.api.geocoding.v5.models.CarmenFeature;
+import com.mapbox.geojson.Feature;
+import com.mapbox.geojson.FeatureCollection;
+import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.MarkerOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.location.OnCameraTrackingChangedListener;
@@ -37,6 +45,9 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.plugins.places.autocomplete.PlaceAutocomplete;
+import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +56,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.List;
+
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
+
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
     private PermissionsManager permissionsManager;
@@ -56,17 +71,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private TextView risk;
     private LocationChangeListeningActivityLocationCallback callback =
             new LocationChangeListeningActivityLocationCallback(this);
+    private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 3000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 500;
     private JSONObject j = new JSONObject();
-
-
+    private String geojsonSourceLayerId = "geojsonSourceLayerId";
+    private String symbolIconId = "symbolIconId";
+    private ImageButton search;
+    private EditText input_postcode;
 //TODO: Nik
     private Button btn_c_findmore;
     private Button btn_action_exp;
     private Button btn_historical_bf;
 
-    private Toolbar mTopToolbar;
+    private android.support.v7.widget.Toolbar mTopToolbar;
 
 
     private boolean isInTrackingMode;
@@ -82,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         //adding a back menu
-        mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        mTopToolbar =  findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
 
 
@@ -90,12 +108,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView.onCreate(savedInstanceState);
         test = findViewById(R.id.btn_findmore);
         risk = (TextView) findViewById(R.id.text_riskrate);
-
-
+        final Geocoder geocoder = new Geocoder(this);
+        search = (ImageButton) findViewById(R.id.btn_search);
         btn_c_findmore = findViewById(R.id.btn_c_findmore);
         btn_action_exp = findViewById(R.id.btn_action_exp);
         btn_historical_bf = findViewById(R.id.btn_historical_bf);
-
+        input_postcode = findViewById(R.id.search_location);
+        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
 
         btn_c_findmore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,9 +143,31 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 startActivityForResult(intent, 1);
             }
         });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Address search_add;
+                try {
+                    search_add = geocoder.getFromLocationName(input_postcode.getText().toString(),1).get(0);
+                    getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
+                    getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
 
-//        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
-//        getDetailAsyncTask.execute("3125");
+                    map.addMarker(new MarkerOptions()
+                            .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
+                            .title(search_add.getPostalCode()));
+                    CameraPosition position = new CameraPosition.Builder()
+                            .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
+                            .build(); // Creates a CameraPosition from the builder
+
+                    map.animateCamera(CameraUpdateFactory
+                            .newCameraPosition(position), 7000);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    input_postcode.setError("No address find");
+                }
+            }
+        });
+        getDetailAsyncTask.execute(postCode);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
@@ -135,6 +176,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style);
+                        // Create an empty GeoJSON source using the empty feature collection
+                        setUpSource(style);
+
+// Set up a new symbol layer for displaying the searched location's feature coordinates
+                        setupLayer(style);
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
 
 
@@ -166,6 +212,49 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
 
+    }
+
+    private void setUpSource(@NonNull Style loadedMapStyle) {
+        loadedMapStyle.addSource(new GeoJsonSource(geojsonSourceLayerId));
+    }
+
+    private void setupLayer(@NonNull Style loadedMapStyle) {
+        loadedMapStyle.addLayer(new SymbolLayer("SYMBOL_LAYER_ID", geojsonSourceLayerId).withProperties(
+                iconImage(symbolIconId),
+                iconOffset(new Float[] {0f, -8f})
+        ));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_AUTOCOMPLETE) {
+
+            // Retrieve selected location's CarmenFeature
+            CarmenFeature selectedCarmenFeature = PlaceAutocomplete.getPlace(data);
+
+            // Create a new FeatureCollection and add a new Feature to it using selectedCarmenFeature above.
+            // Then retrieve and update the source designated for showing a selected location's symbol layer icon
+
+            if (map != null) {
+                Style style = map.getStyle();
+                if (style != null) {
+                    GeoJsonSource source = style.getSourceAs(geojsonSourceLayerId);
+                    if (source != null) {
+                        source.setGeoJson(FeatureCollection.fromFeatures(
+                                new Feature[] {Feature.fromJson(selectedCarmenFeature.toJson())}));
+                    }
+
+                    // Move map camera to the selected location
+                    map.animateCamera(CameraUpdateFactory.newCameraPosition(
+                            new CameraPosition.Builder()
+                                    .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
+                                            ((Point) selectedCarmenFeature.geometry()).longitude()))
+                                    .zoom(14)
+                                    .build()), 4000);
+                }
+            }
+        }
     }
 
 
@@ -473,32 +562,29 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             e.printStackTrace();
         }
     }
-//    private class getDetailAsyncTask extends AsyncTask<String, Void, String> {
-//        @Override
-//        protected String doInBackground(String... params) {
-//
-//            return Restful.findByPostcode(params[0]);
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String details) {
-//            JSONArray jsonArray = null;
-//            try {
-//                jsonArray = new JSONArray(details);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            try {
-//                j = jsonArray.getJSONObject(0);
-//                risk.setText(j.getString("bushfireRiskRating"));
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
 
+    private class getDetailAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
 
+            return Restful.findByPostcode(params[0]);
+        }
 
-
+        @Override
+        protected void onPostExecute(String details) {
+            JSONArray jsonArray = null;
+            try {
+                jsonArray = new JSONArray(details);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                j = jsonArray.getJSONObject(0);
+                risk.setText(j.getString("bushfireRiskRating"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 
