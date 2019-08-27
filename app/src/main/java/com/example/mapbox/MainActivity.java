@@ -99,30 +99,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         btn_historical_bf = findViewById(R.id.btn_historical_bf);
         input_postcode = findViewById(R.id.search_location);
         getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Address search_add;
-                try {
-                    search_add = geocoder.getFromLocationName(input_postcode.getText().toString(),1).get(0);
-                    getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
-                    getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
 
-                    map.addMarker(new MarkerOptions()
-                            .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                            .title(search_add.getPostalCode()));
-                    CameraPosition position = new CameraPosition.Builder()
-                            .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
-                            .build(); // Creates a CameraPosition from the builder
-
-                    map.animateCamera(CameraUpdateFactory
-                            .newCameraPosition(position), 7000);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    input_postcode.setError("No address find");
-                }
-            }
-        });
         btn_c_findmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,6 +125,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Historic.class);
                 startActivityForResult(intent, 1);
+            }
+        });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Address search_add;
+                try {
+                    search_add = geocoder.getFromLocationName(input_postcode.getText().toString(),1).get(0);
+                    getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
+                    getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
+
+                    map.addMarker(new MarkerOptions()
+                            .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
+                            .title(search_add.getPostalCode()));
+                    CameraPosition position = new CameraPosition.Builder()
+                            .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
+                            .build(); // Creates a CameraPosition from the builder
+
+                    map.animateCamera(CameraUpdateFactory
+                            .newCameraPosition(position), 7000);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    input_postcode.setError("No address find");
+                }
             }
         });
         getDetailAsyncTask.execute(postCode);
