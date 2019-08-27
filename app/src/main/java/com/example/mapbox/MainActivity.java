@@ -11,10 +11,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
@@ -56,17 +59,26 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private JSONObject j = new JSONObject();
 
 
-
 //TODO: Nik
     private Button btn_c_findmore;
     private Button btn_action_exp;
     private Button btn_historical_bf;
+
+    private Toolbar mTopToolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, "pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA");
         setContentView(R.layout.activity_main);
+
+
+        //adding a back menu
+        mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(mTopToolbar);
+
+
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         test = findViewById(R.id.btn_findmore);
@@ -106,8 +118,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
-        getDetailAsyncTask.execute("3125");
+//        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
+//        getDetailAsyncTask.execute("3125");
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
@@ -412,27 +424,32 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             e.printStackTrace();
         }
     }
-    private class getDetailAsyncTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... params) {
+//    private class getDetailAsyncTask extends AsyncTask<String, Void, String> {
+//        @Override
+//        protected String doInBackground(String... params) {
+//
+//            return Restful.findByPostcode(params[0]);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String details) {
+//            JSONArray jsonArray = null;
+//            try {
+//                jsonArray = new JSONArray(details);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            try {
+//                j = jsonArray.getJSONObject(0);
+//                risk.setText(j.getString("bushfireRiskRating"));
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
-            return Restful.findByPostcode(params[0]);
-        }
 
-        @Override
-        protected void onPostExecute(String details) {
-            JSONArray jsonArray = null;
-            try {
-                jsonArray = new JSONArray(details);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            try {
-                j = jsonArray.getJSONObject(0);
-                risk.setText(j.getString("bushfireRiskRating"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
+
 }
+

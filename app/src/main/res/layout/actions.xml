@@ -8,6 +8,13 @@
     tools:context=".MainActivity"
     android:animateLayoutChanges="true">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        style="@style/HeaderBar"
+        android:elevation="4dp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
