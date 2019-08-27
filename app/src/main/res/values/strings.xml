@@ -39,4 +39,6 @@ Contact local police. Inform them that your property has been involved in a fire
     <string name="title_activity_welcome">Welcome</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="tracking_enabled">Tracking enabled</string>
+    <string name="tracking_already_enabled">Tracking Already Enabled</string>
 </resources>

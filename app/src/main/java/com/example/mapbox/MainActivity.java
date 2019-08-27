@@ -29,6 +29,8 @@ import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
+import com.mapbox.mapboxsdk.location.OnCameraTrackingChangedListener;
+import com.mapbox.mapboxsdk.location.OnLocationClickListener;
 import com.mapbox.mapboxsdk.location.modes.CameraMode;
 import com.mapbox.mapboxsdk.location.modes.RenderMode;
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -44,7 +46,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
     private PermissionsManager permissionsManager;
     private MapView mapView;
     private MapboxMap map;
@@ -65,6 +67,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Button btn_historical_bf;
 
     private Toolbar mTopToolbar;
+
+
+    private boolean isInTrackingMode;
+    private  LocationComponent locationComponent;
+
 
 
     @Override
@@ -245,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (PermissionsManager.areLocationPermissionsGranted(this)) {
 
 // Get an instance of the component
-            LocationComponent locationComponent = map.getLocationComponent();
+            final LocationComponent locationComponent = map.getLocationComponent();
 
 // Activate with options
             locationComponent.activateLocationComponent(
@@ -260,11 +267,44 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 // Set the component's render mode
             locationComponent.setRenderMode(RenderMode.COMPASS);
             initLocationEngine();
+
+// Add the location icon click listener
+            locationComponent.addOnLocationClickListener((OnLocationClickListener) this);
+
+            findViewById(R.id.back_to_camera_tracking_mode).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!isInTrackingMode) {
+                        isInTrackingMode = true;
+                        locationComponent.setCameraMode(CameraMode.TRACKING);
+                        locationComponent.zoomWhileTracking(16f);
+                        Toast.makeText(MainActivity.this, getString(R.string.tracking_enabled),
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        locationComponent.setCameraMode(CameraMode.TRACKING);
+                        locationComponent.zoomWhileTracking(16f);
+                        Toast.makeText(MainActivity.this, getString(R.string.tracking_already_enabled),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
         } else {
             permissionsManager = new PermissionsManager(this);
             permissionsManager.requestLocationPermissions(this);
         }
     }
+
+    @Override
+    public void onCameraTrackingDismissed() {
+        isInTrackingMode = false;
+    }
+
+    @Override
+    public void onCameraTrackingChanged(int currentMode) {
+        isInTrackingMode = false;
+    }
+
 
     /**
      * Set up the LocationEngine and the parameters for querying the device's location
@@ -279,6 +319,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         locationEngine.requestLocationUpdates(request, callback, getMainLooper());
         locationEngine.getLastLocation(callback);
+    }
+
+    @Override
+    public void onLocationComponentClick() {
+//        if (locationComponent.getLastKnownLocation() != null) {
+//            Toast.makeText(this, String.format(getString(R.string.current_location),
+//                    locationComponent.getLastKnownLocation().getLatitude(),
+//                    locationComponent.getLastKnownLocation().getLongitude()), Toast.LENGTH_LONG).show();
+//        }
     }
 
     /*

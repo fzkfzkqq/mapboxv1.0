@@ -86,6 +86,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
     private Toolbar mTopToolbar;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,10 +112,12 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
                         addEarthquakeSource(style);
                         addHeatmapLayer(style);
                         addCircleLayer(style);
+
                         //enableLocationComponent(style);
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
                     }
                 });
+
                 //TODO: 1. see the other TODO code at line 236
 //                //addMarker(mapboxMap);
 //                GetParks getpark = new GetParks();
@@ -127,6 +130,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
 //                });
             }
         });
+
 
     }
 
@@ -562,4 +566,6 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
 
         return super.onOptionsItemSelected(item);
     }
+
+
     }
