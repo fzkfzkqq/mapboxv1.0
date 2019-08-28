@@ -18,20 +18,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a2857af-4957-4300-83b9-b70bf00f10bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_scalebar_v8_0_3_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -149,7 +143,7 @@
         <counts>
           <entry key="dummy" value="1" />
           <entry key="gradle" value="67" />
-          <entry key="java" value="4621" />
+          <entry key="java" value="4663" />
           <entry key="readme" value="77" />
           <entry key="txt" value="230" />
           <entry key="xml" value="3524" />
@@ -158,7 +152,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="67" />
-          <entry key="JAVA" value="4621" />
+          <entry key="JAVA" value="4663" />
           <entry key="PLAIN_TEXT" value="308" />
           <entry key="XML" value="3524" />
         </counts>
@@ -173,8 +167,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="225" column="48" selection-start-line="225" selection-start-column="48" selection-end-line="225" selection-end-column="48" />
+            <state relative-caret-position="680">
+              <caret line="87" column="66" selection-start-line="87" selection-start-column="65" selection-end-line="87" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5760#6171#0" expanded="true" />
@@ -194,10 +188,8 @@
                 <element signature="e#17460#17461#0" expanded="true" />
                 <element signature="e#17534#17535#0" expanded="true" />
                 <element signature="e#17574#17575#0" expanded="true" />
-                <element signature="e#25062#25727#0" expanded="true" />
-                <element signature="e#25293#25701#0" expanded="true" />
-                <element signature="e#25700#25701#0" expanded="true" />
-                <element signature="e#25726#25727#0" expanded="true" />
+                <element signature="e#27161#27162#0" expanded="true" />
+                <element signature="e#27185#27186#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -245,11 +237,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>MainActivity</find>
       <find>transa</find>
       <find>btn_</find>
       <find>btn_historical_bf</find>
-      <find>location</find>
       <find>hist</find>
       <find>button</find>
       <find>getdetai</find>
@@ -275,6 +265,8 @@
       <find>marker</find>
       <find>zoom</find>
       <find>onMapReady</find>
+      <find>blink</find>
+      <find>location</find>
     </findStrings>
     <replaceStrings>
       <replace>Historic</replace>
@@ -540,6 +532,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24962178" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16868381" />
@@ -554,9 +547,9 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.3885246" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5015129" side_tool="true" weight="0.2885246" />
       <window_info anchor="bottom" id="Version Control" order="4" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.37540984" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.37540984" />
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49848714" weight="0.25409836" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.3295082" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.7409836" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3295082" />
       <window_info anchor="bottom" id="Run" order="9" weight="0.34590164" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32980332" />
@@ -571,7 +564,7 @@
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24962178" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16868381" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16868381" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.32980332" />
       <window_info id="Favorites" order="3" side_tool="true" weight="0.32980332" />
       <window_info id="Build Variants" order="4" side_tool="true" weight="0.32980332" />
@@ -583,7 +576,7 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.3885246" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5015129" side_tool="true" weight="0.2885246" />
       <window_info anchor="bottom" id="Version Control" order="4" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="5" visible="true" weight="0.37540984" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.37540984" />
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49848714" weight="0.25409836" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.3295082" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3295082" />
@@ -613,25 +606,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java</url>
-          <line>178</line>
+          <line>182</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java</url>
-          <line>400</line>
+          <line>405</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java</url>
-          <line>429</line>
+          <line>434</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java</url>
-          <line>434</line>
+          <line>439</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
@@ -950,8 +943,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="225" column="48" selection-start-line="225" selection-start-column="48" selection-end-line="225" selection-end-column="48" />
+        <state relative-caret-position="680">
+          <caret line="87" column="66" selection-start-line="87" selection-start-column="65" selection-end-line="87" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5760#6171#0" expanded="true" />
@@ -971,10 +964,8 @@
             <element signature="e#17460#17461#0" expanded="true" />
             <element signature="e#17534#17535#0" expanded="true" />
             <element signature="e#17574#17575#0" expanded="true" />
-            <element signature="e#25062#25727#0" expanded="true" />
-            <element signature="e#25293#25701#0" expanded="true" />
-            <element signature="e#25700#25701#0" expanded="true" />
-            <element signature="e#25726#25727#0" expanded="true" />
+            <element signature="e#27161#27162#0" expanded="true" />
+            <element signature="e#27185#27186#0" expanded="true" />
           </folding>
         </state>
       </provider>
