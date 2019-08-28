@@ -53,7 +53,7 @@
 
                 <Button
                     android:id="@+id/fuel_load"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@color/fuelload"
                     android:text="Fuel Load"
@@ -85,7 +85,7 @@
 
                 <Button
                     android:id="@+id/fuel_moisture"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@color/moisture"
                     android:text="Fuel Moisture"
@@ -116,7 +116,7 @@
 
                 <Button
                     android:id="@+id/wind_speed"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@color/windspeed"
                     android:text="Wind Speed"
@@ -147,7 +147,7 @@
 
                 <Button
                     android:id="@+id/ambient_temperature"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@color/ambienttemperature"
                     android:text="Ambient Temperature"
@@ -179,7 +179,7 @@
 
                 <Button
                     android:id="@+id/relative_humidity"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@color/relativehumidity"
                     android:text="Relative Humidity"
@@ -211,7 +211,7 @@
 
                 <Button
                     android:id="@+id/slope_angle"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@color/slopeangle"
                     android:text="Slope Angle"
@@ -244,7 +244,7 @@
 
                 <Button
                     android:id="@+id/ignition_source"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@color/ignitionsource"
                     android:text="Ignition Source"
