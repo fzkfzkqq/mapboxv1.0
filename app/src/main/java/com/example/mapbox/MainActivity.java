@@ -2,7 +2,12 @@ package com.example.mapbox;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -13,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -63,6 +69,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
+    private static  String PREFS_NAME = "Prefs" ;
     private PermissionsManager permissionsManager;
     private MapView mapView;
     private MapboxMap map;
@@ -91,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private boolean isInTrackingMode;
     private  LocationComponent locationComponent;
 
+    private Button dialogue_button;
+
 
 
     @Override
@@ -98,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, "pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA");
         setContentView(R.layout.activity_main);
+
 
 
         //adding a back menu
@@ -116,8 +126,31 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //        btn_historical_bf = findViewById(R.id.btn_historical_bf);
         input_postcode = findViewById(R.id.search_location);
 
+        SharedPreferences sharedpreferences;
+        sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
+        Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
 
+        if (isAgree == false) {
+
+            final Dialog settingsDialog = new Dialog(this);
+            settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+            settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.image_layout
+                    , null));
+            settingsDialog.show();
+
+            dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+            dialogue_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putBoolean("d_accepted", true);
+                    settingsDialog.dismiss();
+                }
+            });
+
+        }
         btn_c_findmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -622,7 +655,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int timeToBlink = 500;    //in milissegunds
+                int timeToBlink = 1000;    //in milissegunds
                 try{Thread.sleep(timeToBlink);}catch (Exception e) {}
                 handler.post(new Runnable() {
                     @Override

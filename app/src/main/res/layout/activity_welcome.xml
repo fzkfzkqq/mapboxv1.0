@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:background="@drawable/welcome"
+        android:background="@drawable/welcome2"
         android:textColor="#33b5e5"
         android:textSize="50sp"
         android:textStyle="bold" />

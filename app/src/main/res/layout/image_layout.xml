@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ImageView android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:src="@drawable/tooltipdialgue"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Long Press and Hold on any button to find out what it can do"
+        android:textColor="@android:color/black"
+        android:textSize="24dp" />
+    <Button
+        android:id="@+id/dialogue_button"
+        android:background="@color/mapbox_grey"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Got it!" />
+</LinearLayout>
