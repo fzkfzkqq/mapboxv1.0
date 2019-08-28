@@ -4,29 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundclr"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-
-    android:background="@color/backgroundclr">
+    tools:context=".MainActivity">
 
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="12"
-    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="12"
+        android:orientation="vertical">
 
 
-    <com.mapbox.mapboxsdk.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        mapbox:mapbox_cameraZoom="7"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:orientation="vertical"/>
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            mapbox:mapbox_cameraZoom="7" />
 
 
         <android.support.design.widget.FloatingActionButton
@@ -34,171 +33,210 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:src="@drawable/flag"
+            android:layout_margin="16dp"
             android:contentDescription="submit"
-            android:layout_margin="16dp" />
+            android:src="@drawable/flag" />
+
 
     </FrameLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/search_location"
-            android:layout_width="373dp"
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@color/cardwhite"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:hint="Enter another address"
-            android:inputType="textPostalAddress" />
-
-        <ImageButton
-            android:id="@+id/btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:src="@android:drawable/ic_menu_search"
-            />
-
-    </LinearLayout>
-
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/search_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/cardwhite"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:hint="Enter another address"
+                    android:inputType="textPostalAddress" />
+
+                <ImageButton
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/search3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@color/cardwhite"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                >
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
                 <TextView
-                    android:textSize="20dp"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="BushFire Prediction"/>
+                    android:text="BushFire Prediction"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
                 <!--<TextView-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="The possibility of happening a bush fire here is :"/>-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="The possibility of happening a bush fire here is :"/>-->
 
                 <TextView
                     android:id="@+id/text_riskrate"
-                    android:layout_width="match_parent"
+                    android:layout_width="301dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/mapbox_blue"
-                    android:gravity="center"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
+                    android:background="@color/mapbox_blue"
+                    android:gravity="center"
                     android:text="Risk rate"
                     android:textSize="50dp" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal">
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Find More"
-                        android:id="@+id/btn_findmore"/>
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Historical bushfire"
-                        android:id="@+id/btn_historical_bf"/>
-                </LinearLayout>
             </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical"
+            <View
+                android:layout_width="350dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center"
+                android:background="#C7C1C1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btn_findmore"
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:background="@color/cardwhite"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp">
-                    <TextView
-                        android:textStyle="bold"
-                        android:textSize="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="What Causes Bushfires?"/>
-                    <!--<TextView-->
-                        <!--android:layout_gravity="center_horizontal"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="What causes the bushfire?"-->
-                        <!--/>-->
+                    android:drawableTop="@drawable/factor2"
+                    android:drawablePadding="10dp"
 
-                    <Button
-                        android:id="@+id/btn_c_findmore"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Explore" />
-                </LinearLayout>
+                    android:fontFamily="sans-serif"
+                    android:text="Factors"
 
-
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/cardwhite"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    >
-                    <TextView
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Protect Yourself From BushFires"
-
-                        />
-                    <!--<TextView-->
-                        <!--android:layout_gravity="center_horizontal"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="What actions can I take?"/>-->
-                    <Button
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Find Out How"
-                        android:id="@+id/btn_action_exp"/>
-                </LinearLayout>
+                    android:textSize="24sp" />
 
             </LinearLayout>
-        </ScrollView>
-        <FrameLayout
-            android:visibility="gone"
-            android:id="@+id/content_frame"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="#C7C1C1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@color/cardwhite"
+                android:orientation="vertical">
+
+                <!--<TextView-->
+                <!--android:textStyle="bold"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:text="What Causes Bushfires?"/>-->
+                <!--<TextView-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="What causes the bushfire?"-->
+                <!--/>-->
+
+                <Button
+                    android:id="@+id/btn_c_findmore"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/cardwhite"
+                    android:drawableTop="@drawable/piechart"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Causes"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="#C7C1C1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/cardwhite"
+                android:orientation="vertical">
+                <!--<TextView-->
+                <!--android:textSize="20dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:text="Protect Yourself From BushFires"-->
+
+                <!--/>-->
+                <!--<TextView-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="What actions can I take?"/>-->
+                <Button
+                    android:id="@+id/btn_action_exp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/cardwhite"
+                    android:drawableTop="@drawable/hammer"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Actions"
+
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="#C7C1C1" />
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </android.support.v7.widget.LinearLayoutCompat>

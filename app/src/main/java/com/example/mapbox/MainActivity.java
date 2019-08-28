@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         search = (ImageButton) findViewById(R.id.btn_search);
         btn_c_findmore = findViewById(R.id.btn_c_findmore);
         btn_action_exp = findViewById(R.id.btn_action_exp);
-        btn_historical_bf = findViewById(R.id.btn_historical_bf);
+//        btn_historical_bf = findViewById(R.id.btn_historical_bf);
         input_postcode = findViewById(R.id.search_location);
 
 
@@ -142,14 +142,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        btn_historical_bf.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Historic.class);
-                startActivityForResult(intent, 1);
-            }
-        });
+//        btn_historical_bf.setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, Historic.class);
+//                startActivityForResult(intent, 1);
+//            }
+//        });
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
