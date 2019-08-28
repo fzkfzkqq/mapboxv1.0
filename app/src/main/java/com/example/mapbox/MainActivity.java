@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private String postCode;
     private LocationEngine locationEngine;
     private TextView risk;
+    private Address address;
     private LocationChangeListeningActivityLocationCallback callback =
     new LocationChangeListeningActivityLocationCallback(this);
     private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CauseActivity.class);
-                startActivityForResult(intent, 1);
+                startActivity(intent);
 
             }
         });
@@ -158,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     if (!geocoder.getFromLocationName(input_postcode.getText().toString(),1).isEmpty())
                     {
                         search_add = geocoder.getFromLocationName(input_postcode.getText().toString(),1).get(0);
+                        address = search_add;
                         getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
                         getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
 
@@ -219,6 +221,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                        Details()).commit();
 
                 Intent intent = new Intent(MainActivity.this,Details.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Address1",address.getAddressLine(0));
+                bundle.putString("postcode",address.getPostalCode());
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
@@ -566,8 +572,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude,longtitude,1);
             if (addresses.size() > 0) {
-                Address address = addresses.get(0);
-                postCode = address.getPostalCode();
+                Address add = addresses.get(0);
+                address = add;
+                Log.i("address",address.getAddressLine(0));
+                postCode = add.getPostalCode();
                 Log.i("postcode",postCode);
                 getDetailAsyncTask getDetailAsyncTask = new getDetailAsyncTask();
                 getDetailAsyncTask.execute(postCode);
@@ -595,8 +603,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 e.printStackTrace();
             }
             try {
-                j = jsonArray.getJSONObject(0);
-                risk.setText(j.getString("bushfireRiskRating"));
+                if (jsonArray.length()>0) {
+                    j = jsonArray.getJSONObject(0);
+                    risk.setText(j.getString("bushfireRiskRating"));
+                }
+                else
+                {
+                    risk.setText("No Data");
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }

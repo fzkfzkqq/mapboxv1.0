@@ -1,6 +1,7 @@
 package com.example.mapbox;
 
 import android.content.Intent;
+import android.location.Address;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,6 @@ public class Details extends AppCompatActivity {
     private TextView humidity;
     private TextView wind;
     private TextView pressure;
-
     private Toolbar mTopToolbar;
 
 
@@ -30,6 +30,7 @@ public class Details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_details);
+
         location = (TextView)findViewById(R.id.location);
         weather = (TextView)findViewById(R.id.weather);
         temprature = (TextView)findViewById(R.id.temprature);
@@ -40,9 +41,14 @@ public class Details extends AppCompatActivity {
         //adding a back menu
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
-
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        String postcode = bundle.getString("postcode");
+        String add = bundle.getString("Address1");
+        //Address address = getIntent().getExtras().getParcelable("Address1");
+        location.setText(add);
         getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
-        getDetailAsyncTask.execute("3125");
+        getDetailAsyncTask.execute(postcode);
 
     }
 
@@ -73,7 +79,7 @@ public class Details extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String details) {
-            System.out.println(details);
+            //System.out.println(details);
             JSONArray jsonArray = null;
             try {
                 jsonArray = new JSONArray(details);
@@ -81,14 +87,23 @@ public class Details extends AppCompatActivity {
                 e.printStackTrace();
             }
             try {
+                if (jsonArray.length() > 0) {
                     JSONObject j = jsonArray.getJSONObject(0);
                     temprature.setText((j.get("airTemperature")).toString() + "°C");
                     humidity.setText((j.get("humidity")).toString() + "%");
                     wind.setText((j.get("windSpeed")).toString() + " Km/h");
                     pressure.setText((j.get("airPressure")).toString() + " hPa");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                }
+                else {
+                    temprature.setText("No Data");
+                    humidity.setText("NO Data");
+                    wind.setText("No Data");
+                    pressure.setText("No Data");
+                }
+                } catch(JSONException e){
+                    e.printStackTrace();
+                }
+
             }
     }
 
