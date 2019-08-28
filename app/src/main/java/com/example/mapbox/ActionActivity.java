@@ -1,5 +1,6 @@
 package com.example.mapbox;
 
+import com.example.mapbox.CauseActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +56,7 @@ public class ActionActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.before:
+                CauseActivity.bounceBaby(before);
                 before_text.setVisibility(View.VISIBLE);
                 if (temporary != null) {
                     temporary.setVisibility(View.GONE);
@@ -62,6 +64,7 @@ public class ActionActivity extends AppCompatActivity implements View.OnClickLis
                 temporary = before_text;
                 break;
             case R.id.during:
+                CauseActivity.bounceBaby(during);
                 during_text.setVisibility(View.VISIBLE);
                 if (temporary != null) {
                     temporary.setVisibility(View.GONE);
@@ -69,6 +72,7 @@ public class ActionActivity extends AppCompatActivity implements View.OnClickLis
                 temporary = during_text;
                 break;
             case R.id.after:
+                CauseActivity.bounceBaby(after);
                 after_text.setVisibility(View.VISIBLE);
                 if (temporary != null) {
                     temporary.setVisibility(View.GONE);

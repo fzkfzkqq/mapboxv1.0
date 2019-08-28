@@ -1,5 +1,7 @@
 package com.example.mapbox;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -40,6 +43,8 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
     private Toolbar mTopToolbar;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +71,10 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
 
+
+
+
+
         fuel_load.setOnClickListener(this);
         fuel_moisture.setOnClickListener(this);
         wind_speed.setOnClickListener(this);
@@ -77,10 +86,36 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    public static void bounceBaby(final Button button){
+        final ViewPropertyAnimator animator = button.animate();
+        animator.setDuration(200);
+
+        button.setEnabled(false);
+        animator.scaleXBy(-0.06f)
+                .scaleYBy(-0.06f)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+
+                        animator.scaleXBy(0.06f)
+                                .scaleYBy(0.06f)
+                                .setListener(null)
+                                .withEndAction(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        button.setEnabled(true);
+                                    }
+                                });
+                    }
+                });
+    }
+
+
     @Override
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.fuel_load:
+                bounceBaby(fuel_load);
                 fuelload_text.setVisibility(View.VISIBLE);
                 if(temporary!=null){
                     temporary.setVisibility(View.GONE);
@@ -88,6 +123,7 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
                 temporary = fuelload_text;
                 break;
             case R.id.fuel_moisture:
+                bounceBaby(fuel_moisture);
                 fuelmoisture_text.setVisibility(View.VISIBLE);
                 if(temporary!=null){
                     temporary.setVisibility(View.GONE);
@@ -95,6 +131,8 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
                 temporary = fuelmoisture_text;
                 break;
             case R.id.wind_speed:
+                bounceBaby(wind_speed);
+
                 windspeed_text.setVisibility(View.VISIBLE);
                 if(temporary!=null){
                     temporary.setVisibility(View.GONE);
@@ -102,6 +140,8 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
                 temporary = windspeed_text;
                 break;
             case R.id.ambient_temperature:
+                bounceBaby(ambient_temperature);
+
                 ambienttemperature_text.setVisibility(View.VISIBLE);
                 if(temporary!=null){
                     temporary.setVisibility(View.GONE);
@@ -109,6 +149,8 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
                 temporary = ambienttemperature_text;
                 break;
             case R.id.relative_humidity:
+                bounceBaby(relative_humidity);
+
                 relativehumidity_text.setVisibility(View.VISIBLE);
                 if(temporary!=null){
                     temporary.setVisibility(View.GONE);
@@ -116,6 +158,8 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
                 temporary = relativehumidity_text;
                 break;
             case R.id.slope_angle:
+                bounceBaby(slope_angle);
+
                 slopeangle_text.setVisibility(View.VISIBLE);
                 if(temporary!=null){
                     temporary.setVisibility(View.GONE);
@@ -123,6 +167,8 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
                 temporary = slopeangle_text;
                 break;
             case R.id.ignition_source:
+                bounceBaby(ignition_source);
+
                 ignitionsource_text.setVisibility(View.VISIBLE);
                 if(temporary!=null){
                     temporary.setVisibility(View.GONE);

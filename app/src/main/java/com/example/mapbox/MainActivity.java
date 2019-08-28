@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mapbox.CauseActivity;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -82,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //TODO: Nik
     private Button btn_c_findmore;
     private Button btn_action_exp;
-    private Button btn_historical_bf;
 
     private android.support.v7.widget.Toolbar mTopToolbar;
 
@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         btn_c_findmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CauseActivity.bounceBaby(btn_c_findmore);
                 Intent intent = new Intent(MainActivity.this, CauseActivity.class);
                 startActivity(intent);
 
@@ -131,6 +132,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onClick(View v) {
+
+                CauseActivity.bounceBaby(btn_action_exp);
                 Intent intent = new Intent(MainActivity.this, ActionActivity.class);
                 startActivityForResult(intent, 1);
             }
@@ -206,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                FragmentManager fragmentManager = getFragmentManager();
 //                fragmentManager.beginTransaction().replace(R.id.content_frame, new
 //                        Details()).commit();
-
+                CauseActivity.bounceBaby(test);
                 Intent intent = new Intent(MainActivity.this,Details.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("Address1",address.getAddressLine(0));

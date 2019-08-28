@@ -1,5 +1,6 @@
 package com.example.mapbox;
 
+import com.example.mapbox.CauseActivity;
 import android.content.Intent;
 import android.location.Address;
 import android.os.AsyncTask;
@@ -58,6 +59,7 @@ public class Details extends AppCompatActivity {
         bushfire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CauseActivity.bounceBaby(bushfire);
                 Intent intent = new Intent(Details.this,Historic.class);
                 startActivity(intent);
                 finish();
