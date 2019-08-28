@@ -155,9 +155,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View v) {
                 Address search_add;
+
                 try {
                     if (!geocoder.getFromLocationName(input_postcode.getText().toString(),1).isEmpty())
                     {
+                        locationEngine.removeLocationUpdates(callback);
                         search_add = geocoder.getFromLocationName(input_postcode.getText().toString(),1).get(0);
                         address = search_add;
                         getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
@@ -383,6 +385,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             findViewById(R.id.back_to_camera_tracking_mode).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    locationEngine.getLastLocation(callback);
                     if (!isInTrackingMode) {
                         isInTrackingMode = true;
                         locationComponent.setCameraMode(CameraMode.TRACKING);
