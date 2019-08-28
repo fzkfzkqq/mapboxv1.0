@@ -1,7 +1,10 @@
 package com.example.mapbox;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -169,5 +172,22 @@ public class Welcome extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    BroadcastReceiver broadcast_reciever = new BroadcastReceiver() {
+
+    @Override
+    public void onReceive(Context arg0, Intent intent) {
+        String action = intent.getAction();
+        if (action.equals("finish")) {
+    //finishing the activity
+            finish();
+        }
+    }
+};
+
+    @Override
+    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
+        return super.registerReceiver(broadcast_reciever, new IntentFilter("finish"));
     }
 }
