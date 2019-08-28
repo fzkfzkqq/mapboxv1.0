@@ -19,7 +19,7 @@
             android:textSize="28dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="location"
+            android:text="LOCATION"
             android:gravity="center"
             android:id="@+id/location"
             />
@@ -28,7 +28,7 @@
             android:textSize="14dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Weather"
+            android:text="WEATHER"
             android:id="@+id/weather"
             android:gravity="center"/>
         <TextView
@@ -36,7 +36,7 @@
             android:textSize="72dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Temperature"
+            android:text="TEMPERATURE"
             android:id="@+id/temprature"
             android:gravity="center"/>
         <TextView

@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = settings.edit();
                     editor.putBoolean("d_accepted", true);
+                    editor.commit();
                     settingsDialog.dismiss();
                 }
             });
@@ -198,12 +199,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 .newCameraPosition(position), 7000);
                     }
                     else {
-                        input_postcode.setError("No address find");
+                        input_postcode.setError("No address found");
                         input_postcode.setText("");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
-                    input_postcode.setError("No address find");
+                    input_postcode.setError("No address found");
                 }
             }
         });
