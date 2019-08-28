@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -25,6 +27,8 @@ public class Details extends AppCompatActivity {
     private TextView pressure;
     private Toolbar mTopToolbar;
 
+    private Button bushfire;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -38,37 +42,32 @@ public class Details extends AppCompatActivity {
         wind = (TextView)findViewById(R.id.windspeed);
         pressure = (TextView)findViewById(R.id.pressure);
 
+        bushfire = findViewById(R.id.bushfire);
+
         //adding a back menu
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+
         String postcode = bundle.getString("postcode");
         String add = bundle.getString("Address1");
         //Address address = getIntent().getExtras().getParcelable("Address1");
         location.setText(add);
+
+        bushfire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Details.this,Historic.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
         getDetailAsyncTask.execute(postcode);
 
     }
-
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        vDetailView =  inflater.inflate(R.layout.fragment_details, container, false);
-//        location = (TextView)vDetailView.findViewById(R.id.location);
-//        weather = (TextView)vDetailView.findViewById(R.id.weather);
-//        temprature = (TextView)vDetailView.findViewById(R.id.temprature);
-//        humidity = (TextView)vDetailView.findViewById(R.id.humidity);
-//        wind = (TextView)vDetailView.findViewById(R.id.windspeed);
-//        pressure = (TextView)vDetailView.findViewById(R.id.pressure);
-//        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
-//        getDetailAsyncTask.execute("3125");
-//        return vDetailView;
-//    }
-
-
 
     public class getDetailAsyncTask extends AsyncTask<String, Void, String> {
         @Override
