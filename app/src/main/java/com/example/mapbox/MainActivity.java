@@ -55,6 +55,8 @@ import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.plugins.places.autocomplete.PlaceAutocomplete;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
+import com.mapbox.pluginscalebar.ScaleBarOptions;
+import com.mapbox.pluginscalebar.ScaleBarPlugin;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -210,12 +212,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
-            public void onMapReady(@NonNull MapboxMap mapboxMap) {
+            public void onMapReady(@NonNull final MapboxMap mapboxMap) {
                 map = mapboxMap;
 
                 mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
+                        ScaleBarPlugin scaleBarPlugin = new ScaleBarPlugin(mapView, mapboxMap);
+
+                        // Create a ScaleBarOptions object to use the Plugin's default styling
+                        scaleBarPlugin.create(new ScaleBarOptions(MainActivity.this)
+                                .setTextSize(20f)
+                                .setBarHeight(10f)
+                                .setBorderWidth(7f)
+                                .setMetricUnit(true)
+                                .setRefreshInterval(15)
+                                .setMarginTop(30f)
+                                .setMarginLeft(16f)
+                                .setTextBarMargin(15f));
+
                         enableLocationComponent(style);
                         // Create an empty GeoJSON source using the empty feature collection
                         setUpSource(style);
@@ -412,12 +427,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     if (!isInTrackingMode) {
                         isInTrackingMode = true;
                         locationComponent.setCameraMode(CameraMode.TRACKING);
-                        locationComponent.zoomWhileTracking(16f);
+                        locationComponent.zoomWhileTracking(10);
 //                        Toast.makeText(MainActivity.this, getString(R.string.tracking_enabled),
 //                                Toast.LENGTH_SHORT).show();
                     } else {
                         locationComponent.setCameraMode(CameraMode.TRACKING);
-                        locationComponent.zoomWhileTracking(16f);
+                        locationComponent.zoomWhileTracking(10);
 //                        Toast.makeText(MainActivity.this, getString(R.string.tracking_already_enabled),
 //                                Toast.LENGTH_SHORT).show();
                     }
