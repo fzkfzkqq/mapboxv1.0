@@ -387,13 +387,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         isInTrackingMode = true;
                         locationComponent.setCameraMode(CameraMode.TRACKING);
                         locationComponent.zoomWhileTracking(16f);
-                        Toast.makeText(MainActivity.this, getString(R.string.tracking_enabled),
-                                Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, getString(R.string.tracking_enabled),
+//                                Toast.LENGTH_SHORT).show();
                     } else {
                         locationComponent.setCameraMode(CameraMode.TRACKING);
                         locationComponent.zoomWhileTracking(16f);
-                        Toast.makeText(MainActivity.this, getString(R.string.tracking_already_enabled),
-                                Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, getString(R.string.tracking_already_enabled),
+//                                Toast.LENGTH_SHORT).show();
                     }
                 }
             });
