@@ -8,6 +8,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -219,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-
+        blink();
     }
 
 
@@ -614,6 +615,28 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    private void blink(){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int timeToBlink = 500;    //in milissegunds
+                try{Thread.sleep(timeToBlink);}catch (Exception e) {}
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(risk.getVisibility() == View.VISIBLE){
+                            risk.setVisibility(View.INVISIBLE);
+                        }else{
+                            risk.setVisibility(View.VISIBLE);
+                        }
+                        blink();
+                    }
+                });
+            }
+        }).start();
     }
 }
 
