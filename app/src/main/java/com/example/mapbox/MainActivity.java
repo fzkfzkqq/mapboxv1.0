@@ -1,5 +1,7 @@
 package com.example.mapbox;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -102,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private Button dialogue_button;
 
+
+    private ObjectAnimator objAnim;
 
 
     @Override
@@ -269,7 +273,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        blink();
+//        blink();
+        pulseAnimation();
     }
 
 
@@ -666,26 +671,43 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         startActivity(intent);
     }
 
-    private void blink(){
-        final Handler handler = new Handler();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int timeToBlink = 1000;    //in milissegunds
-                try{Thread.sleep(timeToBlink);}catch (Exception e) {}
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(risk.getVisibility() == View.VISIBLE){
-                            risk.setVisibility(View.INVISIBLE);
-                        }else{
-                            risk.setVisibility(View.VISIBLE);
-                        }
-                        blink();
-                    }
-                });
-            }
-        }).start();
+
+    private void pulseAnimation(){
+        objAnim= ObjectAnimator.ofPropertyValuesHolder(risk, PropertyValuesHolder.ofFloat("scaleX", 0.9f), PropertyValuesHolder.ofFloat("scaleY", 0.9f));
+        objAnim.setDuration(1200);
+        objAnim.setRepeatCount(ObjectAnimator.INFINITE);
+        objAnim.setRepeatMode(ObjectAnimator.REVERSE);
+        objAnim.start();
     }
+
+//To Stop Animation, simply use cancel method of ObjectAnimator object as below.
+
+    private void stopPulseAnimation(){
+    objAnim.cancel();
+}
+
+
+
+//    private void blink(){
+//        final Handler handler = new Handler();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                int timeToBlink = 1000;    //in milissegunds
+//                try{Thread.sleep(timeToBlink);}catch (Exception e) {}
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if(risk.getVisibility() == View.VISIBLE){
+//                            risk.setVisibility(View.INVISIBLE);
+//                        }else{
+//                            risk.setVisibility(View.VISIBLE);
+//                        }
+//                        blink();
+//                    }
+//                });
+//            }
+//        }).start();
+//    }
 }
 

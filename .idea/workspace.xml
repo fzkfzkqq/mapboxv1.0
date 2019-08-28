@@ -149,7 +149,7 @@
         <counts>
           <entry key="dummy" value="1" />
           <entry key="gradle" value="67" />
-          <entry key="java" value="4602" />
+          <entry key="java" value="4621" />
           <entry key="readme" value="77" />
           <entry key="txt" value="230" />
           <entry key="xml" value="3524" />
@@ -158,7 +158,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="67" />
-          <entry key="JAVA" value="4602" />
+          <entry key="JAVA" value="4621" />
           <entry key="PLAIN_TEXT" value="308" />
           <entry key="XML" value="3524" />
         </counts>
@@ -173,8 +173,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="226" column="91" selection-start-line="226" selection-start-column="91" selection-end-line="226" selection-end-column="91" />
+            <state relative-caret-position="223">
+              <caret line="225" column="48" selection-start-line="225" selection-start-column="48" selection-end-line="225" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5760#6171#0" expanded="true" />
@@ -540,10 +540,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24962178" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16868381" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16868381" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.32980332" />
       <window_info id="Favorites" order="3" side_tool="true" weight="0.32980332" />
       <window_info id="Build Variants" order="4" side_tool="true" weight="0.32980332" />
@@ -555,8 +554,8 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.3885246" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5015129" side_tool="true" weight="0.2885246" />
       <window_info anchor="bottom" id="Version Control" order="4" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.37540984" />
-      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49848714" visible="true" weight="0.25409836" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.37540984" />
+      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49848714" weight="0.25409836" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.3295082" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3295082" />
       <window_info anchor="bottom" id="Run" order="9" weight="0.34590164" />
@@ -620,19 +619,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java</url>
-          <line>392</line>
+          <line>400</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java</url>
-          <line>421</line>
+          <line>429</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java</url>
-          <line>426</line>
+          <line>434</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
@@ -951,8 +950,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="226" column="91" selection-start-line="226" selection-start-column="91" selection-end-line="226" selection-end-column="91" />
+        <state relative-caret-position="223">
+          <caret line="225" column="48" selection-start-line="225" selection-start-column="48" selection-end-line="225" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5760#6171#0" expanded="true" />
