@@ -19,6 +19,7 @@
     <color name="black_overlay">#66F1EAEA</color>
 
     <color name="common_border_color">#4767D1</color>
+    <color name="mapbox_grey">#B8B7B7</color>
 
 
 </resources>

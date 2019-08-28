@@ -104,7 +104,6 @@
         android:drawableTop="@drawable/fire2"
         android:fontFamily="sans-serif"
         android:text="HISTORIC BUSHFIRES"
-
         android:textSize="24sp" />
 
 

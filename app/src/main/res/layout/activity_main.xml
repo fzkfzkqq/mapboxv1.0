@@ -53,14 +53,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@color/mapbox_grey">
 
                 <EditText
                     android:id="@+id/search_location"
                     android:layout_width="wrap_content"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:background="@color/cardwhite"
                     android:fontFamily="sans-serif"
@@ -103,7 +106,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@color/mapbox_blue"
+                    android:textColor="@color/cardwhite"
+                    android:background="@color/mapbox_plugins_green"
                     android:gravity="center"
                     android:text="Risk rate"
                     android:textSize="50dp" />
