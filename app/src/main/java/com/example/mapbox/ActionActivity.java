@@ -32,7 +32,7 @@ public class ActionActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Causes");
+        setTitle("Crucial Actions To Be Taken");
         setContentView(R.layout.actions);
 
         before = findViewById(R.id.before);

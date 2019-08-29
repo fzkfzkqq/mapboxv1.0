@@ -26,7 +26,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/ActionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/ActionActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/CauseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/CauseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Details.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Details.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Historic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Historic.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,12 +123,12 @@
         <counts>
           <entry key="class" value="1" />
           <entry key="gradle" value="20" />
-          <entry key="java" value="55" />
+          <entry key="java" value="60" />
           <entry key="jpg" value="1" />
           <entry key="png" value="8" />
           <entry key="readme" value="1" />
           <entry key="svg" value="1" />
-          <entry key="xml" value="90" />
+          <entry key="xml" value="91" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -133,17 +136,17 @@
           <entry key="CLASS" value="1" />
           <entry key="Groovy" value="20" />
           <entry key="Image" value="9" />
-          <entry key="JAVA" value="55" />
+          <entry key="JAVA" value="60" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SVG" value="1" />
-          <entry key="XML" value="90" />
+          <entry key="XML" value="91" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
           <entry key="gradle" value="67" />
-          <entry key="java" value="4663" />
+          <entry key="java" value="4903" />
           <entry key="readme" value="77" />
           <entry key="txt" value="230" />
           <entry key="xml" value="3524" />
@@ -152,7 +155,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="67" />
-          <entry key="JAVA" value="4663" />
+          <entry key="JAVA" value="4903" />
           <entry key="PLAIN_TEXT" value="308" />
           <entry key="XML" value="3524" />
         </counts>
@@ -164,13 +167,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="87" column="66" selection-start-line="87" selection-start-column="65" selection-end-line="87" selection-end-column="66" />
+            <state relative-caret-position="1003">
+              <caret line="59" column="49" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#5760#6171#0" expanded="true" />
                 <element signature="e#6170#6171#0" expanded="true" />
                 <element signature="e#8827#10412#0" expanded="true" />
@@ -190,6 +192,70 @@
                 <element signature="e#17574#17575#0" expanded="true" />
                 <element signature="e#27161#27162#0" expanded="true" />
                 <element signature="e#27185#27186#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="101">
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Welcome.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="106" column="46" selection-start-line="106" selection-start-column="46" selection-end-line="106" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Historic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="102" column="37" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/CauseActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/ActionActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Details.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -299,7 +365,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/details.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Historic.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_historic.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Welcome.java" />
@@ -309,15 +374,16 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/causes.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/actions.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/CauseActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/ActionActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Details.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/image_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_welcome.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_details.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/CauseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/ActionActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Details.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Historic.java" />
       </list>
     </option>
   </component>
@@ -535,7 +601,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24962178" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16868381" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16868381" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.32980332" />
       <window_info id="Favorites" order="3" side_tool="true" weight="0.32980332" />
       <window_info id="Build Variants" order="4" side_tool="true" weight="0.32980332" />
@@ -547,7 +613,7 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.3885246" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5015129" side_tool="true" weight="0.2885246" />
       <window_info anchor="bottom" id="Version Control" order="4" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.37540984" />
+      <window_info anchor="bottom" id="Terminal" order="5" visible="true" weight="0.37540984" />
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49848714" weight="0.25409836" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.7409836" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3295082" />
@@ -690,13 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Historic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9119">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -827,31 +886,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/ActionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tooltipdialgue.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/CauseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="88" column="33" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="33" />
-          <folding>
-            <element signature="e#3090#3718#0" expanded="true" />
-            <element signature="e#3469#3724#0" expanded="true" />
-            <element signature="e#3723#3724#0" expanded="true" />
-            <element signature="e#3717#3718#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -879,36 +915,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Welcome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="106" column="46" selection-start-line="106" selection-start-column="46" selection-end-line="106" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_welcome.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Details.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="124" column="34" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -943,10 +954,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="87" column="66" selection-start-line="87" selection-start-column="65" selection-end-line="87" selection-end-column="66" />
+        <state relative-caret-position="1003">
+          <caret line="59" column="49" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#5760#6171#0" expanded="true" />
             <element signature="e#6170#6171#0" expanded="true" />
             <element signature="e#8827#10412#0" expanded="true" />
@@ -966,6 +976,58 @@
             <element signature="e#17574#17575#0" expanded="true" />
             <element signature="e#27161#27162#0" expanded="true" />
             <element signature="e#27185#27186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Welcome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="106" column="46" selection-start-line="106" selection-start-column="46" selection-end-line="106" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/CauseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/ActionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Details.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Historic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="102" column="37" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

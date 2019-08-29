@@ -48,6 +48,8 @@ public class Details extends AppCompatActivity {
         //adding a back menu
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
+        setTitle("Real Time Factors");
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 

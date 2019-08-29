@@ -100,6 +100,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
         //adding a back menu
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
+        setTitle("Historic Heat Map");
 
 
         mapView.getMapAsync(new OnMapReadyCallback() {

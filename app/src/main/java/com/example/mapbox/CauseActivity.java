@@ -48,7 +48,7 @@ public class CauseActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Causes");
+        setTitle("Bushfires Can Be Caused By");
         setContentView(R.layout.causes);
 
         fuel_load = findViewById(R.id.fuel_load);
