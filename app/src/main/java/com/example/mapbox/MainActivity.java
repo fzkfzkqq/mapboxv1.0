@@ -20,6 +20,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -200,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                         map.addMarker(new MarkerOptions()
                                 .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                                .title(address.getAddressLine(0)));
+                                .title(address.getAddressLine(0) + "\n" + address.getPostalCode() ));
                         CameraPosition position = new CameraPosition.Builder()
                                 .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
                                 .build(); // Creates a CameraPosition from the builder
@@ -440,12 +441,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     if (!isInTrackingMode) {
                         isInTrackingMode = true;
                         locationComponent.setCameraMode(CameraMode.TRACKING);
-                        locationComponent.zoomWhileTracking(10);
+                        locationComponent.zoomWhileTracking(15);
 //                        Toast.makeText(MainActivity.this, getString(R.string.tracking_enabled),
 //                                Toast.LENGTH_SHORT).show();
                     } else {
                         locationComponent.setCameraMode(CameraMode.TRACKING);
-                        locationComponent.zoomWhileTracking(10);
+                        locationComponent.zoomWhileTracking(15);
 //                        Toast.makeText(MainActivity.this, getString(R.string.tracking_already_enabled),
 //                                Toast.LENGTH_SHORT).show();
                     }
@@ -661,7 +662,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
                     lastupdated.setText("Last Updated on " + j.getString("lastUpdated"));
-
 
                 }
                 else

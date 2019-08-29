@@ -2,39 +2,56 @@
     <string name="app_name">mapbox</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="fuelload">Fuel load describes the amount of combustibles in the landscape. For example, bark, the more the number of small leaves, the stronger the burning will be. Loose fuel is easier to burn than compacted fuel because loose fuel oxygen is more abundant. </string>
-    <string name="fuelmoisture">Dry fuel will burn quickly, but damp or wet fuel may not burn at all. As a consequence, the time since rainfall and the amount of rain received is an important consideration in assessing bushfire danger. Often a measure of the drought factor, or moisture deficit, will be used as an indicator of extreme bushfire weather conditions.</string>
-    <string name="windspeed">Wind will blow the flame onto the fuel, ignite the new fuel, and continue to bring oxygen, thus promoting the rapid spread of the flame. Spotting can occur up to 30km downwind from the fire front. </string>
-    <string name="ambienttemperature">The higher the temperature the more likely it is that a fire will start or continue to burn. This is because the fuel is closer to its ignition point at high temperatures and pre-heated fuel loads burn faster. </string>
-    <string name="relativehumidity">Dry air promotes a greater intensity fire than moist air. Plants become more flammable at a low humidity because they release their moisture more easily. </string>
-    <string name="slopeangle">Fires pre-heat their fuel source through radiation and convection. As a result, fires accelerate when travelling uphill and decelerate travelling downhill. The steepness of the slope plays an important role in the rate of fire spread.</string>
-    <string name="ignitionsource">Bushfires can originate from both human activity and natural causes with lightning the predominant natural source, accounting for about half of all ignitions in Australia. Fires of human origin currently account for the remainder and are classified as accidental or deliberate.  </string>
+    <string name="fuelload">Fuel load describes the amount of combustibles in the landscape. For example, bark, the more the number of small leaves, the stronger the burning will be.  "\n\n"
 
-    <string name="before">Close all doors and windows
-Move doormats and outdoor furniture away from the house
-Block the downpipes and partially fill the gutters with water
-Move stock or large animals to large paddocks with short grass
-Turn off gas supply
-Prepare fire ready kit
-Plan the evacuation route
-Leave early  </string>
+        Loose fuel is easier to burn than compacted fuel because loose fuel oxygen is more abundant. </string>
+    <string name="fuelmoisture">Dry fuel will burn quickly, but damp or wet fuel may not burn at all.
+ "\n\n"
+        As a consequence, the time since rainfall and the amount of rain received is an important consideration in assessing bushfire danger.
+ "\n\n"
+        Often a measure of the drought factor, or moisture deficit, will be used as an indicator of extreme bushfire weather conditions.</string>
+    <string name="windspeed">Wind will blow the flame onto the fuel, ignite the new fuel, and continue to bring oxygen, thus promoting the rapid spread of the flame."\n\n"
 
-    <string name="during">If your clothes catch fire, stop, drop and roll
-Get down low and stay out of smoke.
-Use the back of your hand to check doors for heat before opening
-If it is safe, close doors to slow down the spread of fire and smoke.
-Alert other people on your way out.
-Get out and stay out.
-Meet at a safe place such as the letterbox or footpath outside your home.
-Call 000 (triple zero) from a mobile phone or a neighbour’s phone. Ask for FIRE when the call is connected.
+        Spotting can occur up to 30km downwind from the fire front. </string>
+    <string name="ambienttemperature">The higher the temperature the more likely it is that a fire will start or continue to burn.
+"\n\n"
+        This is because the fuel is closer to its ignition point at high temperatures and pre-heated fuel loads burn faster. </string>
+    <string name="relativehumidity">Dry air promotes a greater intensity fire than moist air.
+"\n\n"
+        Plants become more flammable at a low humidity because they release their moisture more easily. </string>
+    <string name="slopeangle">Fires pre-heat their fuel source through radiation and convection.
+"\n\n"
+        As a result, fires accelerate when travelling uphill and decelerate travelling downhill.
+"\n\n"
+        The steepness of the slope plays an important role in the rate of fire spread.</string>
+    <string name="ignitionsource">Bushfires can originate from both human activity and natural causes with lightning the predominant natural source, accounting for about half of all ignitions in Australia.
+"\n\n"
+        Fires of human origin currently account for the remainder and are classified as accidental or deliberate.  </string>
+
+    <string name="before">- Close all doors and windows"\n\n"
+- Move stock or large animals to large paddocks with short grass"\n\n"
+- Turn off gas supply"\n\n"
+- Prepare fire ready kit"\n\n"
+- Plan the evacuation route"\n\n"
+- Leave early"\n\n"
+- Mitigate the risk for fire </string>
+
+    <string name="during">- If your clothes catch fire, stop, drop and roll"\n\n"
+- If a fire starts in the farm, stop it ASAP"\n\n"
+- Get down low and stay out of smoke."\n\n"
+- Alert other people on your way out."\n\n"
+- Get out and stay out."\n\n"
+- Meet at a safe place such as the letterbox or footpath outside your home."\n\n"
+- Call 000 (triple zero) from a mobile phone or a neighbours phone. Ask for FIRE when the call is connected."\n\n"
+
   </string>
 
-    <string name="after">Check if it is safe to stay at home
-Inspect and repair or reconnect the fire, gas, electricity, water supply and/or telephone line
-Your insurance will be the most important single aspect of recovering from a fire loss
-If you cannot remain in your property, find an accommodation or local safe zone
-Clean up your property and get the air
-Contact local police. Inform them that your property has been involved in a fire and is vacant. </string>
+    <string name="after">- Check if it is safe to stay at home"\n\n"
+- Inspect and repair or reconnect the fire, gas, electricity, water supply and/or telephone line"\n\n"
+- Your insurance will be the most important single aspect of recovering from a fire loss"\n\n"
+- If you cant remain in your property, find an accommodation or local safe zone"\n\n"
+- Clean up your property and get the air moving"\n\n"
+- Contact local police. Inform them that your property has been involved in a fire and is vacant."\n\n" </string>
 
     <string name="title_activity_welcome">Welcome</string>
     <string name="dummy_button">Dummy Button</string>
