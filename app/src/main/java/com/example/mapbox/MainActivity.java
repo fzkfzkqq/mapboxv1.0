@@ -199,9 +199,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
                         getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
 
-                        map.addMarker(new MarkerOptions()
-                                .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                                .title(address.getAddressLine(0) + "\n" + address.getPostalCode() ));
+                        try {
+                            map.addMarker(new MarkerOptions()
+                                    .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
+                                    .title(address.getAddressLine(0) + "\n Risk Rate: " + j.getString("bushfireRiskRating") ));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         CameraPosition position = new CameraPosition.Builder()
                                 .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
                                 .build(); // Creates a CameraPosition from the builder
