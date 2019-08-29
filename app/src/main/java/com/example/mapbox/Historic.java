@@ -459,7 +459,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
                 }
 
 // Create a Toast which displays the new location's coordinates
-                Log.i("coordinate",result.toString());
+//                Log.i("coordinate",result.toString());
                 //TODO: 2. The toast location keeps showing with even small changes in location
 //                Toast.makeText(activity,
 //                        String.valueOf(result.getLastLocation().getLatitude()),
@@ -490,7 +490,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
          */
         @Override
         public void onFailure(@NonNull Exception exception) {
-            Log.d("LocationChangeActivity", exception.getLocalizedMessage());
+//            Log.d("LocationChangeActivity", exception.getLocalizedMessage());
             Historic activity = activityWeakReference.get();
             if (activity != null) {
                 Toast.makeText(activity, exception.getLocalizedMessage(),
@@ -508,7 +508,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
             if (addresses.size() > 0) {
                 Address address = addresses.get(0);
                 postCode = address.getPostalCode();
-                Log.i("postcode",postCode);
+//                Log.i("postcode",postCode);
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block

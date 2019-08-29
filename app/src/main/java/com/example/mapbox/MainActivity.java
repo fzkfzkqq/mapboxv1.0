@@ -585,7 +585,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
 
 // Create a Toast which displays the new location's coordinates
-                Log.i("coordinate",result.toString());
+//                Log.i("coordinate",result.toString());
                 //TODO: 2. The toast location keeps showing with even small changes in location
 //                Toast.makeText(activity,
 //                        String.valueOf(result.getLastLocation().getLatitude()),
@@ -616,7 +616,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
          */
         @Override
         public void onFailure(@NonNull Exception exception) {
-            Log.d("LocationChangeActivity", exception.getLocalizedMessage());
+//            Log.d("LocationChangeActivity", exception.getLocalizedMessage());
             MainActivity activity = activityWeakReference.get();
             if (activity != null) {
                 Toast.makeText(activity, exception.getLocalizedMessage(),
@@ -634,9 +634,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (addresses.size() > 0) {
                 Address add = addresses.get(0);
                 address = add;
-                Log.i("address",address.getAddressLine(0));
+//                Log.i("address",address.getAddressLine(0));
                 postCode = add.getPostalCode();
-                Log.i("postcode",postCode);
+//                Log.i("postcode",postCode);
                 getDetailAsyncTask getDetailAsyncTask = new getDetailAsyncTask();
                 getDetailAsyncTask.execute(postCode);
             }
