@@ -105,7 +105,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
 
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
-            public void onMapReady(@NonNull MapboxMap mapboxMap) {
+            public void onMapReady(@NonNull final MapboxMap mapboxMap) {
                 map = mapboxMap;
                 mapboxMap.setStyle(Style.DARK, new Style.OnStyleLoaded() {
                     @Override
@@ -138,7 +138,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
     private void addEarthquakeSource(@NonNull Style loadedMapStyle) {
         try {
             loadedMapStyle.addSource(new GeoJsonSource(EARTHQUAKE_SOURCE_ID, new URI(EARTHQUAKE_SOURCE_URL)));
-            Log.i("geojson",loadedMapStyle.getSource(EARTHQUAKE_SOURCE_ID).toString());
+//            Log.i("geojson",loadedMapStyle.getSource(EARTHQUAKE_SOURCE_ID).toString());
         } catch (URISyntaxException uriSyntaxException) {
             Log.e("error",uriSyntaxException.getMessage());
         }

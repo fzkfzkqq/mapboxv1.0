@@ -40,6 +40,7 @@ import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
@@ -104,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private Button dialogue_button;
 
+    private TextView lastupdated;
+
 
     private ObjectAnimator objAnim;
 
@@ -131,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         btn_action_exp = findViewById(R.id.btn_action_exp);
 //        btn_historical_bf = findViewById(R.id.btn_historical_bf);
         input_postcode = findViewById(R.id.search_location);
+        lastupdated = findViewById(R.id.lastupdated);
 
         SharedPreferences sharedpreferences;
         sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -196,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                         map.addMarker(new MarkerOptions()
                                 .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                                .title(search_add.getPostalCode()));
+                                .title(address.getAddressLine(0)));
                         CameraPosition position = new CameraPosition.Builder()
                                 .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
                                 .build(); // Creates a CameraPosition from the builder
@@ -214,6 +218,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         });
+
+
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull final MapboxMap mapboxMap) {
@@ -263,7 +269,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                FragmentManager fragmentManager = getFragmentManager();
 //                fragmentManager.beginTransaction().replace(R.id.content_frame, new
 //                        Details()).commit();
+
                 CauseActivity.bounceBaby(test);
+
                 Intent intent = new Intent(MainActivity.this,Details.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("Address1",address.getAddressLine(0));
@@ -652,6 +660,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
+                    lastupdated.setText("Last Updated on " + j.getString("lastUpdated"));
+
+
                 }
                 else
                 {

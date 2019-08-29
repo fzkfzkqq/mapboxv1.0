@@ -93,7 +93,8 @@
                     android:layout_gravity="center"
                     android:text="BUSHFIRE PREDICTION"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
                 <!--<TextView-->
                 <!--android:layout_gravity="center_horizontal"-->
                 <!--android:layout_width="wrap_content"-->
@@ -111,7 +112,17 @@
                     android:background="@color/mapbox_plugins_green"
                     android:gravity="center"
                     android:text="Risk rate"
-                    android:textSize="50dp" />
+                    android:textSize="50dp"
+                    android:tooltipText="Updated for your location on a daily basis."
+                    />
+
+                <TextView
+                    android:id="@+id/lastupdated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="8sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"/>
             </LinearLayout>
 
             <View
@@ -137,7 +148,7 @@
 
                     android:fontFamily="sans-serif"
                     android:text="Factors"
-
+                    android:tooltipText="Find out more about the potential factors that led to this probability"
                     android:textSize="24sp" />
 
             </LinearLayout>
@@ -182,7 +193,8 @@
                     android:drawablePadding="10dp"
                     android:fontFamily="sans-serif"
                     android:text="Causes"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:tooltipText="Learn more about how bush fires are caused"/>
 
             </LinearLayout>
 
@@ -226,7 +238,7 @@
                     android:drawablePadding="10dp"
                     android:fontFamily="sans-serif"
                     android:text="Actions"
-
+                    android:tooltipText="Be prepared in advance with these guidelines"
                     android:textSize="24sp" />
             </LinearLayout>
 
