@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -13,103 +13,114 @@
         style="@style/HeaderBar"
         android:elevation="4dp"
         />
-
-        <TextView
-            android:layout_marginTop="15dp"
-            android:textSize="28dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LOCATION"
-            android:gravity="center"
-            android:id="@+id/location"
-            />
-        <TextView
-            android:layout_marginTop="15dp"
-            android:textSize="14dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="WEATHER"
-            android:id="@+id/weather"
-            android:gravity="center"/>
-        <TextView
-            android:layout_marginTop="15dp"
-            android:textSize="72dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TEMPERATURE"
-            android:id="@+id/temprature"
-            android:gravity="center"/>
-        <TextView
-            android:layout_marginTop="15dp"
-            android:textSize="14dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="HUMIDITY"
-            android:gravity="center"/>
-        <TextView
-            android:layout_marginTop="15dp"
-            android:textSize="28dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="H%"
-            android:gravity="center"
-            android:id="@+id/humidity"/>
-        <View
-            android:layout_gravity="center"
-            android:layout_width="300dp"
-            android:layout_height="1px"
-            android:background="@android:color/darker_gray"  />
-        <TextView
-            android:layout_marginTop="15dp"
-            android:textSize="14dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="WIND"
-            android:gravity="center"/>
-        <TextView
-            android:layout_marginTop="15dp"
-            android:textSize="28dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="km/h"
-            android:gravity="center"
-            android:id="@+id/windspeed"/>
-        <View
-            android:layout_gravity="center"
-            android:layout_width="300dp"
-            android:layout_height="1px"
-            android:background="@android:color/darker_gray"  />
-        <TextView
-            android:layout_marginTop="15dp"
-            android:textSize="14dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pressure"
-            android:gravity="center"/>
-        <TextView
-            android:layout_marginTop="15dp"
-            android:textSize="28dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="123 hpa"
-            android:gravity="center"
-            android:layout_marginBottom="50dp"
-            android:id="@+id/pressure"/>
-
-    <Button
-        android:id="@+id/bushfire"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/cardwhite"
-        android:drawableTop="@drawable/fire2"
-        android:fontFamily="sans-serif"
-        android:text="HISTORIC BUSHFIRES"
-        android:textSize="24sp" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOCATION"
+                android:gravity="center"
+                android:id="@+id/location"
+                />
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WEATHER"
+                android:id="@+id/weather"
+                android:gravity="center"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="72dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TEMPERATURE"
+                android:id="@+id/temprature"
+                android:gravity="center"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HUMIDITY"
+                android:gravity="center"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="H%"
+                android:gravity="center"
+                android:id="@+id/humidity"/>
+            <View
+                android:layout_gravity="center"
+                android:layout_width="300dp"
+                android:layout_height="1px"
+                android:background="@android:color/darker_gray"  />
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WIND"
+                android:gravity="center"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="km/h"
+                android:gravity="center"
+                android:id="@+id/windspeed"/>
+            <View
+                android:layout_gravity="center"
+                android:layout_width="300dp"
+                android:layout_height="1px"
+                android:background="@android:color/darker_gray"  />
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pressure"
+                android:gravity="center"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="123 hpa"
+                android:gravity="center"
+                android:layout_marginBottom="50dp"
+                android:id="@+id/pressure"/>
+
+            <Button
+                android:id="@+id/bushfire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardwhite"
+                android:drawableTop="@drawable/fire2"
+                android:fontFamily="sans-serif"
+                android:text="HISTORIC BUSHFIRES"
+                android:textSize="24sp" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="#C7C1C1" />
+        </LinearLayout>
+    </ScrollView>
 
 
-    <View
-        android:layout_width="150dp"
-        android:layout_height="2dp"
-        android:layout_gravity="center"
-        android:background="#C7C1C1" />
-</LinearLayout>
+
+</RelativeLayout>

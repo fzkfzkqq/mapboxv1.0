@@ -78,9 +78,9 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 500;
     private JSONObject j = new JSONObject();
     private static final String EARTHQUAKE_SOURCE_URL = "https://disastermateapi.azurewebsites.net/historicalbushfires.geojson";
-    private static final String EARTHQUAKE_SOURCE_ID = "earthquakes";
+    private static final String EARTHQUAKE_SOURCE_ID = "bushfire";
     private static final String HEATMAP_LAYER_ID = "earthquakes-heat";
-    private static final String HEATMAP_LAYER_SOURCE = "earthquakes";
+    private static final String HEATMAP_LAYER_SOURCE = "bushfire";
     private static final String CIRCLE_LAYER_ID = "earthquakes-circle";
 
     private Toolbar mTopToolbar;
@@ -202,7 +202,6 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
                         )
                 )
         );
-
         loadedMapStyle.addLayerAbove(layer, "waterway-label");
     }
 
@@ -251,7 +250,6 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
                 circleStrokeColor("white"),
                 circleStrokeWidth(1.0f)
         );
-
         loadedMapStyle.addLayerBelow(circleLayer, HEATMAP_LAYER_ID);
     }
     @Override
