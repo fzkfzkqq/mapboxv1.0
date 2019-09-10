@@ -5,6 +5,7 @@ import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +16,8 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -69,6 +72,11 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
 
+import static com.example.mapbox.Notifications.CHANNEL_1_ID;
+import static com.example.mapbox.Notifications.CHANNEL_2_ID;
+
+
+
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
     private static  String PREFS_NAME = "Prefs" ;
     private PermissionsManager permissionsManager;
@@ -109,6 +117,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private ObjectAnimator objAnim;
 
+    private EditText editTextTitle;
+    private EditText editTextMessage;
+    private NotificationManagerCompat notificationManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +153,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         SharedPreferences sharedpreferences;
         sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+
+        notificationManager = NotificationManagerCompat.from(this);
 
         Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
 
@@ -719,6 +733,36 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void stopPulseAnimation(){
     objAnim.cancel();
 }
+
+
+
+    public void sendOnChannel1(View v) {
+//        String title = editTextTitle.getText().toString();
+//        String message = editTextMessage.getText().toString();
+
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle("Hi")
+                .setContentText("notification warning")
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .build();
+
+        notificationManager.notify(1, notification);
+    }
+
+    public void sendOnChannel2(View v) {
+//        String title = editTextTitle.getText().toString();
+//        String message = editTextMessage.getText().toString();
+
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle("HI!!")
+                .setContentText("Notification news")
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .build();
+
+        notificationManager.notify(2, notification);
+    }
 
 
 }

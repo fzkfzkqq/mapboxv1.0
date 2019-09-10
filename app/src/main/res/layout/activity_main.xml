@@ -87,6 +87,34 @@
                 android:orientation="vertical"
                 android:paddingBottom="10dp">
 
+
+
+                <EditText
+                    android:id="@+id/edit_text_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Title" />
+
+                <EditText
+                    android:id="@+id/edit_text_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Message" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="sendOnChannel1"
+                    android:text="Send on Channel 1" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="sendOnChannel2"
+                    android:text="Send on Channel 2" />
+
+
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
