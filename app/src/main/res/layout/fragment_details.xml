@@ -96,20 +96,5 @@
             android:layout_marginBottom="50dp"
             android:id="@+id/pressure"/>
 
-    <Button
-        android:id="@+id/bushfire"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/cardwhite"
-        android:drawableTop="@drawable/fire2"
-        android:fontFamily="sans-serif"
-        android:text="HISTORIC BUSHFIRES"
-        android:textSize="24sp" />
 
-
-    <View
-        android:layout_width="150dp"
-        android:layout_height="2dp"
-        android:layout_gravity="center"
-        android:background="#C7C1C1" />
 </LinearLayout>

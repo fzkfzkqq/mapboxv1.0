@@ -111,18 +111,32 @@
                     android:textColor="@color/cardwhite"
                     android:background="@color/mapbox_plugins_green"
                     android:gravity="center"
-                    android:text="Risk rate"
+                    android:text="Updating Risk Rate"
                     android:textSize="50dp"
                     android:tooltipText="Updated for your location on a daily basis."
                     />
 
                 <TextView
+                    android:id="@+id/location_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Location: Updating"
+                    android:textSize="14sp" />
+
+
+                <TextView
                     android:id="@+id/lastupdated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="8sp"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_gravity="center"/>
+                    android:textSize="14sp"
+                    android:text="Last Updated: Updating"/>
+
+
+
             </LinearLayout>
 
             <View
@@ -133,23 +147,42 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@color/cardwhite"
+                android:orientation="vertical">
+
+                <!--<TextView-->
+                <!--android:textStyle="bold"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:text="What Causes Bushfires?"/>-->
+                <!--<TextView-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="What causes the bushfire?"-->
+                <!--/>-->
 
                 <Button
-                    android:id="@+id/btn_findmore"
+                    android:id="@+id/bushfire"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:background="@color/cardwhite"
-                    android:drawableTop="@drawable/factor2"
+                    android:drawableTop="@drawable/piechart"
                     android:drawablePadding="10dp"
-
                     android:fontFamily="sans-serif"
-                    android:text="Factors"
-                    android:tooltipText="Find out more about the potential factors that led to this probability"
+                    android:text="Historic Bushfires"
                     android:textSize="24sp" />
+
+
+
 
             </LinearLayout>
 
@@ -158,6 +191,7 @@
                 android:layout_height="2dp"
                 android:layout_gravity="center"
                 android:background="#C7C1C1" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -4,10 +4,8 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Address;
@@ -15,12 +13,9 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +23,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mapbox.CauseActivity;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -41,7 +35,6 @@ import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
-import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
@@ -107,6 +100,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Button dialogue_button;
 
     private TextView lastupdated;
+    private TextView location_address;
+
+    private Button bushfire;
 
 
     private ObjectAnimator objAnim;
@@ -127,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-        test = findViewById(R.id.btn_findmore);
+//        test = findViewById(R.id.btn_findmore);
         risk = (TextView) findViewById(R.id.text_riskrate);
         final Geocoder geocoder = new Geocoder(this);
         search = (ImageButton) findViewById(R.id.btn_search);
@@ -136,6 +132,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //        btn_historical_bf = findViewById(R.id.btn_historical_bf);
         input_postcode = findViewById(R.id.search_location);
         lastupdated = findViewById(R.id.lastupdated);
+
+        location_address = findViewById(R.id.location_address);
+        bushfire = findViewById(R.id.bushfire);
+
 
         SharedPreferences sharedpreferences;
         sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -163,6 +163,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             });
 
         }
+
+        bushfire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CauseActivity.bounceBaby(bushfire);
+                Intent intent = new Intent(MainActivity.this,Historic.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         btn_c_findmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -204,6 +215,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             map.addMarker(new MarkerOptions()
                                     .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
                                     .title(address.getAddressLine(0) + "\n Risk Rate: " + j.getString("bushfireRiskRating") ));
+                            location_address.setText("Location:" + address.getAddressLine(0));
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -268,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                });
             }
         });
-        test.setOnClickListener(new View.OnClickListener() {
+        risk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                mapView.setVisibility(View.INVISIBLE);
@@ -276,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                fragmentManager.beginTransaction().replace(R.id.content_frame, new
 //                        Details()).commit();
 
-                CauseActivity.bounceBaby(test);
+//                CauseActivity.bounceBaby(risk);
 
                 Intent intent = new Intent(MainActivity.this,Details.class);
                 Bundle bundle = new Bundle();
@@ -657,6 +671,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         @Override
         protected void onPostExecute(String details) {
             JSONArray jsonArray = null;
+
             try {
                 jsonArray = new JSONArray(details);
             } catch (JSONException e) {
@@ -667,11 +682,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
                     lastupdated.setText("Last Updated on " + j.getString("lastUpdated"));
+                    location_address.setText("Location:" + address.getAddressLine(0));
 
                 }
                 else
                 {
-                    risk.setText("No Data");
+                    risk.setText("Not Available for this location");
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -701,30 +717,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void stopPulseAnimation(){
     objAnim.cancel();
 }
-
-
-
-//    private void blink(){
-//        final Handler handler = new Handler();
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                int timeToBlink = 1000;    //in milissegunds
-//                try{Thread.sleep(timeToBlink);}catch (Exception e) {}
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if(risk.getVisibility() == View.VISIBLE){
-//                            risk.setVisibility(View.INVISIBLE);
-//                        }else{
-//                            risk.setVisibility(View.VISIBLE);
-//                        }
-//                        blink();
-//                    }
-//                });
-//            }
-//        }).start();
-//    }
 
 
 }

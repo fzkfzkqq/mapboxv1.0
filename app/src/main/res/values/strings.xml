@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mapbox</string>
+    <string name="app_name">DisasterMate</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="fuelload">Fuel load describes the amount of combustibles in the landscape. For example, bark, the more the number of small leaves, the stronger the burning will be.  "\n\n"

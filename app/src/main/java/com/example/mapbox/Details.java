@@ -28,7 +28,7 @@ public class Details extends AppCompatActivity {
     private TextView pressure;
     private Toolbar mTopToolbar;
 
-    private Button bushfire;
+//    private Button bushfire;
 
 
     @Override
@@ -43,7 +43,7 @@ public class Details extends AppCompatActivity {
         wind = (TextView)findViewById(R.id.windspeed);
         pressure = (TextView)findViewById(R.id.pressure);
 
-        bushfire = findViewById(R.id.bushfire);
+//        bushfire = findViewById(R.id.bushfire);
 
         //adding a back menu
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -58,15 +58,15 @@ public class Details extends AppCompatActivity {
         //Address address = getIntent().getExtras().getParcelable("Address1");
         location.setText(add);
 
-        bushfire.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CauseActivity.bounceBaby(bushfire);
-                Intent intent = new Intent(Details.this,Historic.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        bushfire.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                CauseActivity.bounceBaby(bushfire);
+//                Intent intent = new Intent(Details.this,Historic.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
         getDetailAsyncTask.execute(postcode);
