@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +26,9 @@ import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.IconFactory;
+import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
@@ -38,6 +43,8 @@ import com.mapbox.mapboxsdk.style.layers.CircleLayer;
 import com.mapbox.mapboxsdk.style.layers.HeatmapLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -78,11 +85,11 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 500;
     private JSONObject j = new JSONObject();
     private static final String EARTHQUAKE_SOURCE_URL = "https://disastermateapi.azurewebsites.net/historicalbushfires.geojson";
-    private static final String EARTHQUAKE_SOURCE_ID = "earthquakes";
+    private static final String EARTHQUAKE_SOURCE_ID = "bushfire";
     private static final String HEATMAP_LAYER_ID = "earthquakes-heat";
-    private static final String HEATMAP_LAYER_SOURCE = "earthquakes";
+    private static final String HEATMAP_LAYER_SOURCE = "bushfire";
     private static final String CIRCLE_LAYER_ID = "earthquakes-circle";
-
+    private boolean isMarkShown = false;
     private Toolbar mTopToolbar;
 
 
@@ -100,7 +107,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
         //adding a back menu
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
-        setTitle("Historic Heat Map");
+        setTitle("Historic Bushfire in 2018");
 
 
         mapView.getMapAsync(new OnMapReadyCallback() {
@@ -132,7 +139,20 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
             }
         });
 
+        findViewById(R.id.show_historic_marker).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isMarkShown){
+                    isMarkShown = true;
+                    GetParks getpark = new GetParks();
+                    getpark.execute();;
+                }else
+                Toast.makeText(Historic.this, "The details are already shown",
+                        Toast.LENGTH_LONG).show();
 
+
+            }
+        });
     }
 
     private void addEarthquakeSource(@NonNull Style loadedMapStyle) {
@@ -202,7 +222,6 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
                         )
                 )
         );
-
         loadedMapStyle.addLayerAbove(layer, "waterway-label");
     }
 
@@ -251,7 +270,6 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
                 circleStrokeColor("white"),
                 circleStrokeWidth(1.0f)
         );
-
         loadedMapStyle.addLayerBelow(circleLayer, HEATMAP_LAYER_ID);
     }
     @Override
@@ -373,64 +391,6 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
         locationEngine.getLastLocation(callback);
     }
 
-    /*
-    private void addMarker(MapboxMap mapboxMap) {
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(location);
-        markerOptions.title("Your home");
-        markerOptions.snippet(appUser.getAddress());
-        markerOptions.setIcon(icon);
-        mapboxMap.addMarker(markerOptions);
-    }
-*/
-//TODO: 1. jsonArray shows a null pointer exception due to json being changed to GeoJson
-//    //here is to get the parks using AsyncTask method
-//    private class GetParks extends AsyncTask<Void, Void, String> {
-//        @Override
-//        protected String doInBackground(Void... params) {
-//
-//            return Restful.findAllBFRecords();
-//        }
-//        @Override
-//        protected void onPostExecute(String Details) {
-//            JSONArray jsonArray = null;
-//            try {
-//                jsonArray = new JSONArray(Details);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//
-//            if (jsonArray.length() > 0 ) {
-//                for (int i = 0; i < jsonArray.length();i++)
-//                {
-//                    try {
-//                        JSONObject j = jsonArray.getJSONObject(i);
-//                        Double lat  = (Double)(j.getDouble("latitude"));
-//                        Double longti = (Double)(j.getDouble("longitude"));
-//                        LatLng latLng = new LatLng(lat,longti);
-//                        String snippet = "power:" + ((Double)j.getDouble("power")).toString()+
-//                                "\nLongitude:" + longti.toString()+
-//                                "\nDatetime:" + j.get("datetime")+
-//                                "\nlatitude:" + lat.toString()+
-//                                "\ntemp:" + ((Double)j.getDouble("temp_kelvin")).toString();
-//                        fireMarks(latLng,snippet);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        }}
-//    //here is to put marks for parks
-//    private void fireMarks(LatLng latLng,String snippet) {
-//        MarkerOptions markerOptions = new MarkerOptions();
-//        markerOptions.position(latLng);
-//        markerOptions.title("fire");
-//        markerOptions.snippet(snippet);
-//        //IconFactory iconFactory = IconFactory.getInstance(getActivity());
-//        //Icon icon = iconFactory.fromResource(R.drawable.mapbox_compass_icon);
-//        //markerOptions.setIcon(icon);
-//        map.addMarker(markerOptions);
-//    }
 
 
     private static class LocationChangeListeningActivityLocationCallback
@@ -568,5 +528,58 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
         return super.onOptionsItemSelected(item);
     }
 
+    //here is to get the parks using AsyncTask method
+    private class GetParks extends AsyncTask<Void, Void, String> {
+        @Override
+        protected String doInBackground(Void... params) {
+            return Restful.findAllBFRecords();
+        }
+        @Override
+        protected void onPostExecute(String details) {
+            JSONObject jsonObject = null;
+            Integer count = 0;
+            try {
+                jsonObject = new JSONObject(details);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                JSONArray jarray = jsonObject.getJSONArray("features");
+                count = jarray.length();
+                Log.i("count",count.toString());
+                if (count > 0 ) {
+                    for (int i = 0; i < count;i++)
+                    {
+                        try {
+                            JSONObject j = jarray.getJSONObject(i);
+                            Double lat  = Double.parseDouble(j.getJSONObject("geometry").getJSONArray("coordinates").getString(1));
+                            Double longti = Double.parseDouble(j.getJSONObject("geometry").getJSONArray("coordinates").getString(0));
+                            LatLng latLng = new LatLng(lat,longti);
+                            String markerSnippet = "temprature: " + j.getJSONObject("properties").getString("temperature")+
+                                    "\n power: " + j.getJSONObject("properties").getString("power");
+                            parkMarks(latLng,markerSnippet);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
+        }}
+    //here is to put marks for parks
+    private void parkMarks(LatLng latLng,String snippet) {
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title("Bushfire");
+        markerOptions.snippet(snippet);
+        IconFactory iconFactory = IconFactory.getInstance(Historic.this);
+        Icon icon = iconFactory.fromResource(R.drawable.fire2);
+        markerOptions.setIcon(icon);
+        map.addMarker(markerOptions);
     }
+
+
+
+}

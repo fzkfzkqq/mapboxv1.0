@@ -45,7 +45,7 @@ public class Restful {
     }
 
     public static String findAllBFRecords() {
-        final String methodPath = "/historicalbushfires.json";
+        final String methodPath = "/historicalbushfires.geojson";
         URL url = null;
         HttpURLConnection conn = null;
         String textResult = "";
