@@ -7,7 +7,6 @@ import android.os.Build;
 
 
 public class Notifications extends Application {
-    public static final String CHANNEL_1_ID = "warning";
     public static final String CHANNEL_2_ID = "news";
 
     @Override
@@ -19,12 +18,6 @@ public class Notifications extends Application {
 
     private void createNotificationChannels() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel1 = new NotificationChannel(
-                    "Channel warning",
-                    CHANNEL_1_ID,
-                    NotificationManager.IMPORTANCE_HIGH
-            );
-            channel1.setDescription("Notifies when the alert for current location is high");
 
             NotificationChannel channel2 = new NotificationChannel(
                     CHANNEL_2_ID,
@@ -34,7 +27,6 @@ public class Notifications extends Application {
             channel2.setDescription("Updates for current bushfires");
 
             NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel1);
             manager.createNotificationChannel(channel2);
         }
     }

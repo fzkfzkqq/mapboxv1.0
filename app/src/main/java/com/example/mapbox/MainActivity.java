@@ -72,7 +72,6 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
 
-import static com.example.mapbox.Notifications.CHANNEL_1_ID;
 import static com.example.mapbox.Notifications.CHANNEL_2_ID;
 
 
@@ -736,29 +735,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-    public void sendOnChannel1(View v) {
-//        String title = editTextTitle.getText().toString();
-//        String message = editTextMessage.getText().toString();
-
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
-                .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Hi")
-                .setContentText("notification warning")
-                .setPriority(NotificationCompat.PRIORITY_MAX)
-                .build();
-
-        notificationManager.notify(1, notification);
-    }
-
     public void sendOnChannel2(View v) {
-//        String title = editTextTitle.getText().toString();
-//        String message = editTextMessage.getText().toString();
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
                 .setSmallIcon(R.drawable.logo)
                 .setContentTitle("HI!!")
                 .setContentText("Notification news")
                 .setPriority(NotificationCompat.PRIORITY_LOW)
+                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
+                })
                 .build();
 
         notificationManager.notify(2, notification);
