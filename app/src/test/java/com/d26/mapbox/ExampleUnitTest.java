@@ -1,4 +1,4 @@
-package com.example.mapbox;
+package com.d26.mapbox;
 
 import org.junit.Test;
 
