@@ -19,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -39,6 +40,8 @@ import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
@@ -316,6 +319,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+
+        getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
+        getNewsAsyncTask.execute();
+
 //        blink();
         pulseAnimation();
     }
@@ -445,52 +452,52 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @SuppressWarnings( {"MissingPermission"})
     private void enableLocationComponent(@NonNull Style loadedMapStyle) {
-// Check if permissions are enabled and if not request
-        if (PermissionsManager.areLocationPermissionsGranted(this)) {
+    // Check if permissions are enabled and if not request
+            if (PermissionsManager.areLocationPermissionsGranted(this)) {
 
-// Get an instance of the component
-            final LocationComponent locationComponent = map.getLocationComponent();
+    // Get an instance of the component
+                final LocationComponent locationComponent = map.getLocationComponent();
 
-// Activate with options
-            locationComponent.activateLocationComponent(
-                    LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
+    // Activate with options
+                locationComponent.activateLocationComponent(
+                        LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
 
-// Enable to make component visible
-            locationComponent.setLocationComponentEnabled(true);
+    // Enable to make component visible
+                locationComponent.setLocationComponentEnabled(true);
 
-// Set the component's camera mode
-            locationComponent.setCameraMode(CameraMode.TRACKING);
+    // Set the component's camera mode
+                locationComponent.setCameraMode(CameraMode.TRACKING);
 
-// Set the component's render mode
-            locationComponent.setRenderMode(RenderMode.COMPASS);
-            initLocationEngine();
+    // Set the component's render mode
+                locationComponent.setRenderMode(RenderMode.COMPASS);
+                initLocationEngine();
 
-// Add the location icon click listener
-            locationComponent.addOnLocationClickListener((OnLocationClickListener) this);
+    // Add the location icon click listener
+                locationComponent.addOnLocationClickListener((OnLocationClickListener) this);
 
-            findViewById(R.id.back_to_camera_tracking_mode).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    locationEngine.getLastLocation(callback);
-                    if (!isInTrackingMode) {
-                        isInTrackingMode = true;
-                        locationComponent.setCameraMode(CameraMode.TRACKING);
-                        locationComponent.zoomWhileTracking(15);
-//                        Toast.makeText(MainActivity.this, getString(R.string.tracking_enabled),
-//                                Toast.LENGTH_SHORT).show();
-                    } else {
-                        locationComponent.setCameraMode(CameraMode.TRACKING);
-                        locationComponent.zoomWhileTracking(15);
-//                        Toast.makeText(MainActivity.this, getString(R.string.tracking_already_enabled),
-//                                Toast.LENGTH_SHORT).show();
+                findViewById(R.id.back_to_camera_tracking_mode).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        locationEngine.getLastLocation(callback);
+                        if (!isInTrackingMode) {
+                            isInTrackingMode = true;
+                            locationComponent.setCameraMode(CameraMode.TRACKING);
+                            locationComponent.zoomWhileTracking(15);
+    //                        Toast.makeText(MainActivity.this, getString(R.string.tracking_enabled),
+    //                                Toast.LENGTH_SHORT).show();
+                        } else {
+                            locationComponent.setCameraMode(CameraMode.TRACKING);
+                            locationComponent.zoomWhileTracking(15);
+    //                        Toast.makeText(MainActivity.this, getString(R.string.tracking_already_enabled),
+    //                                Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
 
-        } else {
-            permissionsManager = new PermissionsManager(this);
-            permissionsManager.requestLocationPermissions(this);
-        }
+            } else {
+                permissionsManager = new PermissionsManager(this);
+                permissionsManager.requestLocationPermissions(this);
+            }
     }
 
     @Override
@@ -749,6 +756,73 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         notificationManager.notify(2, notification);
     }
 
+    //here is to put marks for parks
+    public void parkMarks(LatLng latLng, String snippet) {
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title("Bushfire");
+        markerOptions.snippet(snippet);
+        IconFactory iconFactory = IconFactory.getInstance(MainActivity.this);
+        Icon icon = iconFactory.fromResource(R.drawable.news);
+        markerOptions.setIcon(icon);
+        map.addMarker(markerOptions);
+    }
 
-}
+
+    public class getNewsAsyncTask extends AsyncTask<String, Void, String> {
+
+        //here is to get the parks using AsyncTask method
+        @Override
+        protected String doInBackground(String... strings) {
+            return Restful.findAllBFAlerts();
+        }
+
+        @Override
+        protected void onPostExecute(String details) {
+            JSONArray jsonArray = null;
+
+//            JSONObject jsonObject = null;
+            Integer count = 0;
+            try {
+//                jsonObject = new JSONObject(details);
+                jsonArray = new JSONArray(details);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+//            try {
+
+
+//                JSONArray jarray = jsonObject.getJSONArray("features");
+//                JSONObject
+                count = jsonArray.length();
+
+//                Log.i("count", count.toString());
+                if (count > 0) {
+                    for (int i = 0; i < count; i++) {
+                        try {
+                            JSONObject j = jsonArray.getJSONObject(i);
+                            Double lat = Double.parseDouble(j.getString("latitude"));
+                            Double longti = Double.parseDouble(j.getString("longitude"));
+
+                            LatLng latLng = new LatLng(longti, lat);
+
+                            String markerSnippet = "Location: " + j.getString("location") +
+                                    "\n Updated on: " + j.getString("alertUpdated");
+                            parkMarks(latLng, markerSnippet);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+            }
+
+        }
+    }
+
+
+
 

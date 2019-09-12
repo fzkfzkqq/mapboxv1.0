@@ -22,7 +22,7 @@ public class Notifications extends Application {
             NotificationChannel channel2 = new NotificationChannel(
                     CHANNEL_2_ID,
                     "Channel news",
-                    NotificationManager.IMPORTANCE_LOW
+                    NotificationManager.IMPORTANCE_DEFAULT
             );
             channel2.setDescription("Updates for current bushfires");
 
@@ -30,4 +30,9 @@ public class Notifications extends Application {
             manager.createNotificationChannel(channel2);
         }
     }
+
+
+
+
+
 }

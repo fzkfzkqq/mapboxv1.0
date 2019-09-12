@@ -145,7 +145,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
                 if (!isMarkShown){
                     isMarkShown = true;
                     GetParks getpark = new GetParks();
-                    getpark.execute();;
+                    getpark.execute();
                 }else
                 Toast.makeText(Historic.this, "The details are already shown",
                         Toast.LENGTH_LONG).show();
