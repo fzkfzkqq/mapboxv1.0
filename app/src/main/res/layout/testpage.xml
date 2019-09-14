@@ -26,37 +26,37 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:background="@color/mapbox_grey">
+
+            <EditText
+                android:tooltipText="Look Up other places on the map and find today's prediction"
+                android:id="@+id/search_location"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@color/cardwhite"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:hint="Enter another address"
+                android:inputType="textPostalAddress" />
+
+            <ImageButton
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_alignParentTop="true"
-                android:background="@color/mapbox_grey">
+                android:src="@drawable/search3" />
 
-                <EditText
-                    android:tooltipText="Look Up other places on the map and find today's prediction"
-                    android:id="@+id/search_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:background="@color/cardwhite"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:hint="Enter another address"
-                    android:inputType="textPostalAddress" />
-
-                <ImageButton
-                    android:id="@+id/btn_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/search3" />
-
-            </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/back_to_camera_tracking_mode"

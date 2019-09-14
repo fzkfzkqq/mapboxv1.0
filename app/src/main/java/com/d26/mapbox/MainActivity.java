@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -26,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dou361.dialogui.DialogUIUtils;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -178,7 +180,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             });
 
         }
-
+        View popView = View.inflate(this,R.layout.main_popup,null);
+        final Dialog mainPopUp = DialogUIUtils.showCustomAlert(getApplicationContext(),popView, Gravity.BOTTOM,false,true).show();
         bushfire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
