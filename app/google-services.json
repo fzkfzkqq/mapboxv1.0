@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "11093255356",
+    "firebase_url": "https://dmate-c675f.firebaseio.com",
+    "project_id": "dmate-c675f",
+    "storage_bucket": "dmate-c675f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11093255356:android:26a0e1faa10fba00525cb9",
+        "android_client_info": {
+          "package_name": "com.example.mapbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11093255356-u1001l8h8a3stjdmre5f7p07b1ocm01u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mapbox",
+            "certificate_hash": "17933d2cf2bd49c1ebf4298c9da90fe33bbef453"
+          }
+        },
+        {
+          "client_id": "11093255356-vm4hqh8evumoohqk64d60gtk637jfmqj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-fXezF9JPaCipv5SJ2GuMmayM59zamlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11093255356-vm4hqh8evumoohqk64d60gtk637jfmqj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

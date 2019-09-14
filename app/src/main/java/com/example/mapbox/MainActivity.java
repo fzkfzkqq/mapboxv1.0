@@ -77,6 +77,13 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
 import static com.example.mapbox.Notifications.CHANNEL_2_ID;
 
+import com.pusher.client.Pusher;
+import com.pusher.client.PusherOptions;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.PusherEvent;
+import com.pusher.client.channel.SubscriptionEventListener;
+
+
 
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
@@ -322,6 +329,24 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
         getNewsAsyncTask.execute();
+
+
+        PusherOptions options = new PusherOptions();
+        options.setCluster("ap4");
+        Pusher pusher = new Pusher("42c4c1388c60931e9673", options);
+
+        Channel channel = pusher.subscribe("my-channel");
+
+        channel.bind("my-event", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(PusherEvent event) {
+                System.out.println(event.getData());
+
+            }
+        });
+
+        pusher.connect();
+
 
 //        blink();
         pulseAnimation();
@@ -742,19 +767,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-    public void sendOnChannel2(View v) {
-
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
-                .setSmallIcon(R.drawable.logo)
-                .setContentTitle("HI!!")
-                .setContentText("Notification news")
-                .setPriority(NotificationCompat.PRIORITY_LOW)
-                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
-                })
-                .build();
-
-        notificationManager.notify(2, notification);
-    }
+//    public void sendOnChannel2(View v) {
+//
+//        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
+//                .setSmallIcon(R.drawable.logo)
+//                .setContentTitle("HI!!")
+//                .setContentText("Notification news")
+//                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
+//                })
+//                .build();
+//
+//        notificationManager.notify(2, notification);
+//    }
 
     //here is to put marks for parks
     public void parkMarks(LatLng latLng, String snippet) {
@@ -805,11 +830,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             Double lat = Double.parseDouble(j.getString("latitude"));
                             Double longti = Double.parseDouble(j.getString("longitude"));
 
-                            LatLng latLng = new LatLng(longti, lat);
+                            LatLng latLng = new LatLng(lat, longti);
 
                             String markerSnippet = "Location: " + j.getString("location") +
                                     "\n Updated on: " + j.getString("alertUpdated");
                             parkMarks(latLng, markerSnippet);
+
+                            if(j.getString("newAlert") == "1"){
+
+                                Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_2_ID)
+                                        .setSmallIcon(R.drawable.logo)
+                                        .setContentTitle("Run!")
+                                        .setContentText("BushFire at " + j.getString("location"))
+                                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
+                                        })
+                                        .build();
+
+                                notificationManager.notify(2, notification);
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -821,6 +860,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
 
         }
+
+
     }
 
 
