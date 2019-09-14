@@ -40,7 +40,7 @@ dependencies {
     // add SDKs for desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
     implementation 'com.pusher:pusher-java-client:2.0.0'
-
+    implementation 'com.dou361.dialogui:jjdxm-dialogui:1.0.1'
 
 }
 

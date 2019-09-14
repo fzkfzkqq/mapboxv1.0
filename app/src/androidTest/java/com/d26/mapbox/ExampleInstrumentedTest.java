@@ -1,4 +1,4 @@
-package com.example.mapbox;
+package com.d26.mapbox;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

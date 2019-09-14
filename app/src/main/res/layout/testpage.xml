@@ -15,6 +15,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             mapbox:mapbox_cameraZoom="7"
             >
 
@@ -23,37 +26,37 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:background="@color/mapbox_grey">
+
+            <EditText
+                android:tooltipText="Look Up other places on the map and find today's prediction"
+                android:id="@+id/search_location"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@color/cardwhite"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:hint="Enter another address"
+                android:inputType="textPostalAddress" />
+
+            <ImageButton
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_alignParentTop="true"
-                android:background="@color/mapbox_grey">
+                android:src="@drawable/search3" />
 
-                <EditText
-                    android:tooltipText="Look Up other places on the map and find today's prediction"
-                    android:id="@+id/search_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:background="@color/cardwhite"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:hint="Enter another address"
-                    android:inputType="textPostalAddress" />
-
-                <ImageButton
-                    android:id="@+id/btn_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/search3" />
-
-            </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/back_to_camera_tracking_mode"
@@ -71,7 +74,7 @@
             android:layout_height="200dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:layout_alignBottom="@id/mapView"
 
             >
@@ -86,7 +89,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="5"
                     android:background="@color/cardwhite"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -151,6 +155,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:background="@color/cardwhite"
                     android:orientation="horizontal">
@@ -176,12 +181,12 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@color/cardwhite"
-                        android:drawableTop="@drawable/weather"
+                        android:drawableTop="@drawable/piechart"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
-                        android:text="No DATA"
+                        android:text="temp℃"
                         android:textSize="16sp"
-                        android:tooltipText="Learn more about how bush fires are caused" />
+                        android:tooltipText="Learn more about how bush fires are caused"/>
 
                     <Button
                         android:id="@+id/btn_humi"
@@ -190,12 +195,12 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@color/cardwhite"
-                        android:drawableTop="@drawable/humidity"
+                        android:drawableTop="@drawable/piechart"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
-                        android:text="No DATA"
+                        android:text="Humi"
                         android:textSize="16sp"
-                        android:tooltipText="Learn more about how bush fires are caused" />
+                        android:tooltipText="Learn more about how bush fires are caused"/>
 
                     <Button
                         android:id="@+id/btn_wind"
@@ -204,13 +209,12 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@color/cardwhite"
-                        android:drawableTop="@drawable/wind"
+                        android:drawableTop="@drawable/piechart"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
-                        android:text="No DATA"
+                        android:text="wind"
                         android:textSize="16sp"
                         android:tooltipText="Learn more about how bush fires are caused" />
-
                     <Button
                         android:id="@+id/btn_pres"
                         android:layout_width="0dp"
@@ -218,12 +222,12 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@color/cardwhite"
-                        android:drawableTop="@drawable/preasure"
+                        android:drawableTop="@drawable/piechart"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
-                        android:text="No DATA"
+                        android:text="pres"
                         android:textSize="16sp"
-                        android:tooltipText="Learn more about how bush fires are caused" />
+                        android:tooltipText="Learn more about how bush fires are caused"/>
 
                 </LinearLayout>
 

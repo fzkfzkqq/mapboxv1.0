@@ -1,6 +1,5 @@
-package com.example.mapbox;
+package com.d26.mapbox;
 
-import com.example.mapbox.CauseActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
