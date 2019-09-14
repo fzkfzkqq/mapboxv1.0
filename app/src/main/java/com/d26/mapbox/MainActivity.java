@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -144,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         //adding a back menu
         mTopToolbar =  findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
+        setTitle("Historic Bushfire in 2018");
 
 
         mapView = findViewById(R.id.mapView);
@@ -752,6 +754,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     risk.setText("Not Available");
                 }
             } catch (JSONException e) {
+                risk.setText("Not Available");
                 e.printStackTrace();
             }
         }

@@ -5,6 +5,13 @@
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        style="@style/HeaderBar"
+        android:elevation="4dp"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,33 +25,29 @@
             mapbox:mapbox_cameraZoom="7"
             >
 
-
-        </com.mapbox.mapboxsdk.maps.MapView>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_alignParentTop="true"
-                android:background="@color/mapbox_grey">
+                android:layout_marginTop="50dp"
+                android:background="@color/cardwhite"
+                android:orientation="horizontal">
 
                 <EditText
-                    android:tooltipText="Look Up other places on the map and find today's prediction"
                     android:id="@+id/search_location"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:background="@color/cardwhite"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
                     android:hint="Enter another address"
-                    android:inputType="textPostalAddress" />
+                    android:inputType="textPostalAddress"
+                    android:tooltipText="Look Up other places on the map and find today's prediction" />
 
                 <ImageButton
                     android:id="@+id/btn_search"
@@ -53,7 +56,10 @@
                     android:src="@drawable/search3" />
 
             </LinearLayout>
-        </RelativeLayout>
+
+        </com.mapbox.mapboxsdk.maps.MapView>
+
+
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/back_to_camera_tracking_mode"
@@ -64,6 +70,7 @@
             android:layout_above="@id/popup_group"
             android:layout_alignParentRight="true"
             android:src="@drawable/flag" />
+
 
         <RelativeLayout
             android:id="@+id/popup_group"
@@ -83,14 +90,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="5"
                     android:background="@color/cardwhite"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="6"
                         android:orientation="vertical">
@@ -98,7 +107,7 @@
                         <TextView
                             android:id="@+id/location_address"
                             android:layout_width="wrap_content"
-                            android:layout_height="0dp"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -108,7 +117,7 @@
                         <TextView
                             android:id="@+id/lastupdated"
                             android:layout_width="wrap_content"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -126,9 +135,13 @@
                     <TextView
                         android:id="@+id/text_riskrate"
                         android:layout_width="0dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
+                        android:layout_margin="0dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="4"
                         android:background="#259B24"
                         android:gravity="center"
