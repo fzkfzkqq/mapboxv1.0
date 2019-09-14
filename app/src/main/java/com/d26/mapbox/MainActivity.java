@@ -101,7 +101,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //TODO: Nik
     private Button btn_c_findmore;
     private Button btn_action_exp;
-
+    private Button btn_temp;
+    private Button btn_humi;
+    private Button btn_wind;
+    private Button btn_pressure;
     private android.support.v7.widget.Toolbar mTopToolbar;
 
 
@@ -142,14 +145,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         risk = (TextView) findViewById(R.id.text_riskrate);
         final Geocoder geocoder = new Geocoder(this);
         search = (ImageButton) findViewById(R.id.btn_search);
-        btn_c_findmore = findViewById(R.id.btn_c_findmore);
-        btn_action_exp = findViewById(R.id.btn_action_exp);
+        //btn_c_findmore = findViewById(R.id.btn_c_findmore);
+        //btn_action_exp = findViewById(R.id.btn_action_exp);
 //        btn_historical_bf = findViewById(R.id.btn_historical_bf);
         input_postcode = findViewById(R.id.search_location);
         lastupdated = findViewById(R.id.lastupdated);
-
+        btn_humi = findViewById(R.id.btn_humi);
+        btn_pressure = findViewById(R.id.btn_pres);
+        btn_temp = findViewById(R.id.btn_temp);
+        btn_wind = findViewById(R.id.btn_wind);
         location_address = findViewById(R.id.location_address);
-        bushfire = findViewById(R.id.bushfire);
+        //bushfire = findViewById(R.id.bushfire);
 
 
         SharedPreferences sharedpreferences;
@@ -181,8 +187,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
         View popView = View.inflate(this,R.layout.main_popup,null);
-        final Dialog mainPopUp = DialogUIUtils.showCustomAlert(getApplicationContext(),popView, Gravity.BOTTOM,false,true).show();
+        final Dialog mainPopUp = DialogUIUtils.showCustomAlert(getApplicationContext(),popView,
+                Gravity.BOTTOM,false,true).show();
+
+        /*
         bushfire.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 CauseActivity.bounceBaby(bushfire);
@@ -214,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+         */
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -320,8 +331,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
 
-        getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
-        getNewsAsyncTask.execute();
+        //getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
+        //getNewsAsyncTask.execute();
 
 //        blink();
         pulseAnimation();
@@ -703,13 +714,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
-                    lastupdated.setText("Last Updated on " + j.getString("lastUpdated"));
-                    location_address.setText("Location:" + address.getAddressLine(0));
+                    lastupdated.setText("Updated："+ j.getString("lastUpdated"));
+                    location_address.setText( address.getAddressLine(0));
+                    btn_temp.setText((j.get("airTemperature")).toString() + "°C");
+                    btn_humi.setText((j.get("humidity")).toString() + "%");
+                    btn_wind.setText((j.get("windSpeed")).toString() + " Km/h");
+                    btn_pressure.setText((j.get("airPressure")).toString() + " hPa");
 
                 }
                 else
                 {
-                    risk.setText("Not Available for this location");
+                    risk.setText("Not Available");
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -786,7 +801,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             try {
 //                jsonObject = new JSONObject(details);
                 jsonArray = new JSONArray(details);
-
+                count = jsonArray.length();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -795,8 +810,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 //                JSONArray jarray = jsonObject.getJSONArray("features");
 //                JSONObject
-                count = jsonArray.length();
-
 //                Log.i("count", count.toString());
                 if (count > 0) {
                     for (int i = 0; i < count; i++) {

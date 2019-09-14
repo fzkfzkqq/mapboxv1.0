@@ -15,9 +15,6 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
             mapbox:mapbox_cameraZoom="7"
             >
 
@@ -74,7 +71,7 @@
             android:layout_height="200dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_alignBottom="@id/mapView"
 
             >
@@ -89,8 +86,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="5"
                     android:background="@color/cardwhite"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp">
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -155,7 +151,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:background="@color/cardwhite"
                     android:orientation="horizontal">
@@ -184,9 +179,9 @@
                         android:drawableTop="@drawable/piechart"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
-                        android:text="temp℃"
+                        android:text="No DATA"
                         android:textSize="16sp"
-                        android:tooltipText="Learn more about how bush fires are caused"/>
+                        android:tooltipText="Learn more about how bush fires are caused" />
 
                     <Button
                         android:id="@+id/btn_humi"
@@ -198,9 +193,9 @@
                         android:drawableTop="@drawable/piechart"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
-                        android:text="Humi"
+                        android:text="No DATA"
                         android:textSize="16sp"
-                        android:tooltipText="Learn more about how bush fires are caused"/>
+                        android:tooltipText="Learn more about how bush fires are caused" />
 
                     <Button
                         android:id="@+id/btn_wind"
@@ -212,9 +207,10 @@
                         android:drawableTop="@drawable/piechart"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
-                        android:text="wind"
+                        android:text="No DATA"
                         android:textSize="16sp"
                         android:tooltipText="Learn more about how bush fires are caused" />
+
                     <Button
                         android:id="@+id/btn_pres"
                         android:layout_width="0dp"
@@ -225,9 +221,9 @@
                         android:drawableTop="@drawable/piechart"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
-                        android:text="pres"
+                        android:text="No DATA"
                         android:textSize="16sp"
-                        android:tooltipText="Learn more about how bush fires are caused"/>
+                        android:tooltipText="Learn more about how bush fires are caused" />
 
                 </LinearLayout>
 
