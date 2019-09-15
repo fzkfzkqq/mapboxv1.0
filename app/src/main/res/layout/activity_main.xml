@@ -26,6 +26,7 @@
             mapbox:mapbox_cameraZoom="7"
             >
 
+
         </com.mapbox.mapboxsdk.maps.MapView>
 
 
