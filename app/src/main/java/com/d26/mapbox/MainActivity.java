@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                            + " Victora,Australia"),1).isEmpty())
 //                    {
 //                        locationEngine.removeLocationUpdates(callback);
-//                        search_add = geocoder.getFromLocationName((input_postcode.getText().toString()+ " Victora,Australia"),1).get(0);
+//                        search_add = geocoder.getFromLocationName((input_postcode.getText().toString()+ " Victora,Australia"),1).get();
 //                        address = search_add;
 //                        getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
 //                        getSearchDeatilAsyncTask.execute(search_add.getPostalCode());

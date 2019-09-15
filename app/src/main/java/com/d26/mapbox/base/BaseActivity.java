@@ -7,7 +7,7 @@ import android.app.Fragment;
 /*
 public abstract class BaseActivity extends AppCompatActivity {
 
-    //content vierw ID
+    //content view ID
     protected abstract int getContentViewId();
 
     //layout fragment ID
