@@ -39,7 +39,7 @@ public class Welcome extends AppCompatActivity {
      * Some older devices needs a small delay between UI widget updates
      * and a change of the status and navigation bar.
      */
-    private static int TIME_OUT = 1000;
+    private static int TIME_OUT = 3500;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
     private final Runnable mHidePart2Runnable = new Runnable() {

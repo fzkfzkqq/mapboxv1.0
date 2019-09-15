@@ -333,9 +333,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
 
-        //getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
-        //getNewsAsyncTask.execute();
 
+
+        /*This is used to get real time alerts*/
 
         PusherOptions options = new PusherOptions();
         options.setCluster("ap4");
@@ -343,15 +343,34 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         Channel channel = pusher.subscribe("my-channel");
 
+        /*The channel is binded with the news api which is binded with firebase and pusher
+        * Thank you Antony for writing the backend code in Azure Function App to make this work
+        * I could have never done it alone lol
+        * Author: Nikhil P.*/
         channel.bind("my-event", new SubscriptionEventListener() {
             @Override
             public void onEvent(PusherEvent event) {
                 System.out.println(event.getData());
 
+                /*Provides with a default notification anytime the database is updated with a
+                * bushfire alert. THIS IS REALTIME which makes it awesome
+                * https://dashboard.pusher.com/apps/860496/console/realtime_messages
+                * */
+                    Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_2_ID).setSmallIcon(R.drawable.logo)
+                            .setContentTitle("Watch Out!")
+                            .setContentText("BushFire at " + event.getData())
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                            .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
+                            })
+                            .build();
+
+
+                notificationManager.notify(2, notification);
             }
         });
 
         pusher.connect();
+
 
 
 //        blink();
@@ -449,6 +468,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onStart() {
         super.onStart();
         mapView.onStart();
+        getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
+        getNewsAsyncTask.execute();
+
     }
 
     @Override
@@ -845,10 +867,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         markerOptions.position(latLng);
         markerOptions.title("Bushfire");
         markerOptions.snippet(snippet);
-        IconFactory iconFactory = IconFactory.getInstance(MainActivity.this);
+        IconFactory iconFactory = IconFactory.getInstance(this);
         Icon icon = iconFactory.fromResource(R.drawable.news);
         markerOptions.setIcon(icon);
-        map.addMarker(markerOptions);
+        try {
+            map.addMarker(markerOptions);
+        }catch (Exception e){
+            System.out.println("FUCK");
+            e.getStackTrace();
+        }
     }
 
 
@@ -890,26 +917,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                             String markerSnippet = "Location: " + j.getString("location") +
                                     "\n Updated on: " + j.getString("alertUpdated");
-                            parkMarks(latLng, markerSnippet);
+                            Log.i("wtf happened here", j.toString());
 
-                            if(j.getString("newAlert") == "1"){
-
-                                Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_2_ID)
-                                        .setSmallIcon(R.drawable.logo)
-                                        .setContentTitle("Run!")
-                                        .setContentText("BushFire at " + j.getString("location"))
-                                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
-                                        })
-                                        .build();
-
-                                notificationManager.notify(2, notification);
+                            if (j.getString("location") != null) {
+                                parkMarks(latLng, markerSnippet);
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
+
                     }
+
                 }
 //            } catch (JSONException e) {
 //                e.printStackTrace();
