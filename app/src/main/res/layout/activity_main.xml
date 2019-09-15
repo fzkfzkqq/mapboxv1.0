@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -24,6 +25,7 @@
             android:layout_marginStart="5dp"
             mapbox:mapbox_cameraZoom="7"
             >
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,8 +59,20 @@
 
             </LinearLayout>
 
+
+
         </com.mapbox.mapboxsdk.maps.MapView>
 
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_location_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|end"
+            android:layout_margin="16dp"
+            android:layout_above="@id/back_to_camera_tracking_mode"
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/search" />
 
 
         <android.support.design.widget.FloatingActionButton

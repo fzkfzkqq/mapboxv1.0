@@ -18,6 +18,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a2857af-4957-4300-83b9-b70bf00f10bb" name="Default Changelist" comment="Merge branch 'master' of https://github.com/fzkfzkqq/mapboxv1.0&#10;&#10;# Conflicts:&#10;#&#9;.gradle/4.10.1/fileHashes/fileHashes.bin&#10;#&#9;.gradle/4.10.1/fileHashes/fileHashes.lock&#10;#&#9;.gradle/4.10.1/javaCompile/classAnalysis.bin&#10;#&#9;.gradle/4.10.1/javaCompile/javaCompile.lock&#10;#&#9;.gradle/4.10.1/javaCompile/taskHistory.bin&#10;#&#9;.gradle/4.10.1/taskHistory/taskHistory.bin&#10;#&#9;.gradle/4.10.1/taskHistory/taskHistory.lock&#10;#&#9;.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;.idea/caches/build_file_checksums.ser&#10;#&#9;.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_extensions_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_db_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_db_framework_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_room_runtime_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_media_compat_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_v4_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_facebook_soloader_soloader_0_6_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_accounts_0_2_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_core_1_3_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_gestures_0_4_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_places_0_6_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_scalebar_v8_0_3_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_sdk_8_2_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_telemetry_4_5_1_aar.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/app.iml&#10;#&#9;app/build.gradle">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_timber_timber_4_7_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_places_v8_0_9_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_sdk_core_4_6_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_sdk_services_4_6_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_logging_interceptor_3_11_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_4_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_4_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_16_0_1_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
@@ -27,16 +35,19 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_places_0_6_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_sdk_core_3_2_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_sdk_services_3_2_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_logging_interceptor_3_9_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_3_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_3_0_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/geocoder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapbox.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +80,49 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="mapboxv1.0work" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mapboxv1.0work" type="f1a62948:ProjectNode" />
+                <item name="mapboxv1.0work" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mapboxv1.0work" type="f1a62948:ProjectNode" />
+                <item name="mapboxv1.0work" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mapboxv1.0work" type="f1a62948:ProjectNode" />
+                <item name="mapboxv1.0work" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="android" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mapboxv1.0work" type="f1a62948:ProjectNode" />
+                <item name="mapboxv1.0work" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mapboxv1.0work" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mapboxv1.0work" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mapboxv1.0work" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="android" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -80,103 +134,108 @@
     <favorites_list name="mapboxv1.0work" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="84" column="22" lean-forward="true" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/widget/LinearLayout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="87" column="14" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actions.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="34" selection-start-line="10" selection-start-column="4" selection-end-line="16" selection-end-column="10" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Historic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="106" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/ActionActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1547">
-              <caret line="99" column="30" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.pusher/pusher-java-client/2.0.0/83d22aee8058ae81c5cbb69d412ec694860a0f29/pusher-java-client-2.0.0-sources.jar!/com/pusher/client/channel/PusherEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+                </state>
+              </provider>
+              <provider editor-type-id="android-manifest" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="23">
+                  <caret line="251" column="136" lean-forward="true" selection-start-line="251" selection-start-column="136" selection-end-line="251" selection-end-column="136" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#9269#11408#0" expanded="true" />
+                    <element signature="e#11407#11408#0" expanded="true" />
+                    <element signature="e#9435#11154#0" expanded="true" />
+                    <element signature="e#11153#11154#0" expanded="true" />
+                    <element signature="e#17610#17813#0" expanded="true" />
+                    <element signature="e#17812#17813#0" expanded="true" />
+                    <element signature="e#19285#20309#0" expanded="true" />
+                    <element signature="e#20308#20309#0" expanded="true" />
+                    <element signature="e#22143#22144#0" expanded="true" />
+                    <element signature="e#22257#22258#0" expanded="true" />
+                    <element signature="e#31889#31890#0" expanded="true" />
+                    <element signature="e#31913#31914#0" expanded="true" />
+                    <element signature="e#34127#34937#0" expanded="true" />
+                    <element signature="e#34390#34422#0" expanded="true" />
+                    <element signature="e#34936#34937#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="94">
+                  <caret line="74" selection-start-line="74" selection-end-line="74" />
+                </state>
+              </provider>
+              <provider editor-type-id="android-designer2" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/Comment Dumps Main Activity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="221">
+                  <caret line="13" selection-start-line="13" selection-end-line="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/build.gradle">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="170">
+                  <caret line="12" selection-start-line="12" selection-end-line="12" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/build.gradle">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="77">
+                  <caret line="28" selection-start-line="28" selection-end-line="28" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="388" column="101" selection-start-line="388" selection-start-column="101" selection-end-line="388" selection-end-column="101" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#19181#19384#0" expanded="true" />
+                    <element signature="e#19383#19384#0" expanded="true" />
+                    <element signature="e#22143#22144#0" expanded="true" />
+                    <element signature="e#22257#22258#0" expanded="true" />
+                    <element signature="e#31889#31890#0" expanded="true" />
+                    <element signature="e#31913#31914#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -190,13 +249,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>btn_c_findmore</find>
-      <find>Button</find>
-      <find>ondismiss</find>
-      <find>oncreate</find>
-      <find>dismissListener</find>
-      <find>no address</find>
-      <find>onMapReady</find>
       <find>blink</find>
       <find>location</find>
       <find>onmarkerclick</find>
@@ -206,7 +258,6 @@
       <find>postcode</find>
       <find>address</find>
       <find>zoom</find>
-      <find>log</find>
       <find>text_riskrate</find>
       <find>btn_findmore</find>
       <find>test</find>
@@ -220,6 +271,14 @@
       <find>channel</find>
       <find>Notification</find>
       <find>set</find>
+      <find>getMapAsync</find>
+      <find>token</find>
+      <find>log</find>
+      <find>features</find>
+      <find>onac</find>
+      <find>geocoder</find>
+      <find>onresult</find>
+      <find>search</find>
     </findStrings>
     <replaceStrings>
       <replace>Historic</replace>
@@ -273,9 +332,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/Historic.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mapbox/MainActivity.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/Comment Dumps Main Activity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -286,17 +347,27 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Default Changelist'; set:Default Changelist; class com.intellij.packageDependencies.ChangeListScope">
+      <pane id="AndroidView">
+        <subPane>
           <expand>
             <path>
-              <item name="mapboxv1.0work" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="mapboxv1.0work" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="mapboxv1.0work" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="mapboxv1.0work" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="mapbox" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -358,6 +429,17 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Default Changelist'; set:Default Changelist; class com.intellij.packageDependencies.ChangeListScope">
+          <expand>
+            <path>
+              <item name="mapboxv1.0work" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -373,6 +455,7 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.recentlyUsedThemes" value="android:Theme.Material.Light" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../Library/Android/sdk" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
     <property name="device.picker.selection" value="Pixel_2_API_Q" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../CalorieTracker_V02" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -498,24 +581,24 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.1745283" side_tool="true" weight="0.32980332" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49357328" weight="0.16868381" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49357328" visible="true" weight="0.16868381" />
       <window_info id="Favorites" order="2" sideWeight="0.50642675" side_tool="true" weight="0.16868381" />
       <window_info id="Build Variants" order="3" sideWeight="0.50642675" side_tool="true" weight="0.16868381" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Structure" order="7" sideWeight="0.50642675" visible="true" weight="0.2655068" />
+      <window_info id="Structure" order="7" sideWeight="0.50642675" weight="0.2655068" />
       <window_info id="Resources Explorer" order="8" sideWeight="0.8254717" weight="0.32980332" />
       <window_info anchor="bottom" id="Logcat" order="0" sideWeight="0.49924356" weight="0.3747954" />
-      <window_info anchor="bottom" id="TODO" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.41571194" />
+      <window_info anchor="bottom" id="TODO" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.38625205" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5015129" side_tool="true" weight="0.2885246" />
-      <window_info anchor="bottom" id="Version Control" order="4" />
+      <window_info anchor="bottom" id="Version Control" order="4" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.3633388" />
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49848714" weight="0.30605564" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.7409836" />
-      <window_info active="true" anchor="bottom" id="Find" order="8" visible="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="9" weight="0.33387887" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.7397709" />
+      <window_info anchor="bottom" id="Find" order="8" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="9" weight="0.27659574" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32980332" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32980332" />
@@ -537,15 +620,15 @@
       <window_info id="Structure" order="7" sideWeight="0.50642675" weight="0.2655068" />
       <window_info id="Resources Explorer" order="8" sideWeight="0.8254717" weight="0.32980332" />
       <window_info anchor="bottom" id="Logcat" order="0" sideWeight="0.49924356" weight="0.3747954" />
-      <window_info anchor="bottom" id="TODO" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.41571194" />
+      <window_info anchor="bottom" id="TODO" order="1" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" visible="true" weight="0.38625205" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5015129" side_tool="true" weight="0.2885246" />
-      <window_info anchor="bottom" id="Version Control" order="4" />
+      <window_info anchor="bottom" id="Version Control" order="4" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.3633388" />
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49848714" weight="0.30605564" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.7409836" />
-      <window_info anchor="bottom" id="Find" order="8" weight="0.3295082" />
-      <window_info active="true" anchor="bottom" id="Run" order="9" visible="true" weight="0.33387887" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.7397709" />
+      <window_info anchor="bottom" id="Find" order="8" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="9" weight="0.3371522" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32980332" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32980332" />
@@ -582,30 +665,22 @@
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java</url>
+          <line>240</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java</url>
+          <line>388</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/widget/Button.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/factors.png" />
-    <entry file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.mapbox.mapboxsdk/mapbox-android-core/1.3.0/fedf0bbf6c173a2989d8f460e768baccfaf036f9/mapbox-android-core-1.3.0-sources.jar!/com/mapbox/android/core/permissions/PermissionsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../.gradle/caches/transforms-1/files-1.1/mapbox-android-sdk-8.2.1.aar/e2ac94560217e3049d271aa42e81dc94/res/values/values.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tooltipdialgue.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/app/Dialog.java" />
     <entry file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.mapbox.mapboxsdk/mapbox-android-sdk/8.2.1/7923d4450e8cddaecfc1ba7e3b13b3eca4ca1b95/mapbox-android-sdk-8.2.1-sources.jar!/com/mapbox/mapboxsdk/location/LocationComponent.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -721,11 +796,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
-          <folding>
-            <element signature="e#574#592#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
         </state>
       </provider>
       <provider editor-type-id="android-manifest" />
@@ -769,13 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -783,24 +848,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/ActionActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1547">
           <caret line="99" column="30" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Historic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="106" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -819,23 +870,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/Comment Dumps Main Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Historic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="96" column="122" lean-forward="true" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="122" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="84" column="22" lean-forward="true" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/view/accessibility/AccessibilityManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="368" selection-start-line="368" selection-end-line="368" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="27752" selection-start-line="27752" selection-end-line="27752" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+          <folding>
+            <element signature="e#34939#34940#0" expanded="true" />
+            <element signature="e#34977#34978#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/os/Looper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="238" selection-start-line="238" selection-end-line="238" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/geocoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="388" column="101" selection-start-line="388" selection-start-column="101" selection-end-line="388" selection-end-column="101" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#19181#19384#0" expanded="true" />
+            <element signature="e#19383#19384#0" expanded="true" />
+            <element signature="e#22143#22144#0" expanded="true" />
+            <element signature="e#22257#22258#0" expanded="true" />
+            <element signature="e#31889#31890#0" expanded="true" />
+            <element signature="e#31913#31914#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

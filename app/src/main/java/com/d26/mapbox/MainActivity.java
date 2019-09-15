@@ -9,6 +9,7 @@ import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -18,7 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -29,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dou361.dialogui.DialogUIUtils;
+import com.google.gson.JsonObject;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -58,10 +60,16 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.plugins.places.autocomplete.PlaceAutocomplete;
+import com.mapbox.mapboxsdk.plugins.places.autocomplete.model.PlaceOptions;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.pluginscalebar.ScaleBarOptions;
 import com.mapbox.pluginscalebar.ScaleBarPlugin;
+import com.pusher.client.Pusher;
+import com.pusher.client.PusherOptions;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.PusherEvent;
+import com.pusher.client.channel.SubscriptionEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -71,17 +79,9 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import static com.d26.mapbox.Notifications.CHANNEL_2_ID;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
-
-
-import static com.d26.mapbox.Notifications.CHANNEL_2_ID;
-
-import com.pusher.client.Pusher;
-import com.pusher.client.PusherOptions;
-import com.pusher.client.channel.Channel;
-import com.pusher.client.channel.PusherEvent;
-import com.pusher.client.channel.SubscriptionEventListener;
 
 
 
@@ -132,6 +132,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private EditText editTextTitle;
     private EditText editTextMessage;
     private NotificationManagerCompat notificationManager;
+
+
+    private CarmenFeature home;
+    private CarmenFeature work;
 
 
     @Override
@@ -234,48 +238,49 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
          */
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Address search_add;
-
-                try {
-                    if (!geocoder.getFromLocationName((input_postcode.getText().toString()
-                            + " Victora,Australia"),1).isEmpty())
-                    {
-                        locationEngine.removeLocationUpdates(callback);
-                        search_add = geocoder.getFromLocationName((input_postcode.getText().toString()+ " Victora,Australia"),1).get(0);
-                        address = search_add;
-                        getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
-                        getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
-
-                        try {
-                            map.addMarker(new MarkerOptions()
-                                    .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                                    .title(address.getAddressLine(0) + "\n Risk Rate: " + j.getString("bushfireRiskRating") ));
-                            location_address.setText("Location:" + address.getAddressLine(0));
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        CameraPosition position = new CameraPosition.Builder()
-                                .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
-                                .build(); // Creates a CameraPosition from the builder
-
-                        map.animateCamera(CameraUpdateFactory
-                                .newCameraPosition(position), 7000);
-                    }
-                    else {
-                        input_postcode.setError("No address found");
-                        input_postcode.setText("");
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    input_postcode.setError("No address found");
-                }
-            }
-        });
+//        search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Address search_add;
+//
+//                try {
+//                    //validation for checking if there is text or is null
+//                    if (!geocoder.getFromLocationName((input_postcode.getText().toString()
+//                            + " Victora,Australia"),1).isEmpty())
+//                    {
+//                        locationEngine.removeLocationUpdates(callback);
+//                        search_add = geocoder.getFromLocationName((input_postcode.getText().toString()+ " Victora,Australia"),1).get(0);
+//                        address = search_add;
+//                        getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
+//                        getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
+//
+//                        try {
+//                            map.addMarker(new MarkerOptions()
+//                                    .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
+//                                    .title(address.getAddressLine(0) + "\n Risk Rate: " + j.getString("bushfireRiskRating") ));
+//                            location_address.setText("Location:" + address.getAddressLine(0));
+//
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                        CameraPosition position = new CameraPosition.Builder()
+//                                .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
+//                                .build(); // Creates a CameraPosition from the builder
+//
+//                        map.animateCamera(CameraUpdateFactory
+//                                .newCameraPosition(position), 7000);
+//                    }
+//                    else {
+//                        input_postcode.setError("No address found");
+//                        input_postcode.setText("");
+//                    }
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                    input_postcode.setError("No address found");
+//                }
+//            }
+//        });
 
 
         mapView.getMapAsync(new OnMapReadyCallback() {
@@ -306,29 +311,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 // Set up a new symbol layer for displaying the searched location's feature coordinates
                         setupLayer(style);
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
+
+                        //TODO: Add search button function here initSearchFab() and addUserLocations() here
+                        initSearchFab();
+                        addUserLocations();
                     }
                 });
-                //TODO: 1. see the other TODO code at line 236
-//                //addMarker(mapboxMap);
-//                GetParks getpark = new GetParks();
-//                getpark.execute();
-//                mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
-//                    @Override
-//                    public boolean onMarkerClick(@NonNull Marker marker) {
-//                        return false;
-//                    }
-//                });
             }
         });
         risk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mapView.setVisibility(View.INVISIBLE);
-//                FragmentManager fragmentManager = getFragmentManager();
-//                fragmentManager.beginTransaction().replace(R.id.content_frame, new
-//                        Details()).commit();
-
-//                CauseActivity.bounceBaby(risk);
 
                 Intent intent = new Intent(MainActivity.this,Details.class);
                 Bundle bundle = new Bundle();
@@ -381,34 +374,75 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Address search_add;
+        Geocoder geocoder = new Geocoder(this);
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_AUTOCOMPLETE) {
 
             // Retrieve selected location's CarmenFeature
             CarmenFeature selectedCarmenFeature = PlaceAutocomplete.getPlace(data);
+            Log.i("features", selectedCarmenFeature.toJson());
 
-            // Create a new FeatureCollection and add a new Feature to it using selectedCarmenFeature above.
-            // Then retrieve and update the source designated for showing a selected location's symbol layer icon
 
-            if (map != null) {
-                Style style = map.getStyle();
-                if (style != null) {
-                    GeoJsonSource source = style.getSourceAs(geojsonSourceLayerId);
-                    if (source != null) {
-                        source.setGeoJson(FeatureCollection.fromFeatures(
-                                new Feature[] {Feature.fromJson(selectedCarmenFeature.toJson())}));
-                    }
+            //removes any pending updates
+            locationEngine.removeLocationUpdates(callback);
+            try {
+                search_add = geocoder.getFromLocationName(selectedCarmenFeature.placeName(), 1).get(0);
+                address = search_add;
 
-                    // Move map camera to the selected location
+                getDetailAsyncTask getSearchDeatilAsyncTask = new getDetailAsyncTask();
+                getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
+
+                try {
+                    map.addMarker(new MarkerOptions()
+                            .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
+                            .title(address.getAddressLine(0) + "\n Risk Rate: " + j.getString("bushfireRiskRating")));
+                    location_address.setText("Location:" + address.getAddressLine(0));
+                    risk.setText(j.getString("bushfireRiskRating"));
+
                     map.animateCamera(CameraUpdateFactory.newCameraPosition(
                             new CameraPosition.Builder()
                                     .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
                                             ((Point) selectedCarmenFeature.geometry()).longitude()))
                                     .zoom(14)
-                                    .build()), 4000);
+                                    .build()), 7000);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+
+                    // Create a new FeatureCollection and add a new Feature to it using selectedCarmenFeature above.
+                    // Then retrieve and update the source designated for showing a selected location's symbol layer icon
+
+                    if (map != null) {
+                        Style style = map.getStyle();
+                        if (style != null) {
+                            GeoJsonSource source = style.getSourceAs(geojsonSourceLayerId);
+                            if (source != null) {
+                                source.setGeoJson(FeatureCollection.fromFeatures(
+                                        new Feature[]{Feature.fromJson(selectedCarmenFeature.toJson())}));
+                            }
+
+                            // Move map camera to the selected location
+                            map.animateCamera(CameraUpdateFactory.newCameraPosition(
+                                    new CameraPosition.Builder()
+                                            .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
+                                                    ((Point) selectedCarmenFeature.geometry()).longitude()))
+                                            .zoom(14)
+                                            .build()), 7000);
+                        }
+                    }
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+        else{
+            input_postcode.setError("No address found");
+            input_postcode.setText("");
+        }
     }
+
 
 
     @Override
@@ -546,6 +580,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onCameraTrackingChanged(int currentMode) {
         isInTrackingMode = false;
+        location_address.setText("Location:" + address.getAddressLine(0));
+        try {
+            risk.setText(j.getString("bushfireRiskRating"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -877,6 +917,42 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
 
+    private void initSearchFab() {
+        findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new PlaceAutocomplete.IntentBuilder()
+                        .accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.access_token))
+                        .placeOptions(PlaceOptions.builder()
+                                .backgroundColor(Color.parseColor("#EEEEEE"))
+                                .limit(10)
+                                .addInjectedFeature(home)
+                                .addInjectedFeature(work)
+                                .build(PlaceOptions.MODE_CARDS))
+                        .build(MainActivity.this);
+                startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
+
+            }
+        });
+    }
+
+
+
+    private void addUserLocations() {
+        home = CarmenFeature.builder().text("Mapbox SF Office")
+                .geometry(Point.fromLngLat(-122.3964485, 37.7912561))
+                .placeName("50 Beale St, San Francisco, CA")
+                .id("mapbox-sf")
+                .properties(new JsonObject())
+                .build();
+
+        work = CarmenFeature.builder().text("Mapbox DC Office")
+                .placeName("740 15th Street NW, Washington DC")
+                .geometry(Point.fromLngLat(-77.0338348, 38.899750))
+                .id("mapbox-dc")
+                .properties(new JsonObject())
+                .build();
+    }
 
     }
 

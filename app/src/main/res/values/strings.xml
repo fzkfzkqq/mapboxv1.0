@@ -66,4 +66,5 @@
                 "\n" +
                 "Material, summarised views, standards or recommendations of third parties or recommendations made by this application do not necessarily reflect the views of DisasterMate or indicate a commitment to a course of action.\n</string>
     <string name="DisasterMate">DisasterMate</string>
+    <string name="access_token">pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA</string>
 </resources>
