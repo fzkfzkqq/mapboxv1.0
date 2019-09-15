@@ -3,41 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.d26.mapbox">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.VIBRATE" />
-
     <application
-        android:name="com.d26.mapbox.Notifications"
+        android:name=".Notifications"
         android:allowBackup="true"
-            android:icon="@drawable/logo"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-       >
-
-        <activity android:name="com.d26.mapbox.Historic"></activity>
+        android:theme="@style/AppTheme">
         <activity
-            android:name="com.d26.mapbox.Welcome"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/DisasterMate"
-            android:theme="@style/FullscreenTheme">
+            android:name=".drawerLayout.drawerActivity"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.d26.mapbox.MainActivity">
+        <activity android:name=".Historic" />
+        <activity
+            android:name=".Welcome"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/DisasterMate"
+            android:theme="@style/FullscreenTheme">
+
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
-        <activity android:name="com.d26.mapbox.ActionActivity" />
-        <activity android:name="com.d26.mapbox.CauseActivity" />
-        <activity android:name="com.d26.mapbox.Details" />
+        <activity android:name=".ActionActivity" />
+        <activity android:name=".CauseActivity" />
+        <activity android:name=".Details" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

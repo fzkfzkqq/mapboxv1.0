@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.mapbox"
+        applicationId "com.d26.mapbox"
         minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
@@ -27,6 +27,10 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.2.1'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-core:1.3.0'
     implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.dou361.dialogui:jjdxm-dialogui:1.0.1'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
+    implementation 'android.arch.navigation:navigation-ui:1.0.0'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

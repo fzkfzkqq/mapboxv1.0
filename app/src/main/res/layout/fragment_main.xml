@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="5dp"
+            mapbox:mapbox_cameraZoom="7"
+            >
+
+
+        </com.mapbox.mapboxsdk.maps.MapView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentTop="true"
+                android:background="@color/mapbox_grey">
+
+                <EditText
+                    android:tooltipText="Look Up other places on the map and find today's prediction"
+                    android:id="@+id/search_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/cardwhite"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:hint="Enter another address"
+                    android:inputType="textPostalAddress" />
+
+                <ImageButton
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/search3" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/back_to_camera_tracking_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="submit"
+            android:layout_above="@id/popup_group"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/flag" />
+
+        <RelativeLayout
+            android:id="@+id/popup_group"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignBottom="@id/mapView"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:background="@color/cardwhite"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="5dp"
+                        android:layout_weight="6"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/location_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Location: Updating"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/lastupdated"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Last Updated: Updating"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+
+                    <!--<TextView-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="The possibility of happening a bush fire here is :"/>-->
+
+                    <TextView
+                        android:id="@+id/text_riskrate"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="5dp"
+                        android:layout_weight="4"
+                        android:background="#259B24"
+                        android:gravity="center"
+                        android:text="Updating Risk Rate"
+                        android:textColor="@color/cardwhite"
+                        android:textSize="25dp"
+                        android:tooltipText="Updated for your location on a daily basis." />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="350dp"
+                    android:layout_height="4dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:background="#C7C1C1" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@color/cardwhite"
+                    android:orientation="horizontal">
+
+                    <!--<TextView-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textSize="20dp"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:text="What Causes Bushfires?"/>-->
+                    <!--<TextView-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="What causes the bushfire?"-->
+                    <!--/>-->
+
+                    <Button
+                        android:id="@+id/btn_temp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/cardwhite"
+                        android:drawableTop="@drawable/weather"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="No DATA"
+                        android:textSize="16sp"
+                        android:tooltipText="Learn more about how bush fires are caused" />
+
+                    <Button
+                        android:id="@+id/btn_humi"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/cardwhite"
+                        android:drawableTop="@drawable/humidity"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="No DATA"
+                        android:textSize="16sp"
+                        android:tooltipText="Learn more about how bush fires are caused" />
+
+                    <Button
+                        android:id="@+id/btn_wind"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/cardwhite"
+                        android:drawableTop="@drawable/wind"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="No DATA"
+                        android:textSize="16sp"
+                        android:tooltipText="Learn more about how bush fires are caused" />
+
+                    <Button
+                        android:id="@+id/btn_pres"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/cardwhite"
+                        android:drawableTop="@drawable/preasure"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="No DATA"
+                        android:textSize="16sp"
+                        android:tooltipText="Learn more about how bush fires are caused" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>
