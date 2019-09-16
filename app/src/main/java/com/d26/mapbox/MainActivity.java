@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private NotificationManagerCompat notificationManager;
     private CarmenFeature home;
     private CarmenFeature work;
+    String riskString;
 
 
     @Override
@@ -160,6 +161,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         notificationManager = NotificationManagerCompat.from(this);
         Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
+        riskString = "null";
 
 
         /*Make sure that the dialogue does not repeat twice*/
@@ -334,9 +336,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     *  We must either restrict the searches or show no data for that location*/
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                            .title(address.getAddressLine(0) + "\n Risk Rate: " + j.getString("bushfireRiskRating")));
+                            .title(address.getAddressLine(0) + "\n Risk Rate: " + risk.getText().toString()));
+                    Log.i("RRD", risk.getText().toString());
+
                     location_address.setText("Location:" + address.getAddressLine(0));
                     risk.setText(j.getString("bushfireRiskRating"));
+
                     Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
                     Log.i("Why do birds fly",j.getString(address.getAddressLine(0)));
 
@@ -733,17 +738,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     btn_humi.setText((j.get("humidity")).toString() + "%");
                     btn_wind.setText((j.get("windSpeed")).toString() + " Km/h");
                     btn_pressure.setText((j.get("airPressure")).toString() + " hPa");
-
                 }
                 else
                 {
                     risk.setText("Not Available");
+                    riskString = risk.toString();
                 }
             } catch (JSONException e) {
                 risk.setText("Not Available");
+                Log.i("RRDG", "onPostExecute: ");
+
                 e.printStackTrace();
             }
+
         }
+
+
     }
 
     @Override
@@ -892,7 +902,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .properties(new JsonObject())
                 .build();
 
-        work = CarmenFeature.builder().text("Place of Importance")
+        work = CarmenFeature.builder().text("Work")
                 .placeName("740 15th Street NW, Washington DC")
                 .geometry(Point.fromLngLat(-77.0338348, 38.899750))
                 .id("mapbox-dc")

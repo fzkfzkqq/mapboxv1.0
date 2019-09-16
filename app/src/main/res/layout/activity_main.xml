@@ -125,7 +125,7 @@
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
                         android:layout_weight="4"
-                        android:background="#259B24"
+                        android:background="@drawable/rounded_border"
                         android:gravity="center"
                         android:text="Updating Risk Rate"
                         android:textColor="@color/cardwhite"
