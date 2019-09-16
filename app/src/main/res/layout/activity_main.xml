@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -40,7 +39,15 @@
             android:layout_above="@id/back_to_camera_tracking_mode"
             android:layout_alignParentEnd="true" />
 
-
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/change_flood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|end"
+            android:layout_margin="16dp"
+            android:src="@drawable/humidity"
+            android:layout_above="@id/popup_group"
+            android:layout_alignParentLeft="true" />
 
 
         <android.support.design.widget.FloatingActionButton
