@@ -118,21 +118,10 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
                         addHeatmapLayer(style);
                         addCircleLayer(style);
 
-                        //enableLocationComponent(style);
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
                     }
                 });
 
-                //TODO: 1. see the other TODO code at line 236
-//                //addMarker(mapboxMap);
-//                GetParks getpark = new GetParks();
-//                getpark.execute();
-//                mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
-//                    @Override
-//                    public boolean onMarkerClick(@NonNull Marker marker) {
-//                        return false;
-//                    }
-//                });
             }
         });
 

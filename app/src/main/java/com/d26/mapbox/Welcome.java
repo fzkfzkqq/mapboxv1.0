@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.d26.mapbox.drawerLayout.HomeActivity;
 
 
 /**
@@ -120,7 +121,7 @@ public class Welcome extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent i = new Intent(Welcome.this, MainActivity.class);
+                    Intent i = new Intent(Welcome.this, HomeActivity.class);
                     startActivity(i);
                 }
             }, TIME_OUT);

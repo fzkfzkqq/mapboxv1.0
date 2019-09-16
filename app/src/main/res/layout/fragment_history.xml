@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:mapbox="http://schemas.android.com/tools">
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/historyMap"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginStart="5dp"
+        mapbox:mapbox_cameraZoom="7"
+        mapbox:mapbox_cameraTargetLat="-37.48"
+        mapbox:mapbox_cameraTargetLng="144.57"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/show_historic_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/search" />
+</RelativeLayout>

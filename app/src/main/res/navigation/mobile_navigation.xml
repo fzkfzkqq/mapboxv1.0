@@ -9,7 +9,7 @@
         android:id="@+id/nav_home"
         android:name="com.d26.mapbox.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/nav_gallery"
