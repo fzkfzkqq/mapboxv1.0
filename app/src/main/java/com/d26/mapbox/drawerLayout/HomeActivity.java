@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -50,7 +51,7 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, "pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA");
         setContentView(R.layout.activity_drawer);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         /*
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -63,7 +64,7 @@ public class HomeActivity extends AppCompatActivity
         });
 
          */
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -114,20 +115,21 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) { int id = item.getItemId();
         Fragment nextFragment = null;
-        /*
         switch (id) {
-            case R.id.nav_enter_home:
+            case R.id.nav_home:
                 nextFragment = new MainFragment();
+                Log.i("home","Home pressed");
                 break;
-            case R.id.nav_display_food:
-                nextFragment = new DietFragment();
+            case R.id.nav_gallery:
+                nextFragment = new HistoricFragment();
+                Log.i("his","history clikced");
                 break;
-            case R.id.nav_calories:
-                nextFragment = new DisplayUnitFragment(); break;
-            case R.id.nav_map:
-                nextFragment = new MapFragment(); break;
-            case R.id.nav_report:
-                nextFragment = new ReportFragment();break;
+            //case R.id.nav_calories:
+                //nextFragment = new DisplayUnitFragment(); break;
+            //case R.id.nav_map:
+                //nextFragment = new MapFragment(); break;
+            //case R.id.nav_report:
+                //nextFragment = new ReportFragment();break;
         }
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame,
@@ -135,8 +137,6 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-
-         */return true;
     }
 
 

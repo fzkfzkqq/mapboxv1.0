@@ -112,6 +112,7 @@ public class MainFragment extends Fragment implements
             }
         });
 
+
         return vmap;
     }
 
