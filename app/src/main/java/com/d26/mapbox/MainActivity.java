@@ -337,6 +337,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             .title(address.getAddressLine(0) + "\n Risk Rate: " + j.getString("bushfireRiskRating")));
                     location_address.setText("Location:" + address.getAddressLine(0));
                     risk.setText(j.getString("bushfireRiskRating"));
+                    Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
+                    Log.i("Why do birds fly",j.getString(address.getAddressLine(0)));
 
                     map.animateCamera(CameraUpdateFactory.newCameraPosition(
                             new CameraPosition.Builder()
@@ -654,15 +656,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                        Toast.LENGTH_SHORT).show();
 
 // Pass the new location to the Maps SDK's LocationComponent
-//                if (activity.map != null && result.getLastLocation() != null) {
-//                    activity.map.getLocationComponent().forceLocationUpdate(result.getLastLocation());
-//                }
-//                try {
-//                    activity.getCurrentPostCode(result.getLastLocation().getLatitude(),
-//                            result.getLastLocation().getLongitude());
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+                if (activity.map != null && result.getLastLocation() != null) {
+                    activity.map.getLocationComponent().forceLocationUpdate(result.getLastLocation());
+                }
+                try {
+                    activity.getCurrentPostCode(result.getLastLocation().getLatitude(),
+                            result.getLastLocation().getLongitude());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -683,26 +685,27 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-//    public void getCurrentPostCode(double  latitude,double longtitude) throws IOException {
-//        Geocoder geocoder = new Geocoder(this);
-//        StringBuilder stringBuilder = new StringBuilder();
-//        try {
-//            List<Address> addresses = geocoder.getFromLocation(latitude,longtitude,1);
-//            if (addresses.size() > 0) {
-//                Address add = addresses.get(0);
-//                address = add;
-////                Log.i("address",address.getAddressLine(0));
-//                postCode = add.getPostalCode();
-////                Log.i("postcode",postCode);
-//                getDetailAsyncTask getDetailAsyncTask = new getDetailAsyncTask();
-//                getDetailAsyncTask.execute(postCode);
-//            }
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
-//            e.printStackTrace();
-//        }
-//    }
+    /*This code puts up updates the task bar when it is done for the first time*/
+    public void getCurrentPostCode(double  latitude,double longtitude) throws IOException {
+        Geocoder geocoder = new Geocoder(this);
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude,longtitude,1);
+            if (addresses.size() > 0) {
+                Address add = addresses.get(0);
+                address = add;
+//                Log.i("address",address.getAddressLine(0));
+                postCode = add.getPostalCode();
+//                Log.i("postcode",postCode);
+                getDetailAsyncTask getDetailAsyncTask = new getDetailAsyncTask();
+                getDetailAsyncTask.execute(postCode);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+    }
 
     private class getDetailAsyncTask extends AsyncTask<String, Void, String> {
         @Override
