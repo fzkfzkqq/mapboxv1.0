@@ -87,6 +87,8 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
+
+    /*Declarations*/
     private static  String PREFS_NAME = "Prefs" ;
     private PermissionsManager permissionsManager;
     private MapView mapView;
@@ -105,8 +107,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private String geojsonSourceLayerId = "geojsonSourceLayerId";
     private String symbolIconId = "symbolIconId";
     private ImageButton search;
-    private EditText input_postcode;
-//TODO: Nik
+//    private EditText input_postcode;
     private Button btn_c_findmore;
     private Button btn_action_exp;
     private Button btn_temp;
@@ -114,70 +115,54 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Button btn_wind;
     private Button btn_pressure;
     private android.support.v7.widget.Toolbar mTopToolbar;
-
-
     private boolean isInTrackingMode;
     private  LocationComponent locationComponent;
-
     private Button dialogue_button;
-
     private TextView lastupdated;
     private TextView location_address;
-
     private Button bushfire;
-
-
     private ObjectAnimator objAnim;
-
     private EditText editTextTitle;
     private EditText editTextMessage;
     private NotificationManagerCompat notificationManager;
-
-
     private CarmenFeature home;
     private CarmenFeature work;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        /*Mapbox Key*/
         Mapbox.getInstance(this, "pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA");
         setContentView(R.layout.activity_main);
 
-
-
-        //adding a back menu
+        /*ToolBar : set your title here*/
         mTopToolbar =  findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
-        setTitle("Historic Bushfire in 2018");
 
-
+        /*Declare all UI to Objects herer*/
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-//        test = findViewById(R.id.btn_findmore);
         risk = (TextView) findViewById(R.id.text_riskrate);
-        final Geocoder geocoder = new Geocoder(this);
         search = (ImageButton) findViewById(R.id.btn_search);
-        //btn_c_findmore = findViewById(R.id.btn_c_findmore);
-        //btn_action_exp = findViewById(R.id.btn_action_exp);
-//        btn_historical_bf = findViewById(R.id.btn_historical_bf);
-        input_postcode = findViewById(R.id.search_location);
         lastupdated = findViewById(R.id.lastupdated);
         btn_humi = findViewById(R.id.btn_humi);
         btn_pressure = findViewById(R.id.btn_pres);
         btn_temp = findViewById(R.id.btn_temp);
         btn_wind = findViewById(R.id.btn_wind);
         location_address = findViewById(R.id.location_address);
-        //bushfire = findViewById(R.id.bushfire);
 
-
+        /*Declare other variables here*/
+        final Geocoder geocoder = new Geocoder(this);
         SharedPreferences sharedpreferences;
         sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-
         notificationManager = NotificationManagerCompat.from(this);
-
         Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
 
+
+        /*Make sure that the dialogue does not repeat twice*/
         if (isAgree == false) {
 
             final Dialog settingsDialog = new Dialog(this);
@@ -199,90 +184,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             });
 
         }
+
+        /*Inflates the view wait what the fuck is this?*/
         View popView = View.inflate(this,R.layout.main_popup,null);
         final Dialog mainPopUp = DialogUIUtils.showCustomAlert(getApplicationContext(),popView,
                 Gravity.BOTTOM,false,true).show();
 
-        /*
-        bushfire.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                CauseActivity.bounceBaby(bushfire);
-                Intent intent = new Intent(MainActivity.this,Historic.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        btn_c_findmore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CauseActivity.bounceBaby(btn_c_findmore);
-                Intent intent = new Intent(MainActivity.this, CauseActivity.class);
-                startActivity(intent);
-
-            }
-        });
 
 
-        btn_action_exp.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                CauseActivity.bounceBaby(btn_action_exp);
-                Intent intent = new Intent(MainActivity.this, ActionActivity.class);
-                startActivityForResult(intent, 1);
-            }
-        });
-
-         */
-//        search.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Address search_add;
-//
-//                try {
-//                    //validation for checking if there is text or is null
-//                    if (!geocoder.getFromLocationName((input_postcode.getText().toString()
-//                            + " Victora,Australia"),1).isEmpty())
-//                    {
-//                        locationEngine.removeLocationUpdates(callback);
-//                        search_add = geocoder.getFromLocationName((input_postcode.getText().toString()+ " Victora,Australia"),1).get();
-//                        address = search_add;
-//                        getDetailAsyncTask getSearchDeatilAsyncTask =new getDetailAsyncTask();
-//                        getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
-//
-//                        try {
-//                            map.addMarker(new MarkerOptions()
-//                                    .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-//                                    .title(address.getAddressLine(0) + "\n Risk Rate: " + j.getString("bushfireRiskRating") ));
-//                            location_address.setText("Location:" + address.getAddressLine(0));
-//
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                        CameraPosition position = new CameraPosition.Builder()
-//                                .target(new LatLng(search_add.getLatitude(), search_add.getLongitude())) // Sets the new camera position
-//                                .build(); // Creates a CameraPosition from the builder
-//
-//                        map.animateCamera(CameraUpdateFactory
-//                                .newCameraPosition(position), 7000);
-//                    }
-//                    else {
-//                        input_postcode.setError("No address found");
-//                        input_postcode.setText("");
-//                    }
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                    input_postcode.setError("No address found");
-//                }
-//            }
-//        });
-
-
+        /*Fires up the map instance and style
+        * Here is where you also functions such as search and adding user locations*/
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull final MapboxMap mapboxMap) {
@@ -319,6 +230,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 });
             }
         });
+
+        /*That green button is clickable
+        * Watch out! Wuuuu*/
         risk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -335,12 +249,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-        /*This is used to get real time alerts*/
+        /*This is uses a third party application called pusher to get real time alerts
+        * as of now we need 2 channels, one for updates and one for prediction alerts*/
 
         PusherOptions options = new PusherOptions();
         options.setCluster("ap4");
         Pusher pusher = new Pusher("42c4c1388c60931e9673", options);
 
+        /*switch channel names here*/
         Channel channel = pusher.subscribe("my-channel");
 
         /*The channel is binded with the news api which is binded with firebase and pusher
@@ -364,21 +280,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             })
                             .build();
 
-
+                /*This is what actually triggers the alarm*/
                 notificationManager.notify(2, notification);
             }
         });
 
         pusher.connect();
 
-
-
-//        blink();
+        /*Just a stupid blinking animation that the mentors liked so I'll keep it*/
         pulseAnimation();
     }
 
 
-
+/*some source and layer shit which does not make much sense to me. Must be for the night and day mode*/
     private void setUpSource(@NonNull Style loadedMapStyle) {
         loadedMapStyle.addSource(new GeoJsonSource(geojsonSourceLayerId));
     }
@@ -390,6 +304,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         ));
     }
 
+    /*This is where you induce the search logic, after the intent has been called to the full screen search option
+    * Took a braniac like myself to figure this one out lol*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -399,12 +315,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             // Retrieve selected location's CarmenFeature
             CarmenFeature selectedCarmenFeature = PlaceAutocomplete.getPlace(data);
-            Log.i("features", selectedCarmenFeature.toJson());
 
 
             //removes any pending updates
             locationEngine.removeLocationUpdates(callback);
+
             try {
+
                 search_add = geocoder.getFromLocationName(selectedCarmenFeature.placeName(), 1).get(0);
                 address = search_add;
 
@@ -412,11 +329,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
 
                 try {
+
+                    /*TODO: there is a bug here which shows low for not available locations
+                    *  We must either restrict the searches or show no data for that location*/
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
                             .title(address.getAddressLine(0) + "\n Risk Rate: " + j.getString("bushfireRiskRating")));
                     location_address.setText("Location:" + address.getAddressLine(0));
                     risk.setText(j.getString("bushfireRiskRating"));
+                    Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
+                    Log.i("Why do birds fly",j.getString(address.getAddressLine(0)));
 
                     map.animateCamera(CameraUpdateFactory.newCameraPosition(
                             new CameraPosition.Builder()
@@ -457,8 +379,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
         else{
-            input_postcode.setError("No address found");
-            input_postcode.setText("");
+//            input_postcode.setError("No address found");
+//            input_postcode.setText("");
+            System.out.println("do nothing take a chill pill");
         }
     }
 
@@ -762,6 +685,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+    /*This code puts up updates the task bar when it is done for the first time*/
     public void getCurrentPostCode(double  latitude,double longtitude) throws IOException {
         Geocoder geocoder = new Geocoder(this);
         StringBuilder stringBuilder = new StringBuilder();
@@ -946,9 +870,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         .placeOptions(PlaceOptions.builder()
                                 .backgroundColor(Color.parseColor("#EEEEEE"))
                                 .limit(10)
+                                .country("au")
                                 .addInjectedFeature(home)
                                 .addInjectedFeature(work)
-                                .build(PlaceOptions.MODE_CARDS))
+                                .build(PlaceOptions.MODE_CARDS)
+                                )
                         .build(MainActivity.this);
                 startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
 
@@ -959,14 +885,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     private void addUserLocations() {
-        home = CarmenFeature.builder().text("Mapbox SF Office")
+        home = CarmenFeature.builder().text("Home")
                 .geometry(Point.fromLngLat(-122.3964485, 37.7912561))
                 .placeName("50 Beale St, San Francisco, CA")
                 .id("mapbox-sf")
                 .properties(new JsonObject())
                 .build();
 
-        work = CarmenFeature.builder().text("Mapbox DC Office")
+        work = CarmenFeature.builder().text("Place of Importance")
                 .placeName("740 15th Street NW, Washington DC")
                 .geometry(Point.fromLngLat(-77.0338348, 38.899750))
                 .id("mapbox-dc")
