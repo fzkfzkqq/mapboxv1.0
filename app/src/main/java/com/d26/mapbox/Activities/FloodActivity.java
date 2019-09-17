@@ -1,4 +1,4 @@
-package com.d26.mapbox;
+package com.d26.mapbox.Activities;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -27,7 +27,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.d26.mapbox.Activities.DetailsActivity;
 import com.d26.mapbox.Activities.MainActivity;
+import com.d26.mapbox.R;
 import com.d26.mapbox.other.Restful;
 import com.dou361.dialogui.DialogUIUtils;
 import com.google.gson.JsonObject;
@@ -72,10 +74,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.List;
 
-import static com.d26.mapbox.Notifications.CHANNEL_2_ID;
+import static com.d26.mapbox.other.Notifications.CHANNEL_2_ID;
 
 public class FloodActivity extends
-        AppCompatActivity implements OnMapReadyCallback, PermissionsListener, OnLocationClickListener {
+        BaseDrawerActivity implements OnMapReadyCallback, PermissionsListener, OnLocationClickListener {
     private static String PREFS_NAME = "Prefs";
     private PermissionsManager permissionsManager;
     private MapView mapView;
@@ -122,17 +124,17 @@ public class FloodActivity extends
 
         /*Mapbox Key*/
         Mapbox.getInstance(this, "pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA");
-        setContentView(R.layout.activity_flood);
+        getLayoutInflater().inflate(R.layout.activity_flood, frameLayout);
 
-        /*ToolBar : set your title here*/
-        mTopToolbar =  findViewById(R.id.my_toolbar);
-        setSupportActionBar(mTopToolbar);
+
+        BaseDrawerActivity.toolbar.setTitle("Flood Prediction");
+
 
         /*Declare all UI to Objects herer*/
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         risk = (TextView) findViewById(R.id.text_riskrate);
-        search = (ImageButton) findViewById(R.id.btn_search);
+//        search = (ImageButton) findViewById(R.id.btn_search);
         lastupdated = findViewById(R.id.lastupdated);
         btn_humi = findViewById(R.id.btn_humi);
         btn_waterlevel = findViewById(R.id.btn_waterlevel);
@@ -171,10 +173,7 @@ public class FloodActivity extends
 
         }
 
-        /*Inflates the view wait what the fuck is this?*/
-        View popView = View.inflate(this,R.layout.main_popup,null);
-        final Dialog mainPopUp = DialogUIUtils.showCustomAlert(getApplicationContext(),popView,
-                Gravity.BOTTOM,false,true).show();
+
 
 
 
@@ -216,7 +215,7 @@ public class FloodActivity extends
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(FloodActivity.this,Details.class);
+                Intent intent = new Intent(FloodActivity.this, DetailsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("Address1",address.getAddressLine(0));
                 bundle.putString("postcode",address.getPostalCode());
@@ -228,8 +227,8 @@ public class FloodActivity extends
         findViewById(R.id.change_bushfire).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FloodActivity.this, MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//                finish();
             }
         });
 

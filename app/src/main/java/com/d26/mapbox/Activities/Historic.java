@@ -97,6 +97,8 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, "pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA");
         getLayoutInflater().inflate(R.layout.activity_historic, frameLayout);
+        BaseDrawerActivity.toolbar.setTitle("Historic Bushfires");
+
 
 //        setContentView(R.layout.activity_historic);
         mapView = findViewById(R.id.mapView);
@@ -104,10 +106,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
 //        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
 //        getDetailAsyncTask.execute("3125");
 
-        //adding a back menu
-        mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(mTopToolbar);
-        setTitle("Historic Bushfire in 2018");
+
 
 
         mapView.getMapAsync(new OnMapReadyCallback() {

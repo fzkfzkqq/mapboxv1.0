@@ -23,9 +23,7 @@ public class BushfireListActivity extends BaseDrawerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_bushfire_list, frameLayout);
-//        /*ToolBar : set your title here*/
-        Toolbar mTopToolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(mTopToolbar);
+         BaseDrawerActivity.toolbar.setTitle("List");
 
         recyclerView = findViewById(R.id.recycler_view);
         bushfireAdapter=new BushfireAdapter(bushfireDataList);

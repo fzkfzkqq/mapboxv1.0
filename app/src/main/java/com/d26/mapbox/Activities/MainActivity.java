@@ -149,8 +149,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         getLayoutInflater().inflate(R.layout.activity_main, frameLayout);
 
         /*ToolBar : set your title here*/
-        mTopToolbar =  findViewById(R.id.my_toolbar);
-        setSupportActionBar(mTopToolbar);
+//        mTopToolbar =  findViewById(R.id.my_toolbar);
+//        setSupportActionBar(mTopToolbar);
+        BaseDrawerActivity.toolbar.setTitle("BushFire Prediction");
+
 
         /*Declare all UI to Objects herer*/
         mapView = findViewById(R.id.mapView);
@@ -257,8 +259,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         findViewById(R.id.change_flood).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,FloodActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(), FloodActivity.class));
+//                finish();
             }
         });
 
@@ -411,6 +413,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     public void onStart() {
         super.onStart();
         mapView.onStart();
+        getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
+        getNewsAsyncTask.execute();
 
     }
 

@@ -17,8 +17,8 @@ import com.d26.mapbox.R;
 public class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
-    Toolbar toolbar;
     FrameLayout frameLayout;
+    static Toolbar toolbar;
     NavigationView navigationView;
 
     @Override
@@ -26,8 +26,9 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base_drawer);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Bushfire Prediction");
 
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
 
@@ -60,15 +61,28 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             return false;
         }
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        } else if (id == R.id.nav_gallery) {
-            startActivity(new Intent(getApplicationContext(), Historic.class));
-        }
-         else if (id == R.id.nav_disastersList) {
+        switch (id)
+        {
+            case R.id.nav_home:
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                break;
+            case R.id.nav_gallery:
+                startActivity(new Intent(getApplicationContext(), Historic.class));
+                break;
+            case R.id.nav_disastersList:
             startActivity(new Intent(getApplicationContext(), BushfireListActivity.class));
+
         }
+//
+//        if (id == R.id.nav_home) {
+//            // Handle the camera action
+//
+//        } else if (id == R.id.nav_gallery) {
+//
+//        }
+//         else if (id == R.id.nav_disastersList) {
+//
+//        }
 //        } else if (id == R.id.nav_manage) {
 //            startActivity(new Intent(getApplicationContext(), ManageActivity.class));
 //        } else if (id == R.id.nav_share) {

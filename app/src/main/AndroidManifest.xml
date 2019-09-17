@@ -14,7 +14,7 @@
         <activity android:name=".Activities.BushfireListActivity" android:launchMode="singleInstance"></activity>
         <activity android:name=".Activities.Historic"
             android:launchMode="singleInstance"/>
-        <activity android:name=".FloodActivity" />
+        <activity android:name=".Activities.FloodActivity" android:launchMode="singleInstance"/>
 
         <activity
             android:name=".Welcome"
