@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class CauseActivity extends AppCompatActivity implements View.OnClickListener {
+public class CauseActivity extends BaseDrawerActivity implements View.OnClickListener {
 
 
     private Button fuel_load;

@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.app.Notification;
 import android.content.Context;
@@ -15,10 +16,12 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -26,6 +29,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,7 +91,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
 
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
+public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
 
     /*Declarations*/
     private static  String PREFS_NAME = "Prefs" ;
@@ -114,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Button btn_humi;
     private Button btn_wind;
     private Button btn_pressure;
-    private android.support.v7.widget.Toolbar mTopToolbar;
+    private android.support.v7.widget.Toolbar mTopToofelbar;
     private boolean isInTrackingMode;
     private  LocationComponent locationComponent;
     private Button dialogue_button;
@@ -128,6 +133,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private CarmenFeature home;
     private CarmenFeature work;
     String riskString;
+    private Toolbar mTopToolbar;
+    private ImageView dismissButton;
+    private ProgressBar progressBar;
+    private Dialog progressDialog;
+    private static Boolean progressFlag = false;
+
 
 
     @Override
@@ -137,7 +148,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         /*Mapbox Key*/
         Mapbox.getInstance(this, "pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA");
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
+        getLayoutInflater().inflate(R.layout.activity_main, frameLayout);
 
         /*ToolBar : set your title here*/
         mTopToolbar =  findViewById(R.id.my_toolbar);
@@ -155,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         btn_wind = findViewById(R.id.btn_wind);
         location_address = findViewById(R.id.location_address);
 
+
         /*Declare other variables here*/
         final Geocoder geocoder = new Geocoder(this);
         SharedPreferences sharedpreferences;
@@ -162,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         notificationManager = NotificationManagerCompat.from(this);
         Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
         riskString = "null";
-
+        progressBar = findViewById(R.id.indeterminateBar);
 
         /*Make sure that the dialogue does not repeat twice*/
         if (isAgree == false) {
@@ -187,11 +200,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
 
-        /*Inflates the view wait what the fuck is this?*/
-        View popView = View.inflate(this,R.layout.main_popup,null);
-        final Dialog mainPopUp = DialogUIUtils.showCustomAlert(getApplicationContext(),popView,
-                Gravity.BOTTOM,false,true).show();
-
 
 
         /*Fires up the map instance and style
@@ -199,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull final MapboxMap mapboxMap) {
+
                 map = mapboxMap;
 
                 mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
@@ -312,7 +321,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         ));
     }
 
-    /*This is where you induce the search logic, after the intent has been called to the full screen search option
+
+
+
+    /*This is where you induce the search logic, after the intent has been called to the full screen search option (the yellow search button, dummy)
     * Took a braniac like myself to figure this one out lol*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -402,8 +414,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onStart() {
         super.onStart();
         mapView.onStart();
-        getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
-        getNewsAsyncTask.execute();
 
     }
 
@@ -411,6 +421,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onResume() {
         super.onResume();
         mapView.onResume();
+        navigationView.getMenu().getItem(0).setChecked(true);
     }
 
     @Override
@@ -569,6 +580,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //        }
     }
 
+
     /*
     private void addMarker(MapboxMap mapboxMap) {
         MarkerOptions markerOptions = new MarkerOptions();
@@ -645,6 +657,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
          */
         @Override
         public void onSuccess(LocationEngineResult result) {
+
             MainActivity activity = activityWeakReference.get();
 
             if (activity != null) {
@@ -696,7 +709,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    /*This code puts up updates the task bar when it is done for the first time*/
+    /*This code puts up the H,M,L alert on the task bar when it is done for the first time*/
     public void getCurrentPostCode(double  latitude,double longtitude) throws IOException {
         Geocoder geocoder = new Geocoder(this);
         StringBuilder stringBuilder = new StringBuilder();
@@ -710,6 +723,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                Log.i("postcode",postCode);
                 getDetailAsyncTask getDetailAsyncTask = new getDetailAsyncTask();
                 getDetailAsyncTask.execute(postCode);
+//                progressBar.setVisibility(View.GONE);
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -720,8 +734,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private class getDetailAsyncTask extends AsyncTask<String, Void, String> {
         @Override
-        protected String doInBackground(String... params) {
+        protected void onPreExecute() {
 
+        /**
+         * Setting up a Dialog box in the event that the application API calls takes time to load
+         * */
+        if(!progressFlag) {
+            progressDialog = new Dialog(MainActivity.this);
+            progressDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+            progressDialog.setContentView(getLayoutInflater().inflate(R.layout.progressbar
+                    , null));
+            progressDialog.show();
+            progressFlag = true;
+        }
+
+        }
+        @Override
+        protected String doInBackground(String... params) {
             return Restful.findByPostcode(params[0]);
         }
 
@@ -744,6 +773,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     btn_humi.setText((j.get("humidity")).toString() + "%");
                     btn_wind.setText((j.get("windSpeed")).toString() + " Km/h");
                     btn_pressure.setText((j.get("airPressure")).toString() + " hPa");
+                    if(progressFlag) {
+
+                        progressDialog.dismiss();
+                    }
                 }
                 else
                 {
@@ -866,13 +899,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
                     }
-
                 }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
             }
 
         }

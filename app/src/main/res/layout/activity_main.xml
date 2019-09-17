@@ -114,18 +114,11 @@
                             android:textSize="14sp" />
                     </LinearLayout>
 
-
-                    <!--<TextView-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="The possibility of happening a bush fire here is :"/>-->
-
                     <TextView
                         android:id="@+id/text_riskrate"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_margin="0dp"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
@@ -134,10 +127,11 @@
                         android:layout_weight="4"
                         android:background="@drawable/rounded_border"
                         android:gravity="center"
-                        android:text="Updating Risk Rate"
+                        android:text="@string/updating_risk_rate"
                         android:textColor="@color/cardwhite"
-                        android:textSize="25dp"
-                        android:tooltipText="Updated for your location on a daily basis." />
+                        android:textSize="25sp"
+                        android:tooltipText="Updated for your location on a daily basis."
+                        />
                 </LinearLayout>
 
                 <View
