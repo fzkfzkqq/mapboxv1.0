@@ -1,13 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.pusher:pusher-java-client:2.0.0@jar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.pusher/pusher-java-client/2.0.0/4a7981d115990427c23b1779eae39907cc58b5f1/pusher-java-client-2.0.0.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pusher/pusher-java-client/2.0.0/4a7981d115990427c23b1779eae39907cc58b5f1/pusher-java-client-2.0.0.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.pusher/pusher-java-client/2.0.0/79c56b8096d7ce80eed56b80f99ade6cdd9b62a1/pusher-java-client-2.0.0-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.pusher/pusher-java-client/2.0.0/83d22aee8058ae81c5cbb69d412ec694860a0f29/pusher-java-client-2.0.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pusher/pusher-java-client/2.0.0/83d22aee8058ae81c5cbb69d412ec694860a0f29/pusher-java-client-2.0.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

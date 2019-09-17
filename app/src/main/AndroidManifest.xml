@@ -14,6 +14,8 @@
         <activity android:name=".Activities.BushfireListActivity" android:launchMode="singleInstance"></activity>
         <activity android:name=".Activities.Historic"
             android:launchMode="singleInstance"/>
+        <activity android:name=".FloodActivity" />
+
         <activity
             android:name=".Welcome"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -21,10 +23,8 @@
             android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MainActivity" android:launchMode="singleInstance"></activity>
