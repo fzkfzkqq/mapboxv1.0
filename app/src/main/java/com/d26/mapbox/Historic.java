@@ -70,7 +70,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.heatmapOpacity;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.heatmapRadius;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.heatmapWeight;
 
-public class Historic extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener {
+public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, PermissionsListener {
     private PermissionsManager permissionsManager;
     private MapView mapView;
     private MapboxMap map;
@@ -95,7 +95,9 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, "pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA");
-        setContentView(R.layout.activity_historic);
+        getLayoutInflater().inflate(R.layout.activity_historic, frameLayout);
+
+//        setContentView(R.layout.activity_historic);
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
 //        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
@@ -268,6 +270,7 @@ public class Historic extends AppCompatActivity implements OnMapReadyCallback, P
     public void onResume() {
         super.onResume();
         mapView.onResume();
+        navigationView.getMenu().getItem(1).setChecked(true);
     }
 
     @Override

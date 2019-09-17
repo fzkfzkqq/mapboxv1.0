@@ -37,6 +37,7 @@
         <activity android:name=".ActionActivity" />
         <activity android:name=".CauseActivity" />
         <activity android:name=".Details" />
+        <activity android:name=".BaseDrawerActivity" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />

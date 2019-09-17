@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.app.Notification;
 import android.content.Context;
@@ -90,7 +91,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
 
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
+public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener,OnLocationClickListener {
 
     /*Declarations*/
     private static  String PREFS_NAME = "Prefs" ;
@@ -147,7 +148,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         /*Mapbox Key*/
         Mapbox.getInstance(this, "pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA");
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
+        getLayoutInflater().inflate(R.layout.activity_main, frameLayout);
 
         /*ToolBar : set your title here*/
         mTopToolbar =  findViewById(R.id.my_toolbar);
@@ -413,6 +415,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onResume() {
         super.onResume();
         mapView.onResume();
+        navigationView.getMenu().getItem(0).setChecked(true);
     }
 
     @Override
@@ -749,7 +752,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         protected void onPostExecute(String details) {
             JSONArray jsonArray = null;
 
-
             try {
                 jsonArray = new JSONArray(details);
             } catch (JSONException e) {
@@ -765,7 +767,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     btn_humi.setText((j.get("humidity")).toString() + "%");
                     btn_wind.setText((j.get("windSpeed")).toString() + " Km/h");
                     btn_pressure.setText((j.get("airPressure")).toString() + " hPa");
-                    progressDialog.dismiss();
+                    if(progressFlag) {
+
+                        progressDialog.dismiss();
+                    }
                 }
                 else
                 {
@@ -888,13 +893,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
                     }
-
                 }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
             }
 
         }
