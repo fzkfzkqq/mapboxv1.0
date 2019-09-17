@@ -95,9 +95,9 @@ public class FloodActivity extends
     //    private EditText input_postcode;
     private Button btn_c_findmore;
     private Button btn_action_exp;
-    private Button btn_temp;
+    private Button btn_waterlevel;
     private Button btn_humi;
-    private Button btn_wind;
+    private Button btn_rainfall;
     private Button btn_pressure;
     private android.support.v7.widget.Toolbar mTopToolbar;
     private boolean isInTrackingMode;
@@ -135,9 +135,8 @@ public class FloodActivity extends
         search = (ImageButton) findViewById(R.id.btn_search);
         lastupdated = findViewById(R.id.lastupdated);
         btn_humi = findViewById(R.id.btn_humi);
-        btn_pressure = findViewById(R.id.btn_pres);
-        btn_temp = findViewById(R.id.btn_temp);
-        btn_wind = findViewById(R.id.btn_wind);
+        btn_waterlevel = findViewById(R.id.btn_waterlevel);
+        btn_rainfall = findViewById(R.id.btn_rainfall);
         location_address = findViewById(R.id.location_address);
 
         /*Declare other variables here*/
@@ -297,7 +296,7 @@ public class FloodActivity extends
                 search_add = geocoder.getFromLocationName(selectedCarmenFeature.placeName(), 1).get(0);
                 address = search_add;
 
-                getDetailAsyncTask getSearchDeatilAsyncTask = new getDetailAsyncTask();
+                getFloodDetailAsyncTask getSearchDeatilAsyncTask = new getFloodDetailAsyncTask();
                 getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
 
                 try {
@@ -561,8 +560,8 @@ public class FloodActivity extends
 //                Log.i("address",address.getAddressLine(0));
                 postCode = add.getPostalCode();
 //                Log.i("postcode",postCode);
-                getDetailAsyncTask getDetailAsyncTask = new getDetailAsyncTask();
-                getDetailAsyncTask.execute(postCode);
+                getFloodDetailAsyncTask getFloodDetailAsyncTask= new getFloodDetailAsyncTask();
+                getFloodDetailAsyncTask.execute(postCode);
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -597,7 +596,7 @@ public class FloodActivity extends
         //here is to get the parks using AsyncTask method
         @Override
         protected String doInBackground(String... strings) {
-            return Restful.findAllBFAlerts();
+            return Restful.findAllFloodAlerts();
         }
 
         @Override
@@ -652,17 +651,17 @@ public class FloodActivity extends
 
 
 
-    private class getDetailAsyncTask extends AsyncTask<String, Void, String> {
+    private class getFloodDetailAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
 
-            return Restful.findByPostcode(params[0]);
+            return Restful.findFloodByPostcode(params[0]);
         }
 
         @Override
         protected void onPostExecute(String details) {
             JSONArray jsonArray = null;
-
+            Log.i("life","So boring");
             try {
                 jsonArray = new JSONArray(details);
             } catch (JSONException e) {
@@ -671,13 +670,13 @@ public class FloodActivity extends
             try {
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
-                    risk.setText(j.getString("bushfireRiskRating"));
+                    risk.setText(j.getString("floodRiskRating"));
+                    Log.i("Json J",j.toString());
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
-                    btn_temp.setText((j.get("airTemperature")).toString() + "°C");
+                    btn_waterlevel.setText((j.get("airTemperature")).toString() + "°C");
                     btn_humi.setText((j.get("humidity")).toString() + "%");
-                    btn_wind.setText((j.get("windSpeed")).toString() + " Km/h");
-                    btn_pressure.setText((j.get("airPressure")).toString() + " hPa");
+                    btn_rainfall.setText((j.get("rainfall")).toString() + " Km/h");
                 }
                 else
                 {
