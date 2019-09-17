@@ -260,7 +260,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), FloodActivity.class));
-//                finish();
+                finish();
             }
         });
 
@@ -858,6 +858,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         //here is to get the parks using AsyncTask method
         @Override
         protected String doInBackground(String... strings) {
+
+//            notificationManager = NotificationManagerCompat.from(this);
+//            Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
             return Restful.findAllBFAlerts();
         }
 
@@ -895,6 +898,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
                             if (j.getString("location") != null) {
                                 parkMarks(latLng, markerSnippet);
+                                SharedPreferences sharedpreferences;
+                                sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor= sharedpreferences.edit();
+                                editor.putString("BushfireAlerts",sharedpreferences.getString("BushfireAlerts",null) + "");
                             }
 
                         } catch (JSONException e) {

@@ -17,10 +17,11 @@
         <activity android:name=".Activities.FloodActivity" android:launchMode="singleInstance"/>
 
         <activity
-            android:name=".Welcome"
+            android:name=".Activities.Welcome"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/DisasterMate"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/FullscreenTheme"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -34,7 +35,7 @@
 
 
 
-        <activity android:name=".Activities.BaseDrawerActivity" />
+        <activity android:name=".Activities.BaseDrawerActivity" android:launchMode="singleInstance"/>
 
 
 
