@@ -4,24 +4,21 @@
     package="com.d26.mapbox">
 
     <application
-        android:name=".Notifications"
+        android:name=".other.Notifications"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BushfireListActivity"></activity>
-        <activity
-            android:name=".drawerLayout.HomeActivity"
-            android:label="@string/title_activity_drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Historic" />
+        <activity android:name=".Activities.BushfireListActivity" android:launchMode="singleInstance"></activity>
+        <activity android:name=".Activities.Historic"
+            android:launchMode="singleInstance"/>
         <activity
             android:name=".Welcome"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/DisasterMate"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,11 +27,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".ActionActivity" />
-        <activity android:name=".CauseActivity" />
-        <activity android:name=".Details" />
-        <activity android:name=".BaseDrawerActivity" />
+        <activity android:name=".Activities.MainActivity" android:launchMode="singleInstance"></activity>
+        <activity android:name=".Activities.ActionActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".Activities.CauseActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".Activities.DetailsActivity" android:launchMode="singleInstance"/>
+
+
+
+        <activity android:name=".Activities.BaseDrawerActivity" />
+
+
+
     </application>
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

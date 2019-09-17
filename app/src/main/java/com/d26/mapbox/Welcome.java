@@ -16,7 +16,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.d26.mapbox.drawerLayout.HomeActivity;
+import com.d26.mapbox.Activities.MainActivity;
 
 
 /**
