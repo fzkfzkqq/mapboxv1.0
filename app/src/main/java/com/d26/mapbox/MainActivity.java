@@ -248,7 +248,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-
+        findViewById(R.id.change_flood).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,FloodActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         /*This is uses a third party application called pusher to get real time alerts

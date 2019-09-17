@@ -18,6 +18,7 @@
 
         </activity>
         <activity android:name=".Historic" />
+        <activity android:name=".FloodActivity" />
         <activity
             android:name=".Welcome"
             android:configChanges="orientation|keyboardHidden|screenSize"
