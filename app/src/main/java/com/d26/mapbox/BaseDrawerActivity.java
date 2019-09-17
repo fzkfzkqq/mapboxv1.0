@@ -64,8 +64,9 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         } else if (id == R.id.nav_gallery) {
             startActivity(new Intent(getApplicationContext(), Historic.class));
         }
-//        } else if (id == R.id.nav_slideshow) {
-//            startActivity(new Intent(getApplicationContext(), SlideshowActivity.class));
+         else if (id == R.id.nav_disastersList) {
+            startActivity(new Intent(getApplicationContext(), BushfireListActivity.class));
+        }
 //        } else if (id == R.id.nav_manage) {
 //            startActivity(new Intent(getApplicationContext(), ManageActivity.class));
 //        } else if (id == R.id.nav_share) {
