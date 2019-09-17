@@ -121,7 +121,7 @@ public class Welcome extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent i = new Intent(Welcome.this, HomeActivity.class);
+                    Intent i = new Intent(Welcome.this, MainActivity.class);
                     startActivity(i);
                 }
             }, TIME_OUT);

@@ -40,12 +40,12 @@
             android:layout_alignParentEnd="true" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/change_flood"
+            android:id="@+id/change_bushfire"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|end"
             android:layout_margin="16dp"
-            android:src="@drawable/humidity"
+            android:src="@drawable/fire2"
             android:layout_above="@id/popup_group"
             android:layout_alignParentLeft="true" />
 
@@ -114,11 +114,18 @@
                             android:textSize="14sp" />
                     </LinearLayout>
 
+
+                    <!--<TextView-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="The possibility of happening a bush fire here is :"/>-->
+
                     <TextView
                         android:id="@+id/text_riskrate"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
                         android:layout_margin="0dp"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
@@ -127,11 +134,10 @@
                         android:layout_weight="4"
                         android:background="@drawable/rounded_border"
                         android:gravity="center"
-                        android:text="@string/updating_risk_rate"
+                        android:text="Updating Risk Rate"
                         android:textColor="@color/cardwhite"
-                        android:textSize="25sp"
-                        android:tooltipText="Updated for your location on a daily basis."
-                        />
+                        android:textSize="25dp"
+                        android:tooltipText="Updated for your location on a daily basis." />
                 </LinearLayout>
 
                 <View
@@ -166,7 +172,7 @@
                     <!--/>-->
 
                     <Button
-                        android:id="@+id/btn_temp"
+                        android:id="@+id/btn_rainfall"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
@@ -177,7 +183,7 @@
                         android:fontFamily="sans-serif"
                         android:text="No DATA"
                         android:textSize="16sp"
-                        android:tooltipText="Learn more about how bush fires are caused" />
+                        android:tooltipText="Learn more about how flood are caused" />
 
                     <Button
                         android:id="@+id/btn_humi"
@@ -194,27 +200,13 @@
                         android:tooltipText="Learn more about how bush fires are caused" />
 
                     <Button
-                        android:id="@+id/btn_wind"
+                        android:id="@+id/btn_waterlevel"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@color/cardwhite"
                         android:drawableTop="@drawable/wind"
-                        android:drawablePadding="10dp"
-                        android:fontFamily="sans-serif"
-                        android:text="No DATA"
-                        android:textSize="16sp"
-                        android:tooltipText="Learn more about how bush fires are caused" />
-
-                    <Button
-                        android:id="@+id/btn_pres"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:background="@color/cardwhite"
-                        android:drawableTop="@drawable/preasure"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
                         android:text="No DATA"

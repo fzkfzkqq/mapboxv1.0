@@ -72,8 +72,6 @@ public class HistoricFragment extends Fragment {
         mapView = vHistorymap.findViewById(R.id.historyMap);
         mapView.onCreate(savedInstanceState);
 
-
-
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull final MapboxMap mapboxMap) {
