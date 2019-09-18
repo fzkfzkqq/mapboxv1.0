@@ -4,11 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.d26.mapbox.R;
 import com.d26.mapbox.other.BushfireAdapter;
@@ -47,6 +51,8 @@ public class BushfireListActivity extends BaseDrawerActivity {
          BaseDrawerActivity.toolbar.setTitle("Current Bushfires");
 
         recyclerView = findViewById(R.id.recycler_view);
+
+
         bushfireAdapter=new BushfireAdapter(bushfireDataList);
         RecyclerView.LayoutManager manager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
@@ -54,6 +60,7 @@ public class BushfireListActivity extends BaseDrawerActivity {
         recyclerView.setAdapter(bushfireAdapter);
         getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
         getNewsAsyncTask.execute();
+
 
     }
 
@@ -117,10 +124,10 @@ public class BushfireListActivity extends BaseDrawerActivity {
                 }
             }
 
+            /*Add the latest alerts first and set the adapter*/
             Collections.reverse(bushfireDataList2);
             bushfireDataList = bushfireDataList2;
             bushfireAdapter=new BushfireAdapter(bushfireDataList);
-            recyclerView.setAdapter(bushfireAdapter);
 
             SharedPreferences sharedPreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -128,7 +135,12 @@ public class BushfireListActivity extends BaseDrawerActivity {
             editor.putInt("responding", resp);
             editor.putInt("undercontrol", undercntrl);
             editor.putInt("notundercontrol", notundcntrl);
-            editor.commit();
+            editor.apply();
+
+            recyclerView.setAdapter(bushfireAdapter);
+
+
+
 
         }
 
