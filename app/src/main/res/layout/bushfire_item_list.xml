@@ -2,12 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
-
-
     <LinearLayout
         android:layout_width="100dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="1"
         android:gravity="center"
@@ -18,8 +21,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Status"
+            android:gravity="center"
             android:textSize="20sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
+
+        </TextView>
 
     </LinearLayout>
     <LinearLayout
@@ -35,7 +41,8 @@
         android:layout_height="wrap_content"
         android:text="Location"
         android:textSize="20sp"
-        android:textStyle="bold">
+        android:textStyle="bold"
+        android:gravity="center">
 
     </TextView>
 
@@ -46,8 +53,60 @@
         android:layout_marginBottom="10dp"
         android:text="Last Updated"
         android:textSize="16sp"
-        android:textStyle="bold">
+        android:textStyle="bold"
+        android:gravity="center">
         </TextView>
     </LinearLayout>
+</LinearLayout>
+
+<!--<LinearLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:clickable="true"-->
+<!--    android:visibility="visible"-->
+<!--    android:id="@+id/lpulldown">-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        >-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/lat"-->
+<!--            android:text="FUCK YOU BITCH">-->
+<!--        </TextView>-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/longi"-->
+<!--            android:text="FUCK YOU BITCH">-->
+<!--        </TextView>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:visibility="gone">-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/loc"-->
+<!--            android:text="FUCK YOU BITCH">-->
+<!--        </TextView>-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/stat"-->
+<!--            android:text="FUCK YOU BITCH">-->
+<!--        </TextView>-->
+
+<!--    </LinearLayout>-->
+<!--</LinearLayout>-->
 
 </LinearLayout>
+
