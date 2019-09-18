@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -246,13 +247,46 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         risk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Risk",risk.getText().toString());
+                final Dialog settingsDialog = new Dialog(v.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                if (risk.getText().toString().equals("LOW")){
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_bushfirelow
+                            , null));
+                    settingsDialog.show();
+                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
 
-                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("Address1",address.getAddressLine(0));
-                bundle.putString("postcode",address.getPostalCode());
-                intent.putExtras(bundle);
-                startActivity(intent);
+                }
+                else if (risk.getText().toString().equals("MEDIUM")){
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_meidumbushfire
+                            , null));
+                    settingsDialog.show();
+                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
+                }
+                else if (risk.getText().toString().equals("HIGH")){
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_highbushfire
+                            , null));
+                    settingsDialog.show();
+                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
+                }
             }
         });
 
@@ -264,7 +298,97 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             }
         });
 
+        btn_temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog settingsDialog = new Dialog(view.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
+                        , null));
+                settingsDialog.show();
+                ImageView image = settingsDialog.findViewById(R.id.factor_image);
+                image.setBackgroundResource(R.drawable.factor_temp);
+                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
+                factor_des.setText("Temperature is the main factor, especially in Summer and Autumn.");
+                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                dialogue_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        settingsDialog.dismiss();
+                    }
+                });
 
+            }
+        });
+
+        btn_humi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog settingsDialog = new Dialog(view.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
+                        , null));
+                settingsDialog.show();
+                ImageView image = settingsDialog.findViewById(R.id.factor_image);
+                image.setBackgroundResource(R.drawable.factor_humi);
+                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
+                factor_des.setText("Relative humidity is commonly used to measure atmospheric moisture.");
+                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                dialogue_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        settingsDialog.dismiss();
+                    }
+                });
+
+            }
+        });
+
+        btn_pressure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog settingsDialog = new Dialog(view.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
+                        , null));
+                settingsDialog.show();
+                ImageView image = settingsDialog.findViewById(R.id.factor_image);
+                image.setBackgroundResource(R.drawable.factor_airpres);
+                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
+                factor_des.setText("Adding a feature like a trough or front that changes the wind direction increases the danger.");
+                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                dialogue_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        settingsDialog.dismiss();
+                    }
+                });
+
+            }
+        });
+
+        btn_wind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog settingsDialog = new Dialog(view.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
+                        , null));
+                settingsDialog.show();
+                ImageView image = settingsDialog.findViewById(R.id.factor_image);
+                image.setBackgroundResource(R.drawable.factor_wind);
+                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
+                factor_des.setText("How wind works during bush fire.");
+                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                dialogue_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        settingsDialog.dismiss();
+                    }
+                });
+
+            }
+        });
         /*This is uses a third party application called pusher to get real time alerts
         * as of now we need 2 channels, one for updates and one for prediction alerts*/
 

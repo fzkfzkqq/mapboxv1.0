@@ -16,22 +16,18 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.d26.mapbox.Activities.DetailsActivity;
-import com.d26.mapbox.Activities.MainActivity;
 import com.d26.mapbox.R;
 import com.d26.mapbox.other.Restful;
-import com.dou361.dialogui.DialogUIUtils;
 import com.google.gson.JsonObject;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.permissions.PermissionsListener;
@@ -93,14 +89,9 @@ public class FloodActivity extends
     private JSONObject j = new JSONObject();
     private String geojsonSourceLayerId = "geojsonSourceLayerId";
     private String symbolIconId = "symbolIconId";
-    private ImageButton search;
-    //    private EditText input_postcode;
-    private Button btn_c_findmore;
-    private Button btn_action_exp;
-    private Button btn_waterlevel;
+    private Button btn_airPressure;
     private Button btn_humi;
     private Button btn_rainfall;
-    private Button btn_pressure;
     private android.support.v7.widget.Toolbar mTopToolbar;
     private boolean isInTrackingMode;
     private LocationComponent locationComponent;
@@ -137,7 +128,7 @@ public class FloodActivity extends
 //        search = (ImageButton) findViewById(R.id.btn_search);
         lastupdated = findViewById(R.id.lastupdated);
         btn_humi = findViewById(R.id.btn_humi);
-        btn_waterlevel = findViewById(R.id.btn_waterlevel);
+        btn_airPressure = findViewById(R.id.btn_waterlevel);
         btn_rainfall = findViewById(R.id.btn_rainfall);
         location_address = findViewById(R.id.location_address);
 
@@ -148,34 +139,6 @@ public class FloodActivity extends
         notificationManager = NotificationManagerCompat.from(this);
         Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
         riskString = "null";
-
-
-        /*Make sure that the dialogue does not repeat twice*/
-        if (isAgree == false) {
-
-            final Dialog settingsDialog = new Dialog(this);
-            settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-            settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.image_layout
-                    , null));
-            settingsDialog.show();
-
-            dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
-            dialogue_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putBoolean("d_accepted", true);
-                    editor.commit();
-                    settingsDialog.dismiss();
-                }
-            });
-
-        }
-
-
-
-
 
         /*Fires up the map instance and style
          * Here is where you also functions such as search and adding user locations*/
@@ -214,13 +177,45 @@ public class FloodActivity extends
         risk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Dialog settingsDialog = new Dialog(v.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                if (risk.getText().toString().equals("LOW")){
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_lowflood
+                            , null));
+                    settingsDialog.show();
+                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
 
-                Intent intent = new Intent(FloodActivity.this, DetailsActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("Address1",address.getAddressLine(0));
-                bundle.putString("postcode",address.getPostalCode());
-                intent.putExtras(bundle);
-                startActivity(intent);
+                }
+                else if (risk.getText().toString().equals("MEDIUM")){
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_medflood
+                            , null));
+                    settingsDialog.show();
+                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
+                }
+                else if (risk.getText().toString().equals("HIGH")){
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_lowflood
+                            , null));
+                    settingsDialog.show();
+                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
+                }
             }
         });
 
@@ -232,6 +227,71 @@ public class FloodActivity extends
             }
         });
 
+        btn_airPressure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog settingsDialog = new Dialog(view.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
+                        , null));
+                settingsDialog.show();
+                ImageView image = settingsDialog.findViewById(R.id.factor_image);
+                image.setBackgroundResource(R.drawable.flood_air);
+                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
+                factor_des.setText("How air pressure affects floods");
+                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                dialogue_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        settingsDialog.dismiss();
+                    }
+                });
+            }
+        });
+
+        btn_humi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog settingsDialog = new Dialog(view.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
+                        , null));
+                settingsDialog.show();
+                ImageView image = settingsDialog.findViewById(R.id.factor_image);
+                image.setBackgroundResource(R.drawable.flood_humi);
+                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
+                factor_des.setText("How humidity affects flood");
+                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                dialogue_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        settingsDialog.dismiss();
+                    }
+                });
+            }
+        });
+
+        btn_rainfall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog settingsDialog = new Dialog(view.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
+                        , null));
+                settingsDialog.show();
+                ImageView image = settingsDialog.findViewById(R.id.factor_image);
+                image.setBackgroundResource(R.drawable.flood_rainfall);
+                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
+                factor_des.setText("How rainfall lead to a flood");
+                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                dialogue_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        settingsDialog.dismiss();
+                    }
+                });
+            }
+        });
         /*This is uses a third party application called pusher to get real time alerts
          * as of now we need 2 channels, one for updates and one for prediction alerts*/
 
@@ -538,7 +598,7 @@ public class FloodActivity extends
         markerOptions.title("Bushfire");
         markerOptions.snippet(snippet);
         IconFactory iconFactory = IconFactory.getInstance(this);
-        Icon icon = iconFactory.fromResource(R.drawable.news);
+        Icon icon = iconFactory.fromResource(R.drawable.flood);
         markerOptions.setIcon(icon);
         try {
             map.addMarker(markerOptions);
@@ -673,9 +733,9 @@ public class FloodActivity extends
                     Log.i("Json J",j.toString());
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
-                    btn_waterlevel.setText((j.get("airTemperature")).toString() + "°C");
+                    btn_airPressure.setText((j.get("airPressure")).toString() + " hPa");
                     btn_humi.setText((j.get("humidity")).toString() + "%");
-                    btn_rainfall.setText((j.get("rainfall")).toString() + " Km/h");
+                    btn_rainfall.setText((j.get("rainfall")).toString() + " mm");
                 }
                 else
                 {
