@@ -247,13 +247,46 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         risk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Risk",risk.getText().toString());
+                final Dialog settingsDialog = new Dialog(v.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                if (risk.getText().toString().equals("LOW")){
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_bushfirelow
+                            , null));
+                    settingsDialog.show();
+                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
 
-                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("Address1",address.getAddressLine(0));
-                bundle.putString("postcode",address.getPostalCode());
-                intent.putExtras(bundle);
-                startActivity(intent);
+                }
+                else if (risk.getText().toString().equals("MEDIUM")){
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_meidumbushfire
+                            , null));
+                    settingsDialog.show();
+                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
+                }
+                else if (risk.getText().toString().equals("HIGH")){
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_highbushfire
+                            , null));
+                    settingsDialog.show();
+                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
+                }
             }
         });
 

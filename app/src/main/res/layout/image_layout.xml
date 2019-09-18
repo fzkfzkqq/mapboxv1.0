@@ -10,7 +10,7 @@
         android:gravity="center"
         android:text="Long Press and Hold on any button to find out what it can do"
         android:textColor="@android:color/black"
-        android:textSize="24dp" />
+        android:textSize="18dp" />
     <Button
         android:id="@+id/dialogue_button"
         android:background="@color/mapbox_grey"

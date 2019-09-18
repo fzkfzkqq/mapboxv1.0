@@ -1,0 +1,53 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_alignBottom="@+id/dialogue_button"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Step 1: Rake Up Leaves and Put Them in a Green Bin"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/low_bf1"
+                android:scaleType="fitXY"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Step 2: Move Mulch or Firewood Well Away From Your House"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/low_bf2"
+                android:scaleType="fitXY"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Step 3: Patch Up Gaps in Roofs and Verandahs"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/low_bf3"
+                android:scaleType="fitXY"/>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/dialogue_button"
+        android:background="@color/mapbox_grey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Got it!"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

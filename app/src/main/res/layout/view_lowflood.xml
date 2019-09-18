@@ -1,0 +1,53 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_alignBottom="@+id/dialogue_button"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Step 1: Creating a Plan"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/low_flood1"
+                android:scaleType="fitXY"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Step 2: Preparing an Emergency Box for Evacuation"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/low_flood2"
+                android:scaleType="fitXY"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Step 3: Readying Your Home and Documents in Advance"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/low_flood3"
+                android:scaleType="fitXY"/>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/dialogue_button"
+        android:background="@color/mapbox_grey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Got it!"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
