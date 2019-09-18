@@ -76,20 +76,6 @@ public class BushfireAdapter extends RecyclerView.Adapter<BushfireAdapter.MyView
             location=itemView.findViewById(R.id.location);
             lastUpdated=itemView.findViewById(R.id.last_updated);
 
-
-
-//            Toast.makeText(itemView.getContext(),"Hello Dickhead",Toast.LENGTH_SHORT);
-//            SharedPreferences sharedPreferences = itemView.getContext().getSharedPreferences("Prefs",Context.MODE_PRIVATE);
-//            safe = sharedPreferences.getInt("safe", 0);
-//            resp = sharedPreferences.getInt("responinding", 0);
-//            cntrl = sharedPreferences.getInt("undercontrol", 0);
-//            ncntrl = sharedPreferences.getInt("notundercontrol", 0);
-
-
-
-
-
-
         }
 
         public void bind(final BushfireModel bushfireModel,final OnItemClickListener listener) {

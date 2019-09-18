@@ -151,20 +151,6 @@
                     android:background="@color/cardwhite"
                     android:orientation="horizontal">
 
-                    <!--<TextView-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:textSize="20dp"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:text="What Causes Bushfires?"/>-->
-                    <!--<TextView-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="What causes the bushfire?"-->
-                    <!--/>-->
-
                     <Button
                         android:id="@+id/btn_temp"
                         android:layout_width="0dp"

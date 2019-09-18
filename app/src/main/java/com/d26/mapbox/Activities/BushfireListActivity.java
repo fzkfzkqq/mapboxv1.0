@@ -1,10 +1,12 @@
 package com.d26.mapbox.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +21,8 @@ import com.d26.mapbox.R;
 import com.d26.mapbox.other.BushfireAdapter;
 import com.d26.mapbox.other.BushfireModel;
 import com.d26.mapbox.other.Restful;
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import org.json.JSONArray;
@@ -37,23 +41,34 @@ public class BushfireListActivity extends BaseDrawerActivity {
 
     private RecyclerView recyclerView;
     private BushfireAdapter bushfireAdapter;
-    private List<BushfireModel> bushfireDataList =new ArrayList();
-    private List<BushfireModel> bushfireDataList2 =new ArrayList();
-//    private int safe,resp,cntrl,ncntrl;
-    private TextView tvsafe,tvresp,tvcntrl,tvncntrl;
-    private LinearLayout lsafe,lcont,lrep,lncont, lpulldown;
+    private static List<BushfireModel> bushfireDataList =new ArrayList();
+    private static List<BushfireModel> bushfireDataList2 =new ArrayList();
 
-    private static int safe,resp,undercntrl,notundcntrl = 0;
-    private List<BushfireModel> safeList =new ArrayList();
-    private List<BushfireModel> controlList =new ArrayList();
-    private List<BushfireModel> ncontrolList =new ArrayList();
-    private List<BushfireModel> respList =new ArrayList();
+
+    private static List<BushfireModel> floodDataList =new ArrayList();
+    private static List<BushfireModel> floodDataList2 =new ArrayList();
+
+//    private int safe,resp,cntrl,ncntrl;
+    private TextView tvsafe,tvresp,tvcntrl,tvncntrl,req,flood,compl;
+    private LinearLayout lsafe,lcont,lrep,lncont,lreq,lflood,lcomplete,layFire,layFlood;
+
+
+    private static int safe,resp,undercntrl,notundcntrl,floodcount,compcount,asscount = 0;
+    private static List<BushfireModel> safeList =new ArrayList();
+    private static List<BushfireModel> controlList =new ArrayList();
+    private static List<BushfireModel> ncontrolList =new ArrayList();
+    private static List<BushfireModel> respList =new ArrayList();
+
+    private static List<BushfireModel> floodList =new ArrayList();
+    private static List<BushfireModel> completeList =new ArrayList();
+    private static List<BushfireModel> assistanceList =new ArrayList();
+
+    private FloatingActionButton showAll,showFloods,showFire;
 
     Date date1;
     SimpleDateFormat format;
     static String location,alertUpdated,status;
     View view;
-
 
 
     @Override
@@ -71,6 +86,22 @@ public class BushfireListActivity extends BaseDrawerActivity {
         lcont = findViewById(R.id.lcont);
         lncont = findViewById(R.id.lncont);
         lrep   = findViewById(R.id.lresp);
+        req = findViewById(R.id.req_count);
+        flood = findViewById(R.id.flood_count);
+        compl = findViewById(R.id.complete_count);
+        lreq = findViewById(R.id.lreq);
+        lflood = findViewById(R.id.lflood);
+        lcomplete = findViewById(R.id.lcomplete);
+        layFire = findViewById(R.id.layFire);
+        layFlood = findViewById(R.id.layFlood);
+
+
+        showAll = findViewById(R.id.show_all);
+        showFloods = findViewById(R.id.change_flood);
+        showFire = findViewById(R.id.change_fire);
+
+
+
 
 
 
@@ -80,6 +111,10 @@ public class BushfireListActivity extends BaseDrawerActivity {
         recyclerView.setAdapter(bushfireAdapter);
         getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
         getNewsAsyncTask.execute();
+
+        getNewsAsyncTaskF getNewsAsyncTaskF = new getNewsAsyncTaskF();
+        getNewsAsyncTaskF.execute();
+
 
 
         lsafe.setOnClickListener(new View.OnClickListener() {
@@ -136,8 +171,62 @@ public class BushfireListActivity extends BaseDrawerActivity {
             }
         });
 
-    }
+        lcomplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setAdapter(new BushfireAdapter(revList(completeList), new BushfireAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BushfireModel item) {
+                        Toast.makeText(getApplicationContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                    }
+                }));
+            }
+        });
 
+        lflood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setAdapter(new BushfireAdapter(revList(floodList), new BushfireAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BushfireModel item) {
+                        Toast.makeText(getApplicationContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                    }
+                }));
+            }
+        });
+
+        lreq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setAdapter(new BushfireAdapter(revList(assistanceList), new BushfireAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BushfireModel item) {
+                        Toast.makeText(getApplicationContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                    }
+                }));
+            }
+        });
+
+
+
+        showAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layFlood.setVisibility(View.GONE);
+                layFire.setVisibility(View.GONE);
+                bushfireDataList.addAll(floodDataList);
+                recyclerView.setAdapter(new BushfireAdapter(revList(bushfireDataList), new BushfireAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BushfireModel item) {
+                        Toast.makeText(getApplicationContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                    }
+                }));
+            }
+        });
+
+
+
+    }
 
     public class getNewsAsyncTask extends AsyncTask<String, Void, String> {
 
@@ -186,7 +275,7 @@ public class BushfireListActivity extends BaseDrawerActivity {
                         checkcount(j.getString("status"));
 
 
-                    BushfireModel bushfireModel = new BushfireModel(status,location,format.format(date1));
+                    BushfireModel bushfireModel = new BushfireModel(status + "\nBushfire",location,format.format(date1));
                        bushfireDataList2.add(bushfireModel);
 
                     } catch (JSONException e) {
@@ -208,13 +297,122 @@ public class BushfireListActivity extends BaseDrawerActivity {
             tvcntrl.setText(String.valueOf(undercntrl));
             tvresp.setText(String.valueOf(resp));
             tvncntrl.setText(String.valueOf(notundcntrl));
-
             recyclerView.setAdapter(new BushfireAdapter(bushfireDataList, new BushfireAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BushfireModel item) {
                     Toast.makeText(getApplicationContext(), "Item Clicked", Toast.LENGTH_LONG).show();
                 }
             }));
+
+
+            showFire.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("RestrictedApi")
+                @Override
+                public void onClick(View v) {
+                    showFire.setVisibility(View.GONE);
+                    showFloods.setVisibility(View.VISIBLE);
+                    layFire.setVisibility(View.VISIBLE);
+                    layFlood.setVisibility(View.GONE);
+                    recyclerView.setAdapter(new BushfireAdapter(bushfireDataList, new BushfireAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(BushfireModel item) {
+                            Toast.makeText(getApplicationContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                        }
+                    }));
+
+                }
+            });
+
+
+
+        }
+
+    }
+
+    public class getNewsAsyncTaskF extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return Restful.findAllFloodAlerts();
+
+        }
+
+        @Override
+        protected void onPostExecute(String details) {
+            JSONArray jsonArray = null;
+
+//            JSONObject jsonObject = null;
+            Integer count = 0;
+            try {
+//                jsonObject = new JSONObject(details);
+                jsonArray = new JSONArray(details);
+                count = jsonArray.length();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (count > 0) {
+                for (int i = 0; i < count; i++) {
+                    try {
+                        JSONObject j = jsonArray.getJSONObject(i);
+                        Double lat = Double.parseDouble(j.getString("latitude"));
+                        Double longti = Double.parseDouble(j.getString("longitude"));
+
+                        LatLng latLng = new LatLng(lat, longti);
+
+                        location = j.getString("location") ;
+                        alertUpdated = j.getString("alertUpdated");
+                        status = j.getString("status");
+
+                        /*Parsing string to date*/
+                        date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(alertUpdated);
+                        Log.i("DATE PARSING",date1.toString());
+                        format = new SimpleDateFormat("dd-MM-yyyy");
+
+                        format.applyPattern("dd-MM-yyyy");
+
+                        /*check what category it belongs to*/
+                        checkcountF(j.getString("status"));
+
+
+                        BushfireModel bushfireModel = new BushfireModel(status +"\nFlood",location,format.format(date1));
+                        floodDataList2.add(bushfireModel);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            /*Add the latest alerts first and set the adapter*/
+            Collections.reverse(floodDataList2);
+            floodDataList = floodDataList2;
+
+
+
+            flood.setText(String.valueOf(floodcount));
+            req.setText(String.valueOf(asscount));
+            compl.setText(String.valueOf(compcount));
+
+          showFloods.setOnClickListener(new View.OnClickListener() {
+              @SuppressLint("RestrictedApi")
+              @Override
+              public void onClick(View v) {
+                  showFloods.setVisibility(View.GONE);
+                  showFire.setVisibility(View.VISIBLE);
+                  layFire.setVisibility(View.GONE);
+                  layFlood.setVisibility(View.VISIBLE);
+                  recyclerView.setAdapter(new BushfireAdapter(floodDataList, new BushfireAdapter.OnItemClickListener() {
+                      @Override
+                      public void onItemClick(BushfireModel item) {
+                          Toast.makeText(getApplicationContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                      }
+                  }));
+
+              }
+          });
 
 
 
@@ -248,6 +446,28 @@ public class BushfireListActivity extends BaseDrawerActivity {
                     }
 
     }
+
+    private void checkcountF(String value){
+        if (value.equals("Flooding")){
+            ++floodcount;
+            floodList.add(new BushfireModel(status,location,format.format(date1)) );
+        }
+        else
+        if(value.equals("Request For Assistance")){
+            ++asscount;
+            assistanceList.add(new BushfireModel(status,location,format.format(date1)) );
+
+        }
+        else
+        if(value.equals("Complete")){
+            ++compcount;
+            completeList.add(new BushfireModel(status,location,format.format(date1)) );
+
+        }
+
+
+    }
+
 
     private List<BushfireModel> revList(List<BushfireModel> list){
         List<BushfireModel> list1 = new ArrayList<>();

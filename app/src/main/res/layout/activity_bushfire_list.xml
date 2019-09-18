@@ -14,12 +14,14 @@
         android:elevation="4dp" />
 
     <LinearLayout
+        android:id="@+id/layFire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:elevation="20dp"
         android:orientation="horizontal"
-        android:textAlignment="center">
+        android:textAlignment="center"
+        style="@android:style/Widget.Material.Button.Inset">
 
         <LinearLayout
             android:id="@+id/lsafe"
@@ -48,6 +50,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Safe count"
+                style="@android:style/MediaButton"
                 android:textColor="#FAF9F9">
 
             </TextView>
@@ -56,6 +59,7 @@
 
         <LinearLayout
             android:id="@+id/lcont"
+            style='            style="@android:style/Holo.ButtonBar.AlertDialog" '
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -112,6 +116,7 @@
 
         <LinearLayout
             android:id="@+id/lncont"
+            style='            style="@android:style/Holo.ButtonBar.AlertDialog" '
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -141,11 +146,147 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+
+    <LinearLayout
+        android:id="@+id/layFlood"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:elevation="20dp"
+        style="@android:style/Widget.Material.Button.Inset"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        android:visibility="gone">
 
-    </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:id="@+id/lcomplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#2E7D32"
+            android:clickable="true"
+            android:elevation="7dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Complete"
+                android:textColor="#FAF9F9"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/complete_count"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Complete Count"
+                android:textColor="#FAF9F9">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lflood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#0277BD"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Flooding"
+                android:textColor="#FAF9F9"
+                android:textStyle="bold"></TextView>
+
+
+            <TextView
+                android:id="@+id/flood_count"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Flooding count"
+                android:textColor="#FAF9F9"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lreq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#EF6C00"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Requires Assistance"
+                android:textColor="#FAF9F9"
+                android:textStyle="bold"></TextView>
+
+
+            <TextView
+                android:id="@+id/req_count"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Assistance Count"
+                android:textColor="#FAF9F9"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            style='            style="@android:style/Holo.ButtonBar.AlertDialog" '
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="48dp"></android.support.v7.widget.RecyclerView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/change_flood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/flood" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/change_fire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/flame"
+            android:visibility="gone"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/show_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/border" />
+    </FrameLayout>
 </LinearLayout>

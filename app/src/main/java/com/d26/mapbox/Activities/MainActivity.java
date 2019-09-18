@@ -966,7 +966,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         markerOptions.title("Bushfire");
         markerOptions.snippet(snippet);
         IconFactory iconFactory = IconFactory.getInstance(this);
-        Icon icon = iconFactory.fromResource(R.drawable.news);
+        Icon icon = iconFactory.fromResource(R.drawable.flame);
         markerOptions.setIcon(icon);
         try {
             map.addMarker(markerOptions);
