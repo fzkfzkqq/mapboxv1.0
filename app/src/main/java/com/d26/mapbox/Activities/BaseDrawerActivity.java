@@ -35,21 +35,23 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.setDrawerListener(toggle);
+//        drawerLayout.setDrawerListener(toggle);
+        drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -61,28 +63,25 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             return false;
         }
 
-        switch (id)
-        {
-            case R.id.nav_home:
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                break;
-            case R.id.nav_gallery:
-                startActivity(new Intent(getApplicationContext(), Historic.class));
-                break;
-            case R.id.nav_disastersList:
-            startActivity(new Intent(getApplicationContext(), BushfireListActivity.class));
+//        switch (id)
+//        {
+//            case R.id.nav_home:
+//                break;
+//            case R.id.nav_gallery:
+//                break;
+//            case R.id.nav_disastersList:
+//
+//        }
 
+        if (id == R.id.nav_home) {
+            // Handle the camera action
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        } else if (id == R.id.nav_gallery) {
+                startActivity(new Intent(getApplicationContext(), Historic.class));
         }
-//
-//        if (id == R.id.nav_home) {
-//            // Handle the camera action
-//
-//        } else if (id == R.id.nav_gallery) {
-//
-//        }
-//         else if (id == R.id.nav_disastersList) {
-//
-//        }
+         else if (id == R.id.nav_disastersList) {
+            startActivity(new Intent(getApplicationContext(), BushfireListActivity.class));
+        }
 //        } else if (id == R.id.nav_manage) {
 //            startActivity(new Intent(getApplicationContext(), ManageActivity.class));
 //        } else if (id == R.id.nav_share) {

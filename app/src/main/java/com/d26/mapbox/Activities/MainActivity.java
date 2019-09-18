@@ -136,6 +136,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private ProgressBar progressBar;
     private Dialog progressDialog;
     private static Boolean progressFlag = false;
+    private static double lati;
+    private static double loni;
 
 
 
@@ -429,6 +431,13 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         /*Just a stupid blinking animation that the mentors liked so I'll keep it*/
         pulseAnimation();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat("Latitude",Float.parseFloat(String.valueOf(lati)));
+        editor.putFloat("Longitude",Float.parseFloat(String.valueOf(loni)));
+        editor.apply();
+
     }
 
 
@@ -694,11 +703,16 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         locationEngine.requestLocationUpdates(request, callback, getMainLooper());
         locationEngine.getLastLocation(callback);
+
+
     }
 
     @Override
     public void onLocationComponentClick() {
-//        if (locationComponent.getLastKnownLocation() != null) {
+    if (locationComponent.getLastKnownLocation() != null) {
+
+
+    }
 //            Toast.makeText(this, String.format(getString(R.string.current_location),
 //                    locationComponent.getLastKnownLocation().getLatitude(),
 //                    locationComponent.getLastKnownLocation().getLongitude()), Toast.LENGTH_LONG).show();
@@ -789,6 +803,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 Location location = result.getLastLocation();
 
                 if (location == null) {
+
                     return;
                 }
 
@@ -811,6 +826,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 try {
                     activity.getCurrentPostCode(result.getLastLocation().getLatitude(),
                             result.getLastLocation().getLongitude());
+                    lati = result.getLastLocation().getLatitude();
+                    loni = result.getLastLocation().getLongitude();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

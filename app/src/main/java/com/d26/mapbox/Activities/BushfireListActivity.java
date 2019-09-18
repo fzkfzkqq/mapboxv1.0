@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -39,6 +40,7 @@ import java.util.List;
 
 public class BushfireListActivity extends BaseDrawerActivity {
 
+    private static final String PREFS_NAME = "Prefs";
     private RecyclerView recyclerView;
     private BushfireAdapter bushfireAdapter;
     private static List<BushfireModel> bushfireDataList =new ArrayList();
@@ -51,6 +53,8 @@ public class BushfireListActivity extends BaseDrawerActivity {
 //    private int safe,resp,cntrl,ncntrl;
     private TextView tvsafe,tvresp,tvcntrl,tvncntrl,req,flood,compl;
     private LinearLayout lsafe,lcont,lrep,lncont,lreq,lflood,lcomplete,layFire,layFlood;
+    private float distance;
+    private String lati,longi;
 
 
     private static int safe,resp,undercntrl,notundcntrl,floodcount,compcount,asscount = 0;
@@ -64,18 +68,33 @@ public class BushfireListActivity extends BaseDrawerActivity {
     private static List<BushfireModel> assistanceList =new ArrayList();
 
     private FloatingActionButton showAll,showFloods,showFire;
+    private Location mylocation;
 
     Date date1;
     SimpleDateFormat format;
     static String location,alertUpdated,status;
     View view;
 
+    TextView dist;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        double lato,longo;
         view = getLayoutInflater().inflate(R.layout.activity_bushfire_list, frameLayout);
         BaseDrawerActivity.toolbar.setTitle("Current Bushfires");
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        lato = sharedPreferences.getFloat("Latitude",0);
+        longo = sharedPreferences.getFloat("Longitude",0);
+//        mylocation.setLatitude(0);
+//        mylocation.setLongitude(0);
+//        mylocation.setLatitude(lato);
+//        mylocation.setLatitude(longo);
+
+        Log.i("latlong",String.valueOf(lato));
+
 
         recyclerView = findViewById(R.id.recycler_view);
         tvsafe = findViewById(R.id.safe_count);
@@ -94,7 +113,7 @@ public class BushfireListActivity extends BaseDrawerActivity {
         lcomplete = findViewById(R.id.lcomplete);
         layFire = findViewById(R.id.layFire);
         layFlood = findViewById(R.id.layFlood);
-
+        dist = findViewById(R.id.distance);
 
         showAll = findViewById(R.id.show_all);
         showFloods = findViewById(R.id.change_flood);
@@ -362,6 +381,11 @@ public class BushfireListActivity extends BaseDrawerActivity {
                         location = j.getString("location") ;
                         alertUpdated = j.getString("alertUpdated");
                         status = j.getString("status");
+                        lati = j.getString("latitude");
+                        longi = j.getString("longitude");
+
+//                        distance = getDistance(mylocation,Double.parseDouble(lati),Double.parseDouble(longi));
+//                        Log.i("DIST",String.valueOf(distance));
 
                         /*Parsing string to date*/
                         date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(alertUpdated);
@@ -477,5 +501,15 @@ public class BushfireListActivity extends BaseDrawerActivity {
         return list1;
     }
 
+
+    private float getDistance(Location location,double lat, double longi){
+
+        Location loc2 = new Location("");
+        loc2.setLatitude(lat);
+        loc2.setLongitude(longi);
+
+        float distanceInMeters = location.distanceTo(loc2);
+        return distanceInMeters/1000;
+    }
 
 }
