@@ -17,15 +17,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:elevation="20dp"
         android:orientation="horizontal"
         android:textAlignment="center">
 
         <LinearLayout
+            android:id="@+id/lsafe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="#2E7D32"
+            android:clickable="true"
+            android:elevation="7dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -33,7 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Safe"
-                android:textColor="#FAF9F9">
+                android:textColor="#FAF9F9"
+                android:textStyle="bold">
 
             </TextView>
 
@@ -50,11 +55,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lcont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="#0277BD"
+            android:clickable="true"
             android:orientation="vertical">
 
             <TextView
@@ -62,7 +69,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Under Control"
-                android:textColor="#FAF9F9"></TextView>
+                android:textColor="#FAF9F9"
+                android:textStyle="bold"></TextView>
 
 
             <TextView
@@ -75,11 +83,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lresp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="#FF8F00"
+            android:clickable="true"
             android:orientation="vertical">
 
             <TextView
@@ -87,7 +97,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Responding"
-                android:textColor="#FAF9F9"></TextView>
+                android:textColor="#FAF9F9"
+                android:textStyle="bold"></TextView>
 
 
             <TextView
@@ -100,21 +111,24 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lncont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:animationCache="true"
             android:background="#C62828"
+            android:clickable="true"
             android:orientation="vertical">
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Not Under Control"
-                android:textColor="#FAF9F9"></TextView>
-
+                android:textColor="#FAF9F9"
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:id="@+id/notundercontrol_count"
