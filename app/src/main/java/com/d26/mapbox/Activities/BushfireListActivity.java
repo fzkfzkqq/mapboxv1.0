@@ -4,13 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -39,9 +35,11 @@ public class BushfireListActivity extends BaseDrawerActivity {
     private BushfireAdapter bushfireAdapter;
     private List<BushfireModel> bushfireDataList =new ArrayList();
     private List<BushfireModel> bushfireDataList2 =new ArrayList();
+//    private int safe,resp,cntrl,ncntrl;
+    private TextView tvsafe,tvresp,tvcntrl,tvncntrl;
 
+    private static int safe,resp,undercntrl,notundcntrl = 0;
 
-    private int safe,resp,undercntrl,notundcntrl = 0;
 
 
     @Override
@@ -51,15 +49,21 @@ public class BushfireListActivity extends BaseDrawerActivity {
          BaseDrawerActivity.toolbar.setTitle("Current Bushfires");
 
         recyclerView = findViewById(R.id.recycler_view);
+        tvsafe = findViewById(R.id.safe_count);
+        tvresp = findViewById(R.id.responding_count);
+        tvcntrl = findViewById(R.id.undercontrol_count);
+        tvncntrl = findViewById(R.id.notundercontrol_count);
 
 
-        bushfireAdapter=new BushfireAdapter(bushfireDataList);
+//        bushfireAdapter=new BushfireAdapter(bushfireDataList, listener);
         RecyclerView.LayoutManager manager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(bushfireAdapter);
         getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
         getNewsAsyncTask.execute();
+
+
 
 
     }
@@ -127,17 +131,33 @@ public class BushfireListActivity extends BaseDrawerActivity {
             /*Add the latest alerts first and set the adapter*/
             Collections.reverse(bushfireDataList2);
             bushfireDataList = bushfireDataList2;
-            bushfireAdapter=new BushfireAdapter(bushfireDataList);
+//            bushfireAdapter=new BushfireAdapter(bushfireDataList,n);
 
-            SharedPreferences sharedPreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("safe", safe);
-            editor.putInt("responding", resp);
-            editor.putInt("undercontrol", undercntrl);
-            editor.putInt("notundercontrol", notundcntrl);
-            editor.apply();
+
+
+            tvsafe.setText(String.valueOf(safe));
+            tvcntrl.setText(String.valueOf(undercntrl));
+            tvresp.setText(String.valueOf(resp));
+            tvncntrl.setText(String.valueOf(notundcntrl));
 
             recyclerView.setAdapter(bushfireAdapter);
+            recyclerView.setAdapter(new BushfireAdapter(bushfireDataList, new BushfireAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BushfireModel item) {
+
+                    Toast.makeText(getApplicationContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                    SharedPreferences sharedPreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("safe", safe);
+                    editor.putInt("responding", resp);
+                    editor.putInt("undercontrol", undercntrl);
+                    editor.putInt("notundercontrol", notundcntrl);
+                    editor.apply();
+
+
+
+                }
+            }));
 
 
 
@@ -149,19 +169,19 @@ public class BushfireListActivity extends BaseDrawerActivity {
 
     private void checkcount(String value){
         if (value.equals("Safe")){
-            safe++;
+            ++safe;
         }
         else
             if(value.equals("Under Control")){
-                undercntrl++;
+                ++undercntrl;
             }
             else
                 if(value.equals("Responding")){
-                    resp++;
+                    ++resp;
                 }
                 else
-                    if(value.equals("Not Under Control")){
-                        notundcntrl++;
+                    if(value.equals("Not Yet Under Control")){
+                        ++notundcntrl;
                     }
 
     }
