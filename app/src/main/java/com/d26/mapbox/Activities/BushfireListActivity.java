@@ -18,7 +18,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -84,17 +88,26 @@ public class BushfireListActivity extends BaseDrawerActivity {
                        String alertUpdated = j.getString("alertUpdated");
                        String status = j.getString("status");
 
-                       BushfireModel bushfireModel = new BushfireModel(status,location,alertUpdated);
+                       /*Parsing string to date*/
+                        Date date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(alertUpdated);
+                        Log.i("DATE PARSING",date1.toString());
+                        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+                        format.applyPattern("dd-MM-yyyy");
+
+                    BushfireModel bushfireModel = new BushfireModel(status,location,format.format(date1));
                        bushfireDataList2.add(bushfireModel);
-                       Log.i("bushfire1","called in forloop");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Log.i("exepection","exxxxxxxxxxx");
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
                     }
                 }
             }
 
+            Collections.reverse(bushfireDataList2);
             bushfireDataList = bushfireDataList2;
             bushfireAdapter=new BushfireAdapter(bushfireDataList);
             recyclerView.setAdapter(bushfireAdapter);
