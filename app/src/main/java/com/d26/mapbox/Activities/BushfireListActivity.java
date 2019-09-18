@@ -1,5 +1,7 @@
 package com.d26.mapbox.Activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -26,12 +28,16 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class BushfireListActivity extends BaseDrawerActivity {
 
     private RecyclerView recyclerView;
     private BushfireAdapter bushfireAdapter;
     private List<BushfireModel> bushfireDataList =new ArrayList();
     private List<BushfireModel> bushfireDataList2 =new ArrayList();
+
+
+    private int safe,resp,undercntrl,notundcntrl = 0;
 
 
     @Override
@@ -95,6 +101,10 @@ public class BushfireListActivity extends BaseDrawerActivity {
 
                         format.applyPattern("dd-MM-yyyy");
 
+                        /*check what category it belongs to*/
+                        checkcount(j.getString("status"));
+
+
                     BushfireModel bushfireModel = new BushfireModel(status,location,format.format(date1));
                        bushfireDataList2.add(bushfireModel);
 
@@ -112,11 +122,37 @@ public class BushfireListActivity extends BaseDrawerActivity {
             bushfireAdapter=new BushfireAdapter(bushfireDataList);
             recyclerView.setAdapter(bushfireAdapter);
 
+            SharedPreferences sharedPreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("safe", safe);
+            editor.putInt("responding", resp);
+            editor.putInt("undercontrol", undercntrl);
+            editor.putInt("notundercontrol", notundcntrl);
+            editor.commit();
 
         }
 
     }
 
+
+    private void checkcount(String value){
+        if (value.equals("Safe")){
+            safe++;
+        }
+        else
+            if(value.equals("Under Control")){
+                undercntrl++;
+            }
+            else
+                if(value.equals("Responding")){
+                    resp++;
+                }
+                else
+                    if(value.equals("Not Under Control")){
+                        notundcntrl++;
+                    }
+
+    }
 
 //    private void StudentDataPrepare() {
 //        BushfireModel data=new BushfireModel("sai","25","blah");
