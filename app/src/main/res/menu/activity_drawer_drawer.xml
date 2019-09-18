@@ -3,23 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="none">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/fire2"
-            android:title="@string/menu_home" />
+            android:icon="@drawable/prediction"
+            android:title="Disaster Prediction" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Historical Map" />
+            android:icon="@drawable/returnpast"
+            android:title="Historical Maps" />
         <item
             android:id="@+id/nav_disastersList"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Disasters List" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:icon="@drawable/storm"
+            android:title="Current Disasters" />
+
     </group>
 
 </menu>
