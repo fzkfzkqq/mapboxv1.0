@@ -16,9 +16,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -27,11 +25,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.d26.mapbox.Activities.DetailsActivity;
-import com.d26.mapbox.Activities.MainActivity;
 import com.d26.mapbox.R;
 import com.d26.mapbox.other.Restful;
-import com.dou361.dialogui.DialogUIUtils;
 import com.google.gson.JsonObject;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.permissions.PermissionsListener;
@@ -97,7 +92,7 @@ public class FloodActivity extends
     //    private EditText input_postcode;
     private Button btn_c_findmore;
     private Button btn_action_exp;
-    private Button btn_waterlevel;
+    private Button btn_airPressure;
     private Button btn_humi;
     private Button btn_rainfall;
     private Button btn_pressure;
@@ -137,7 +132,7 @@ public class FloodActivity extends
 //        search = (ImageButton) findViewById(R.id.btn_search);
         lastupdated = findViewById(R.id.lastupdated);
         btn_humi = findViewById(R.id.btn_humi);
-        btn_waterlevel = findViewById(R.id.btn_waterlevel);
+        btn_airPressure = findViewById(R.id.btn_waterlevel);
         btn_rainfall = findViewById(R.id.btn_rainfall);
         location_address = findViewById(R.id.location_address);
 
@@ -538,7 +533,7 @@ public class FloodActivity extends
         markerOptions.title("Bushfire");
         markerOptions.snippet(snippet);
         IconFactory iconFactory = IconFactory.getInstance(this);
-        Icon icon = iconFactory.fromResource(R.drawable.news);
+        Icon icon = iconFactory.fromResource(R.drawable.flood);
         markerOptions.setIcon(icon);
         try {
             map.addMarker(markerOptions);
@@ -673,9 +668,9 @@ public class FloodActivity extends
                     Log.i("Json J",j.toString());
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
-                    btn_waterlevel.setText((j.get("airTemperature")).toString() + "°C");
+                    btn_airPressure.setText((j.get("airPressure")).toString() + " hPa");
                     btn_humi.setText((j.get("humidity")).toString() + "%");
-                    btn_rainfall.setText((j.get("rainfall")).toString() + " Km/h");
+                    btn_rainfall.setText((j.get("rainfall")).toString() + " mm");
                 }
                 else
                 {
