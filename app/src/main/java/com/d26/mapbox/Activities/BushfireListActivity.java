@@ -93,8 +93,10 @@ public class BushfireListActivity extends BaseDrawerActivity {
 //        mylocation.setLatitude(lato);
 //        mylocation.setLatitude(longo);
 
-        Log.i("latlong",String.valueOf(lato));
 
+        mylocation = new Location("");
+        mylocation.setLatitude(lato);
+        mylocation.setLongitude(longo);
 
         recyclerView = findViewById(R.id.recycler_view);
         tvsafe = findViewById(R.id.safe_count);
@@ -282,6 +284,11 @@ public class BushfireListActivity extends BaseDrawerActivity {
                        location = j.getString("location") ;
                        alertUpdated = j.getString("alertUpdated");
                        status = j.getString("status");
+                        lati = j.getString("latitude");
+                        longi = j.getString("longitude");
+
+                        distance = getDistance(mylocation,Double.parseDouble(lati),Double.parseDouble(longi));
+
 
                        /*Parsing string to date*/
                          date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(alertUpdated);
@@ -294,7 +301,7 @@ public class BushfireListActivity extends BaseDrawerActivity {
                         checkcount(j.getString("status"));
 
 
-                    BushfireModel bushfireModel = new BushfireModel(status + "\nBushfire",location,format.format(date1));
+                    BushfireModel bushfireModel = new BushfireModel( "Bushfire\n" + status ,location,format.format(date1),distance);
                        bushfireDataList2.add(bushfireModel);
 
                     } catch (JSONException e) {
@@ -384,8 +391,8 @@ public class BushfireListActivity extends BaseDrawerActivity {
                         lati = j.getString("latitude");
                         longi = j.getString("longitude");
 
-//                        distance = getDistance(mylocation,Double.parseDouble(lati),Double.parseDouble(longi));
-//                        Log.i("DIST",String.valueOf(distance));
+                        distance = getDistance(mylocation,Double.parseDouble(lati),Double.parseDouble(longi));
+                        Log.i("DIST",String.valueOf(distance));
 
                         /*Parsing string to date*/
                         date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(alertUpdated);
@@ -398,7 +405,7 @@ public class BushfireListActivity extends BaseDrawerActivity {
                         checkcountF(j.getString("status"));
 
 
-                        BushfireModel bushfireModel = new BushfireModel(status +"\nFlood",location,format.format(date1));
+                        BushfireModel bushfireModel = new BushfireModel("Flood\n" + status,location,format.format(date1),distance);
                         floodDataList2.add(bushfireModel);
 
                     } catch (JSONException e) {
@@ -419,6 +426,7 @@ public class BushfireListActivity extends BaseDrawerActivity {
             flood.setText(String.valueOf(floodcount));
             req.setText(String.valueOf(asscount));
             compl.setText(String.valueOf(compcount));
+
 
           showFloods.setOnClickListener(new View.OnClickListener() {
               @SuppressLint("RestrictedApi")
@@ -448,24 +456,24 @@ public class BushfireListActivity extends BaseDrawerActivity {
     private void checkcount(String value){
         if (value.equals("Safe")){
             ++safe;
-            safeList.add(new BushfireModel(status,location,format.format(date1)) );
+            safeList.add(new BushfireModel(status,location,format.format(date1),distance) );
         }
         else
             if(value.equals("Under Control")){
                 ++undercntrl;
-                controlList.add(new BushfireModel(status,location,format.format(date1)) );
+                controlList.add(new BushfireModel(status,location,format.format(date1),distance) );
 
             }
             else
                 if(value.equals("Responding")){
                     ++resp;
-                    respList.add(new BushfireModel(status,location,format.format(date1)) );
+                    respList.add(new BushfireModel(status,location,format.format(date1),distance));
 
                 }
                 else
                     if(value.equals("Not Yet Under Control")){
                         ++notundcntrl;
-                        ncontrolList.add(new BushfireModel(status,location,format.format(date1)) );
+                        ncontrolList.add(new BushfireModel(status,location,format.format(date1),distance) );
 
                     }
 
@@ -474,18 +482,18 @@ public class BushfireListActivity extends BaseDrawerActivity {
     private void checkcountF(String value){
         if (value.equals("Flooding")){
             ++floodcount;
-            floodList.add(new BushfireModel(status,location,format.format(date1)) );
+            floodList.add(new BushfireModel(status,location,format.format(date1),distance) );
         }
         else
         if(value.equals("Request For Assistance")){
             ++asscount;
-            assistanceList.add(new BushfireModel(status,location,format.format(date1)) );
+            assistanceList.add(new BushfireModel(status,location,format.format(date1),distance) );
 
         }
         else
         if(value.equals("Complete")){
             ++compcount;
-            completeList.add(new BushfireModel(status,location,format.format(date1)) );
+            completeList.add(new BushfireModel(status,location,format.format(date1),distance) );
 
         }
 

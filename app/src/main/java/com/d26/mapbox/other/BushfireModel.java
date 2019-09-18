@@ -13,11 +13,20 @@ public class BushfireModel implements List<Object> {
     String status;
     String location;
     String lastUpdated;
+    float distancebtwn;
 
     public BushfireModel(String status, String location, String lastUpdated) {
         this.status = status;
         this.location = location;
         this.lastUpdated = lastUpdated;
+        this.distancebtwn = 0;
+    }
+
+    public BushfireModel(String status, String location, String lastUpdated,float distancebtwn) {
+        this.status = status;
+        this.location = location;
+        this.lastUpdated = lastUpdated;
+        this.distancebtwn = distancebtwn;
     }
 
     @Override

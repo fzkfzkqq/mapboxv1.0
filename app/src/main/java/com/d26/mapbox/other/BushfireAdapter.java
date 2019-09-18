@@ -55,9 +55,10 @@ public class BushfireAdapter extends RecyclerView.Adapter<BushfireAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         BushfireModel data= bushfireDataList.get(i);
-        myViewHolder.location.setText(data.location);
+        myViewHolder.location.setText("At " + data.location);
         myViewHolder.status.setText(String.valueOf(data.status));
-        myViewHolder.lastUpdated.setText(String.valueOf(data.lastUpdated));
+        myViewHolder.lastUpdated.setText("On " + String.valueOf(data.lastUpdated));
+        myViewHolder.distance.setText(String.valueOf(data.distancebtwn)+" Km away");
         myViewHolder.bind(bushfireDataList.get(i),listener);
     }
 
@@ -68,13 +69,14 @@ public class BushfireAdapter extends RecyclerView.Adapter<BushfireAdapter.MyView
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView status,location,lastUpdated;
+        TextView status,location,lastUpdated,distance;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             status=itemView.findViewById(R.id.status);
             location=itemView.findViewById(R.id.location);
             lastUpdated=itemView.findViewById(R.id.last_updated);
+            distance = itemView.findViewById(R.id.distance);
 
         }
 

@@ -432,11 +432,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         /*Just a stupid blinking animation that the mentors liked so I'll keep it*/
         pulseAnimation();
 
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putFloat("Latitude",Float.parseFloat(String.valueOf(lati)));
-        editor.putFloat("Longitude",Float.parseFloat(String.valueOf(loni)));
-        editor.apply();
+
 
     }
 
@@ -916,6 +912,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     btn_humi.setText((j.get("humidity")).toString() + "%");
                     btn_wind.setText((j.get("windSpeed")).toString() + " Km/h");
                     btn_pressure.setText((j.get("airPressure")).toString() + " hPa");
+
+                    SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putFloat("Latitude",Float.parseFloat(String.valueOf(lati)));
+                    editor.putFloat("Longitude",Float.parseFloat(String.valueOf(loni)));
+                    editor.apply();
 //                    if(progressFlag) {
 //
 //                        progressDialog.dismiss();

@@ -26,14 +26,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/BaseDrawerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/BaseDrawerActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/BushfireListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/BushfireListActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_base_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_base_drawer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bushfire_item_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bushfire_item_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/factor_popup_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/factor_popup_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_drawer_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_drawer_drawer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireModel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,8 +120,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/BushfireListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="383" column="29" lean-forward="true" selection-start-line="383" selection-start-column="29" selection-end-line="383" selection-end-column="29" />
+            <state relative-caret-position="239">
+              <caret line="501" lean-forward="true" selection-start-line="501" selection-end-line="501" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,27 +139,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/location/Location.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/location/LocationManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3971">
-              <caret line="123" column="44" selection-start-line="123" selection-start-column="44" selection-end-line="123" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bushfire_item_list.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
+            <state relative-caret-position="99">
               <caret line="60" column="37" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="37" />
             </state>
           </provider>
@@ -164,12 +151,168 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="847" column="16" selection-start-line="847" selection-start-column="16" selection-end-line="847" selection-end-column="16" />
+            <state relative-caret-position="91">
+              <caret line="917" selection-start-line="917" selection-end-line="917" />
+              <folding>
+                <element signature="e#3825#3841#0" />
+                <element signature="e#5796#5810#0" />
+                <element signature="e#6070#6103#0" />
+                <element signature="e#6104#6159#0" />
+                <element signature="e#6282#6317#0" />
+                <element signature="e#6858#6890#0" />
+                <element signature="e#7315#7368#0" />
+                <element signature="e#7399#8291#1" />
+                <element signature="e#8303#8426#0" />
+                <element signature="e#9822#9915#0" />
+                <element signature="e#10187#10248#0" />
+                <element signature="e#10649#11219#1" />
+                <element signature="e#11288#11860#1" />
+                <element signature="e#11927#12497#1" />
+                <element signature="e#17560#17726#0" />
+                <element signature="e#17894#17923#0" />
+                <element signature="e#17991#18246#0" />
+                <element signature="e#18459#18716#0" />
+                <element signature="e#19242#19286#0" />
+                <element signature="e#19410#19485#0" />
+                <element signature="e#19520#19623#0" />
+                <element signature="e#19520#19766#0" />
+                <element signature="e#19772#20042#0" />
+                <element signature="e#20051#20257#0" />
+                <element signature="e#20051#24240#0" />
+                <element signature="e#20585#24045#1" />
+                <element signature="e#20851#23960#0" />
+                <element signature="e#21184#22506#0" />
+                <element signature="e#21207#21374#0" />
+                <element signature="e#22531#23946#0" />
+                <element signature="e#22596#22692#0" />
+                <element signature="e#22853#23928#1" />
+                <element signature="e#22952#23906#1" />
+                <element signature="e#23094#23314#1" />
+                <element signature="e#23983#24035#0" />
+                <element signature="e#24058#24234#1" />
+                <element signature="e#24060#24118#0" />
+                <element signature="e#24248#24448#0" />
+                <element signature="e#24454#24614#0" />
+                <element signature="e#24620#24715#0" />
+                <element signature="e#24721#24813#0" />
+                <element signature="e#24819#24926#0" />
+                <element signature="e#24932#25036#0" />
+                <element signature="e#25042#25207#0" />
+                <element signature="e#25213#25379#0" />
+                <element signature="e#25385#25617#0" />
+                <element signature="e#25623#26081#0" />
+                <element signature="e#25708#25950#1" />
+                <element signature="e#25956#26075#1" />
+                <element signature="e#26087#26162#0" />
+                <element signature="e#26168#26246#0" />
+                <element signature="e#26252#28614#0" />
+                <element signature="e#26499#28451#1" />
+                <element signature="e#27635#28034#1" />
+                <element signature="e#27845#27942#0" />
+                <element signature="e#28040#28394#1" />
+                <element signature="e#28197#28302#0" />
+                <element signature="e#28457#28608#1" />
+                <element signature="e#28721#29058#0" />
+                <element signature="e#28911#28983#0" />
+                <element signature="e#29008#29052#0" />
+                <element signature="e#29065#29163#0" />
+                <element signature="e#29065#30132#0" />
+                <element signature="e#29721#30557#0" />
+                <element signature="e#30200#30286#0" />
+                <element signature="e#30555#30893#0" />
+                <element signature="e#30894#30982#0" />
+                <element signature="e#33163#35993#0" />
+                <element signature="e#33385#33539#0" />
+                <element signature="e#33549#33786#0" />
+                <element signature="e#33549#35375#0" />
+                <element signature="e#33967#35365#1" />
+                <element signature="e#34070#34117#1" />
+                <element signature="e#34119#34182#0" />
+                <element signature="e#34948#35070#1" />
+                <element signature="e#35091#35268#0" />
+                <element signature="e#35291#35351#0" />
+                <element signature="e#35385#35575#0" />
+                <element signature="e#35385#35986#0" />
+                <element signature="e#35835#35976#1" />
+                <element signature="e#35999#36087#0" />
+                <element signature="e#36008#37076#0" />
+                <element signature="e#36299#36878#0" />
+                <element signature="e#36426#36868#1" />
+                <element signature="e#36901#37061#0" />
+                <element signature="e#37148#37167#0" />
+                <element signature="e#37148#37904#0" />
+                <element signature="e#38036#38103#0" />
+                <element signature="e#38128#38180#0" />
+                <element signature="e#38845#38885#0" />
+                <element signature="e#39179#39329#0" />
+                <element signature="e#39363#39605#0" />
+                <element signature="e#39612#39974#0" />
+                <element signature="e#40086#40111#0" />
+                <element signature="e#40124#40166#0" />
+                <element signature="e#40666#41276#0" />
+                <element signature="e#41107#41160#0" />
+                <element signature="e#41179#41261#0" />
+                <element signature="e#41355#41696#0" />
+                <element signature="e#41485#41558#0" />
+                <element signature="e#41903#42070#0" />
+                <element signature="e#42095#42147#0" />
+                <element signature="e#42148#42167#0" />
+                <element signature="e#43614#43690#0" />
+                <element signature="e#44773#45390#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#40095#40096#0" expanded="true" />
-                <element signature="e#40119#40120#0" expanded="true" />
+                <element signature="e#575#576#0" expanded="true" />
+                <element signature="e#599#600#0" expanded="true" />
+                <element signature="e#645#646#0" expanded="true" />
+                <element signature="e#673#674#0" expanded="true" />
+                <element signature="e#738#739#0" expanded="true" />
+                <element signature="e#766#767#0" expanded="true" />
+                <element signature="e#835#836#0" expanded="true" />
+                <element signature="e#862#863#0" expanded="true" />
+                <element signature="e#923#924#0" expanded="true" />
+                <element signature="e#959#960#0" expanded="true" />
+                <element signature="e#1020#1021#0" expanded="true" />
+                <element signature="e#1047#1048#0" expanded="true" />
+                <element signature="e#1097#1098#0" expanded="true" />
+                <element signature="e#1125#1126#0" expanded="true" />
+                <element signature="e#1188#1189#0" expanded="true" />
+                <element signature="e#1216#1217#0" expanded="true" />
+                <element signature="e#1290#1291#0" expanded="true" />
+                <element signature="e#1318#1319#0" expanded="true" />
+                <element signature="e#1387#1388#0" expanded="true" />
+                <element signature="e#1415#1416#0" expanded="true" />
+                <element signature="e#1495#1496#0" expanded="true" />
+                <element signature="e#1523#1524#0" expanded="true" />
+                <element signature="e#1595#1596#0" expanded="true" />
+                <element signature="e#1623#1624#0" expanded="true" />
+                <element signature="e#1695#1696#0" expanded="true" />
+                <element signature="e#1723#1724#0" expanded="true" />
+                <element signature="e#1821#1822#0" expanded="true" />
+                <element signature="e#1848#1849#0" expanded="true" />
+                <element signature="e#1914#1915#0" expanded="true" />
+                <element signature="e#1941#1942#0" expanded="true" />
+                <element signature="e#2065#2066#0" expanded="true" />
+                <element signature="e#2092#2093#0" expanded="true" />
+                <element signature="e#2152#2153#0" expanded="true" />
+                <element signature="e#2176#2177#0" expanded="true" />
+                <element signature="e#2240#2241#0" expanded="true" />
+                <element signature="e#2264#2265#0" expanded="true" />
+                <element signature="e#2341#2342#0" expanded="true" />
+                <element signature="e#2368#2369#0" expanded="true" />
+                <element signature="e#2454#2455#0" expanded="true" />
+                <element signature="e#2481#2482#0" expanded="true" />
+                <element signature="e#2571#2572#0" expanded="true" />
+                <element signature="e#2598#2599#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -189,10 +332,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onresume</find>
-      <find>getLayoutInflater().inflate(R.layout.activity_main, frameLayout);</find>
-      <find>mTopToolbar</find>
-      <find>btn</find>
       <find>news</find>
       <find>postcode</find>
       <find>onclick</find>
@@ -216,9 +355,13 @@
       <find>Prefs</find>
       <find>latitude</find>
       <find>DIST</find>
-      <find>shared</find>
       <find>initial</find>
       <find>onsuccess</find>
+      <find>shared</find>
+      <find>latlong</find>
+      <find>editor</find>
+      <find>settext</find>
+      <find>bushfireModel</find>
     </findStrings>
     <replaceStrings>
       <replace>Historic</replace>
@@ -275,9 +418,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_medflood.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_meidumbushfire.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_current_details.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bushfire_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/side_nav_bar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header_drawer.xml" />
@@ -289,6 +430,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/factor_popup_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/bushfire_item_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/BushfireListActivity.java" />
       </list>
     </option>
@@ -694,12 +837,6 @@
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/BushfireListActivity.java</url>
-          <line>91</line>
-          <properties />
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -885,70 +1022,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#645#646#0" expanded="true" />
-            <element signature="e#673#674#0" expanded="true" />
-            <element signature="e#738#739#0" expanded="true" />
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-            <element signature="e#862#863#0" expanded="true" />
-            <element signature="e#923#924#0" expanded="true" />
-            <element signature="e#959#960#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="e#1047#1048#0" expanded="true" />
-            <element signature="e#1097#1098#0" expanded="true" />
-            <element signature="e#1125#1126#0" expanded="true" />
-            <element signature="e#1188#1189#0" expanded="true" />
-            <element signature="e#1216#1217#0" expanded="true" />
-            <element signature="e#1290#1291#0" expanded="true" />
-            <element signature="e#1318#1319#0" expanded="true" />
-            <element signature="e#1387#1388#0" expanded="true" />
-            <element signature="e#1415#1416#0" expanded="true" />
-            <element signature="e#1495#1496#0" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-            <element signature="e#1595#1596#0" expanded="true" />
-            <element signature="e#1623#1624#0" expanded="true" />
-            <element signature="e#1695#1696#0" expanded="true" />
-            <element signature="e#1723#1724#0" expanded="true" />
-            <element signature="e#1821#1822#0" expanded="true" />
-            <element signature="e#1848#1849#0" expanded="true" />
-            <element signature="e#1914#1915#0" expanded="true" />
-            <element signature="e#1941#1942#0" expanded="true" />
-            <element signature="e#2065#2066#0" expanded="true" />
-            <element signature="e#2092#2093#0" expanded="true" />
-            <element signature="e#2152#2153#0" expanded="true" />
-            <element signature="e#2176#2177#0" expanded="true" />
-            <element signature="e#2240#2241#0" expanded="true" />
-            <element signature="e#2264#2265#0" expanded="true" />
-            <element signature="e#2341#2342#0" expanded="true" />
-            <element signature="e#2368#2369#0" expanded="true" />
-            <element signature="e#2454#2455#0" expanded="true" />
-            <element signature="e#2481#2482#0" expanded="true" />
-            <element signature="e#2571#2572#0" expanded="true" />
-            <element signature="e#2598#2599#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2938#3111#0" expanded="true" />
-            <element signature="e#3110#3111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/drawer.xml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
@@ -1042,14 +1115,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bushfire_item_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="60" column="37" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="37" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/location/Location.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
@@ -1066,23 +1131,192 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="847" column="16" selection-start-line="847" selection-start-column="16" selection-end-line="847" selection-end-column="16" />
+        <state relative-caret-position="91">
+          <caret line="917" selection-start-line="917" selection-end-line="917" />
+          <folding>
+            <element signature="e#3825#3841#0" />
+            <element signature="e#5796#5810#0" />
+            <element signature="e#6070#6103#0" />
+            <element signature="e#6104#6159#0" />
+            <element signature="e#6282#6317#0" />
+            <element signature="e#6858#6890#0" />
+            <element signature="e#7315#7368#0" />
+            <element signature="e#7399#8291#1" />
+            <element signature="e#8303#8426#0" />
+            <element signature="e#9822#9915#0" />
+            <element signature="e#10187#10248#0" />
+            <element signature="e#10649#11219#1" />
+            <element signature="e#11288#11860#1" />
+            <element signature="e#11927#12497#1" />
+            <element signature="e#17560#17726#0" />
+            <element signature="e#17894#17923#0" />
+            <element signature="e#17991#18246#0" />
+            <element signature="e#18459#18716#0" />
+            <element signature="e#19242#19286#0" />
+            <element signature="e#19410#19485#0" />
+            <element signature="e#19520#19623#0" />
+            <element signature="e#19520#19766#0" />
+            <element signature="e#19772#20042#0" />
+            <element signature="e#20051#20257#0" />
+            <element signature="e#20051#24240#0" />
+            <element signature="e#20585#24045#1" />
+            <element signature="e#20851#23960#0" />
+            <element signature="e#21184#22506#0" />
+            <element signature="e#21207#21374#0" />
+            <element signature="e#22531#23946#0" />
+            <element signature="e#22596#22692#0" />
+            <element signature="e#22853#23928#1" />
+            <element signature="e#22952#23906#1" />
+            <element signature="e#23094#23314#1" />
+            <element signature="e#23983#24035#0" />
+            <element signature="e#24058#24234#1" />
+            <element signature="e#24060#24118#0" />
+            <element signature="e#24248#24448#0" />
+            <element signature="e#24454#24614#0" />
+            <element signature="e#24620#24715#0" />
+            <element signature="e#24721#24813#0" />
+            <element signature="e#24819#24926#0" />
+            <element signature="e#24932#25036#0" />
+            <element signature="e#25042#25207#0" />
+            <element signature="e#25213#25379#0" />
+            <element signature="e#25385#25617#0" />
+            <element signature="e#25623#26081#0" />
+            <element signature="e#25708#25950#1" />
+            <element signature="e#25956#26075#1" />
+            <element signature="e#26087#26162#0" />
+            <element signature="e#26168#26246#0" />
+            <element signature="e#26252#28614#0" />
+            <element signature="e#26499#28451#1" />
+            <element signature="e#27635#28034#1" />
+            <element signature="e#27845#27942#0" />
+            <element signature="e#28040#28394#1" />
+            <element signature="e#28197#28302#0" />
+            <element signature="e#28457#28608#1" />
+            <element signature="e#28721#29058#0" />
+            <element signature="e#28911#28983#0" />
+            <element signature="e#29008#29052#0" />
+            <element signature="e#29065#29163#0" />
+            <element signature="e#29065#30132#0" />
+            <element signature="e#29721#30557#0" />
+            <element signature="e#30200#30286#0" />
+            <element signature="e#30555#30893#0" />
+            <element signature="e#30894#30982#0" />
+            <element signature="e#33163#35993#0" />
+            <element signature="e#33385#33539#0" />
+            <element signature="e#33549#33786#0" />
+            <element signature="e#33549#35375#0" />
+            <element signature="e#33967#35365#1" />
+            <element signature="e#34070#34117#1" />
+            <element signature="e#34119#34182#0" />
+            <element signature="e#34948#35070#1" />
+            <element signature="e#35091#35268#0" />
+            <element signature="e#35291#35351#0" />
+            <element signature="e#35385#35575#0" />
+            <element signature="e#35385#35986#0" />
+            <element signature="e#35835#35976#1" />
+            <element signature="e#35999#36087#0" />
+            <element signature="e#36008#37076#0" />
+            <element signature="e#36299#36878#0" />
+            <element signature="e#36426#36868#1" />
+            <element signature="e#36901#37061#0" />
+            <element signature="e#37148#37167#0" />
+            <element signature="e#37148#37904#0" />
+            <element signature="e#38036#38103#0" />
+            <element signature="e#38128#38180#0" />
+            <element signature="e#38845#38885#0" />
+            <element signature="e#39179#39329#0" />
+            <element signature="e#39363#39605#0" />
+            <element signature="e#39612#39974#0" />
+            <element signature="e#40086#40111#0" />
+            <element signature="e#40124#40166#0" />
+            <element signature="e#40666#41276#0" />
+            <element signature="e#41107#41160#0" />
+            <element signature="e#41179#41261#0" />
+            <element signature="e#41355#41696#0" />
+            <element signature="e#41485#41558#0" />
+            <element signature="e#41903#42070#0" />
+            <element signature="e#42095#42147#0" />
+            <element signature="e#42148#42167#0" />
+            <element signature="e#43614#43690#0" />
+            <element signature="e#44773#45390#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#40095#40096#0" expanded="true" />
-            <element signature="e#40119#40120#0" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+            <element signature="e#645#646#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#738#739#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
+            <element signature="e#959#960#0" expanded="true" />
+            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#1097#1098#0" expanded="true" />
+            <element signature="e#1125#1126#0" expanded="true" />
+            <element signature="e#1188#1189#0" expanded="true" />
+            <element signature="e#1216#1217#0" expanded="true" />
+            <element signature="e#1290#1291#0" expanded="true" />
+            <element signature="e#1318#1319#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1415#1416#0" expanded="true" />
+            <element signature="e#1495#1496#0" expanded="true" />
+            <element signature="e#1523#1524#0" expanded="true" />
+            <element signature="e#1595#1596#0" expanded="true" />
+            <element signature="e#1623#1624#0" expanded="true" />
+            <element signature="e#1695#1696#0" expanded="true" />
+            <element signature="e#1723#1724#0" expanded="true" />
+            <element signature="e#1821#1822#0" expanded="true" />
+            <element signature="e#1848#1849#0" expanded="true" />
+            <element signature="e#1914#1915#0" expanded="true" />
+            <element signature="e#1941#1942#0" expanded="true" />
+            <element signature="e#2065#2066#0" expanded="true" />
+            <element signature="e#2092#2093#0" expanded="true" />
+            <element signature="e#2152#2153#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#2240#2241#0" expanded="true" />
+            <element signature="e#2264#2265#0" expanded="true" />
+            <element signature="e#2341#2342#0" expanded="true" />
+            <element signature="e#2368#2369#0" expanded="true" />
+            <element signature="e#2454#2455#0" expanded="true" />
+            <element signature="e#2481#2482#0" expanded="true" />
+            <element signature="e#2571#2572#0" expanded="true" />
+            <element signature="e#2598#2599#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bushfire_item_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="60" column="37" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/other/BushfireAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/d26/mapbox/Activities/BushfireListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="383" column="29" lean-forward="true" selection-start-line="383" selection-start-column="29" selection-end-line="383" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="239">
+          <caret line="501" lean-forward="true" selection-start-line="501" selection-end-line="501" />
         </state>
       </provider>
     </entry>
