@@ -317,7 +317,7 @@ public class FloodActivity extends
                  * */
                 Notification notification = new NotificationCompat.Builder(FloodActivity.this, CHANNEL_2_ID).setSmallIcon(R.drawable.logo)
                         .setContentTitle("Watch Out!")
-                        .setContentText("BushFire at " + event.getData())
+                        .setContentText("Flood at " + event.getData())
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
                         })
@@ -368,9 +368,9 @@ public class FloodActivity extends
                     Log.i("RRD", risk.getText().toString());
 
                     location_address.setText("Location:" + address.getAddressLine(0));
-                    risk.setText(j.getString("bushfireRiskRating"));
+                    risk.setText(j.getString("floodRiskRating"));
 
-                    Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
+                    //Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
                     Log.i("Why do birds fly",j.getString(address.getAddressLine(0)));
 
                     map.animateCamera(CameraUpdateFactory.newCameraPosition(
@@ -595,7 +595,7 @@ public class FloodActivity extends
     public void parkMarks(LatLng latLng, String snippet) {
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("Bushfire");
+        markerOptions.title("Flood");
         markerOptions.snippet(snippet);
         IconFactory iconFactory = IconFactory.getInstance(this);
         Icon icon = iconFactory.fromResource(R.drawable.flood);

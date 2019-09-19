@@ -19,7 +19,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/low_bf1"
+                android:src="@drawable/low_bf1"
                 android:scaleType="fitXY"
                 />
             <TextView
@@ -29,7 +29,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/low_bf2"
+                android:src="@drawable/low_bf2"
                 android:scaleType="fitXY"/>
             <TextView
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/low_bf3"
+                android:src="@drawable/low_bf3"
                 android:scaleType="fitXY"/>
         </LinearLayout>
     </ScrollView>
