@@ -236,7 +236,7 @@ public class FloodActivity extends
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.flood_air);
+                image.setImageResource(R.drawable.flood_air);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("How air pressure affects floods");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -258,7 +258,7 @@ public class FloodActivity extends
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.flood_humi);
+                image.setImageResource(R.drawable.flood_humi);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("How humidity affects flood");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -280,7 +280,7 @@ public class FloodActivity extends
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.flood_rainfall);
+                image.setImageResource(R.drawable.flood_rainfall);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("How rainfall lead to a flood");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);

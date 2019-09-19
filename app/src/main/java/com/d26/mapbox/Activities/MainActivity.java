@@ -309,7 +309,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.factor_temp);
+                image.setImageResource(R.drawable.factor_temp);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("Temperature is the main factor, especially in Summer and Autumn.");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -332,7 +332,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.factor_humi);
+                image.setImageResource(R.drawable.factor_humi);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("Relative humidity is commonly used to measure atmospheric moisture.");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -355,7 +355,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.factor_airpres);
+                image.setImageResource(R.drawable.factor_airpres);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("Adding a feature like a trough or front that changes the wind direction increases the danger.");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
