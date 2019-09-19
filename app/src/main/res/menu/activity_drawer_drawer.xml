@@ -16,6 +16,11 @@
             android:id="@+id/nav_disastersList"
             android:icon="@drawable/storm"
             android:title="Current Disasters" />
+        <item
+            android:id="@+id/nav_notification"
+            android:checkable="false"
+            android:icon="@drawable/turnnotificationsonbutton"
+            android:title="Test Notification" />
 
     </group>
 
