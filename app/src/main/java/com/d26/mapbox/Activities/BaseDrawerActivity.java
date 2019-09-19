@@ -1,18 +1,26 @@
 package com.d26.mapbox.Activities;
 
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.d26.mapbox.R;
+
+import static com.d26.mapbox.other.Notifications.CHANNEL_2_ID;
 
 public class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -20,6 +28,8 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     FrameLayout frameLayout;
     static Toolbar toolbar;
     NavigationView navigationView;
+    NotificationManagerCompat notificationManager;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,9 +92,42 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
          else if (id == R.id.nav_disastersList) {
             startActivity(new Intent(getApplicationContext(), BushfireListActivity.class));
         }
-//        } else if (id == R.id.nav_manage) {
-//            startActivity(new Intent(getApplicationContext(), ManageActivity.class));
-//        } else if (id == R.id.nav_share) {
+         else if (id == R.id.nav_notification) {
+
+            // Create an Intent for the activity you want to start
+            Intent resultIntent = new Intent(this, BushfireListActivity.class);
+            // Create the TaskStackBuilder and add the intent, which inflates the back stack
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+            stackBuilder.addNextIntentWithParentStack(resultIntent);
+            // Get the PendingIntent containing the entire back stack
+            PendingIntent resultPendingIntent =
+                    stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            notificationManager = NotificationManagerCompat.from(this);
+
+//            Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
+//                        .setSmallIcon(R.drawable.logo)
+//                        .setContentTitle("Test!")
+//                        .setContentText("This is a test for current alerts")
+//                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
+//                        })
+//                        .build();
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_2_ID).setSmallIcon(R.drawable.logo)
+                    .setContentTitle("Test!")
+                    .setContentText("This is a test for current alerts")
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
+                    });
+            builder.setContentIntent(resultPendingIntent);
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+            notificationManager.notify(2, builder.build());
+
+//            notificationManager.notify(2, notification);
+            }
+//        else if (id == R.id.nav_share) {
 //            startActivity(new Intent(getApplicationContext(), ShareActivity.class));
 //        } else if (id == R.id.nav_send) {
 //            startActivity(new Intent(getApplicationContext(), SendActivity.class));

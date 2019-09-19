@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.BushfireListActivity" android:launchMode="singleInstance"></activity>
+        <activity android:name=".Activities.BushfireListActivity" android:launchMode="singleInstance"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"></activity>
         <activity android:name=".Activities.Historic"
             android:launchMode="singleInstance"/>
         <activity android:name=".Activities.FloodActivity" android:launchMode="singleInstance"/>

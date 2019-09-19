@@ -965,19 +965,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
 
 
-//    public void sendOnChannel2(View v) {
-//
-//        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
-//                .setSmallIcon(R.drawable.logo)
-//                .setContentTitle("HI!!")
-//                .setContentText("Notification news")
-//                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
-//                })
-//                .build();
-//
-//        notificationManager.notify(2, notification);
-//    }
 
     //here is to put marks for parks
     public void parkMarks(LatLng latLng, String snippet) {
