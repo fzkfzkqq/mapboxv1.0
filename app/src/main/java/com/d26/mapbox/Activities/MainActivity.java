@@ -315,7 +315,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.factor_temp);
+                image.setImageResource(R.drawable.factor_temp);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("Temperature is the main factor, especially in Summer and Autumn.");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -338,7 +338,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.factor_humi);
+                image.setImageResource(R.drawable.factor_humi);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("Relative humidity is commonly used to measure atmospheric moisture.");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -361,7 +361,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.factor_airpres);
+                image.setImageResource(R.drawable.factor_airpres);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("Adding a feature like a trough or front that changes the wind direction increases the danger.");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -493,8 +493,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 iconOffset(new Float[] {0f, -8f})
         ));
     }
-
-
 
 
     /*This is where you induce the search logic, after the intent has been called to the full screen search option (the yellow search button, dummy)
@@ -917,6 +915,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     }
 
     private class getDetailAsyncTask extends AsyncTask<String, Void, String> {
+
 //        @Override
 //        protected void onPreExecute() {
 //
@@ -945,19 +944,27 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             try {
                 jsonArray = new JSONArray(details);
             } catch (JSONException e) {
+                onNodata();
                 e.printStackTrace();
             }
             try {
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
+                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
                     btn_temp.setText((j.get("airTemperature")).toString() + "°C");
                     btn_humi.setText((j.get("humidity")).toString() + "%");
                     btn_wind.setText((j.get("windSpeed")).toString() + " Km/h");
                     btn_pressure.setText((j.get("airPressure")).toString() + " hPa");
-
+                    if (j.getString("bushfireRiskRating").equals("MEDIUM"))
+                    {
+                        risk.setBackgroundColor(Color.rgb(255,174,55));
+                    }
+                    if (j.getString("bushfireRiskRating").equals("HIGH")){
+                        risk.setBackgroundColor(Color.rgb(255,56,63));
+                    }
                     SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putFloat("Latitude",Float.parseFloat(String.valueOf(lati)));
@@ -970,11 +977,11 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 }
                 else
                 {
-                    risk.setText("Not Available");
+                   onNodata();
                     riskString = risk.toString();
                 }
             } catch (JSONException e) {
-                risk.setText("Not Available");
+                onNodata();
                 Log.i("RRDG", "onPostExecute: ");
 
                 e.printStackTrace();
@@ -982,7 +989,17 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         }
 
+    }
 
+    private void onNodata(){
+        risk.setText("No Data");
+        risk.setBackgroundColor(Color.rgb(37,155,36));
+        btn_humi.setText("No Data");
+        btn_pressure.setText("No Data");
+        btn_wind.setText("No Data");
+        btn_temp.setText("No Data");
+        lastupdated.setText("No Data");
+        location_address.setText("No Data");
     }
 
     @Override

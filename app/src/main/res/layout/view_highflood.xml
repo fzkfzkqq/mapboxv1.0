@@ -19,7 +19,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/flood_high1"
+                android:src="@drawable/flood_high1"
                 android:scaleType="fitXY"
                 />
             <TextView
@@ -29,12 +29,12 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/flood_high2"
+                android:src="@drawable/flood_high2"
                 android:scaleType="fitXY"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/flood_high3"
+                android:src="@drawable/flood_high3"
                 android:scaleType="fitXY"/>
             <TextView
                 android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/flood_high4"
+                android:src="@drawable/flood_high4"
                 android:scaleType="fitXY"/>
             <TextView
                 android:layout_width="match_parent"
@@ -52,7 +52,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/flood_high5"
+                android:src="@drawable/flood_high5"
                 android:scaleType="fitXY"/>
         </LinearLayout>
     </ScrollView>

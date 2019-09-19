@@ -236,7 +236,7 @@ public class FloodActivity extends
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.flood_air);
+                image.setImageResource(R.drawable.flood_air);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("How air pressure affects floods");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -258,7 +258,7 @@ public class FloodActivity extends
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.flood_humi);
+                image.setImageResource(R.drawable.flood_humi);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("How humidity affects flood");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -280,7 +280,7 @@ public class FloodActivity extends
                         , null));
                 settingsDialog.show();
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.flood_rainfall);
+                image.setImageResource(R.drawable.flood_rainfall);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("How rainfall lead to a flood");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -317,7 +317,7 @@ public class FloodActivity extends
                  * */
                 Notification notification = new NotificationCompat.Builder(FloodActivity.this, CHANNEL_2_ID).setSmallIcon(R.drawable.logo)
                         .setContentTitle("Watch Out!")
-                        .setContentText("BushFire at " + event.getData())
+                        .setContentText("Flood at " + event.getData())
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
                         })
@@ -368,9 +368,9 @@ public class FloodActivity extends
                     Log.i("RRD", risk.getText().toString());
 
                     location_address.setText("Location:" + address.getAddressLine(0));
-                    risk.setText(j.getString("bushfireRiskRating"));
+                    risk.setText(j.getString("floodRiskRating"));
 
-                    Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
+                    //Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
                     Log.i("Why do birds fly",j.getString(address.getAddressLine(0)));
 
                     map.animateCamera(CameraUpdateFactory.newCameraPosition(
@@ -595,7 +595,7 @@ public class FloodActivity extends
     public void parkMarks(LatLng latLng, String snippet) {
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("Bushfire");
+        markerOptions.title("Flood");
         markerOptions.snippet(snippet);
         IconFactory iconFactory = IconFactory.getInstance(this);
         Icon icon = iconFactory.fromResource(R.drawable.flood);
@@ -708,7 +708,15 @@ public class FloodActivity extends
 
     }
 
-
+    private void onNodata(){
+        risk.setText("No Data");
+        risk.setBackgroundColor(Color.rgb(37,155,36));
+        btn_humi.setText("No Data");
+        btn_rainfall.setText("No Data");
+        btn_airPressure.setText("No Data");
+        lastupdated.setText("No Data");
+        location_address.setText("No Data");
+    }
 
     private class getFloodDetailAsyncTask extends AsyncTask<String, Void, String> {
         @Override
@@ -730,20 +738,28 @@ public class FloodActivity extends
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("floodRiskRating"));
-                    Log.i("Json J",j.toString());
+                    //risk.setText("HIGH");
+                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
                     btn_airPressure.setText((j.get("airPressure")).toString() + " hPa");
                     btn_humi.setText((j.get("humidity")).toString() + "%");
                     btn_rainfall.setText((j.get("rainfall")).toString() + " mm");
+                    if (j.getString("floodRiskRating").equals("MEDIUM"))
+                    {
+                        risk.setBackgroundColor(Color.rgb(255,174,55));
+                    }
+                    if (j.getString("floodRiskRating").equals("HIGH")){
+                        risk.setBackgroundColor(Color.rgb(255,56,63));
+                    }
                 }
                 else
                 {
-                    risk.setText("Not Available");
+                    onNodata();
                     riskString = risk.toString();
                 }
             } catch (JSONException e) {
-                risk.setText("Not Available");
+                onNodata();
                 Log.i("RRDG", "onPostExecute: ");
 
                 e.printStackTrace();

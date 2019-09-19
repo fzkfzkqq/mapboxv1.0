@@ -15,27 +15,27 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bushfire_med_1"
+                android:src="@drawable/bushfire_med_1"
                 android:scaleType="fitXY"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bushfire_med_2"
+                android:src="@drawable/bushfire_med_2"
                 android:scaleType="fitXY"/>
             <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bushfire_med_3"
+            android:src="@drawable/bushfire_med_3"
                 android:scaleType="fitXY"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bushfire_med_4"
+                android:src="@drawable/bushfire_med_4"
                 android:scaleType="fitXY"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bushfire_med_5"
+                android:src="@drawable/bushfire_med_5"
                 android:scaleType="fitXY"/>
         </LinearLayout>
     </ScrollView>
