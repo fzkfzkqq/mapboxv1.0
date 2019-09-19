@@ -23,14 +23,16 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/DisasterMate"
             android:theme="@style/FullscreenTheme"
-            android:launchMode="singleInstance">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity" android:launchMode="singleInstance"></activity>
+        <activity android:name=".Activities.MainActivity" android:launchMode="singleInstance">
+
+        </activity>
         <activity android:name=".Activities.ActionActivity" android:launchMode="singleInstance"/>
         <activity android:name=".Activities.CauseActivity" android:launchMode="singleInstance"/>
         <activity android:name=".Activities.DetailsActivity" android:launchMode="singleInstance"/>

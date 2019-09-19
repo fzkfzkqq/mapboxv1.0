@@ -1,11 +1,15 @@
 package com.d26.mapbox.Activities;
 
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -14,9 +18,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.d26.mapbox.R;
 
@@ -24,11 +33,14 @@ import static com.d26.mapbox.other.Notifications.CHANNEL_2_ID;
 
 public class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+
     DrawerLayout drawerLayout;
     FrameLayout frameLayout;
     static Toolbar toolbar;
     NavigationView navigationView;
     NotificationManagerCompat notificationManager;
+    private MenuInflater inflater;
+    FloatingActionButton help;
 
 
     @Override
@@ -51,17 +63,20 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        help = findViewById(R.id.help);
+
+
 
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-//            drawerLayout.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -72,16 +87,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             drawerLayout.closeDrawer(GravityCompat.START);
             return false;
         }
-
-//        switch (id)
-//        {
-//            case R.id.nav_home:
-//                break;
-//            case R.id.nav_gallery:
-//                break;
-//            case R.id.nav_disastersList:
-//
-//        }
 
         if (id == R.id.nav_home) {
             // Handle the camera action
@@ -102,6 +107,8 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             // Get the PendingIntent containing the entire back stack
             PendingIntent resultPendingIntent =
                     stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
 
             notificationManager = NotificationManagerCompat.from(this);
 
@@ -125,7 +132,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
             notificationManager.notify(2, builder.build());
 
-//            notificationManager.notify(2, notification);
             }
 //        else if (id == R.id.nav_share) {
 //            startActivity(new Intent(getApplicationContext(), ShareActivity.class));
@@ -135,4 +141,33 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
-    }
+
+
+
+
+    //    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            // action with ID action_refresh was selected
+//            case R.id.button_item:
+//                Toast.makeText(getApplicationContext(), "Skip selected", Toast.LENGTH_SHORT)
+//                        .show();
+//                break;
+//            default:
+//                break;
+//        }
+//        return true;
+//    }
+
+
+
+}
+
+

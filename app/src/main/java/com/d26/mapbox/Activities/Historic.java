@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -564,10 +565,11 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         markerOptions.title("Bushfire");
         markerOptions.snippet(snippet);
         IconFactory iconFactory = IconFactory.getInstance(Historic.this);
-        Icon icon = iconFactory.fromResource(R.drawable.fire2);
+        Icon icon = iconFactory.fromResource(R.drawable.firehistoric);
         markerOptions.setIcon(icon);
         map.addMarker(markerOptions);
     }
+
 
 
 

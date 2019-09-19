@@ -17,10 +17,14 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -138,7 +142,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private static Boolean progressFlag = false;
     private static double lati;
     private static double loni;
-
+    private MenuInflater inflater;
+    private FloatingActionButton btn_help;
 
 
     @Override
@@ -154,6 +159,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         /*ToolBar : set your title here*/
 //        mTopToolbar =  findViewById(R.id.my_toolbar);
 //        setSupportActionBar(mTopToolbar);
+//        setSupportActionBar(toolbar);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
         BaseDrawerActivity.toolbar.setTitle("BushFire Prediction");
 
 
@@ -168,8 +175,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         btn_temp = findViewById(R.id.btn_temp);
         btn_wind = findViewById(R.id.btn_wind);
         location_address = findViewById(R.id.location_address);
-
-
+        btn_help = (FloatingActionButton) findViewById(R.id.help);
         /*Declare other variables here*/
         final Geocoder geocoder = new Geocoder(this);
         SharedPreferences sharedpreferences;
@@ -391,6 +397,26 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
             }
         });
+
+        btn_help.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            final Dialog settingsDialog = new Dialog(v.getContext());
+                                            settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                                            settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_help
+                                                    , null));
+                                            settingsDialog.show();
+
+                                            dialogue_button = settingsDialog.findViewById(R.id.okbutton);
+                                            dialogue_button.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    settingsDialog.dismiss();
+                                                }
+                                            });
+
+                                        }
+        });
         /*This is uses a third party application called pusher to get real time alerts
         * as of now we need 2 channels, one for updates and one for prediction alerts*/
 
@@ -429,6 +455,25 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         pusher.connect();
 
+//        findViewById(R.id.help).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final Dialog settingsDialog = new Dialog(getApplicationContext());
+//                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+//                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_help
+//                        , null));
+//                settingsDialog.show();
+//
+//                Button dialogue_button = settingsDialog.findViewById(R.id.okbutton);
+//                dialogue_button.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        settingsDialog.dismiss();
+//
+//                    }
+//                });
+//            }
+//        });
         /*Just a stupid blinking animation that the mentors liked so I'll keep it*/
         pulseAnimation();
 
@@ -1068,20 +1113,21 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
 
     private void addUserLocations() {
-        home = CarmenFeature.builder().text("Home")
+        home = CarmenFeature.builder().text("Home (Feature coming soon :D")
                 .geometry(Point.fromLngLat(-122.3964485, 37.7912561))
-                .placeName("50 Beale St, San Francisco, CA")
+                .placeName("Somewhere on earth")
                 .id("mapbox-sf")
                 .properties(new JsonObject())
                 .build();
 
-        work = CarmenFeature.builder().text("Work")
-                .placeName("740 15th Street NW, Washington DC")
+        work = CarmenFeature.builder().text("Work (Feature coming soon :D")
+                .placeName("Somewhere on mars")
                 .geometry(Point.fromLngLat(-77.0338348, 38.899750))
                 .id("mapbox-dc")
                 .properties(new JsonObject())
                 .build();
     }
+
 
     }
 
