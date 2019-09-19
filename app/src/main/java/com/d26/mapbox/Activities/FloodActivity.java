@@ -708,7 +708,15 @@ public class FloodActivity extends
 
     }
 
-
+    private void onNodata(){
+        risk.setText("No Data");
+        risk.setBackgroundColor(Color.rgb(37,155,36));
+        btn_humi.setText("No Data");
+        btn_rainfall.setText("No Data");
+        btn_airPressure.setText("No Data");
+        lastupdated.setText("No Data");
+        location_address.setText("No Data");
+    }
 
     private class getFloodDetailAsyncTask extends AsyncTask<String, Void, String> {
         @Override
@@ -730,20 +738,28 @@ public class FloodActivity extends
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("floodRiskRating"));
-                    Log.i("Json J",j.toString());
+                    //risk.setText("HIGH");
+                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
                     btn_airPressure.setText((j.get("airPressure")).toString() + " hPa");
                     btn_humi.setText((j.get("humidity")).toString() + "%");
                     btn_rainfall.setText((j.get("rainfall")).toString() + " mm");
+                    if (j.getString("floodRiskRating").equals("MEDIUM"))
+                    {
+                        risk.setBackgroundColor(Color.rgb(255,174,55));
+                    }
+                    if (j.getString("floodRiskRating").equals("HIGH")){
+                        risk.setBackgroundColor(Color.rgb(255,56,63));
+                    }
                 }
                 else
                 {
-                    risk.setText("Not Available");
+                    onNodata();
                     riskString = risk.toString();
                 }
             } catch (JSONException e) {
-                risk.setText("Not Available");
+                onNodata();
                 Log.i("RRDG", "onPostExecute: ");
 
                 e.printStackTrace();
