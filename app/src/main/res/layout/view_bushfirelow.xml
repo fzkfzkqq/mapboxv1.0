@@ -5,7 +5,6 @@
     <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:fillViewport="true"
         android:layout_alignBottom="@+id/dialogue_button"
         >
         <LinearLayout
@@ -13,33 +12,38 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Step 1: Rake Up Leaves and Put Them in a Green Bin"/>
+
             <ImageView
+                android:adjustViewBounds="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/low_bf1"
-                android:scaleType="fitXY"
-                />
+                android:scaleType="centerInside"
+                android:src="@drawable/low_bf1" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Step 2: Move Mulch or Firewood Well Away From Your House"/>
             <ImageView
+                android:adjustViewBounds="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/low_bf2"
-                android:scaleType="fitXY"/>
+                android:scaleType="centerInside"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Step 3: Patch Up Gaps in Roofs and Verandahs"/>
             <ImageView
+                android:adjustViewBounds="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/low_bf3"
-                android:scaleType="fitXY"/>
+                android:scaleType="centerInside"/>
         </LinearLayout>
     </ScrollView>
     <Button

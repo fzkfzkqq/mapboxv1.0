@@ -23,7 +23,8 @@
             android:id="@+id/factor_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
             />
     </LinearLayout>
     </ScrollView>

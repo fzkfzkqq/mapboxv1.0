@@ -13,19 +13,22 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <ImageView
+                android:adjustViewBounds="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
+                android:scaleType="centerInside"
                 android:src="@drawable/risk_high1"></ImageView>
             <ImageView
+                android:adjustViewBounds="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
+                android:scaleType="centerInside"
                 android:src="@drawable/risk_high2"/>
             <ImageView
+                android:adjustViewBounds="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
+                android:scaleType="centerInside"
                 android:src="@drawable/risk_high3"/>
         </LinearLayout>
     </ScrollView>

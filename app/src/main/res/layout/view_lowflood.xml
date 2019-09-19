@@ -20,7 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/low_flood1"
-                android:scaleType="fitXY"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
                 />
             <TextView
                 android:layout_width="match_parent"
@@ -30,7 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/low_flood2"
-                android:scaleType="fitXY"/>
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,7 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/low_flood3"
-                android:scaleType="fitXY"/>
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"/>
         </LinearLayout>
     </ScrollView>
     <Button
