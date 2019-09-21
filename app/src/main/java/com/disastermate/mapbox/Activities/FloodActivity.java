@@ -1,4 +1,4 @@
-package com.d26.mapbox.Activities;
+package com.disastermate.mapbox.Activities;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -21,13 +21,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.d26.mapbox.R;
-import com.d26.mapbox.other.Restful;
+import com.disastermate.mapbox.R;
+import com.disastermate.mapbox.other.Restful;
 import com.google.gson.JsonObject;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.permissions.PermissionsListener;
@@ -70,7 +69,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.List;
 
-import static com.d26.mapbox.other.Notifications.CHANNEL_2_ID;
+import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 
 public class FloodActivity extends
         BaseDrawerActivity implements OnMapReadyCallback, PermissionsListener, OnLocationClickListener {

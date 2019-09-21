@@ -1,4 +1,4 @@
-package com.d26.mapbox.other;
+package com.disastermate.mapbox.other;
 
 import android.app.Application;
 import android.app.NotificationChannel;

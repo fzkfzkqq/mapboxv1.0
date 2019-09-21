@@ -1,12 +1,8 @@
-package com.d26.mapbox.Activities;
+package com.disastermate.mapbox.Activities;
 
-import android.app.Dialog;
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -18,18 +14,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
-import com.d26.mapbox.R;
+import com.disastermate.mapbox.R;
 
-import static com.d26.mapbox.other.Notifications.CHANNEL_2_ID;
+import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 
 public class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

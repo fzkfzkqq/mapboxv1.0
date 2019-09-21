@@ -1,7 +1,6 @@
-package com.d26.mapbox.Activities;
+package com.disastermate.mapbox.Activities;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -10,14 +9,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.d26.mapbox.R;
-import com.d26.mapbox.other.Restful;
+import com.disastermate.mapbox.R;
+import com.disastermate.mapbox.other.Restful;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;

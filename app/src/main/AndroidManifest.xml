@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.d26.mapbox">
+    package="com.disastermate.mapbox">
 
     <application
-        android:name=".other.Notifications"
+        android:name="com.disastermate.mapbox.other.Notifications"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.BushfireListActivity" android:launchMode="singleInstance"
+        <activity android:name="com.disastermate.mapbox.Activities.BushfireListActivity" android:launchMode="singleInstance"
             android:taskAffinity=""
             android:excludeFromRecents="true"></activity>
-        <activity android:name=".Activities.Historic"
+        <activity android:name="com.disastermate.mapbox.Activities.Historic"
             android:launchMode="singleInstance"/>
-        <activity android:name=".Activities.FloodActivity" android:launchMode="singleInstance"/>
+        <activity android:name="com.disastermate.mapbox.Activities.FloodActivity" android:launchMode="singleInstance"/>
 
         <activity
-            android:name=".Activities.Welcome"
+            android:name="com.disastermate.mapbox.Activities.Welcome"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/DisasterMate"
             android:theme="@style/FullscreenTheme"
@@ -30,16 +30,16 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity" android:launchMode="singleInstance">
+        <activity android:name="com.disastermate.mapbox.Activities.MainActivity" android:launchMode="singleInstance">
 
         </activity>
-        <activity android:name=".Activities.ActionActivity" android:launchMode="singleInstance"/>
-        <activity android:name=".Activities.CauseActivity" android:launchMode="singleInstance"/>
-        <activity android:name=".Activities.DetailsActivity" android:launchMode="singleInstance"/>
+        <activity android:name="com.disastermate.mapbox.Activities.ActionActivity" android:launchMode="singleInstance"/>
+        <activity android:name="com.disastermate.mapbox.Activities.CauseActivity" android:launchMode="singleInstance"/>
+        <activity android:name="com.disastermate.mapbox.Activities.DetailsActivity" android:launchMode="singleInstance"/>
 
 
 
-        <activity android:name=".Activities.BaseDrawerActivity" android:launchMode="singleInstance"/>
+        <activity android:name="com.disastermate.mapbox.Activities.BaseDrawerActivity" android:launchMode="singleInstance"/>
 
 
 

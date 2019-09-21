@@ -1,4 +1,4 @@
-package com.d26.mapbox.Activities;
+package com.disastermate.mapbox.Activities;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -16,7 +16,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.d26.mapbox.R;
+import com.disastermate.mapbox.R;
 
 
 /**

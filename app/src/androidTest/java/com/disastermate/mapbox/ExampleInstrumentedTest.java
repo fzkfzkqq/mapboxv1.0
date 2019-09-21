@@ -1,4 +1,4 @@
-package com.d26.mapbox;
+package com.disastermate.mapbox;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

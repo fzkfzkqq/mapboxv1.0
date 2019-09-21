@@ -1,4 +1,4 @@
-package com.d26.mapbox.Activities;
+package com.disastermate.mapbox.Activities;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -22,9 +21,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -35,8 +32,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.d26.mapbox.R;
-import com.d26.mapbox.other.Restful;
+import com.disastermate.mapbox.R;
+import com.disastermate.mapbox.other.Restful;
 import com.google.gson.JsonObject;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
@@ -86,7 +83,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import static com.d26.mapbox.other.Notifications.CHANNEL_2_ID;
+import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 

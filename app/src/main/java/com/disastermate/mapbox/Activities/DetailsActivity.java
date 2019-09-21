@@ -1,16 +1,14 @@
-package com.d26.mapbox.Activities;
+package com.disastermate.mapbox.Activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.d26.mapbox.R;
-import com.d26.mapbox.other.Restful;
+import com.disastermate.mapbox.R;
+import com.disastermate.mapbox.other.Restful;
 
 import org.json.JSONArray;
 import org.json.JSONException;

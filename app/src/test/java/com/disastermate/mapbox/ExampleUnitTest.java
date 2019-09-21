@@ -1,4 +1,4 @@
-package com.d26.mapbox;
+package com.disastermate.mapbox;
 
 import org.junit.Test;
 

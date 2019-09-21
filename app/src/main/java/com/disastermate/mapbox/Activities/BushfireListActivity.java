@@ -1,7 +1,6 @@
-package com.d26.mapbox.Activities;
+package com.disastermate.mapbox.Activities;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Location;
@@ -12,21 +11,16 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.d26.mapbox.R;
-import com.d26.mapbox.other.BushfireAdapter;
-import com.d26.mapbox.other.BushfireModel;
-import com.d26.mapbox.other.Restful;
-import com.mapbox.mapboxsdk.annotations.Icon;
-import com.mapbox.mapboxsdk.annotations.IconFactory;
+import com.disastermate.mapbox.R;
+import com.disastermate.mapbox.other.BushfireAdapter;
+import com.disastermate.mapbox.other.BushfireModel;
+import com.disastermate.mapbox.other.Restful;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import org.json.JSONArray;
