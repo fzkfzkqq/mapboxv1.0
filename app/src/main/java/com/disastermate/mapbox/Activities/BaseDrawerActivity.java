@@ -124,6 +124,10 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             notificationManager.notify(2, builder.build());
 
             }
+
+        else if (id == R.id.nav_watchlist) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
 //        else if (id == R.id.nav_share) {
 //            startActivity(new Intent(getApplicationContext(), ShareActivity.class));
 //        } else if (id == R.id.nav_send) {

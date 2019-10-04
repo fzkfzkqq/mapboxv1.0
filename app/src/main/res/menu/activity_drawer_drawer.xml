@@ -21,6 +21,11 @@
             android:checkable="false"
             android:icon="@drawable/turnnotificationsonbutton"
             android:title="Test Notification" />
+        <item
+            android:id="@+id/nav_watchlist"
+            android:checkable="false"
+            android:icon="@drawable/binoculars"
+            android:title="Set Watchlist" />
 
     </group>
 

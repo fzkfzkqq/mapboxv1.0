@@ -239,9 +239,14 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         setupLayer(style);
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
 
-                        //TODO: Add search button function here initSearchFab() and addUserLocations() here
-                        initSearchFab();
                         addUserLocations();
+
+                        //TODO: Add search button function here initSearchFab() and addUserLocations() here
+                        findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                initSearchFab();
+                            }});
                     }
                 });
             }
@@ -473,8 +478,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //        });
         /*Just a stupid blinking animation that the mentors liked so I'll keep it*/
         pulseAnimation();
-
-
 
     }
 
@@ -1104,9 +1107,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         }
 
     private void initSearchFab() {
-        findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 Intent intent = new PlaceAutocomplete.IntentBuilder()
                         .accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.access_token))
                         .placeOptions(PlaceOptions.builder()
@@ -1121,8 +1121,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
 
             }
-        });
-    }
 
 
 
