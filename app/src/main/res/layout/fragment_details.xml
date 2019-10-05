@@ -28,7 +28,7 @@
             android:textSize="14dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="WEATHER"
+            android:text="TEMPERATURE"
             android:id="@+id/weather"
             android:gravity="center"/>
         <TextView
@@ -95,6 +95,27 @@
             android:gravity="center"
             android:layout_marginBottom="50dp"
             android:id="@+id/pressure"/>
+    <View
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray"  />
+    <TextView
+        android:layout_marginTop="15dp"
+        android:textSize="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RISK"
+        android:gravity="center"/>
+    <TextView
+        android:layout_marginTop="15dp"
+        android:textSize="28dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOW"
+        android:gravity="center"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/risk"/>
 
 
 </LinearLayout>

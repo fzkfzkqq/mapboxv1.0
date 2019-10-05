@@ -164,8 +164,14 @@ public class FloodActivity extends
 
                         enableLocationComponent(style);
                         //TODO: Add search button function here initSearchFab() and addUserLocations() here
-                        initSearchFab();
-                        addUserLocations();
+
+                        findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                addUserLocations();
+                                initSearchFab(1);
+                            }
+                        });
                     }
                 });
             }
@@ -570,27 +576,6 @@ public class FloodActivity extends
         objAnim.cancel();
     }
 
-    private void initSearchFab() {
-        findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new PlaceAutocomplete.IntentBuilder()
-                        .accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.access_token))
-                        .placeOptions(PlaceOptions.builder()
-                                .backgroundColor(Color.parseColor("#EEEEEE"))
-                                .limit(10)
-                                .country("au")
-                                .addInjectedFeature(home)
-                                .addInjectedFeature(work)
-                                .build(PlaceOptions.MODE_CARDS)
-                        )
-                        .build(FloodActivity.this);
-                startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
-
-            }
-        });
-    }
-
     public void parkMarks(LatLng latLng, String snippet) {
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
@@ -628,21 +613,6 @@ public class FloodActivity extends
         }
     }
 
-    private void addUserLocations() {
-        home = CarmenFeature.builder().text("Home")
-                .geometry(Point.fromLngLat(-122.3964485, 37.7912561))
-                .placeName("50 Beale St, San Francisco, CA")
-                .id("mapbox-sf")
-                .properties(new JsonObject())
-                .build();
-
-        work = CarmenFeature.builder().text("Work")
-                .placeName("740 15th Street NW, Washington DC")
-                .geometry(Point.fromLngLat(-77.0338348, 38.899750))
-                .id("mapbox-dc")
-                .properties(new JsonObject())
-                .build();
-    }
 
     @Override
     public void onLocationComponentClick() {

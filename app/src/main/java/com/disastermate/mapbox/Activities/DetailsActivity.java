@@ -14,7 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends BaseDrawerActivity {
     private String postcode;
     // TODO: Rename and change types of parameters
     private TextView location;
@@ -24,6 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView wind;
     private TextView pressure;
     private Toolbar mTopToolbar;
+    private TextView risk;
 
 //    private Button bushfire;
 
@@ -31,7 +32,7 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_details);
+        getLayoutInflater().inflate(R.layout.fragment_details, frameLayout);
 
         location = (TextView)findViewById(R.id.location);
         weather = (TextView)findViewById(R.id.weather);
@@ -39,13 +40,12 @@ public class DetailsActivity extends AppCompatActivity {
         humidity = (TextView)findViewById(R.id.humidity);
         wind = (TextView)findViewById(R.id.windspeed);
         pressure = (TextView)findViewById(R.id.pressure);
+        risk = (TextView)findViewById(R.id.risk);
 
 //        bushfire = findViewById(R.id.bushfire);
 
         //adding a back menu
-        mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(mTopToolbar);
-        setTitle("Real Time Factors");
+        BaseDrawerActivity.toolbar.setTitle("BushFire Prediction");
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -93,12 +93,15 @@ public class DetailsActivity extends AppCompatActivity {
                     humidity.setText((j.get("humidity")).toString() + "%");
                     wind.setText((j.get("windSpeed")).toString() + " Km/h");
                     pressure.setText((j.get("airPressure")).toString() + " hPa");
+                    risk.setText((j.get("bushfireRiskRating")).toString());
+
                 }
                 else {
                     temprature.setText("No Data");
-                    humidity.setText("NO Data");
+                    humidity.setText("No Data");
                     wind.setText("No Data");
                     pressure.setText("No Data");
+                    risk.setText("No Data");
                 }
                 } catch(JSONException e){
                     e.printStackTrace();

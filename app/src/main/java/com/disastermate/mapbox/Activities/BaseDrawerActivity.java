@@ -3,6 +3,7 @@ package com.disastermate.mapbox.Activities;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -14,17 +15,30 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SubMenu;
+import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
+import android.widget.HeaderViewListAdapter;
+import android.widget.ListView;
 
 import com.disastermate.mapbox.R;
+import com.google.gson.JsonObject;
+import com.mapbox.api.geocoding.v5.models.CarmenFeature;
+import com.mapbox.geojson.Point;
+import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.plugins.places.autocomplete.PlaceAutocomplete;
+import com.mapbox.mapboxsdk.plugins.places.autocomplete.model.PlaceOptions;
 
 import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 
 public class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
     DrawerLayout drawerLayout;
     FrameLayout frameLayout;
     static Toolbar toolbar;
@@ -32,6 +46,8 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     NotificationManagerCompat notificationManager;
     private MenuInflater inflater;
     FloatingActionButton help;
+    private CarmenFeature home;
+    private CarmenFeature work;
 
 
     @Override
@@ -126,7 +142,10 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             }
 
         else if (id == R.id.nav_watchlist) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            addUserLocations();
+            initSearchFab(2);
+
+
         }
 //        else if (id == R.id.nav_share) {
 //            startActivity(new Intent(getApplicationContext(), ShareActivity.class));
@@ -161,7 +180,72 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 //        return true;
 //    }
 
+    public void initSearchFab(int requestCode) {
+        Intent intent = new PlaceAutocomplete.IntentBuilder()
+                .accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.access_token))
+                .placeOptions(PlaceOptions.builder()
+                        .backgroundColor(Color.parseColor("#EEEEEE"))
+                        .limit(10)
+                        .country("au")
+                        .build(PlaceOptions.MODE_CARDS)
+                )
+                .build(BaseDrawerActivity.this);
+        startActivityForResult(intent, requestCode);
 
+    }
+
+    public void addUserLocations() {
+        home = CarmenFeature.builder().text("Home from BDrwaer")
+                .geometry(Point.fromLngLat(-122.3964485, 37.7912561))
+                .placeName("Somewhere on earth")
+                .id("mapbox-sf")
+                .properties(new JsonObject())
+                .build();
+
+        work = CarmenFeature.builder().text("Work (Feature coming soon :D")
+                .placeName("Somewhere on mars")
+                .geometry(Point.fromLngLat(-77.0338348, 38.899750))
+                .id("mapbox-dc")
+                .properties(new JsonObject())
+                .build();
+    }
+
+
+
+    public void addMenuItemInNavMenuDrawer(final String location, String risk, final String postcode) {
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+
+        Menu menu = navView.getMenu();
+
+        final SubMenu subMenu = menu.addSubMenu("WatchList");
+        MenuItem item = subMenu.add(location);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
+                intent.putExtra("postcode", postcode);
+                intent.putExtra("Address1", location);
+                startActivity(intent);
+                return true;
+            }
+        });
+
+
+        //refreshing adapter
+
+        for (int i = 0, count = navView.getChildCount(); i < count; i++) {
+            final View child = navView.getChildAt(i);
+            if (child != null && child instanceof ListView) {
+                final ListView menuView = (ListView) child;
+                final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
+                final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
+                wrapped.notifyDataSetChanged();
+            }
+        }
+
+
+        navView.invalidate();
+    }
 
 }
 

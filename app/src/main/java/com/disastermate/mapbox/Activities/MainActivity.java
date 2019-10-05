@@ -17,17 +17,21 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -141,6 +145,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private static double loni;
     private MenuInflater inflater;
     private FloatingActionButton btn_help;
+    private Menu detailListView;
 
 
     @Override
@@ -239,13 +244,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         setupLayer(style);
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
 
-                        addUserLocations();
-
                         //TODO: Add search button function here initSearchFab() and addUserLocations() here
                         findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                initSearchFab();
+                                addUserLocations();
+                                initSearchFab(1);
                             }});
                     }
                 });
@@ -521,8 +525,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
                 try {
 
-                    /*TODO: there is a bug here which shows low for not available locations
-                    *  We must either restrict the searches or show no data for that location*/
+                    //add carmen location to the navbar and risk rating to nav bar
+
+
+
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
                             .title(address.getAddressLine(0) + "\n Risk Rate: " + risk.getText().toString()));
@@ -531,15 +537,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     location_address.setText("Location:" + address.getAddressLine(0));
                     risk.setText(j.getString("bushfireRiskRating"));
 
-                    Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
-                    Log.i("Why do birds fly",j.getString(address.getAddressLine(0)));
-
-                    map.animateCamera(CameraUpdateFactory.newCameraPosition(
+                   map.animateCamera(CameraUpdateFactory.newCameraPosition(
                             new CameraPosition.Builder()
                                     .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
                                             ((Point) selectedCarmenFeature.geometry()).longitude()))
                                     .zoom(14)
-                                    .build()), 7000);
+                                    .build()), 3000);
 
 
                 } catch (JSONException e) {
@@ -571,6 +574,80 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        else
+            if(resultCode == Activity.RESULT_OK && requestCode == 2){
+                //logic to add carmen feature here
+                // Retrieve selected location's CarmenFeature
+                CarmenFeature selectedCarmenFeature = PlaceAutocomplete.getPlace(data);
+
+
+                //removes any pending updates
+                locationEngine.removeLocationUpdates(callback);
+
+                try {
+
+                    //gets the address
+                    search_add = geocoder.getFromLocationName(selectedCarmenFeature.placeName(), 1).get(0);
+                    address = search_add;
+
+                    //gets details for the current address
+                    getDetailAsyncTask getSearchDeatilAsyncTask = new getDetailAsyncTask();
+                    getSearchDeatilAsyncTask.execute(search_add.getPostalCode());
+
+                    try {
+
+                        // logic to add the address to as a carmen feature
+                        map.addMarker(new MarkerOptions()
+                                .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
+                                .title(address.getAddressLine(0) + "\n Risk Rate: " + risk.getText().toString()));
+                        Log.i("RRD", risk.getText().toString());
+
+                        location_address.setText("Location:" + address.getAddressLine(0));
+                        risk.setText(j.getString("bushfireRiskRating"));
+
+
+                        map.animateCamera(CameraUpdateFactory.newCameraPosition(
+                                new CameraPosition.Builder()
+                                        .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
+                                                ((Point) selectedCarmenFeature.geometry()).longitude()))
+                                        .zoom(14)
+                                        .build()), 3000);
+
+                        //adds a menu into the watchlist
+                        addMenuItemInNavMenuDrawer(address.getAddressLine(0),j.getString("bushfireRiskRating"),address.getPostalCode());
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+
+                        // Create a new FeatureCollection and add a new Feature to it using selectedCarmenFeature above.
+                        // Then retrieve and update the source designated for showing a selected location's symbol layer icon
+
+//                        if (map != null) {
+//                            Style style = map.getStyle();
+//                            if (style != null) {
+//                                GeoJsonSource source = style.getSourceAs(geojsonSourceLayerId);
+//                                if (source != null) {
+//                                    source.setGeoJson(FeatureCollection.fromFeatures(
+//                                            new Feature[]{Feature.fromJson(selectedCarmenFeature.toJson())}));
+//                                }
+//
+//                                // Move map camera to the selected location
+//                                map.animateCamera(CameraUpdateFactory.newCameraPosition(
+//                                        new CameraPosition.Builder()
+//                                                .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
+//                                                        ((Point) selectedCarmenFeature.geometry()).longitude()))
+//                                                .zoom(14)
+//                                                .build()), 7000);
+//                            }
+//                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
         }
         else{
 //            input_postcode.setError("No address found");
@@ -1106,39 +1183,23 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         }
 
-    private void initSearchFab() {
-                Intent intent = new PlaceAutocomplete.IntentBuilder()
-                        .accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.access_token))
-                        .placeOptions(PlaceOptions.builder()
-                                .backgroundColor(Color.parseColor("#EEEEEE"))
-                                .limit(10)
-                                .country("au")
-                                .addInjectedFeature(home)
-                                .addInjectedFeature(work)
-                                .build(PlaceOptions.MODE_CARDS)
-                                )
-                        .build(MainActivity.this);
-                startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
+//    public void initSearchFab() {
+//                Intent intent = new PlaceAutocomplete.IntentBuilder()
+//                        .accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.access_token))
+//                        .placeOptions(PlaceOptions.builder()
+//                                .backgroundColor(Color.parseColor("#EEEEEE"))
+//                                .limit(10)
+//                                .country("au")
+//                                .addInjectedFeature(home)
+//                                .addInjectedFeature(work)
+//                                .build(PlaceOptions.MODE_CARDS)
+//                                )
+//                        .build(MainActivity.this);
+//                startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
+//
+//            }
 
-            }
 
-
-
-    private void addUserLocations() {
-        home = CarmenFeature.builder().text("Home (Feature coming soon :D")
-                .geometry(Point.fromLngLat(-122.3964485, 37.7912561))
-                .placeName("Somewhere on earth")
-                .id("mapbox-sf")
-                .properties(new JsonObject())
-                .build();
-
-        work = CarmenFeature.builder().text("Work (Feature coming soon :D")
-                .placeName("Somewhere on mars")
-                .geometry(Point.fromLngLat(-77.0338348, 38.899750))
-                .id("mapbox-dc")
-                .properties(new JsonObject())
-                .build();
-    }
 
 
     }
