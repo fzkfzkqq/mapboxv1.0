@@ -86,6 +86,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Locale;
 
 import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
@@ -256,6 +257,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             }
         });
 
+
         /*That green button is clickable
         * Watch out! Wuuuu*/
         risk.setOnClickListener(new View.OnClickListener() {
@@ -268,6 +270,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_bushfirelow
                             , null));
                     settingsDialog.show();
+                    Window window = settingsDialog.getWindow();
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
                     dialogue_button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -281,6 +285,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_meidumbushfire
                             , null));
                     settingsDialog.show();
+                    Window window = settingsDialog.getWindow();
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
                     dialogue_button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -293,6 +299,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_highbushfire
                             , null));
                     settingsDialog.show();
+                    Window window = settingsDialog.getWindow();
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
                     dialogue_button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -320,6 +328,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+                Window window = settingsDialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setImageResource(R.drawable.factor_temp);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -343,6 +353,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+                Window window = settingsDialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setImageResource(R.drawable.factor_humi);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -366,6 +378,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+                Window window = settingsDialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setImageResource(R.drawable.factor_airpres);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -389,6 +403,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+                Window window = settingsDialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setBackgroundResource(R.drawable.factor_wind);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -412,6 +429,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                                             settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_help
                                                     , null));
                                             settingsDialog.show();
+                                            Window window = settingsDialog.getWindow();
+                                            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
 
                                             dialogue_button = settingsDialog.findViewById(R.id.okbutton);
                                             dialogue_button.setOnClickListener(new View.OnClickListener() {
@@ -654,6 +675,18 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //            input_postcode.setText("");
             System.out.println("do nothing take a chill pill");
         }
+        map.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
+            @Override
+            public boolean onMapClick(@NonNull LatLng point) {
+
+                String string = String.format(Locale.US, "User clicked at: %s", point.toString());
+
+                Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();
+                return true;
+
+            }
+        });
+
     }
 
 
@@ -1179,7 +1212,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         }
                     }
                 }
+
             }
+
+
 
         }
 
