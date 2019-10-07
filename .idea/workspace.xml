@@ -25,16 +25,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/other/BushfireModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/other/BushfireModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_bushfire_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bushfire_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapboxv1.0work.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mapboxv1.0work.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +38,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="R58M44NRMFH" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_28_x86" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -143,12 +136,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="278" column="43" lean-forward="true" selection-start-line="278" selection-start-column="43" selection-end-line="278" selection-end-column="43" />
+            <state relative-caret-position="384">
+              <caret line="166" column="9" lean-forward="true" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7034#7035#0" expanded="true" />
-                <element signature="e#7087#7088#0" expanded="true" />
+                <element signature="e#19400#19408#0" expanded="true" />
+                <element signature="e#18369#18370#0" expanded="true" />
+                <element signature="e#18422#18423#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -208,10 +202,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bushfire_list.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
+            <state relative-caret-position="288">
+              <caret line="295" selection-start-line="295" selection-end-line="295" />
               <folding>
-                <element signature="e#5674#5697#0" expanded="true" />
+                <element signature="e#9197#9220#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -232,7 +226,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>draw</find>
       <find>wind</find>
       <find>lat</find>
       <find>locationComponent</find>
@@ -262,6 +255,7 @@
       <find>bushfireDataList</find>
       <find>setAdapter(safeList);</find>
       <find>Toast</find>
+      <find>onclick</find>
     </findStrings>
     <replaceStrings>
       <replace>Historic</replace>
@@ -330,8 +324,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_help.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/other/SpinnerAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bushfire_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/other/BushfireModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bushfire_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java" />
       </list>
     </option>
@@ -662,7 +656,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.1745283" side_tool="true" weight="0.32980332" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.6437659" weight="0.23298033" />
@@ -670,7 +663,7 @@
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info active="true" id="Structure" order="6" sideWeight="0.50642675" visible="true" weight="0.2655068" />
+      <window_info id="Structure" order="6" sideWeight="0.50642675" visible="true" weight="0.2655068" />
       <window_info id="Favorites" order="7" sideWeight="0.5017182" weight="0.16868381" />
       <window_info id="Resources Explorer" order="8" sideWeight="0.8254717" weight="0.32980332" />
       <window_info anchor="bottom" id="Logcat" order="0" sideWeight="0.49924356" weight="0.31751227" />
@@ -678,7 +671,7 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.32569557" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5088853" side_tool="true" weight="0.325" />
       <window_info anchor="bottom" id="Version Control" order="4" weight="0.32569557" />
-      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49596122" weight="0.28641573" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" sideWeight="0.49596122" visible="true" weight="0.18657938" />
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.4911147" weight="0.32405892" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.7390625" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49757674" weight="0.328125" />
@@ -950,17 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bushfire_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
-          <folding>
-            <element signature="e#5674#5697#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1563">
@@ -989,14 +971,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bushfire_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="295" selection-start-line="295" selection-end-line="295" />
+          <folding>
+            <element signature="e#9197#9220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="278" column="43" lean-forward="true" selection-start-line="278" selection-start-column="43" selection-end-line="278" selection-end-column="43" />
+        <state relative-caret-position="384">
+          <caret line="166" column="9" lean-forward="true" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7034#7035#0" expanded="true" />
-            <element signature="e#7087#7088#0" expanded="true" />
+            <element signature="e#19400#19408#0" expanded="true" />
+            <element signature="e#18369#18370#0" expanded="true" />
+            <element signature="e#18422#18423#0" expanded="true" />
           </folding>
         </state>
       </provider>

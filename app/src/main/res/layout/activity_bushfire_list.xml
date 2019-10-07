@@ -146,18 +146,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:id="@+id/fire_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:prompt="@string/spinner_title"/>
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layFlood"
@@ -202,6 +190,7 @@
             </TextView>
 
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/lflood"
@@ -260,6 +249,18 @@
         </LinearLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/fire_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:prompt="@string/spinner_title"/>
+
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -292,13 +293,6 @@
             android:src="@drawable/flame"
             android:visibility="gone"/>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/show_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:layout_marginBottom="50dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/border" />
+
     </FrameLayout>
 </LinearLayout>

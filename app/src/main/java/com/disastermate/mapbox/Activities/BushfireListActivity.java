@@ -70,7 +70,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     private static List<BushfireModel> completeList =new ArrayList();
     private static List<BushfireModel> assistanceList =new ArrayList();
 
-    private FloatingActionButton showAll,showFloods,showFire;
+    private FloatingActionButton showFloods,showFire;
     private Location mylocation;
 
     Date date1;
@@ -82,76 +82,21 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     private MenuInflater inflater;
 
     private Spinner firespinner;
-
+    double lato,longo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        double lato,longo;
+
         view = getLayoutInflater().inflate(R.layout.activity_bushfire_list, frameLayout);
         BaseDrawerActivity.toolbar.setTitle("Current Bushfires");
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        lato = sharedPreferences.getFloat("Latitude",0);
-        longo = sharedPreferences.getFloat("Longitude",0);
-//        mylocation.setLatitude(0);
-//        mylocation.setLongitude(0);
-//        mylocation.setLatitude(lato);
-//        mylocation.setLatitude(longo);
+        getlatlong();
+        initialise();
 
+        showFireSpinner();
 
-        mylocation = new Location("");
-        mylocation.setLatitude(lato);
-        mylocation.setLongitude(longo);
+        initaliseRecyclerView();
 
-        recyclerView = findViewById(R.id.recycler_view);
-        tvsafe = findViewById(R.id.safe_count);
-        tvresp = findViewById(R.id.responding_count);
-        tvcntrl = findViewById(R.id.undercontrol_count);
-        tvncntrl = findViewById(R.id.notundercontrol_count);
-        lsafe = findViewById(R.id.lsafe);
-        lcont = findViewById(R.id.lcont);
-        lncont = findViewById(R.id.lncont);
-        lrep   = findViewById(R.id.lresp);
-        req = findViewById(R.id.req_count);
-        flood = findViewById(R.id.flood_count);
-        compl = findViewById(R.id.complete_count);
-        lreq = findViewById(R.id.lreq);
-        lflood = findViewById(R.id.lflood);
-        lcomplete = findViewById(R.id.lcomplete);
-        layFire = findViewById(R.id.layFire);
-        layFlood = findViewById(R.id.layFlood);
-        dist = findViewById(R.id.distance);
-
-        showAll = findViewById(R.id.show_all);
-        showFloods = findViewById(R.id.change_flood);
-        showFire = findViewById(R.id.change_fire);
-        firespinner = findViewById(R.id.fire_spinner);
-
-
-        //Initialize list for fire spinner
-        List<String> categories = new ArrayList<String>();
-
-        categories.add("Less than 20km radius");
-        categories.add("All Safe");
-        categories.add("All Under Control");
-        categories.add("All Responding");
-        categories.add("All Not Under Control");
-        categories.add("All Bushfires");
-
-        //create the adapter for the fire spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        firespinner.setAdapter(dataAdapter);
-
-
-        RecyclerView.LayoutManager manager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        recyclerView.setAdapter(bushfireAdapter);
         getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
         getNewsAsyncTask.execute();
 
@@ -159,75 +104,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         getNewsAsyncTaskF.execute();
 
 
-
-        lsafe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAdapter(safeList);
-
-            }
-        });
-
-        lncont.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAdapter(ncontrolList);
-
-            }
-        });
-
-        lcont.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAdapter(controlList);
-
-            }
-        });
-
-        lrep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAdapter(respList);
-
-            }
-        });
-
-        lcomplete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAdapter(completeList);
-
-            }
-        });
-
-        lflood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAdapter(floodList);
-            }
-        });
-
-        lreq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAdapter(assistanceList);
-
-            }
-        });
-
-
-
-        showAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                layFlood.setVisibility(View.GONE);
-                layFire.setVisibility(View.GONE);
-                bushfireDataList.addAll(floodDataList);
-
-                setAdapter(bushfireDataList);
-
-            }
-        });
+//        setOnclickers();
 
         // Spinner click listener
         firespinner.setOnItemSelectedListener(this);
@@ -239,14 +116,6 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
-//
-//        categories.add("Less than 20km radius");
-//        categories.add("All Safe");
-//        categories.add("All Under Control");
-//        categories.add("All Responding");
-//        categories.add("All Not Under Control");
-//        categories.add("All Bushfires");
-
 
         if (item.equals("Less than 20km radius")){
 
@@ -278,11 +147,27 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         }else if (item.equals("Show All")){
             sortByDistance(bushfireDataList);
             setAdapter(bushfireDataList);
+        }else if (item.equals("Less than 20kms radius")) {
+            sortByDistance(floodDataList);
+            Iterator itr = floodDataList.iterator();
+            List<BushfireModel> floodSublist = new ArrayList<>();
+
+            while (itr.hasNext()) {
+                BushfireModel bushfireModel = (BushfireModel) itr.next();
+                if (bushfireModel.getDistancebtwn() < 20) {
+                    floodSublist.add(bushfireModel);
+                }
+            }
+        }else if (item.equals("All Flooding")) {
+            sortByDistance(floodList);
+            setAdapter(floodList);
+        }else if (item.equals("All Request for Assistance")) {
+            sortByDistance(assistanceList);
+            setAdapter(assistanceList);
+        }else if (item.equals("All Complete")) {
+            sortByDistance(completeList);
+            setAdapter(completeList);
         }
-
-
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
     }
 
@@ -389,6 +274,8 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
                         }
                     }));
 
+                    showFireSpinner();
+
                 }
             });
 
@@ -486,6 +373,8 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
                       }
                   }));
 
+                showFloodSpinner();
+
               }
           });
 
@@ -576,5 +465,161 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
 
     private void sortByDistance(List<BushfireModel> list){
        list.sort(Comparator.comparing(BushfireModel::getDistancebtwn));
+    }
+
+    private void showFireSpinner(){
+        //Initialize list for fire spinner
+        List<String> categories = new ArrayList<String>();
+
+        categories.add("Less than 20km radius");
+        categories.add("All Safe");
+        categories.add("All Under Control");
+        categories.add("All Responding");
+        categories.add("All Not Under Control");
+        categories.add("All Bushfires");
+
+
+
+        //create the adapter for the fire spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        firespinner.setAdapter(dataAdapter);
+
+    }
+
+    private void showFloodSpinner(){
+        //initialising flood spinner
+        //Initialize list for fire spinner
+        List<String> categories = new ArrayList<String>();
+
+        categories.add("Less than 20kms radius");
+        categories.add("All Flooding");
+        categories.add("All Request for Assistance");
+        categories.add("All Complete");
+
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+
+        // Drop down layout style - list view with radio button
+        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        firespinner.setAdapter(dataAdapter2);
+
+    }
+
+    public void setOnclickers(){
+
+        lsafe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAdapter(safeList);
+
+            }
+        });
+
+        lncont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAdapter(ncontrolList);
+
+            }
+        });
+
+        lcont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAdapter(controlList);
+
+            }
+        });
+
+        lrep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAdapter(respList);
+
+            }
+        });
+
+        lcomplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAdapter(completeList);
+
+            }
+        });
+
+        lflood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAdapter(floodList);
+            }
+        });
+
+        lreq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAdapter(assistanceList);
+
+            }
+        });
+
+
+    }
+
+    public void initialise(){
+
+
+        recyclerView = findViewById(R.id.recycler_view);
+        tvsafe = findViewById(R.id.safe_count);
+        tvresp = findViewById(R.id.responding_count);
+        tvcntrl = findViewById(R.id.undercontrol_count);
+        tvncntrl = findViewById(R.id.notundercontrol_count);
+        lsafe = findViewById(R.id.lsafe);
+        lcont = findViewById(R.id.lcont);
+        lncont = findViewById(R.id.lncont);
+        lrep   = findViewById(R.id.lresp);
+        req = findViewById(R.id.req_count);
+        flood = findViewById(R.id.flood_count);
+        compl = findViewById(R.id.complete_count);
+        lreq = findViewById(R.id.lreq);
+        lflood = findViewById(R.id.lflood);
+        lcomplete = findViewById(R.id.lcomplete);
+        layFire = findViewById(R.id.layFire);
+        layFlood = findViewById(R.id.layFlood);
+        dist = findViewById(R.id.distance);
+
+        showFloods = findViewById(R.id.change_flood);
+        showFire = findViewById(R.id.change_fire);
+        firespinner = findViewById(R.id.fire_spinner);
+    }
+
+    public void getlatlong(){
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+
+        lato = sharedPreferences.getFloat("Latitude",0);
+        longo = sharedPreferences.getFloat("Longitude",0);
+
+
+        mylocation = new Location("");
+        mylocation.setLatitude(lato);
+        mylocation.setLongitude(longo);
+
+    }
+
+    public void initaliseRecyclerView(){
+        RecyclerView.LayoutManager manager=new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(bushfireAdapter);
+
     }
 }
