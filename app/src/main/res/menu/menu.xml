@@ -7,6 +7,5 @@
         android:id="@+id/button_item"
         android:title="@string/action_settings"
         app:actionLayout="@layout/button_layout"
-        app:showAsAction="ifRoom"
         />
 </menu>

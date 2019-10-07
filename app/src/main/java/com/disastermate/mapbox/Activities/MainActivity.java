@@ -328,8 +328,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+
                 Window window = settingsDialog.getWindow();
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setImageResource(R.drawable.factor_temp);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -353,8 +355,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+
                 Window window = settingsDialog.getWindow();
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setImageResource(R.drawable.factor_humi);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -378,8 +382,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+
                 Window window = settingsDialog.getWindow();
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setImageResource(R.drawable.factor_airpres);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -403,8 +409,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+
                 Window window = settingsDialog.getWindow();
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
 
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setBackgroundResource(R.drawable.factor_wind);
@@ -429,6 +437,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                                             settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_help
                                                     , null));
                                             settingsDialog.show();
+
                                             Window window = settingsDialog.getWindow();
                                             window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
