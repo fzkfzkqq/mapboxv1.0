@@ -78,10 +78,10 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     static String location,alertUpdated,status;
     View view;
 
-    TextView dist;
-    private MenuInflater inflater;
+    TextView dist,radiusText;
 
     private Spinner firespinner;
+    private Spinner radiusspinner;
     double lato,longo;
 
     @Override
@@ -94,6 +94,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         initialise();
 
         showFireSpinner();
+        setRadiusSpinner();
 
         initaliseRecyclerView();
 
@@ -108,6 +109,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
 
         // Spinner click listener
         firespinner.setOnItemSelectedListener(this);
+        radiusspinner.setOnItemSelectedListener(this);
 
 
     }
@@ -116,60 +118,90 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
+        List<BushfireModel> bushfireDataList2 = new ArrayList<>();
+        List<BushfireModel> safeList2 = new ArrayList<>();
+        List<BushfireModel> controlList2 = new ArrayList<>();
+        List<BushfireModel> respList2 = new ArrayList<>();
+        List<BushfireModel> ncontrolList2 = new ArrayList<>();
+        List<BushfireModel> floodDataList2 = new ArrayList<>();
+        List<BushfireModel> completeList2 = new ArrayList<>();
+        List<BushfireModel> floodList2 = new ArrayList<>();
+        List<BushfireModel> assistanceList2 = new ArrayList<>();
+//                categories.add("20 km");
+//                categories.add("50 km");
+//                categories.add("100 km");
+//                categories.add("> 100 km");
+        switch (parent.getId()){
+            //Generally speaking, the NWS issues flood alerts either on a county basis, or for particular rivers and streams. Those alerts are divided into several basic categories
+            case R.id.radius_spinner:
+                if (item.equals("20 km")) {
+                    bushfireDataList2 = trimlist(20,bushfireDataList);
+                    Toast.makeText(this, bushfireDataList2.size() + " Events", Toast.LENGTH_SHORT).show();
+                    firespinner.setSelection(0);
+                    setAdapter(bushfireDataList2);
 
-        if (item.equals("Less than 20km radius")){
-
-            sortByDistance(bushfireDataList);
-            Iterator itr = bushfireDataList.iterator();
-            List<BushfireModel> fireSublist = new ArrayList<>();
-
-            while(itr.hasNext()){
-                BushfireModel bushfireModel = (BushfireModel) itr.next();
-                if(bushfireModel.getDistancebtwn() < 20){
-                    fireSublist.add(bushfireModel);
+                }else if (item.equals("50 km")) {
+                    bushfireDataList2 = trimlist(50,bushfireDataList);
+                    firespinner.setSelection(0);
+                    setAdapter(bushfireDataList2);
+                    Toast.makeText(this, bushfireDataList2.size() + " Events", Toast.LENGTH_SHORT).show();
+                }else if (item.equals("100 km")) {
+                    firespinner.setSelection(0);
+                    bushfireDataList2 = trimlist(100,bushfireDataList);
+                    setAdapter(bushfireDataList2);
+                    Toast.makeText(this, bushfireDataList2.size() + " Events", Toast.LENGTH_SHORT).show();
+                }else if (item.equals("All")) {
+                    //DO NOTHING
+                    firespinner.setSelection(0);
+                    setAdapter(bushfireDataList);
                 }
-            }
 
-            setAdapter(fireSublist);
+            case R.id.fire_spinner:
 
-        }else if (item.equals("All Safe")){
-            sortByDistance(safeList);
-            setAdapter(safeList);
-        }else if (item.equals("All Under Control")){
-            sortByDistance(controlList);
-            setAdapter(controlList);
-        }else if (item.equals("All Responding")){
-            sortByDistance(respList);
-            setAdapter(respList);
-        }else if (item.equals("All Not Under Control")){
-            sortByDistance(ncontrolList);
-            setAdapter(ncontrolList);
-        }else if (item.equals("Show All")){
-            sortByDistance(bushfireDataList);
-            setAdapter(bushfireDataList);
-        }else if (item.equals("Less than 20kms radius")) {
-            sortByDistance(floodDataList);
-            Iterator itr = floodDataList.iterator();
-            List<BushfireModel> floodSublist = new ArrayList<>();
-
-            while (itr.hasNext()) {
-                BushfireModel bushfireModel = (BushfireModel) itr.next();
-                if (bushfireModel.getDistancebtwn() < 20) {
-                    floodSublist.add(bushfireModel);
+                if (item.equals("Select Status")){
+                    setAdapter(bushfireDataList);
+                }else if (item.equals("All Safe")){
+                    sortByDistance(safeList);
+                    setAdapter(safeList);
+                    radiusspinner.setSelection(0);
+                }else if (item.equals("All Under Control")){
+                    sortByDistance(controlList);
+                    setAdapter(controlList);
+                    radiusspinner.setSelection(0);
+                }else if (item.equals("All Responding")){
+                    sortByDistance(respList);
+                    setAdapter(respList);
+                    radiusspinner.setSelection(0);
+                }else if (item.equals("All Not Under Control")){
+                    sortByDistance(ncontrolList);
+                    setAdapter(ncontrolList);
+                    radiusspinner.setSelection(0);
+                }else if (item.equals("All Bushfires")){
+                    sortByDistance(bushfireDataList);
+                    setAdapter(bushfireDataList);
+                    radiusspinner.setSelection(0);
+                }else if (item.equals("Select  Status")) {
+                    setAdapter(floodDataList);
+                }else if (item.equals("All Flooding")) {
+                    sortByDistance(floodList);
+                    setAdapter(floodList);
+                }else if (item.equals("All Request for Assistance")) {
+                    sortByDistance(assistanceList);
+                    setAdapter(assistanceList);
+                }else if (item.equals("All Complete")) {
+                    sortByDistance(completeList);
+                    setAdapter(completeList);
+                }else if (item.equals("All Floods")) {
+                    sortByDistance(floodDataList);
+                    setAdapter(floodDataList);
                 }
-            }
-        }else if (item.equals("All Flooding")) {
-            sortByDistance(floodList);
-            setAdapter(floodList);
-        }else if (item.equals("All Request for Assistance")) {
-            sortByDistance(assistanceList);
-            setAdapter(assistanceList);
-        }else if (item.equals("All Complete")) {
-            sortByDistance(completeList);
-            setAdapter(completeList);
         }
 
-    }
+
+        }
+
+
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
@@ -266,6 +298,8 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
                     showFire.setVisibility(View.GONE);
                     showFloods.setVisibility(View.VISIBLE);
                     layFire.setVisibility(View.VISIBLE);
+                    radiusspinner.setVisibility(View.VISIBLE);
+                    radiusText.setVisibility(View.VISIBLE);
                     layFlood.setVisibility(View.GONE);
                     recyclerView.setAdapter(new BushfireAdapter(bushfireDataList, new BushfireAdapter.OnItemClickListener() {
                         @Override
@@ -365,6 +399,8 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
                   showFloods.setVisibility(View.GONE);
                   showFire.setVisibility(View.VISIBLE);
                   layFire.setVisibility(View.GONE);
+                  radiusspinner.setVisibility(View.GONE);
+                  radiusText.setVisibility(View.GONE);
                   layFlood.setVisibility(View.VISIBLE);
                   recyclerView.setAdapter(new BushfireAdapter(floodDataList, new BushfireAdapter.OnItemClickListener() {
                       @Override
@@ -470,8 +506,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     private void showFireSpinner(){
         //Initialize list for fire spinner
         List<String> categories = new ArrayList<String>();
-
-        categories.add("Less than 20km radius");
+        categories.add("Select Status");
         categories.add("All Safe");
         categories.add("All Under Control");
         categories.add("All Responding");
@@ -498,11 +533,11 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         //initialising flood spinner
         //Initialize list for fire spinner
         List<String> categories = new ArrayList<String>();
-
-        categories.add("Less than 20kms radius");
+        categories.add("Select  Status");
         categories.add("All Flooding");
         categories.add("All Request for Assistance");
         categories.add("All Complete");
+        categories.add("All Floods");
 
         ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
@@ -600,6 +635,8 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         showFloods = findViewById(R.id.change_flood);
         showFire = findViewById(R.id.change_fire);
         firespinner = findViewById(R.id.fire_spinner);
+        radiusspinner = findViewById(R.id.radius_spinner);
+        radiusText = findViewById(R.id.radius_text);
     }
 
     public void getlatlong(){
@@ -620,6 +657,46 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         recyclerView.setLayoutManager(manager);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(bushfireAdapter);
+
+    }
+
+    private void setRadiusSpinner(){
+        //initialising flood spinner
+        //Initialize list for fire spinner
+        List<String> categories = new ArrayList<String>();
+        categories.add("Select Radius");
+        categories.add("20 km");
+        categories.add("50 km");
+        categories.add("100 km");
+        categories.add("All");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        radiusspinner.setAdapter(dataAdapter);
+
+
+
+    }
+
+    public List<BushfireModel> trimlist(int radius, List<BushfireModel> list){
+        sortByDistance(list);
+        Iterator itr = list.iterator();
+        List<BushfireModel> sublist = new ArrayList<>();
+
+        while(itr.hasNext()){
+            BushfireModel bushfireModel = (BushfireModel) itr.next();
+            if(bushfireModel.getDistancebtwn() < radius){
+                sublist.add(bushfireModel);
+            }
+        }
+        return sublist;
+
+
 
     }
 }
