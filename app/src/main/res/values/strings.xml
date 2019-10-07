@@ -82,4 +82,6 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="updating_risk_rate">Updating Risk Rate</string>
+    <string name="spinner_title">Sort By</string>
+    <string name="radius_title">All Radius</string>
 </resources>
