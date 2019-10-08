@@ -41,87 +41,41 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:src="@drawable/clicking" />
+
 </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        >
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
+            android:text="Historic Fires in Victoria 2018"
+            android:textSize="30dp"
+            android:gravity="center"
+            >
         </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jan">
-        </TextView>
-    </LinearLayout>
-    <SeekBar
-        android:id="@+id/isochrone_minute_seekbar_slider"
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_marginTop="32dp" />
+        android:layout_height="wrap_content"
+        android:hint="month"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:id="@+id/month"> </TextView>
+    <TextView
+        android:hint="count"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/count"> </TextView>
+        <SeekBar
+            android:id="@+id/isochrone_minute_seekbar_slider"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:scrollbarSize="100dp"
+            android:progress="0"/>
+    </LinearLayout>
 </android.support.v7.widget.LinearLayoutCompat>

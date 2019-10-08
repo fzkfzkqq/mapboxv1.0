@@ -8,10 +8,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.disastermate.mapbox.R;
@@ -92,6 +94,8 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
     private static final String CIRCLE_LAYER_ID = "earthquakes-circle";
     private boolean isMarkShown = false;
     private Toolbar mTopToolbar;
+    private TextView month,count;
+
 
     private List<HistoricfireModel> Jan = new ArrayList<>();
     private List<HistoricfireModel> Feb = new ArrayList<>();
@@ -119,6 +123,8 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
 //        setContentView(R.layout.activity_historic);
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
+        month = findViewById(R.id.month);
+        count = findViewById(R.id.count);
 //        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
 //        getDetailAsyncTask.execute("3125");
 
@@ -141,51 +147,73 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                                 findViewById(R.id.isochrone_minute_seekbar_slider);
                         liveWithinMinutesSeekbar.setMax(12);
                         liveWithinMinutesSeekbar.incrementProgressBy(1);
+                        liveWithinMinutesSeekbar.setProgress(0);
+
 
 
                         liveWithinMinutesSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                             @Override
                             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                                progress = progress / 5;
-//                                progress = progress * 5;
-//                                liveWithinMinTextView.setText(String.format(getString(R.string.minutes_textview), progress));
-
                                     switch (progress) {
                                         case 0:
                                             iteratelist(Jan);
+                                            month.setText("January");
+                                            count.setText(Jan.size() + " Fires");
                                             break;
                                         case 1:
                                             iteratelist(Feb);
+                                            month.setText("February");
+                                            count.setText(Feb.size() + " Fires");
                                             break;
                                         case 2:
                                             iteratelist(Mar);
+                                            month.setText("March");
+                                            count.setText(Mar.size() + " Fires");
                                             break;
                                         case 3:
                                             iteratelist(Apr);
+                                            month.setText("April");
+                                            count.setText(Apr.size() + " Fires");
                                             break;
                                         case 4:
                                             iteratelist(May);
+                                            month.setText("May");
+                                            count.setText(May.size() + " Fires");
                                             break;
                                         case 5:
                                             iteratelist(Jun);
+                                            month.setText("June");
+                                            count.setText(Jun.size() + " Fires");
                                             break;
                                         case 6:
                                             iteratelist(Jul);
+                                            month.setText("July");
+                                            count.setText(Jul.size() + " Fires");
                                             break;
                                         case 7:
                                             iteratelist(Aug);
+                                            month.setText("August");
+                                            count.setText(Aug.size() + " Fires");
                                             break;
                                         case 8:
                                             iteratelist(Sep);
+                                            month.setText("September");
+                                            count.setText(Sep.size() + " Fires");
                                             break;
                                         case 9:
                                             iteratelist(Oct);
+                                            month.setText("October");
+                                            count.setText(Oct.size() + " Fires");
                                             break;
                                         case 10:
                                             iteratelist(Nov);
+                                            month.setText("November");
+                                            count.setText(Nov.size() + " Fires");
                                             break;
                                         case 11:
                                             iteratelist(Dec);
+                                            month.setText("December");
+                                            count.setText(Dec.size() + " Fires");
                                             break;
                                 }
                             }
@@ -214,13 +242,15 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                     isMarkShown = true;
                     GetParks getpark = new GetParks();
                     getpark.execute();
-                    Toast.makeText(Historic.this, "Is Mark is now True", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Historic.this, "Drag the seekbar to view bushfires for each month", Toast.LENGTH_SHORT).show();
+                    month.setText("January");
+                    count.setText(Jan.size() + " Fires");
                 }else if(isMarkShown) {
                     map.removeAnnotations();
                     isMarkShown = false;
-//                    Jan.clear();Feb.clear();Mar.clear();Apr.clear();May.clear();Jun.clear();
-//                    Jul.clear();Aug.clear();Sep.clear();Oct.clear();Nov.clear();Dec.clear();
-                    Toast.makeText(Historic.this, "Is Mark is now False", Toast.LENGTH_SHORT).show();
+                    Jan.clear();Feb.clear();Mar.clear();Apr.clear();May.clear();Jun.clear();
+                    Jul.clear();Aug.clear();Sep.clear();Oct.clear();Nov.clear();Dec.clear();
+                    Toast.makeText(Historic.this, "Slider disabled", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -694,12 +724,16 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                             e.printStackTrace();
                         }
                     }
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-        }}
+
+        }
+
+    }
     //here is to put marks for parks
     private void parkMarks(LatLng latLng,String snippet) {
         MarkerOptions markerOptions = new MarkerOptions();
@@ -722,7 +756,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
             HistoricfireModel bushfireModel = (HistoricfireModel) itr.next();
             LatLng latLng = new LatLng(bushfireModel.getLatitude(),bushfireModel.getLongitude());
             String markerSnippet = "Temperature: " + bushfireModel.getTemperature() +
-                    "\n Power: " + bushfireModel.getPower() + "\nDate" + bushfireModel.getDate();
+                    "\n Power: " + bushfireModel.getPower() + "\nDate " + bushfireModel.getDate();
 
             parkMarks(latLng,markerSnippet);
         }
