@@ -28,6 +28,17 @@
             android:checkable="false"
             android:icon="@drawable/binoculars"
             android:title="Set Watchlist" />
+        <item
+            android:id="@+id/nav_bushtodolist"
+            android:checkable="false"
+            android:icon="@drawable/fire"
+            android:title="Bushfire Todolist" />
+
+        <item
+            android:id="@+id/nav_floodtodolist"
+            android:checkable="false"
+            android:icon="@drawable/flood"
+            android:title="Bushfire Todolist" />
 
     </group>
 

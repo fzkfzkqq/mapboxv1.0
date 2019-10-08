@@ -84,4 +84,5 @@
     <string name="updating_risk_rate">Updating Risk Rate</string>
     <string name="spinner_title">Sort By</string>
     <string name="radius_title">All Radius</string>
+    <string name="title_activity_todo_list">TodoListActivity</string>
 </resources>
