@@ -10,9 +10,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.disastermate.mapbox.R;
+import com.disastermate.mapbox.other.BushfireModel;
+import com.disastermate.mapbox.other.HistoricfireModel;
 import com.disastermate.mapbox.other.Restful;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
@@ -46,6 +50,8 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
@@ -87,6 +93,19 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
     private boolean isMarkShown = false;
     private Toolbar mTopToolbar;
 
+    private List<HistoricfireModel> Jan = new ArrayList<>();
+    private List<HistoricfireModel> Feb = new ArrayList<>();
+    private List<HistoricfireModel> Mar = new ArrayList<>();
+    private List<HistoricfireModel> Apr = new ArrayList<>();
+    private List<HistoricfireModel> May = new ArrayList<>();
+    private List<HistoricfireModel> Jun = new ArrayList<>();
+    private List<HistoricfireModel> Jul = new ArrayList<>();
+    private List<HistoricfireModel> Aug = new ArrayList<>();
+    private List<HistoricfireModel> Sep = new ArrayList<>();
+    private List<HistoricfireModel> Oct = new ArrayList<>();
+    private List<HistoricfireModel> Nov = new ArrayList<>();
+    private List<HistoricfireModel> Dec = new ArrayList<>();
+
 
 
     @Override
@@ -115,7 +134,70 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                     public void onStyleLoaded(@NonNull Style style) {
                         addEarthquakeSource(style);
                         addHeatmapLayer(style);
-                        addCircleLayer(style);
+//                        addCircleLayer(style);
+
+                        // Initialize the Seekbar slider
+                        final SeekBar liveWithinMinutesSeekbar =
+                                findViewById(R.id.isochrone_minute_seekbar_slider);
+                        liveWithinMinutesSeekbar.setMax(12);
+                        liveWithinMinutesSeekbar.incrementProgressBy(1);
+
+
+                        liveWithinMinutesSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                            @Override
+                            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//                                progress = progress / 5;
+//                                progress = progress * 5;
+//                                liveWithinMinTextView.setText(String.format(getString(R.string.minutes_textview), progress));
+
+                                    switch (progress) {
+                                        case 0:
+                                            iteratelist(Jan);
+                                            break;
+                                        case 1:
+                                            iteratelist(Feb);
+                                            break;
+                                        case 2:
+                                            iteratelist(Mar);
+                                            break;
+                                        case 3:
+                                            iteratelist(Apr);
+                                            break;
+                                        case 4:
+                                            iteratelist(May);
+                                            break;
+                                        case 5:
+                                            iteratelist(Jun);
+                                            break;
+                                        case 6:
+                                            iteratelist(Jul);
+                                            break;
+                                        case 7:
+                                            iteratelist(Aug);
+                                            break;
+                                        case 8:
+                                            iteratelist(Sep);
+                                            break;
+                                        case 9:
+                                            iteratelist(Oct);
+                                            break;
+                                        case 10:
+                                            iteratelist(Nov);
+                                            break;
+                                        case 11:
+                                            iteratelist(Dec);
+                                            break;
+                                }
+                            }
+                            @Override
+                            public void onStartTrackingTouch(SeekBar seekBar) {
+// Not needed in this example.
+                            }
+
+                            @Override
+                            public void onStopTrackingTouch(SeekBar seekBar) {
+                            }
+                        });
 
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
                     }
@@ -124,6 +206,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
             }
         });
 
+
         findViewById(R.id.show_historic_marker).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,10 +214,14 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                     isMarkShown = true;
                     GetParks getpark = new GetParks();
                     getpark.execute();
-                }else
-                Toast.makeText(Historic.this, "The details are already shown",
-                        Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(Historic.this, "Is Mark is now True", Toast.LENGTH_SHORT).show();
+                }else if(isMarkShown) {
+                    map.removeAnnotations();
+                    isMarkShown = false;
+//                    Jan.clear();Feb.clear();Mar.clear();Apr.clear();May.clear();Jun.clear();
+//                    Jul.clear();Aug.clear();Sep.clear();Oct.clear();Nov.clear();Dec.clear();
+                    Toast.makeText(Historic.this, "Is Mark is now False", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -522,6 +609,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         }
         @Override
         protected void onPostExecute(String details) {
+
             JSONObject jsonObject = null;
             Integer count = 0;
             try {
@@ -538,12 +626,70 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                     {
                         try {
                             JSONObject j = jarray.getJSONObject(i);
+
                             Double lat  = Double.parseDouble(j.getJSONObject("geometry").getJSONArray("coordinates").getString(1));
                             Double longti = Double.parseDouble(j.getJSONObject("geometry").getJSONArray("coordinates").getString(0));
+                            String temperature = j.getJSONObject("properties").getString("temperature");
+                            String power = j.getJSONObject("properties").getString("power");
+                            String month = j.getJSONObject("properties").getString("month");
+                            String date = j.getJSONObject("properties").getString("date");
                             LatLng latLng = new LatLng(lat,longti);
-                            String markerSnippet = "temprature: " + j.getJSONObject("properties").getString("temperature")+
-                                    "\n power: " + j.getJSONObject("properties").getString("power");
-                            parkMarks(latLng,markerSnippet);
+                            String markerSnippet = "temprature: " + temperature +
+                                    "\n power: " + power;
+
+                            HistoricfireModel historicfireModel = new HistoricfireModel(lat,longti,power,temperature,month,date);
+
+                            switch(historicfireModel.getMonth()) {
+                                case "January":
+                                    Jan.add(historicfireModel);
+                                    Log.i("December","Jan Calling!");
+                                    break;
+                                case "February":
+                                    Feb.add(historicfireModel);
+                                    Log.i("December","Feb Calling!");
+                                    break;
+                                case "March":
+                                    Mar.add(historicfireModel);
+                                    Log.i("December","Mar Calling!");
+                                    break;
+                                case "April":
+                                    Apr.add(historicfireModel);
+                                    Log.i("December","Apr Calling!");
+                                    break;
+                                case "May":
+                                    May.add(historicfireModel);
+                                    Log.i("December","May Calling!");
+                                    break;
+                                case "June":
+                                    Jun.add(historicfireModel);
+                                    Log.i("December","Jun Calling!");
+                                    break;
+                                case "July":
+                                    Jul.add(historicfireModel);
+                                    Log.i("December","Jul Calling!");
+                                    break;
+                                case "August":
+                                    Aug.add(historicfireModel);
+                                    Log.i("December","Aug Calling!");
+                                    break;
+                                case "September":
+                                    Sep.add(historicfireModel);
+                                    Log.i("December","Sep Calling!");
+                                    break;
+                                case "October":
+                                    Oct.add(historicfireModel);
+                                    Log.i("December","Oct Calling!");
+                                    break;
+                                case "November":
+                                    Nov.add(historicfireModel);
+                                    Log.i("December","Nov Calling!");
+                                    break;
+                                case "December":
+                                    Dec.add(historicfireModel);
+                                    Log.i("December","December Calling!");
+                                    break;
+                            }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -567,6 +713,20 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
     }
 
 
+    public void iteratelist(List<HistoricfireModel> list){
+        map.removeAnnotations();
 
+        Iterator itr = list.iterator();
+
+        while(itr.hasNext()){
+            HistoricfireModel bushfireModel = (HistoricfireModel) itr.next();
+            LatLng latLng = new LatLng(bushfireModel.getLatitude(),bushfireModel.getLongitude());
+            String markerSnippet = "Temperature: " + bushfireModel.getTemperature() +
+                    "\n Power: " + bushfireModel.getPower() + "\nDate" + bushfireModel.getDate();
+
+            parkMarks(latLng,markerSnippet);
+        }
+
+    }
 
 }

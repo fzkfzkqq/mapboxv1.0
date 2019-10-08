@@ -55,6 +55,7 @@ public class Restful {
 //open the connection
             conn = (HttpURLConnection) url.openConnection();
 //set the timeout
+
             conn.setReadTimeout(10000);
             conn.setConnectTimeout(15000);
 //set the connection method to GET
