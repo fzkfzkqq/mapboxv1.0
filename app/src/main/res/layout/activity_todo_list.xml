@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            style="@style/HeaderBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp" />
+
+
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:weightSum="2">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:paddingBottom="20dp"
+                android:textSize="30sp"
+                android:text="Things you need to do"
+                android:gravity="center"
+                />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/check_image_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/low_bf1"
+                        android:adjustViewBounds="true"/>
+                    <TextView
+                        android:id="@+id/uncheck_text_1"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Rake Up Leaves and Put Them in a Green Bin"/>
+                    <ImageView
+                        android:id="@+id/check_image_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/low_bf2"
+                        android:adjustViewBounds="true"/>
+                    <TextView
+                        android:id="@+id/uncheck_text_2"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Move Mulch or Firewood Well Away From Your House"/>
+                    <ImageView
+                        android:id="@+id/check_image_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/low_bf3"
+                        android:adjustViewBounds="true"/>
+                    <TextView
+                        android:id="@+id/uncheck_text_3"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Patch Up Gaps in Roofs and Verandahs"/>
+                </LinearLayout>
+            </ScrollView>
+
+            <View
+                android:layout_marginTop="30dp"
+                android:layout_width="350dp"
+                android:layout_height="4dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#C7C1C1" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Things you have done"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="20dp"
+                android:textSize="30sp"
+                />
+
+            <CheckedTextView
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:id="@+id/check_text_1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:gravity="center"
+                android:checkMark="@drawable/mapbox_ic_check"
+                android:text= "Rake Up Leaves and Put Them in a Green Bin"
+                android:textSize="18sp"
+                />
+
+            <CheckedTextView
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:id="@+id/check_text_2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:gravity="center"
+                android:checkMark="@drawable/mapbox_ic_check"
+                android:text= "Move Mulch or Firewood Well Away From Your House"
+                android:textSize="18sp"
+                />
+
+            <CheckedTextView
+                android:id="@+id/check_text_3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:checkMark="@drawable/mapbox_ic_check"
+                android:text= "Patch Up Gaps in Roofs and Verandahs"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_redo"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Redo the Quiz"
+            android:textSize="30sp"/>
+    </RelativeLayout>
+</android.support.v7.widget.LinearLayoutCompat>

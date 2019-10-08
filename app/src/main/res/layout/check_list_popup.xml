@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:adjustViewBounds="true"
+        android:id="@+id/check_image"
+        android:paddingBottom="20dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/low_bf1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"/>
+    <TextView
+        android:id="@+id/check_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rake Up Leaves and Put Them in a Green Bin"
+        android:gravity="center"
+        android:textSize="30sp"/>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/chelist_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/checkno"
+            android:background="#ffffff"
+            />
+
+        <ImageButton
+            android:id="@+id/chelist_yes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/checkyes"
+            android:background="#ffffff"/>
+    </LinearLayout>
+</RelativeLayout>

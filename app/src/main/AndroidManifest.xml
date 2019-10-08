@@ -4,49 +4,60 @@
     package="com.disastermate.mapbox">
 
     <application
-        android:name="com.disastermate.mapbox.other.Notifications"
+        android:name=".other.Notifications"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.disastermate.mapbox.Activities.BushfireListActivity" android:launchMode="singleInstance"
-            android:taskAffinity=""
-            android:excludeFromRecents="true"></activity>
-        <activity android:name="com.disastermate.mapbox.Activities.Historic"
-            android:launchMode="singleInstance"/>
-        <activity android:name="com.disastermate.mapbox.Activities.FloodActivity" android:launchMode="singleInstance"/>
-
         <activity
-            android:name="com.disastermate.mapbox.Activities.Welcome"
+            android:name=".Activities.TodoListActivity"
+            android:label="@string/title_activity_todo_list"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".Activities.BushfireListActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:taskAffinity="" />
+        <activity
+            android:name=".Activities.Historic"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".Activities.FloodActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".Activities.Welcome"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/DisasterMate"
-            android:theme="@style/FullscreenTheme"
-            >
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.disastermate.mapbox.Activities.MainActivity" android:launchMode="singleInstance">
-
-        </activity>
-        <activity android:name="com.disastermate.mapbox.Activities.ActionActivity" android:launchMode="singleInstance"/>
-        <activity android:name="com.disastermate.mapbox.Activities.CauseActivity" android:launchMode="singleInstance"/>
-        <activity android:name="com.disastermate.mapbox.Activities.DetailsActivity" android:launchMode="singleInstance"/>
-
-
-
-        <activity android:name="com.disastermate.mapbox.Activities.BaseDrawerActivity"/>
-
-
-
+        <activity
+            android:name=".Activities.MainActivity"
+            android:launchMode="singleInstance"></activity>
+        <activity
+            android:name=".Activities.ActionActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".Activities.CauseActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".Activities.DetailsActivity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".Activities.BaseDrawerActivity" />
     </application>
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 </manifest>
