@@ -105,7 +105,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             startActivity(new Intent(getApplicationContext(), TodoListActivity.class));
         }
         else if (id == R.id.nav_floodtodolist) {
-            startActivity(new Intent(getApplicationContext(), TodoListActivity.class));
+            startActivity(new Intent(getApplicationContext(), Flood2doList.class));
         }
          else if (id == R.id.nav_disastersList) {
             startActivity(new Intent(getApplicationContext(), BushfireListActivity.class));

@@ -85,4 +85,5 @@
     <string name="spinner_title">Sort By</string>
     <string name="radius_title">All Radius</string>
     <string name="title_activity_todo_list">TodoListActivity</string>
+    <string name="title_activity_flood2do_list">Flood2doList</string>
 </resources>

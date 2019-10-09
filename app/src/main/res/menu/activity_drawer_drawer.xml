@@ -38,7 +38,7 @@
             android:id="@+id/nav_floodtodolist"
             android:checkable="false"
             android:icon="@drawable/flood"
-            android:title="Bushfire Todolist" />
+            android:title="Flood Todolist" />
 
     </group>
 

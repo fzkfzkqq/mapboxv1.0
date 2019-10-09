@@ -43,9 +43,9 @@ public class TodoListActivity extends BaseDrawerActivity {
                     , null));
             settingsDialog.show();
             ImageView image = settingsDialog.findViewById(R.id.check_image);
-            //image.setImageResource(questions.get(index).getImageId());
+            image.setImageResource(questions.get(index).getImageId());
             TextView factor_des = settingsDialog.findViewById(R.id.check_description);
-            //factor_des.setText("How air pressure affects floods");
+            factor_des.setText(questions.get(index).description);
             ImageButton no_button = settingsDialog.findViewById(R.id.chelist_no);
             ImageButton yes_button = settingsDialog.findViewById(R.id.chelist_yes);
             no_button.setOnClickListener(new View.OnClickListener() {
