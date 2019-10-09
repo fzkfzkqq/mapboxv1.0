@@ -821,7 +821,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 initLocationEngine();
 
     // Add the location icon click listener
-                locationComponent.addOnLocationClickListener((OnLocationClickListener) this);
+                locationComponent.addOnLocationClickListener(new OnLocationClickListener() {
+                    @Override
+                    public void onLocationComponentClick() {
+
+                    }
+                });
 
                 findViewById(R.id.back_to_camera_tracking_mode).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -884,14 +889,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
     @Override
     public void onLocationComponentClick() {
-    if (locationComponent.getLastKnownLocation() != null) {
-
-
-    }
-//            Toast.makeText(this, String.format(getString(R.string.current_location),
-//                    locationComponent.getLastKnownLocation().getLatitude(),
-//                    locationComponent.getLastKnownLocation().getLongitude()), Toast.LENGTH_LONG).show();
-//        }
+        assert locationComponent.getLastKnownLocation() != null;
+                    map.getLocationComponent().getLastKnownLocation().getLatitude();
+                    map.getLocationComponent().getLastKnownLocation().getLongitude();
+        Toast.makeText(MainActivity.this,
+                        map.getLocationComponent().getLastKnownLocation().toString(),
+                        Toast.LENGTH_LONG).show();
     }
 
 
