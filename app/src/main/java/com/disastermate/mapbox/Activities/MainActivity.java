@@ -151,7 +151,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private MenuInflater inflater;
     private FloatingActionButton btn_help;
     private Menu detailListView;
-    Location mylocation;
+    public static Location mylocation;
     private float distance = 0;
     Date date1;
     SimpleDateFormat format;
@@ -568,7 +568,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     //add carmen location to the navbar and risk rating to nav bar
 
                     assert locationComponent.getLastKnownLocation() != null;
-                    distance = BushfireListActivity.getDistance(map.getLocationComponent().getLastKnownLocation(),address.getLatitude(),address.getLongitude());
+                    distance = BushfireListActivity.getDistance(mylocation,address.getLatitude(),address.getLongitude());
                      String risktext = j.getString("bushfireRiskRating");
                      Log.i("risktext",j.getString("bushfireRiskRating"));
 
@@ -781,6 +781,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 @Override
                 public void onStyleLoaded(@NonNull Style style) {
                     enableLocationComponent(style);
+
                 }
             });
         } else {
@@ -791,7 +792,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
     @Override
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
-
     }
 
     @Override
@@ -884,6 +884,13 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         locationEngine.requestLocationUpdates(request, callback, getMainLooper());
         locationEngine.getLastLocation(callback);
+        if(mylocation !=null)
+        mylocation = map.getLocationComponent().getLastKnownLocation();
+        else{
+            mylocation.setLongitude(145.044458);
+            mylocation.setLatitude(-37.876817);
+        }
+
 
 
     }
@@ -979,9 +986,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             MainActivity activity = activityWeakReference.get();
 
             if (activity != null) {
-                Location location = result.getLastLocation();
+                mylocation = result.getLastLocation();
 
-                if (location == null) {
+                if (mylocation == null) {
 
                     return;
                 }
@@ -1224,9 +1231,13 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             JSONObject j = jsonArray.getJSONObject(i);
                             Double lat = Double.parseDouble(j.getString("latitude"));
                             Double longti = Double.parseDouble(j.getString("longitude"));
-                            assert map.getLocationComponent().getLastKnownLocation() != null;
-                            mylocation = map.getLocationComponent().getLastKnownLocation();
-                            distance = BushfireListActivity.getDistance(Objects.requireNonNull(mylocation),lat,longti);
+
+                            try {
+                                distance = BushfireListActivity.getDistance(mylocation, lat, longti);
+                            }
+                            catch (Exception e){
+                                distance = 0;
+                            }
 
                             LatLng latLng = new LatLng(lat, longti);
 

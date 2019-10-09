@@ -103,7 +103,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         }
         else if (id == R.id.nav_bushtodolist) {
             startActivity(new Intent(getApplicationContext(), TodoListActivity.class));
-            finish();
         }
         else if (id == R.id.nav_floodtodolist) {
             startActivity(new Intent(getApplicationContext(), Flood2doList.class));
@@ -194,7 +193,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
                         .country("au")
                         .build(PlaceOptions.MODE_CARDS)
                 )
-                .build(BaseDrawerActivity.this);
+                .build(this);
         startActivityForResult(intent, requestCode);
 
     }
