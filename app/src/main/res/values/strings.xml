@@ -65,7 +65,7 @@
                 "By using the application, you will be deemed to have released and discharged DisasterMate from all liability (including negligence) for all claims, losses expenses, damages, and costs the user may incur as a result of relying on the information on this application, including liability in respect of any defamatory material on any database or in respect of any dealings with any work (including software) in which you hold any copyright or other intellectual property right. By using the application, you will be assuming all risks associated with the use of this application, including risks to your phone, software or data by any virus which might be transmitted, downloaded or activated via this or an external website and/or its contents.\n" +
                 "\n" +
                 "Material, summarised views, standards or recommendations of third parties or recommendations made by this application do not necessarily reflect the views of DisasterMate or indicate a commitment to a course of action.\n</string>
-    <string name="DisasterMate">DisasterMate</string>
+    <string name="DisasterMate">DisasterKasa</string>
     <string name="access_token">pk.eyJ1IjoiZnprODg4IiwiYSI6ImNqemh1a3M4MzB6eGgzbmxrMWx0c3Q3b3AifQ.--BckGBvrRT-TXTMJsaDAA</string>
     <string name="title_activity_drawer">drawerActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

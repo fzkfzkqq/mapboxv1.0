@@ -244,13 +244,13 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
             @Override
             public void onClick(View view) {
                 if (isMarkShown){
-                    isMarkShown = true;
+                    isMarkShown = false;
                     GetParks getpark = new GetParks();
                     getpark.execute();
                     Toast.makeText(Historic.this, "Drag the seekbar to view bushfires for each month", Toast.LENGTH_SHORT).show();
                 }else if(!isMarkShown) {
                     map.removeAnnotations();
-                    isMarkShown = false;
+                    isMarkShown = true;
                     Jan.clear();Feb.clear();Mar.clear();Apr.clear();May.clear();Jun.clear();
                     Jul.clear();Aug.clear();Sep.clear();Oct.clear();Nov.clear();Dec.clear();
                     Toast.makeText(Historic.this, "Slider disabled", Toast.LENGTH_SHORT).show();

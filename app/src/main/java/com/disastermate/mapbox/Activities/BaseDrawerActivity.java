@@ -103,6 +103,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         }
         else if (id == R.id.nav_bushtodolist) {
             startActivity(new Intent(getApplicationContext(), TodoListActivity.class));
+            finish();
         }
         else if (id == R.id.nav_floodtodolist) {
             startActivity(new Intent(getApplicationContext(), Flood2doList.class));
@@ -150,8 +151,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         else if (id == R.id.nav_watchlist) {
             addUserLocations();
             initSearchFab(2);
-
-
         }
 //        else if (id == R.id.nav_share) {
 //            startActivity(new Intent(getApplicationContext(), ShareActivity.class));

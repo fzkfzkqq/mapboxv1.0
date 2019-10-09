@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|end"
             android:layout_margin="16dp"
-            android:src="@drawable/fire2"
+            android:src="@drawable/fire_current"
             android:layout_above="@id/popup_group"
             android:layout_alignParentLeft="true" />
 

@@ -90,6 +90,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
@@ -323,7 +324,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), FloodActivity.class));
-                finish();
+//                finish();
             }
         });
 
@@ -1196,6 +1197,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             return Restful.findAllBFAlerts();
         }
 
+        @SuppressLint("SimpleDateFormat")
         @Override
         protected void onPostExecute(String details) {
             JSONArray jsonArray = null;
@@ -1222,7 +1224,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             JSONObject j = jsonArray.getJSONObject(i);
                             Double lat = Double.parseDouble(j.getString("latitude"));
                             Double longti = Double.parseDouble(j.getString("longitude"));
-                            distance = BushfireListActivity.getDistance(map.getLocationComponent().getLastKnownLocation(),lat,longti);
+                            assert map.getLocationComponent().getLastKnownLocation() != null;
+                            mylocation = map.getLocationComponent().getLastKnownLocation();
+                            distance = BushfireListActivity.getDistance(Objects.requireNonNull(mylocation),lat,longti);
+
                             LatLng latLng = new LatLng(lat, longti);
 
                             date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
