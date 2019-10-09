@@ -16,9 +16,9 @@
         style="@style/HeaderBar"
         android:elevation="4dp"
         />
-<FrameLayout
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="550dp"
+    android:layout_height="match_parent"
     >
 
     <com.mapbox.mapboxsdk.maps.MapView
@@ -40,13 +40,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="100dp"
+        android:layout_alignParentBottom="true"
         android:src="@drawable/clicking" />
-
-</FrameLayout>
     <LinearLayout
+        android:id="@+id/historical_text"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="#FFFFFF"
         >
         <TextView
             android:layout_width="match_parent"
@@ -57,20 +61,20 @@
             >
         </TextView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="month"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:id="@+id/month"> </TextView>
-    <TextView
-        android:hint="count"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/count"> </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="month"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:id="@+id/month"> </TextView>
+        <TextView
+            android:hint="count"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/count"> </TextView>
         <SeekBar
             android:id="@+id/isochrone_minute_seekbar_slider"
             android:layout_width="match_parent"
@@ -78,4 +82,6 @@
             android:scrollbarSize="100dp"
             android:progress="0"/>
     </LinearLayout>
+</RelativeLayout>
+
 </android.support.v7.widget.LinearLayoutCompat>
