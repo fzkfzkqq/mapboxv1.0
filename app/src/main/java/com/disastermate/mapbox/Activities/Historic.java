@@ -94,7 +94,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
     private static final String CIRCLE_LAYER_ID = "earthquakes-circle";
     private boolean isMarkShown = false;
     private Toolbar mTopToolbar;
-    private TextView month,count;
+    private TextView month,count1;
 
 
     private List<HistoricfireModel> Jan = new ArrayList<>();
@@ -124,7 +124,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         month = findViewById(R.id.month);
-        count = findViewById(R.id.count);
+        count1 = findViewById(R.id.count);
 //        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
 //        getDetailAsyncTask.execute("3125");
 
@@ -140,6 +140,11 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                     public void onStyleLoaded(@NonNull Style style) {
                         addEarthquakeSource(style);
                         addHeatmapLayer(style);
+                        GetParks getpark = new GetParks();
+                        getpark.execute();
+
+                        Log.i("count", String.valueOf(Jan.size()));
+
 //                        addCircleLayer(style);
 
                         // Initialize the Seekbar slider
@@ -158,62 +163,62 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                                         case 0:
                                             iteratelist(Jan);
                                             month.setText("January");
-                                            count.setText(Jan.size() + " Fires");
+                                            count1.setText(Jan.size() + " Fires");
                                             break;
                                         case 1:
                                             iteratelist(Feb);
                                             month.setText("February");
-                                            count.setText(Feb.size() + " Fires");
+                                            count1.setText(Feb.size() + " Fires");
                                             break;
                                         case 2:
                                             iteratelist(Mar);
                                             month.setText("March");
-                                            count.setText(Mar.size() + " Fires");
+                                            count1.setText(Mar.size() + " Fires");
                                             break;
                                         case 3:
                                             iteratelist(Apr);
                                             month.setText("April");
-                                            count.setText(Apr.size() + " Fires");
+                                            count1.setText(Apr.size() + " Fires");
                                             break;
                                         case 4:
                                             iteratelist(May);
                                             month.setText("May");
-                                            count.setText(May.size() + " Fires");
+                                            count1.setText(May.size() + " Fires");
                                             break;
                                         case 5:
                                             iteratelist(Jun);
                                             month.setText("June");
-                                            count.setText(Jun.size() + " Fires");
+                                            count1.setText(Jun.size() + " Fires");
                                             break;
                                         case 6:
                                             iteratelist(Jul);
                                             month.setText("July");
-                                            count.setText(Jul.size() + " Fires");
+                                            count1.setText(Jul.size() + " Fires");
                                             break;
                                         case 7:
                                             iteratelist(Aug);
                                             month.setText("August");
-                                            count.setText(Aug.size() + " Fires");
+                                            count1.setText(Aug.size() + " Fires");
                                             break;
                                         case 8:
                                             iteratelist(Sep);
                                             month.setText("September");
-                                            count.setText(Sep.size() + " Fires");
+                                            count1.setText(Sep.size() + " Fires");
                                             break;
                                         case 9:
                                             iteratelist(Oct);
                                             month.setText("October");
-                                            count.setText(Oct.size() + " Fires");
+                                            count1.setText(Oct.size() + " Fires");
                                             break;
                                         case 10:
                                             iteratelist(Nov);
                                             month.setText("November");
-                                            count.setText(Nov.size() + " Fires");
+                                            count1.setText(Nov.size() + " Fires");
                                             break;
                                         case 11:
                                             iteratelist(Dec);
                                             month.setText("December");
-                                            count.setText(Dec.size() + " Fires");
+                                            count1.setText(Dec.size() + " Fires");
                                             break;
                                 }
                             }
@@ -238,14 +243,12 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         findViewById(R.id.show_historic_marker).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isMarkShown){
+                if (isMarkShown){
                     isMarkShown = true;
                     GetParks getpark = new GetParks();
                     getpark.execute();
                     Toast.makeText(Historic.this, "Drag the seekbar to view bushfires for each month", Toast.LENGTH_SHORT).show();
-                    month.setText("January");
-                    count.setText(Jan.size() + " Fires");
-                }else if(isMarkShown) {
+                }else if(!isMarkShown) {
                     map.removeAnnotations();
                     isMarkShown = false;
                     Jan.clear();Feb.clear();Mar.clear();Apr.clear();May.clear();Jun.clear();
@@ -724,7 +727,9 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                             e.printStackTrace();
                         }
                     }
-
+                    month.setText("January");
+                    count1.setText(Jan.size() + " Fires");
+                    iteratelist(Jan);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

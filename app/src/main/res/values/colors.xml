@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#0C0B0B</color>
-    <color name="colorAccent">#226477</color>
+    <color name="colorAccent">#EBAA58</color>
     <color name="backgroundclr">#FFFFFF</color>
     <color name="cardwhite">#FFFFFF</color>
     <color name="fuelload">#B9B9B9</color>

@@ -1,12 +1,14 @@
 <component name="libraryTable">
   <library name="Gradle: com.dou361.dialogui:jjdxm-dialogui:1.0.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jjdxm-dialogui-1.0.1.aar/a6a091a09b09d2a3c8bd3465bbb0e65c/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jjdxm-dialogui-1.0.1.aar/a6a091a09b09d2a3c8bd3465bbb0e65c/res" />
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-1/files-1.1/jjdxm-dialogui-1.0.1.aar/b24c2dcc92b01daa56119d92a60f03ca/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-1/files-1.1/jjdxm-dialogui-1.0.1.aar/b24c2dcc92b01daa56119d92a60f03ca/res" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.dou361.dialogui/jjdxm-dialogui/1.0.1/1509399bb9507d688ef93d8847015af3011a50d6/jjdxm-dialogui-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.dou361.dialogui/jjdxm-dialogui/1.0.1/3864ed0fa1e3204908b108907ba5700097333491/jjdxm-dialogui-1.0.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.dou361.dialogui/jjdxm-dialogui/1.0.1/3864ed0fa1e3204908b108907ba5700097333491/jjdxm-dialogui-1.0.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

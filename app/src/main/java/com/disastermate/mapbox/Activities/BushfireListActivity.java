@@ -39,6 +39,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import static java.lang.Math.round;
+
 
 public class BushfireListActivity extends BaseDrawerActivity implements AdapterView.OnItemSelectedListener {
 
@@ -477,14 +479,15 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     }
 
 
-    private float getDistance(Location location,double lat, double longi){
+    public static float getDistance(Location location, double lat, double longi){
 
         Location loc2 = new Location("");
         loc2.setLatitude(lat);
         loc2.setLongitude(longi);
 
         float distanceInMeters = location.distanceTo(loc2);
-        return distanceInMeters/1000;
+        float dist =  round(distanceInMeters/100);
+        return dist/10;
     }
 
 

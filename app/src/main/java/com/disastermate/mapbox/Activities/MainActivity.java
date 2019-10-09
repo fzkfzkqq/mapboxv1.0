@@ -85,6 +85,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -147,6 +150,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private MenuInflater inflater;
     private FloatingActionButton btn_help;
     private Menu detailListView;
+    Location mylocation;
+    private float distance = 0;
+    Date date1;
+    SimpleDateFormat format;
 
 
     @Override
@@ -536,6 +543,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         super.onActivityResult(requestCode, resultCode, data);
         Address search_add;
         Geocoder geocoder = new Geocoder(this);
+        IconFactory iconFactory = IconFactory.getInstance(MainActivity.this);
+        Icon icon = iconFactory.fromResource(R.drawable.placeholder);
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_AUTOCOMPLETE) {
 
             // Retrieve selected location's CarmenFeature
@@ -557,15 +566,23 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
                     //add carmen location to the navbar and risk rating to nav bar
 
+                    assert locationComponent.getLastKnownLocation() != null;
+                    distance = BushfireListActivity.getDistance(map.getLocationComponent().getLastKnownLocation(),address.getLatitude(),address.getLongitude());
+                     String risktext = j.getString("bushfireRiskRating");
+                     Log.i("risktext",j.getString("bushfireRiskRating"));
 
 
-                    map.addMarker(new MarkerOptions()
-                            .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                            .title(address.getAddressLine(0) + "\n Risk Rate: " + risk.getText().toString()));
-                    Log.i("RRD", risk.getText().toString());
 
                     location_address.setText("Location:" + address.getAddressLine(0));
                     risk.setText(j.getString("bushfireRiskRating"));
+                    Log.i("risktext",j.getString("bushfireRiskRating"));
+
+                    map.addMarker(new MarkerOptions()
+                            .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
+                            .icon(icon)
+                            .title(address.getAddressLine(0) + "\nRisk Rate: " + risk.getText()
+                                    + "\nDistance from Location: " + distance + " Km"));
+                    Log.i("RRD", risk.getText().toString());
 
                    map.animateCamera(CameraUpdateFactory.newCameraPosition(
                             new CameraPosition.Builder()
@@ -1154,7 +1171,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         markerOptions.title("Bushfire");
         markerOptions.snippet(snippet);
         IconFactory iconFactory = IconFactory.getInstance(this);
-        Icon icon = iconFactory.fromResource(R.drawable.flame);
+        Icon icon = iconFactory.fromResource(R.drawable.fire_current);
         markerOptions.setIcon(icon);
         try {
             map.addMarker(markerOptions);
@@ -1198,15 +1215,22 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 if (count > 0) {
                     for (int i = 0; i < count; i++) {
                         try {
+
                             JSONObject j = jsonArray.getJSONObject(i);
                             Double lat = Double.parseDouble(j.getString("latitude"));
                             Double longti = Double.parseDouble(j.getString("longitude"));
-
+                            distance = BushfireListActivity.getDistance(map.getLocationComponent().getLastKnownLocation(),lat,longti);
                             LatLng latLng = new LatLng(lat, longti);
 
+                            date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
+                            Log.i("DATE PARSING",date1.toString());
+                            format = new SimpleDateFormat("dd-MM-yyyy");
+
+                            format.applyPattern("dd-MM-yyyy");
+
                             String markerSnippet = "Location: " + j.getString("location") +
-                                    "\n Updated on: " + j.getString("alertUpdated");
-                            Log.i("wtf happened here", j.toString());
+                                    "\nUpdated on: " + format.format(date1) + "\nDistance from Current Location: " + distance + " Km";
+                              Log.i("wtf happened here", j.toString());
 
                             if (j.getString("location") != null) {
                                 parkMarks(latLng, markerSnippet);
@@ -1217,6 +1241,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             }
 
                         } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (ParseException e) {
                             e.printStackTrace();
                         }
                     }

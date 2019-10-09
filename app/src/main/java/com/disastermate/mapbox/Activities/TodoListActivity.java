@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -42,6 +43,8 @@ public class TodoListActivity extends BaseDrawerActivity {
             settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.check_list_popup
                     , null));
             settingsDialog.show();
+            Window window = settingsDialog.getWindow();
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             ImageView image = settingsDialog.findViewById(R.id.check_image);
             image.setImageResource(questions.get(index).getImageId());
             TextView factor_des = settingsDialog.findViewById(R.id.check_description);
@@ -92,6 +95,8 @@ public class TodoListActivity extends BaseDrawerActivity {
                 image.setImageResource(questions.get(index).getImageId());
                 factor_des.setText(questions.get(index).description);
             settingsDialog.show();
+            Window window = settingsDialog.getWindow();
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             }
         });
 
