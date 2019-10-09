@@ -675,7 +675,7 @@ public class FloodActivity extends
                         Double longti = Double.parseDouble(j.getString("longitude"));
 
                         LatLng latLng = new LatLng(lat, longti);
-                        distance = BushfireListActivity.getDistance(MainActivity.mylocation,lat,longti);
+                            distance = BushfireListActivity.getDistance(MainActivity.mylocation,lat,longti);
 
                         date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
                         Log.i("DATE PARSING",date1.toString());
