@@ -19,6 +19,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -174,7 +175,8 @@ public class FloodActivity extends
 
                         enableLocationComponent(style);
                         //TODO: Add search button function here initSearchFab() and addUserLocations() here
-
+                        getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
+                        getNewsAsyncTask.execute();
                         findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -198,6 +200,9 @@ public class FloodActivity extends
                     settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_lowflood
                             , null));
                     settingsDialog.show();
+                    Window window = settingsDialog.getWindow();
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                     dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
                     dialogue_button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -211,6 +216,9 @@ public class FloodActivity extends
                     settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_medflood
                             , null));
                     settingsDialog.show();
+                    Window window = settingsDialog.getWindow();
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                     dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
                     dialogue_button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -223,6 +231,9 @@ public class FloodActivity extends
                     settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_lowflood
                             , null));
                     settingsDialog.show();
+                    Window window = settingsDialog.getWindow();
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                     dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
                     dialogue_button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -250,6 +261,10 @@ public class FloodActivity extends
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+
+                Window window = settingsDialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setImageResource(R.drawable.flood_air);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -272,6 +287,10 @@ public class FloodActivity extends
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
+
+                Window window = settingsDialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setImageResource(R.drawable.flood_humi);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -293,7 +312,12 @@ public class FloodActivity extends
                 settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
+
                 settingsDialog.show();
+
+                Window window = settingsDialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
                 image.setImageResource(R.drawable.flood_rainfall);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
@@ -307,8 +331,7 @@ public class FloodActivity extends
                 });
             }
         });
-        getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
-        getNewsAsyncTask.execute();
+
         /*This is uses a third party application called pusher to get real time alerts
          * as of now we need 2 channels, one for updates and one for prediction alerts*/
 
@@ -600,16 +623,18 @@ public class FloodActivity extends
 
     public void parkMarks(LatLng latLng, String snippet) {
         MarkerOptions markerOptions = new MarkerOptions();
+        //Log.i("latLng",latLng.toString());
         markerOptions.position(latLng);
         markerOptions.title("Flood");
         markerOptions.snippet(snippet);
+       // Log.i("snippet",snippet);
         IconFactory iconFactory = IconFactory.getInstance(this);
         Icon icon = iconFactory.fromResource(R.drawable.flood);
         markerOptions.setIcon(icon);
         try {
             map.addMarker(markerOptions);
         }catch (Exception e){
-            System.out.println("FUCK");
+            System.out.println("FUCK"+e.toString());
             e.getStackTrace();
         }
     }
@@ -679,7 +704,7 @@ public class FloodActivity extends
                             distance = BushfireListActivity.getDistance(MainActivity.mylocation,lat,longti);
 
                         date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
-                        Log.i("DATE PARSING",date1.toString());
+                        //Log.i("DATE PARSING",date1.toString());
                         format = new SimpleDateFormat("dd-MM-yyyy");
 
                         format.applyPattern("dd-MM-yyyy");
@@ -687,7 +712,7 @@ public class FloodActivity extends
 
 
                         String markerSnippet = "Location: " + j.getString("location") +
-                                "\nUpdated on: " + j.getString("alertUpdated") + "\nDistance from Current Location: " + distance + " Km";
+                                "\nUpdated on: " + j.getString("alertUpdated") + "\nDistance from Current Location: "+ distance + " Km";
 
                         if (j.getString("location") != null) {
                             parkMarks(latLng, markerSnippet);

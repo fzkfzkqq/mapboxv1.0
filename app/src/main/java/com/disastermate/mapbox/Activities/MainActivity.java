@@ -419,7 +419,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
                         , null));
                 settingsDialog.show();
-
                 Window window = settingsDialog.getWindow();
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 

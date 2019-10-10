@@ -2,7 +2,9 @@ package com.disastermate.mapbox.Activities;
 
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -39,6 +42,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
 
     private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
+    private static final String PREFS_NAME2 = "watchlist" ;
     DrawerLayout drawerLayout;
     FrameLayout frameLayout;
     static Toolbar toolbar;
@@ -48,6 +52,8 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     FloatingActionButton help;
     private CarmenFeature home;
     private CarmenFeature work;
+
+    private static int i = 0;
 
 
     @Override
@@ -220,9 +226,30 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
 
         Menu menu = navView.getMenu();
+        final SubMenu subMenu;
 
-        final SubMenu subMenu = menu.addSubMenu("WatchList");
-        MenuItem item = subMenu.add(location);
+//        if(!menu.getItem(menu.size() - 1 ).getTitle().toString().equals("WatchList")) {
+          subMenu = menu.addSubMenu("WatchList");
+          MenuItem item = subMenu.add(location);
+
+            Log.i("menu","YES");
+
+          menu.getItem(6).setVisible(false);
+//        }
+//        else{
+//             subMenu1 = menu.getItem(7);
+//            MenuItem menuItem = (SubMenu) subMenu1.add
+//            Log.i("menu","NO");
+//        }
+
+//        int id = item.getItemId();
+//        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME2, Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putInt("Count",i);
+//        editor.putString("WatchList" + String.valueOf(i),location);
+//        editor.putString("postcode"+ String.valueOf(i), postcode);
+//        editor.putString("Address1"+ String.valueOf(i), location);
+//        editor.apply();
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -236,7 +263,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
 
         //refreshing adapter
-
         for (int i = 0, count = navView.getChildCount(); i < count; i++) {
             final View child = navView.getChildAt(i);
             if (child != null && child instanceof ListView) {
