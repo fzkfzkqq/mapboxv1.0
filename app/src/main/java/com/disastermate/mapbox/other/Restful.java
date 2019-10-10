@@ -170,7 +170,7 @@ public class Restful {
             while (inStream.hasNextLine()) {
                 textResult += inStream.nextLine();
             }
-            Log.i(" JSON ", textResult);
+            Log.i(" Floodalert ", textResult);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
