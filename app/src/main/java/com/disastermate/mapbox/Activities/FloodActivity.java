@@ -180,7 +180,7 @@ public class FloodActivity extends
                         findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                addUserLocations();
+//                                addUserLocations();
                                 initSearchFab(1);
                             }
                         });

@@ -27,6 +27,7 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.HeaderViewListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.disastermate.mapbox.R;
 import com.google.gson.JsonObject;
@@ -154,7 +155,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             }
 
         else if (id == R.id.nav_watchlist) {
-            addUserLocations();
+//            addUserLocations();
             initSearchFab(2);
         }
 //        else if (id == R.id.nav_share) {
@@ -204,20 +205,31 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
     }
 
-    public void addUserLocations() {
-        home = CarmenFeature.builder().text("Home from BDrwaer")
-                .geometry(Point.fromLngLat(-122.3964485, 37.7912561))
-                .placeName("Somewhere on earth")
-                .id("mapbox-sf")
-                .properties(new JsonObject())
-                .build();
+    public void addUserLocations(String name, Double lat, Double longi) {
 
-        work = CarmenFeature.builder().text("Work (Feature coming soon :D")
-                .placeName("Somewhere on mars")
-                .geometry(Point.fromLngLat(-77.0338348, 38.899750))
-                .id("mapbox-dc")
-                .properties(new JsonObject())
-                .build();
+
+//        name = CarmenFeature.builder().text(name)
+//                .geometry(Point.fromLngLat(longi,lat))
+//                .placeName("")
+//                .id("mapbox-sf")
+//                .properties(new JsonObject())
+//                .build();
+//
+//        home = CarmenFeature.builder().text("Home")
+//                .geometry(Point.fromLngLat(-122.3964485, 37.7912561))
+//                .placeName("")
+//                .id("mapbox-sf")
+//                .properties(new JsonObject())
+//                .build();
+////
+//        work = CarmenFeature.builder().text("Work (Feature coming soon :D")
+//                .placeName("Somewhere on mars")
+//                .geometry(Point.fromLngLat(-77.0338348, 38.899750))
+//                .id("mapbox-dc")
+//                .properties(new JsonObject())
+//                .build();
+
+
     }
 
 
@@ -234,7 +246,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
             Log.i("menu","YES");
 
-          menu.getItem(6).setVisible(false);
 //        }
 //        else{
 //             subMenu1 = menu.getItem(7);
@@ -273,6 +284,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             }
         }
 
+                        Toast.makeText(getApplicationContext(), "Item Added to Navigation Drawer", Toast.LENGTH_SHORT).show();
 
         navView.invalidate();
     }

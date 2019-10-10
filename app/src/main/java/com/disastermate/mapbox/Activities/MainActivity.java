@@ -172,7 +172,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //        setSupportActionBar(mTopToolbar);
 //        setSupportActionBar(toolbar);
 //        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        BaseDrawerActivity.toolbar.setTitle("BushFire Prediction");
+        BaseDrawerActivity.toolbar.setTitle("Bushfire Prediction");
         mylocation = new Location("me");
 
 
@@ -259,7 +259,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                addUserLocations();
+//                                addUserLocations();
                                 initSearchFab(1);
                             }});
                     }
@@ -424,7 +424,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
 
                 ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setBackgroundResource(R.drawable.factor_wind);
+                image.setImageResource(R.drawable.factor_wind);
                 TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
                 factor_des.setText("How wind works during bush fire.");
                 dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
@@ -480,6 +480,21 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onEvent(PusherEvent event) {
                 System.out.println(event.getData());
+                String data = event.getData();
+                String location = "Carnegie";
+
+                try {
+                    JSONObject getData = new JSONObject(data);
+                     location = (String) getData.get("location");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+//                Log.i("pusher",event.getProperty("location").toString());
+
+
 
                 /*Provides with a default notification anytime the database is updated with a
                 * bushfire alert. THIS IS REALTIME which makes it awesome
@@ -487,7 +502,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 * */
                     Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_2_ID).setSmallIcon(R.drawable.logo)
                             .setContentTitle("Watch Out!")
-                            .setContentText("BushFire at " + event.getData())
+                            .setContentText("BushFire at " + location)
                             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                             .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
                             })
