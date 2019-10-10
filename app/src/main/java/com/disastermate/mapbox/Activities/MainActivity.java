@@ -1228,16 +1228,14 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             Double lat = Double.parseDouble(j.getString("latitude"));
                             Double longti = Double.parseDouble(j.getString("longitude"));
                             try {
-
+                                if(mylocation != null)
+                                    mylocation = map.getLocationComponent().getLastKnownLocation();
                                 distance = BushfireListActivity.getDistance(mylocation, lat, longti);
                                 Log.i("distance", String.valueOf(distance) + " " + String.valueOf(mylocation));
-                                Toast.makeText(MainActivity.this, "Current Location Selected", Toast.LENGTH_LONG).show();
                             }catch(Exception e){
+                                Toast.makeText(MainActivity.this, "Last Known Location Selected", Toast.LENGTH_LONG).show();
                                 mylocation.setLatitude(-37.875261);
                                 mylocation.setLongitude(145.044102);
-                                Toast.makeText(MainActivity.this, "Last Known Location Selected", Toast.LENGTH_LONG).show();
-//                                distance = BushfireListActivity.getDistance(mylocation, lat, longti);
-
                             }
                             LatLng latLng = new LatLng(lat, longti);
 
