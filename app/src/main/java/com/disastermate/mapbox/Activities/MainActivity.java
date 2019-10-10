@@ -173,6 +173,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //        setSupportActionBar(toolbar);
 //        toolbar = (Toolbar) findViewById(R.id.toolbar);
         BaseDrawerActivity.toolbar.setTitle("BushFire Prediction");
+        mylocation = new Location("me");
+
 
 
         /*Declare all UI to Objects herer*/
@@ -566,9 +568,11 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 try {
 
                     //add carmen location to the navbar and risk rating to nav bar
-
-                    assert locationComponent.getLastKnownLocation() != null;
-                    distance = BushfireListActivity.getDistance(mylocation,address.getLatitude(),address.getLongitude());
+                    try {
+                        distance = BushfireListActivity.getDistance(mylocation, address.getLatitude(), address.getLongitude());
+                    }catch(Exception e){
+                        distance = 0;
+                    }
                      String risktext = j.getString("bushfireRiskRating");
                      Log.i("risktext",j.getString("bushfireRiskRating"));
 
@@ -706,9 +710,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public boolean onMapClick(@NonNull LatLng point) {
 
-                String string = String.format(Locale.US, "User clicked at: %s", point.toString());
-
-                Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();
+//                String string = String.format(Locale.US, "User clicked at: %s", point.toString());
+//
+//                Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();
                 return true;
 
             }
@@ -822,12 +826,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 initLocationEngine();
 
     // Add the location icon click listener
-                locationComponent.addOnLocationClickListener(new OnLocationClickListener() {
-                    @Override
-                    public void onLocationComponentClick() {
-
-                    }
-                });
+                locationComponent.addOnLocationClickListener(this);
 
                 findViewById(R.id.back_to_camera_tracking_mode).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -884,12 +883,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         locationEngine.requestLocationUpdates(request, callback, getMainLooper());
         locationEngine.getLastLocation(callback);
-        if(mylocation !=null)
+        if(mylocation != null)
         mylocation = map.getLocationComponent().getLastKnownLocation();
-        else{
-            mylocation.setLongitude(145.044458);
-            mylocation.setLatitude(-37.876817);
-        }
+
 
 
 
@@ -1231,14 +1227,18 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             JSONObject j = jsonArray.getJSONObject(i);
                             Double lat = Double.parseDouble(j.getString("latitude"));
                             Double longti = Double.parseDouble(j.getString("longitude"));
-
                             try {
-                                distance = BushfireListActivity.getDistance(mylocation, lat, longti);
-                            }
-                            catch (Exception e){
-                                distance = 0;
-                            }
 
+                                distance = BushfireListActivity.getDistance(mylocation, lat, longti);
+                                Log.i("distance", String.valueOf(distance) + " " + String.valueOf(mylocation));
+                                Toast.makeText(MainActivity.this, "Current Location Selected", Toast.LENGTH_LONG).show();
+                            }catch(Exception e){
+                                mylocation.setLatitude(-37.875261);
+                                mylocation.setLongitude(145.044102);
+                                Toast.makeText(MainActivity.this, "Last Known Location Selected", Toast.LENGTH_LONG).show();
+//                                distance = BushfireListActivity.getDistance(mylocation, lat, longti);
+
+                            }
                             LatLng latLng = new LatLng(lat, longti);
 
                             date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));

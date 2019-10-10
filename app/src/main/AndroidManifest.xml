@@ -14,16 +14,18 @@
         <activity
             android:name=".Activities.Flood2doList"
             android:label="@string/title_activity_flood2do_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleInstance"></activity>
         <activity
             android:name=".Activities.TodoListActivity"
             android:label="@string/title_activity_todo_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleInstance"></activity>
         <activity
             android:name=".Activities.BushfireListActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
-            android:taskAffinity="" />
+            />
         <activity
             android:name=".Activities.Historic"
             android:launchMode="singleInstance" />
@@ -34,7 +36,8 @@
             android:name=".Activities.Welcome"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/DisasterMate"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/FullscreenTheme"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -54,7 +57,8 @@
         <activity
             android:name=".Activities.DetailsActivity"
             android:launchMode="singleInstance" />
-        <activity android:name=".Activities.BaseDrawerActivity" />
+        <activity android:name=".Activities.BaseDrawerActivity"
+            android:launchMode="singleInstance"/>
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
