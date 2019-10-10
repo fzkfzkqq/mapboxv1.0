@@ -297,6 +297,8 @@ public class FloodActivity extends
                 });
             }
         });
+        getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
+        getNewsAsyncTask.execute();
         /*This is uses a third party application called pusher to get real time alerts
          * as of now we need 2 channels, one for updates and one for prediction alerts*/
 
@@ -428,8 +430,7 @@ public class FloodActivity extends
     public void onStart() {
         super.onStart();
         mapView.onStart();
-        getNewsAsyncTask getNewsAsyncTask = new getNewsAsyncTask();
-        getNewsAsyncTask.execute();
+
 
     }
 
