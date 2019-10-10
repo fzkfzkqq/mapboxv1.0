@@ -351,13 +351,27 @@ public class FloodActivity extends
             public void onEvent(PusherEvent event) {
                 System.out.println(event.getData());
 
+
+                String data = event.getData();
+                String location = "Carnegie";
+
+                try {
+                    JSONObject getData = new JSONObject(data);
+                    location = (String) getData.get("location");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
                 /*Provides with a default notification anytime the database is updated with a
                  * bushfire alert. THIS IS REALTIME which makes it awesome
                  * https://dashboard.pusher.com/apps/860496/console/realtime_messages
                  * */
                 Notification notification = new NotificationCompat.Builder(FloodActivity.this, CHANNEL_2_ID).setSmallIcon(R.drawable.logo)
                         .setContentTitle("Watch Out!")
-                        .setContentText("Flood at " + event.getData())
+                        .setContentText("Flood at " + location)
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
                         })
