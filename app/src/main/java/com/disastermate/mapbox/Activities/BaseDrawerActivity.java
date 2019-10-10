@@ -150,8 +150,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         else if (id == R.id.nav_watchlist) {
             addUserLocations();
             initSearchFab(2);
-
-
         }
 //        else if (id == R.id.nav_share) {
 //            startActivity(new Intent(getApplicationContext(), ShareActivity.class));
@@ -195,7 +193,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
                         .country("au")
                         .build(PlaceOptions.MODE_CARDS)
                 )
-                .build(BaseDrawerActivity.this);
+                .build(this);
         startActivityForResult(intent, requestCode);
 
     }

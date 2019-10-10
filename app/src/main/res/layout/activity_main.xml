@@ -11,10 +11,7 @@
         android:layout_height="?attr/actionBarSize"
         style="@style/HeaderBar"
         android:elevation="4dp"
-
         />
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"

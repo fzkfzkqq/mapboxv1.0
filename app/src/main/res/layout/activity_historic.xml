@@ -28,29 +28,32 @@
         mapbox:mapbox_cameraZoom="7"
         mapbox:mapbox_cameraTargetLat="-37.48"
         mapbox:mapbox_cameraTargetLng="144.57"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/show_historic_marker"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="10dp"
+        android:layout_above="@+id/historical_text"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
         android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="100dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginStart="339dp"
+        android:layout_marginTop="473dp"
+        android:layout_marginBottom="32dp"
         android:src="@drawable/clicking" />
+
     <LinearLayout
         android:id="@+id/historical_text"
         android:layout_alignParentBottom="true"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
         android:orientation="vertical"
         android:background="#FFFFFF"
+        android:layout_marginBottom="@android:dimen/app_icon_size"
         >
         <TextView
             android:layout_width="match_parent"

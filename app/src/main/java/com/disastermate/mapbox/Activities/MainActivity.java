@@ -85,8 +85,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
@@ -147,6 +151,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private MenuInflater inflater;
     private FloatingActionButton btn_help;
     private Menu detailListView;
+    public static Location mylocation;
+    private float distance = 0;
+    Date date1;
+    SimpleDateFormat format;
 
 
     @Override
@@ -165,6 +173,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //        setSupportActionBar(toolbar);
 //        toolbar = (Toolbar) findViewById(R.id.toolbar);
         BaseDrawerActivity.toolbar.setTitle("BushFire Prediction");
+        mylocation = new Location("me");
+
 
 
         /*Declare all UI to Objects herer*/
@@ -316,7 +326,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), FloodActivity.class));
-                finish();
+//                finish();
             }
         });
 
@@ -536,6 +546,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         super.onActivityResult(requestCode, resultCode, data);
         Address search_add;
         Geocoder geocoder = new Geocoder(this);
+        IconFactory iconFactory = IconFactory.getInstance(MainActivity.this);
+        Icon icon = iconFactory.fromResource(R.drawable.placeholder);
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_AUTOCOMPLETE) {
 
             // Retrieve selected location's CarmenFeature
@@ -556,16 +568,26 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 try {
 
                     //add carmen location to the navbar and risk rating to nav bar
+                    try {
+                        distance = BushfireListActivity.getDistance(mylocation, address.getLatitude(), address.getLongitude());
+                    }catch(Exception e){
+                        distance = 0;
+                    }
+                     String risktext = j.getString("bushfireRiskRating");
+                     Log.i("risktext",j.getString("bushfireRiskRating"));
 
 
-
-                    map.addMarker(new MarkerOptions()
-                            .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                            .title(address.getAddressLine(0) + "\n Risk Rate: " + risk.getText().toString()));
-                    Log.i("RRD", risk.getText().toString());
 
                     location_address.setText("Location:" + address.getAddressLine(0));
                     risk.setText(j.getString("bushfireRiskRating"));
+                    Log.i("risktext",j.getString("bushfireRiskRating"));
+
+                    map.addMarker(new MarkerOptions()
+                            .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
+                            .icon(icon)
+                            .title(address.getAddressLine(0) + "\nRisk Rate: " + risk.getText()
+                                    + "\nDistance from Location: " + distance + " Km"));
+                    Log.i("RRD", risk.getText().toString());
 
                    map.animateCamera(CameraUpdateFactory.newCameraPosition(
                             new CameraPosition.Builder()
@@ -688,9 +710,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public boolean onMapClick(@NonNull LatLng point) {
 
-                String string = String.format(Locale.US, "User clicked at: %s", point.toString());
-
-                Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();
+//                String string = String.format(Locale.US, "User clicked at: %s", point.toString());
+//
+//                Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();
                 return true;
 
             }
@@ -763,6 +785,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 @Override
                 public void onStyleLoaded(@NonNull Style style) {
                     enableLocationComponent(style);
+
                 }
             });
         } else {
@@ -773,7 +796,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
     @Override
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
-
     }
 
     @Override
@@ -804,7 +826,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 initLocationEngine();
 
     // Add the location icon click listener
-                locationComponent.addOnLocationClickListener((OnLocationClickListener) this);
+                locationComponent.addOnLocationClickListener(this);
 
                 findViewById(R.id.back_to_camera_tracking_mode).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -861,20 +883,22 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         locationEngine.requestLocationUpdates(request, callback, getMainLooper());
         locationEngine.getLastLocation(callback);
+        if(mylocation != null)
+        mylocation = map.getLocationComponent().getLastKnownLocation();
+
+
 
 
     }
 
     @Override
     public void onLocationComponentClick() {
-    if (locationComponent.getLastKnownLocation() != null) {
-
-
-    }
-//            Toast.makeText(this, String.format(getString(R.string.current_location),
-//                    locationComponent.getLastKnownLocation().getLatitude(),
-//                    locationComponent.getLastKnownLocation().getLongitude()), Toast.LENGTH_LONG).show();
-//        }
+        assert locationComponent.getLastKnownLocation() != null;
+                    map.getLocationComponent().getLastKnownLocation().getLatitude();
+                    map.getLocationComponent().getLastKnownLocation().getLongitude();
+        Toast.makeText(MainActivity.this,
+                        map.getLocationComponent().getLastKnownLocation().toString(),
+                        Toast.LENGTH_LONG).show();
     }
 
 
@@ -958,9 +982,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             MainActivity activity = activityWeakReference.get();
 
             if (activity != null) {
-                Location location = result.getLastLocation();
+                mylocation = result.getLastLocation();
 
-                if (location == null) {
+                if (mylocation == null) {
 
                     return;
                 }
@@ -1154,7 +1178,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         markerOptions.title("Bushfire");
         markerOptions.snippet(snippet);
         IconFactory iconFactory = IconFactory.getInstance(this);
-        Icon icon = iconFactory.fromResource(R.drawable.flame);
+        Icon icon = iconFactory.fromResource(R.drawable.fire_current);
         markerOptions.setIcon(icon);
         try {
             map.addMarker(markerOptions);
@@ -1176,6 +1200,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             return Restful.findAllBFAlerts();
         }
 
+        @SuppressLint("SimpleDateFormat")
         @Override
         protected void onPostExecute(String details) {
             JSONArray jsonArray = null;
@@ -1198,15 +1223,33 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 if (count > 0) {
                     for (int i = 0; i < count; i++) {
                         try {
+
                             JSONObject j = jsonArray.getJSONObject(i);
                             Double lat = Double.parseDouble(j.getString("latitude"));
                             Double longti = Double.parseDouble(j.getString("longitude"));
+                            try {
 
+                                distance = BushfireListActivity.getDistance(mylocation, lat, longti);
+                                Log.i("distance", String.valueOf(distance) + " " + String.valueOf(mylocation));
+                                Toast.makeText(MainActivity.this, "Current Location Selected", Toast.LENGTH_LONG).show();
+                            }catch(Exception e){
+                                mylocation.setLatitude(-37.875261);
+                                mylocation.setLongitude(145.044102);
+                                Toast.makeText(MainActivity.this, "Last Known Location Selected", Toast.LENGTH_LONG).show();
+//                                distance = BushfireListActivity.getDistance(mylocation, lat, longti);
+
+                            }
                             LatLng latLng = new LatLng(lat, longti);
 
+                            date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
+                            Log.i("DATE PARSING",date1.toString());
+                            format = new SimpleDateFormat("dd-MM-yyyy");
+
+                            format.applyPattern("dd-MM-yyyy");
+
                             String markerSnippet = "Location: " + j.getString("location") +
-                                    "\n Updated on: " + j.getString("alertUpdated");
-                            Log.i("wtf happened here", j.toString());
+                                    "\nUpdated on: " + format.format(date1) + "\nDistance from Current Location: " + distance + " Km";
+                              Log.i("wtf happened here", j.toString());
 
                             if (j.getString("location") != null) {
                                 parkMarks(latLng, markerSnippet);
@@ -1217,6 +1260,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             }
 
                         } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (ParseException e) {
                             e.printStackTrace();
                         }
                     }

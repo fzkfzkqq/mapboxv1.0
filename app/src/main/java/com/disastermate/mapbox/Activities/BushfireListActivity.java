@@ -39,6 +39,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import static java.lang.Math.round;
+
 
 public class BushfireListActivity extends BaseDrawerActivity implements AdapterView.OnItemSelectedListener {
 
@@ -88,7 +90,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         super.onCreate(savedInstanceState);
 
         view = getLayoutInflater().inflate(R.layout.activity_bushfire_list, frameLayout);
-        BaseDrawerActivity.toolbar.setTitle("Current Bushfires");
+        BaseDrawerActivity.toolbar.setTitle("Current Alerts");
         getlatlong();
         initialise();
 
@@ -109,6 +111,8 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         // Spinner click listener
         firespinner.setOnItemSelectedListener(this);
         radiusspinner.setOnItemSelectedListener(this);
+        setAdapter(bushfireDataList);
+
 
 
     }
@@ -154,12 +158,10 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
                     firespinner.setSelection(0);
                     setAdapter(bushfireDataList);
                 }
+                break;
 
             case R.id.fire_spinner:
-
-                if (item.equals("Select Status")){
-                    setAdapter(bushfireDataList);
-                }else if (item.equals("All Safe")){
+              if (item.equals("All Safe")){
                     sortByDistance(safeList);
                     setAdapter(safeList);
                     radiusspinner.setSelection(0);
@@ -194,6 +196,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
                     sortByDistance(floodDataList);
                     setAdapter(floodDataList);
                 }
+                break;
         }
 
 
@@ -477,14 +480,15 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     }
 
 
-    private float getDistance(Location location,double lat, double longi){
+    public static float getDistance(Location location, double lat, double longi){
 
         Location loc2 = new Location("");
         loc2.setLatitude(lat);
         loc2.setLongitude(longi);
 
         float distanceInMeters = location.distanceTo(loc2);
-        return distanceInMeters/1000;
+        float dist =  round(distanceInMeters/100);
+        return dist/10;
     }
 
 

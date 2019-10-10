@@ -5,7 +5,7 @@
     <LinearLayout
         android:padding="10dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
     <ImageView
         android:layout_marginTop="50dp"
@@ -24,29 +24,29 @@
         android:text="Rake Up Leaves and Put Them in a Green Bin"
         android:gravity="center"
         android:textSize="30sp"/>
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/chelist_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/checkno"
+                android:background="#ffffff"
+                />
+
+            <ImageButton
+                android:id="@+id/chelist_yes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/checkyes"
+                android:background="#ffffff"/>
+        </LinearLayout>
 </LinearLayout>
-
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:paddingBottom="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageButton
-            android:id="@+id/chelist_no"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/checkno"
-            android:background="#ffffff"
-            />
-
-        <ImageButton
-            android:id="@+id/chelist_yes"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/checkyes"
-            android:background="#ffffff"/>
-    </LinearLayout>
-</RelativeLayout>
+`1</RelativeLayout>

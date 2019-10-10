@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -67,7 +68,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 
@@ -106,6 +111,11 @@ public class FloodActivity extends
     private CarmenFeature work;
     private LatLng location;
     String riskString;
+
+    //to find distance from each marker to user location
+    private float distance = 0;
+    Date date1;
+    SimpleDateFormat format;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -228,7 +238,7 @@ public class FloodActivity extends
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+//                finish();
             }
         });
 
@@ -347,6 +357,8 @@ public class FloodActivity extends
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Address search_add;
+        IconFactory iconFactory = IconFactory.getInstance(FloodActivity.this);
+        Icon icon = iconFactory.fromResource(R.drawable.placeholder);
         Geocoder geocoder = new Geocoder(this);
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_AUTOCOMPLETE) {
 
@@ -367,15 +379,24 @@ public class FloodActivity extends
 
                 try {
 
+                    try{
+                        distance = BushfireListActivity.getDistance(MainActivity.mylocation,address.getLatitude(),address.getLongitude());
+                    }catch (Exception e){
+                        distance = 0;
+                    }
+
+                    risk.setText(j.getString("floodRiskRating"));
+
                     /*TODO: there is a bug here which shows low for not available locations
                      *  We must either restrict the searches or show no data for that location*/
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
-                            .title(address.getAddressLine(0) + "\n Risk Rate: " + risk.getText().toString()));
+                            .icon(icon)
+                            .title(address.getAddressLine(0) + "\nRisk Rate: " + risk.getText().toString()
+                            + "\nDistance from Location: " + distance + " Km"));
                     Log.i("RRD", risk.getText().toString());
 
                     location_address.setText("Location:" + address.getAddressLine(0));
-                    risk.setText(j.getString("floodRiskRating"));
 
                     //Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
                     Log.i("Why do birds fly",j.getString(address.getAddressLine(0)));
@@ -490,7 +511,7 @@ public class FloodActivity extends
                 }
             });
         } else {
-            Toast.makeText(this, "permission not granted", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "permission not granted, exiting app", Toast.LENGTH_LONG).show();
             finish();
         }
     }
@@ -655,16 +676,26 @@ public class FloodActivity extends
                         Double longti = Double.parseDouble(j.getString("longitude"));
 
                         LatLng latLng = new LatLng(lat, longti);
+                            distance = BushfireListActivity.getDistance(MainActivity.mylocation,lat,longti);
+
+                        date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
+                        Log.i("DATE PARSING",date1.toString());
+                        format = new SimpleDateFormat("dd-MM-yyyy");
+
+                        format.applyPattern("dd-MM-yyyy");
+
+
 
                         String markerSnippet = "Location: " + j.getString("location") +
-                                "\n Updated on: " + j.getString("alertUpdated");
-                        Log.i("wtf happened here", j.toString());
+                                "\nUpdated on: " + j.getString("alertUpdated") + "\nDistance from Current Location: " + distance + " Km";
 
                         if (j.getString("location") != null) {
                             parkMarks(latLng, markerSnippet);
                         }
 
                     } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (ParseException e) {
                         e.printStackTrace();
                     }
 
