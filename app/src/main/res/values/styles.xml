@@ -38,6 +38,7 @@
 
     <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/black_overlay</item>
+        <item name="android:actionMenuTextColor">@color/text_black</item>
     </style>
 
 </resources>
