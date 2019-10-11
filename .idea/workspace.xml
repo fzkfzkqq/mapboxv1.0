@@ -17,7 +17,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a2857af-4957-4300-83b9-b70bf00f10bb" name="Default Changelist" comment="Merge branch 'master' of https://github.com/fzkfzkqq/mapboxv1.0&#10;&#10;# Conflicts:&#10;#&#9;.gradle/4.10.1/fileHashes/fileHashes.bin&#10;#&#9;.gradle/4.10.1/fileHashes/fileHashes.lock&#10;#&#9;.gradle/4.10.1/javaCompile/classAnalysis.bin&#10;#&#9;.gradle/4.10.1/javaCompile/javaCompile.lock&#10;#&#9;.gradle/4.10.1/javaCompile/taskHistory.bin&#10;#&#9;.gradle/4.10.1/taskHistory/taskHistory.bin&#10;#&#9;.gradle/4.10.1/taskHistory/taskHistory.lock&#10;#&#9;.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;.idea/caches/build_file_checksums.ser&#10;#&#9;.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_extensions_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_db_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_db_framework_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_room_runtime_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_media_compat_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_v4_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_facebook_soloader_soloader_0_6_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_accounts_0_2_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_core_1_3_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_gestures_0_4_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_places_0_6_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_scalebar_v8_0_3_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_sdk_8_2_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_telemetry_4_5_1_aar.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/app.iml&#10;#&#9;app/build.gradle" />
+    <list default="true" id="9a2857af-4957-4300-83b9-b70bf00f10bb" name="Default Changelist" comment="Merge branch 'master' of https://github.com/fzkfzkqq/mapboxv1.0&#10;&#10;# Conflicts:&#10;#&#9;.gradle/4.10.1/fileHashes/fileHashes.bin&#10;#&#9;.gradle/4.10.1/fileHashes/fileHashes.lock&#10;#&#9;.gradle/4.10.1/javaCompile/classAnalysis.bin&#10;#&#9;.gradle/4.10.1/javaCompile/javaCompile.lock&#10;#&#9;.gradle/4.10.1/javaCompile/taskHistory.bin&#10;#&#9;.gradle/4.10.1/taskHistory/taskHistory.bin&#10;#&#9;.gradle/4.10.1/taskHistory/taskHistory.lock&#10;#&#9;.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;.idea/caches/build_file_checksums.ser&#10;#&#9;.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_extensions_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_db_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_db_framework_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_room_runtime_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_media_compat_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_v4_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_facebook_soloader_soloader_0_6_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_accounts_0_2_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_core_1_3_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_gestures_0_4_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_places_0_6_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_scalebar_v8_0_3_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_sdk_8_2_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_telemetry_4_5_1_aar.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/app.iml&#10;#&#9;app/build.gradle">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,11 +110,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2857">
-              <caret line="502" column="43" selection-start-line="502" selection-start-column="43" selection-end-line="502" selection-end-column="43" />
+            <state relative-caret-position="-25">
+              <caret line="492" lean-forward="true" selection-start-line="482" selection-start-column="16" selection-end-line="492" />
               <folding>
                 <element signature="e#38448#38449#0" expanded="true" />
                 <element signature="e#50589#50590#0" expanded="true" />
@@ -159,11 +165,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="183" column="34" selection-start-line="183" selection-start-column="34" selection-end-line="183" selection-end-column="34" />
+            <state relative-caret-position="51">
+              <caret line="348" column="52" lean-forward="true" selection-start-line="348" selection-start-column="52" selection-end-line="348" selection-end-column="52" />
+              <folding>
+                <element signature="e#9047#9048#0" expanded="true" />
+                <element signature="e#9127#9128#0" expanded="true" />
+                <element signature="e#9860#9861#0" expanded="true" />
+                <element signature="e#9940#9941#0" expanded="true" />
+                <element signature="e#10670#10671#0" expanded="true" />
+                <element signature="e#10750#10751#0" expanded="true" />
+                <element signature="e#12318#12319#0" expanded="true" />
+                <element signature="e#12390#12391#0" expanded="true" />
+                <element signature="e#13624#13625#0" expanded="true" />
+                <element signature="e#13696#13697#0" expanded="true" />
+                <element signature="e#14941#14942#0" expanded="true" />
+                <element signature="e#15013#15014#0" expanded="true" />
+                <element signature="e#23555#23556#0" expanded="true" />
+                <element signature="e#23625#23626#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -320,17 +342,16 @@
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_drawer_drawer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="55" />
-    <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="734" />
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -527,10 +548,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="676" y="0" width="697" height="735" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.1745283" side_tool="true" weight="0.32980332" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.6437659" visible="true" weight="0.2322239" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.6437659" visible="true" weight="0.48194662" />
       <window_info id="Build Variants" order="2" sideWeight="0.3562341" side_tool="true" weight="0.23298033" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -543,7 +564,7 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.5040917" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5088853" side_tool="true" weight="0.325" />
       <window_info anchor="bottom" id="Version Control" order="4" weight="0.32398754" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="5" sideWeight="0.49596122" visible="true" weight="0.32569557" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" sideWeight="0.49596122" visible="true" weight="0.3305648" />
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.4911147" weight="0.32242227" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.7390625" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49757674" weight="0.328125" />
@@ -946,13 +967,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="183" column="34" selection-start-line="183" selection-start-column="34" selection-end-line="183" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-11738">
@@ -1003,12 +1017,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2857">
-          <caret line="502" column="43" selection-start-line="502" selection-start-column="43" selection-end-line="502" selection-end-column="43" />
+        <state relative-caret-position="-25">
+          <caret line="492" lean-forward="true" selection-start-line="482" selection-start-column="16" selection-end-line="492" />
           <folding>
             <element signature="e#38448#38449#0" expanded="true" />
             <element signature="e#50589#50590#0" expanded="true" />
             <element signature="e#50613#50614#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="348" column="52" lean-forward="true" selection-start-line="348" selection-start-column="52" selection-end-line="348" selection-end-column="52" />
+          <folding>
+            <element signature="e#9047#9048#0" expanded="true" />
+            <element signature="e#9127#9128#0" expanded="true" />
+            <element signature="e#9860#9861#0" expanded="true" />
+            <element signature="e#9940#9941#0" expanded="true" />
+            <element signature="e#10670#10671#0" expanded="true" />
+            <element signature="e#10750#10751#0" expanded="true" />
+            <element signature="e#12318#12319#0" expanded="true" />
+            <element signature="e#12390#12391#0" expanded="true" />
+            <element signature="e#13624#13625#0" expanded="true" />
+            <element signature="e#13696#13697#0" expanded="true" />
+            <element signature="e#14941#14942#0" expanded="true" />
+            <element signature="e#15013#15014#0" expanded="true" />
+            <element signature="e#23555#23556#0" expanded="true" />
+            <element signature="e#23625#23626#0" expanded="true" />
           </folding>
         </state>
       </provider>
