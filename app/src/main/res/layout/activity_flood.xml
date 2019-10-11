@@ -11,6 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            style="@style/HeaderBar"
+            android:elevation="4dp"
+            />
+
 
         <com.mapbox.mapboxsdk.maps.MapView
             android:id="@+id/mapView"
@@ -24,6 +32,15 @@
 
         </com.mapbox.mapboxsdk.maps.MapView>
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/my_toolbar"
+            android:layout_margin="16dp"
+            android:src="@drawable/question"
+            />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_location_search"
             android:layout_width="wrap_content"
@@ -59,13 +76,14 @@
         <RelativeLayout
             android:id="@+id/popup_group"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:layout_alignBottom="@id/mapView"
-
+            android:background="#FFFFFF"
             >
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,6 +161,31 @@
                     android:layout_gravity="center"
                     android:background="#C7C1C1" />
 
+                <com.zolad.zoominimageview.ZoomInImageView
+                    android:id="@+id/factor_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/factor_wind"
+                    android:adjustViewBounds="true"
+                    android:visibility="gone"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/factor_description"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="18sp"
+                    android:text="123213asd"
+                    android:visibility="gone"/>
+                <Button
+                    android:id="@+id/btn_gotit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Got it !"
+                    android:visibility="gone"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"

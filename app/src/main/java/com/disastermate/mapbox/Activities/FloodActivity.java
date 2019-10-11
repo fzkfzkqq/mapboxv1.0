@@ -15,6 +15,7 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
@@ -63,6 +64,7 @@ import com.pusher.client.PusherOptions;
 import com.pusher.client.channel.Channel;
 import com.pusher.client.channel.PusherEvent;
 import com.pusher.client.channel.SubscriptionEventListener;
+import com.zolad.zoominimageview.ZoomInImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -110,8 +112,12 @@ public class FloodActivity extends
     private NotificationManagerCompat notificationManager;
     private CarmenFeature home;
     private CarmenFeature work;
+    private Button gotItButton;
+    private ZoomInImageView zoomInImageView;
     private LatLng location;
+    private TextView factor_description;
     String riskString;
+    private FloatingActionButton btn_help;
 
     //to find distance from each marker to user location
     private float distance = 0;
@@ -141,7 +147,10 @@ public class FloodActivity extends
         btn_airPressure = findViewById(R.id.btn_waterlevel);
         btn_rainfall = findViewById(R.id.btn_rainfall);
         location_address = findViewById(R.id.location_address);
-
+        gotItButton = findViewById(R.id.btn_gotit);
+        zoomInImageView = findViewById(R.id.factor_image);
+        factor_description = findViewById(R.id.factor_description);
+        btn_help = (FloatingActionButton) findViewById(R.id.help);
         /*Declare other variables here*/
         final Geocoder geocoder = new Geocoder(this);
         SharedPreferences sharedpreferences;
@@ -253,82 +262,73 @@ public class FloodActivity extends
             }
         });
 
+        gotItButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                factor_description.setVisibility(View.GONE);
+                zoomInImageView.setVisibility(View.GONE);
+                gotItButton.setVisibility(View.GONE);
+            }
+        });
+
         btn_airPressure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog settingsDialog = new Dialog(view.getContext());
-                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
-                        , null));
-                settingsDialog.show();
 
-                Window window = settingsDialog.getWindow();
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setImageResource(R.drawable.flood_air);
-                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
-                factor_des.setText("How air pressure affects floods");
-                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
-                dialogue_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        settingsDialog.dismiss();
-                    }
-                });
+                factor_description.setText("How air pressure affects floods");
+                zoomInImageView.setImageResource(R.drawable.flood_air);
+                factor_description.setVisibility(View.VISIBLE);
+                zoomInImageView.setVisibility(View.VISIBLE);
+                gotItButton.setVisibility(View.VISIBLE);
             }
         });
 
         btn_humi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog settingsDialog = new Dialog(view.getContext());
-                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
-                        , null));
-                settingsDialog.show();
 
-                Window window = settingsDialog.getWindow();
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setImageResource(R.drawable.flood_humi);
-                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
-                factor_des.setText("How humidity affects flood");
-                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
-                dialogue_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        settingsDialog.dismiss();
-                    }
-                });
+                factor_description.setText("How humidity affects flood");
+                zoomInImageView.setImageResource(R.drawable.flood_humi);
+                factor_description.setVisibility(View.VISIBLE);
+                zoomInImageView.setVisibility(View.VISIBLE);
+                gotItButton.setVisibility(View.VISIBLE);
             }
         });
 
         btn_rainfall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog settingsDialog = new Dialog(view.getContext());
-                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
-                        , null));
 
+                factor_description.setText("How rainfall lead to a flood");
+                zoomInImageView.setImageResource(R.drawable.flood_rainfall);
+                factor_description.setVisibility(View.VISIBLE);
+                zoomInImageView.setVisibility(View.VISIBLE);
+                gotItButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog settingsDialog = new Dialog(v.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_help
+                        , null));
                 settingsDialog.show();
 
                 Window window = settingsDialog.getWindow();
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-                ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setImageResource(R.drawable.flood_rainfall);
-                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
-                factor_des.setText("How rainfall lead to a flood");
-                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+
+
+                dialogue_button = settingsDialog.findViewById(R.id.okbutton);
                 dialogue_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         settingsDialog.dismiss();
                     }
                 });
+
             }
         });
 
