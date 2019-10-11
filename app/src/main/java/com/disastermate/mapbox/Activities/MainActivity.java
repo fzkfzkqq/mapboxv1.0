@@ -78,6 +78,7 @@ import com.pusher.client.PusherOptions;
 import com.pusher.client.channel.Channel;
 import com.pusher.client.channel.PusherEvent;
 import com.pusher.client.channel.SubscriptionEventListener;
+import com.zolad.zoominimageview.ZoomInImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -109,6 +110,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private Button test;
     private String postCode;
     private LocationEngine locationEngine;
+    private LocationComponent locationComponent;
     private TextView risk;
     private Address address;
     private LocationChangeListeningActivityLocationCallback callback =
@@ -119,29 +121,22 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private JSONObject j = new JSONObject();
     private String geojsonSourceLayerId = "geojsonSourceLayerId";
     private String symbolIconId = "symbolIconId";
-    private ImageButton search;
+    private ZoomInImageView zoomInImageView;
 //    private EditText input_postcode;
-    private Button btn_c_findmore;
-    private Button btn_action_exp;
     private Button btn_temp;
     private Button btn_humi;
     private Button btn_wind;
     private Button btn_pressure;
-    private android.support.v7.widget.Toolbar mTopToofelbar;
     private boolean isInTrackingMode;
-    private  LocationComponent locationComponent;
     private Button dialogue_button;
     private TextView lastupdated;
     private TextView location_address;
-    private Button bushfire;
     private ObjectAnimator objAnim;
-    private EditText editTextTitle;
-    private EditText editTextMessage;
     private NotificationManagerCompat notificationManager;
     private CarmenFeature home;
     private CarmenFeature work;
     String riskString;
-    private Toolbar mTopToolbar;
+    private Button gotItButton;
     private ImageView dismissButton;
     private ProgressBar progressBar;
     private Dialog progressDialog;
@@ -150,9 +145,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private static double loni;
     private MenuInflater inflater;
     private FloatingActionButton btn_help;
-    private Menu detailListView;
+    private TextView factor_description;
     public static Location mylocation;
     private float distance = 0;
+    private boolean isOpen = false;
     Date date1;
     SimpleDateFormat format;
 
@@ -182,12 +178,15 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         mapView.onCreate(savedInstanceState);
         risk = (TextView) findViewById(R.id.text_riskrate);
 //        search = (ImageButton) findViewById(R.id.btn_search);
+        gotItButton = findViewById(R.id.btn_gotit);
         lastupdated = findViewById(R.id.lastupdated);
         btn_humi = findViewById(R.id.btn_humi);
         btn_pressure = findViewById(R.id.btn_pres);
         btn_temp = findViewById(R.id.btn_temp);
         btn_wind = findViewById(R.id.btn_wind);
         location_address = findViewById(R.id.location_address);
+        zoomInImageView = findViewById(R.id.factor_image);
+        factor_description = findViewById(R.id.factor_description);
         btn_help = (FloatingActionButton) findViewById(R.id.help);
         /*Declare other variables here*/
         final Geocoder geocoder = new Geocoder(this);
@@ -330,83 +329,47 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             }
         });
 
-        btn_temp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Dialog settingsDialog = new Dialog(view.getContext());
-                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
-                        , null));
-                settingsDialog.show();
+    gotItButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            factor_description.setVisibility(View.GONE);
+            zoomInImageView.setVisibility(View.GONE);
+            gotItButton.setVisibility(View.GONE);
+        }
+    });
 
-                Window window = settingsDialog.getWindow();
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setImageResource(R.drawable.factor_temp);
-                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
-                factor_des.setText("Temperature is the main factor, especially in Summer and Autumn.");
-                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
-                dialogue_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        settingsDialog.dismiss();
-                    }
-                });
-
-            }
-        });
+    btn_temp.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            factor_description.setText("How temperature affects bush fire.");
+            zoomInImageView.setImageResource(R.drawable.factor_temp);
+               factor_description.setVisibility(View.VISIBLE);
+               zoomInImageView.setVisibility(View.VISIBLE);
+               gotItButton.setVisibility(View.VISIBLE);
+        }
+    });
 
         btn_humi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog settingsDialog = new Dialog(view.getContext());
-                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
-                        , null));
-                settingsDialog.show();
 
-                Window window = settingsDialog.getWindow();
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setImageResource(R.drawable.factor_humi);
-                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
-                factor_des.setText("Relative humidity is commonly used to measure atmospheric moisture.");
-                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
-                dialogue_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        settingsDialog.dismiss();
-                    }
-                });
-
+                factor_description.setText("Relative humidity is commonly used to measure atmospheric moisture.");
+                zoomInImageView.setImageResource(R.drawable.factor_humi);
+                factor_description.setVisibility(View.VISIBLE);
+                zoomInImageView.setVisibility(View.VISIBLE);
+                gotItButton.setVisibility(View.VISIBLE);
             }
         });
 
         btn_pressure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog settingsDialog = new Dialog(view.getContext());
-                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
-                        , null));
-                settingsDialog.show();
 
-                Window window = settingsDialog.getWindow();
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setImageResource(R.drawable.factor_airpres);
-                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
-                factor_des.setText("Adding a feature like a trough or front that changes the wind direction increases the danger.");
-                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
-                dialogue_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        settingsDialog.dismiss();
-                    }
-                });
+                factor_description.setText("Adding a feature like a trough or front that changes the wind direction increases the danger.");
+                zoomInImageView.setImageResource(R.drawable.factor_airpres);
+                factor_description.setVisibility(View.VISIBLE);
+                zoomInImageView.setVisibility(View.VISIBLE);
+                gotItButton.setVisibility(View.VISIBLE);
 
             }
         });
@@ -414,27 +377,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         btn_wind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog settingsDialog = new Dialog(view.getContext());
-                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.factor_popup_layout
-                        , null));
-                settingsDialog.show();
-                Window window = settingsDialog.getWindow();
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-
-                ImageView image = settingsDialog.findViewById(R.id.factor_image);
-                image.setImageResource(R.drawable.factor_wind);
-                TextView factor_des = settingsDialog.findViewById(R.id.factor_description);
-                factor_des.setText("How wind works during bush fire.");
-                dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
-                dialogue_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        settingsDialog.dismiss();
-                    }
-                });
-
+                factor_description.setText("How wind works during bush fire.");
+                zoomInImageView.setImageResource(R.drawable.factor_wind);
+                factor_description.setVisibility(View.VISIBLE);
+                zoomInImageView.setVisibility(View.VISIBLE);
+                gotItButton.setVisibility(View.VISIBLE);
             }
         });
 
