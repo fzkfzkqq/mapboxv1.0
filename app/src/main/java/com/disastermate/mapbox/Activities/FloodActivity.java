@@ -789,7 +789,7 @@ public class FloodActivity extends
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("floodRiskRating"));
                     //risk.setText("HIGH");
-                    risk.setBackgroundColor(Color.rgb(37,155,36));
+//                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
                     btn_airPressure.setText((j.get("airPressure")).toString() + " hPa");

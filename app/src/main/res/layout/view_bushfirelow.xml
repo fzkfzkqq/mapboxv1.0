@@ -5,12 +5,16 @@
     android:orientation="vertical">
     <ScrollView
         android:layout_height="match_parent"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_alignBottom="@+id/dialogue_button"
+
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
             <TextView
 
                 android:layout_width="match_parent"
@@ -22,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerInside"
+
                 android:src="@drawable/low_bf1" />
 
             <TextView
@@ -45,14 +50,17 @@
                 android:src="@drawable/low_bf3"
                 android:scaleType="centerInside"/>
 
-            <Button
-                android:id="@+id/dialogue_button"
-                android:background="@color/mapbox_grey"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Got it!" />
+
         </LinearLayout>
+
     </ScrollView>
 
+    <Button
+        android:id="@+id/dialogue_button"
+        android:background="@color/mapbox_grey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Got it!"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
