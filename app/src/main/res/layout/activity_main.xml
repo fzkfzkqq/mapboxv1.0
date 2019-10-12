@@ -18,14 +18,13 @@
         android:layout_height="match_parent">
 
 
-
         <com.mapbox.mapboxsdk.maps.MapView
             android:id="@+id/mapView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="5dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="-2dp"
             mapbox:mapbox_cameraZoom="7">
 
 
@@ -79,8 +78,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#FFFFFF"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/layout_rounded"
             android:layout_alignBottom="@id/mapView"
 
             >
@@ -89,7 +88,9 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/layout_rounded"
+                >
 
                 <LinearLayout
                     android:id="@+id/main_group"
@@ -158,6 +159,9 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:src="@drawable/factor_wind"
+
+                    android:background="@drawable/layout_rounded"
+
                     android:adjustViewBounds="true"
                     android:visibility="gone"
                     />
@@ -166,6 +170,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/factor_description"
                     android:layout_gravity="center_horizontal"
+                    android:gravity="center"
                     android:textSize="18sp"
                     android:text="123213asd"
                     android:visibility="gone"/>
@@ -191,6 +196,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@color/cardwhite"
                     android:orientation="horizontal">
 

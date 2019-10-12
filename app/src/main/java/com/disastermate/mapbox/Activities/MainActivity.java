@@ -22,6 +22,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -353,7 +354,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("Relative humidity is commonly used to measure atmospheric moisture.");
+                factor_description.setText(" Relative humidity is commonly used to measure atmospheric moisture.");
                 zoomInImageView.setImageResource(R.drawable.factor_humi);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -365,7 +366,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("Adding a feature like a trough or front that changes the wind direction increases the danger.");
+                factor_description.setText(" Adding a feature like a trough or front that changes the wind direction increases the danger.");
                 zoomInImageView.setImageResource(R.drawable.factor_airpres);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -378,7 +379,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("How wind works during bush fire.");
+                factor_description.setText(" How wind works during bush fire.");
                 zoomInImageView.setImageResource(R.drawable.factor_wind);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -698,6 +699,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         super.onResume();
         mapView.onResume();
         navigationView.getMenu().getItem(0).setChecked(true);
+
     }
 
     @Override

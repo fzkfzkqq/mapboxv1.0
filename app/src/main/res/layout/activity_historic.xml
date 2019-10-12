@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Activities.MainActivity"
-    android:background="@color/backgroundclr">
+    android:background="@color/backgroundclr"
+    >
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -52,12 +53,14 @@
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
         android:orientation="vertical"
-        android:background="#FFFFFF"
+        android:background="@drawable/layout_rounded"
         android:layout_marginBottom="@android:dimen/app_icon_size"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:text="Historic Fires in Victoria 2018"
             android:textSize="30dp"
             android:gravity="center"
