@@ -81,9 +81,14 @@
         <SeekBar
             android:id="@+id/isochrone_minute_seekbar_slider"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:scrollbarSize="100dp"
-            android:progress="0"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:thumb="@drawable/firehistoric"
+            android:progress="0"
+            android:minHeight="8dip"
+            android:maxHeight="20dip"
+            android:layout_marginBottom="20dp"/>
     </LinearLayout>
 </RelativeLayout>
 

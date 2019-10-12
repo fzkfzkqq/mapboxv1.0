@@ -11,6 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -145,8 +148,6 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
 
                         Log.i("count", String.valueOf(Jan.size()));
 
-//                        addCircleLayer(style);
-
                         // Initialize the Seekbar slider
                         final SeekBar liveWithinMinutesSeekbar =
                                 findViewById(R.id.isochrone_minute_seekbar_slider);
@@ -154,7 +155,10 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                         liveWithinMinutesSeekbar.incrementProgressBy(1);
                         liveWithinMinutesSeekbar.setProgress(0);
 
+                        Animation shake;
+                        shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
 
+                        liveWithinMinutesSeekbar.startAnimation(shake);
 
                         liveWithinMinutesSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                             @Override
@@ -258,6 +262,8 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
 
             }
         });
+
+
     }
 
     private void addEarthquakeSource(@NonNull Style loadedMapStyle) {
@@ -760,8 +766,8 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         while(itr.hasNext()){
             HistoricfireModel bushfireModel = (HistoricfireModel) itr.next();
             LatLng latLng = new LatLng(bushfireModel.getLatitude(),bushfireModel.getLongitude());
-            String markerSnippet = "Temperature: " + bushfireModel.getTemperature() +
-                    "\n Power: " + bushfireModel.getPower() + "\nDate " + bushfireModel.getDate();
+            String markerSnippet = "Temperature: " + bushfireModel.getTemperature() + " Celcius" +
+                    "\n Power: " + bushfireModel.getPower() + "kW" + "\nDate " + bushfireModel.getDate();
 
             parkMarks(latLng,markerSnippet);
         }
