@@ -130,6 +130,7 @@ public class FloodActivity extends
 
     private int revealX;
     private int revealY;
+    private SimpleDateFormat format2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -727,13 +728,15 @@ public class FloodActivity extends
                         date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
                         //Log.i("DATE PARSING",date1.toString());
                         format = new SimpleDateFormat("dd-MM-yyyy");
+                       format2 = new SimpleDateFormat("hh:mm a");
+
 
                         format.applyPattern("dd-MM-yyyy");
 
 
 
                         String markerSnippet = "Location: " + j.getString("location") +
-                                "\nUpdated on: " + j.getString("alertUpdated") + "\nDistance from Current Location: "+ distance + " Km";
+                                "\nUpdated on: " + format.format(date1) + "\nTime: " + format2.format(date1) + "\nDistance from Current Location: "+ distance + " Km";
 
                         if (j.getString("location") != null) {
                             parkMarks(latLng, markerSnippet);

@@ -152,6 +152,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private boolean isOpen = false;
     Date date1;
     SimpleDateFormat format;
+    private SimpleDateFormat format2;
 
 
     @Override
@@ -1058,7 +1059,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
-                    risk.setBackgroundColor(Color.rgb(37,155,36));
+//                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
                     btn_temp.setText((j.get("airTemperature")).toString() + "°C");
@@ -1206,11 +1207,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
                             Log.i("DATE PARSING",date1.toString());
                             format = new SimpleDateFormat("dd-MM-yyyy");
+                            format2 = new SimpleDateFormat("hh:mm a");
 
                             format.applyPattern("dd-MM-yyyy");
 
                             String markerSnippet = "Location: " + j.getString("location") +
-                                    "\nUpdated on: " + format.format(date1) + "\nDistance from Current Location: " + distance + " Km";
+                                    "\nUpdated on: " + format.format(date1) +"\nTime: " + format2.format(date1) + "\nDistance from Current Location: " + distance + " Km";
                               Log.i("wtf happened here", j.toString());
 
                             if (j.getString("location") != null) {

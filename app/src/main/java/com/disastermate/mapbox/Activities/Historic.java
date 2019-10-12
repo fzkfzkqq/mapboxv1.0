@@ -1,18 +1,23 @@
 package com.disastermate.mapbox.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Switch;
@@ -112,6 +117,9 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
     private List<HistoricfireModel> Oct = new ArrayList<>();
     private List<HistoricfireModel> Nov = new ArrayList<>();
     private List<HistoricfireModel> Dec = new ArrayList<>();
+    private FloatingActionButton btn_help;
+    private Button dialogue_button;
+
 
 
 
@@ -128,6 +136,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         mapView.onCreate(savedInstanceState);
         month = findViewById(R.id.month);
         count1 = findViewById(R.id.count);
+        btn_help = findViewById(R.id.help);
 //        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
 //        getDetailAsyncTask.execute("3125");
 
@@ -259,6 +268,31 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                     Jul.clear();Aug.clear();Sep.clear();Oct.clear();Nov.clear();Dec.clear();
                     Toast.makeText(Historic.this, "Slider disabled", Toast.LENGTH_SHORT).show();
                 }
+
+            }
+        });
+
+
+        btn_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog settingsDialog = new Dialog(v.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.help_historic
+                        , null));
+                settingsDialog.show();
+
+                Window window = settingsDialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
+                dialogue_button = settingsDialog.findViewById(R.id.okbutton);
+                dialogue_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        settingsDialog.dismiss();
+                    }
+                });
 
             }
         });
@@ -767,7 +801,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
             HistoricfireModel bushfireModel = (HistoricfireModel) itr.next();
             LatLng latLng = new LatLng(bushfireModel.getLatitude(),bushfireModel.getLongitude());
             String markerSnippet = "Temperature: " + bushfireModel.getTemperature() + " Celcius" +
-                    "\n Power: " + bushfireModel.getPower() + "kW" + "\nDate " + bushfireModel.getDate();
+                    "\n Power: " + bushfireModel.getPower() + " kW" + "\nDate " + bushfireModel.getDate();
 
             parkMarks(latLng,markerSnippet);
         }

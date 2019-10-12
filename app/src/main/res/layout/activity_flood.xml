@@ -27,7 +27,7 @@
             android:layout_height="fill_parent"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="4dp"
             mapbox:mapbox_cameraZoom="7">
 
 
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/my_toolbar"
+            android:layout_above="@id/fab_location_search"
             android:layout_margin="16dp"
             android:src="@drawable/question"
             />
