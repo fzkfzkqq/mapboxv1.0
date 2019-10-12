@@ -437,8 +437,9 @@ public class FloodActivity extends
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
                             .icon(icon)
-                            .title(address.getAddressLine(0) + "\nRisk Rate: " + risk.getText().toString()
-                            + "\nDistance from Location: " + distance + " Km"));
+                            .title(address.getAddressLine(0))
+                            .snippet("\nRisk Rate: " + risk.getText()
+                                    + "\nDistance from Location: " + distance + " Km"));
                     Log.i("RRD", risk.getText().toString());
 
                     location_address.setText("Location:" + address.getAddressLine(0));

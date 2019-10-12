@@ -549,7 +549,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
                             .icon(icon)
-                            .title(address.getAddressLine(0) + "\nRisk Rate: " + risk.getText()
+                            .title(address.getAddressLine(0))
+                            .snippet("\nRisk Rate: " + risk.getText()
                                     + "\nDistance from Location: " + distance + " Km"));
                     Log.i("RRD", risk.getText().toString());
 
