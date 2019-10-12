@@ -311,7 +311,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
 
     private void addHeatmapLayer(@NonNull Style loadedMapStyle) {
         HeatmapLayer layer = new HeatmapLayer(HEATMAP_LAYER_ID, EARTHQUAKE_SOURCE_ID);
-        layer.setMaxZoom(9);
+        layer.setMaxZoom(14);
         layer.setSourceLayer(HEATMAP_LAYER_SOURCE);
         layer.setProperties(
 
