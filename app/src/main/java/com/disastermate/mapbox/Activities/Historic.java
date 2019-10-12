@@ -35,10 +35,13 @@ import com.mapbox.android.core.location.LocationEngineRequest;
 import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
+import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
@@ -137,8 +140,6 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         month = findViewById(R.id.month);
         count1 = findViewById(R.id.count);
         btn_help = findViewById(R.id.help);
-//        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
-//        getDetailAsyncTask.execute("3125");
 
 
 
@@ -150,6 +151,8 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                 mapboxMap.setStyle(Style.DARK, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
+
+
                         addEarthquakeSource(style);
                         addHeatmapLayer(style);
                         GetParks getpark = new GetParks();
@@ -168,6 +171,8 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                         shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
 
                         liveWithinMinutesSeekbar.startAnimation(shake);
+
+
 
                         liveWithinMinutesSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                             @Override
@@ -245,6 +250,14 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                             }
                         });
 
+
+                        LatLng latLng = new LatLng(-37.875261, 145.044102);
+                        map.animateCamera(CameraUpdateFactory.newCameraPosition(
+                                new CameraPosition.Builder()
+                                        .target(latLng)
+                                        .zoom(5)
+                                        .build()), 1000);
+
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
                     }
                 });
@@ -303,7 +316,6 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
     private void addEarthquakeSource(@NonNull Style loadedMapStyle) {
         try {
             loadedMapStyle.addSource(new GeoJsonSource(EARTHQUAKE_SOURCE_ID, new URI(EARTHQUAKE_SOURCE_URL)));
-//            Log.i("geojson",loadedMapStyle.getSource(EARTHQUAKE_SOURCE_ID).toString());
         } catch (URISyntaxException uriSyntaxException) {
             Log.e("error",uriSyntaxException.getMessage());
         }
@@ -311,7 +323,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
 
     private void addHeatmapLayer(@NonNull Style loadedMapStyle) {
         HeatmapLayer layer = new HeatmapLayer(HEATMAP_LAYER_ID, EARTHQUAKE_SOURCE_ID);
-        layer.setMaxZoom(14);
+        layer.setMaxZoom(9);
         layer.setSourceLayer(HEATMAP_LAYER_SOURCE);
         layer.setProperties(
 

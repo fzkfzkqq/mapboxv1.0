@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+    <ScrollView android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:layout_margin="30dp"
+                    android:textSize="@android:dimen/app_icon_size"
+                    android:text="Help"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="62dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/storm"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="30dp"
+                    android:gravity="center"
+                    android:text="This event provides a listview of realtime bushfires and floods with their location, date and distance from your location. You can use the radius and filter option to sort the disasters based on categories such as those which are safe, under control or needs responding to.
+                    \n\nAlso, keep an eye out for our real-time notifications which tells when a bushfire or a flood occurs without any delay!  "></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="62dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/fire_current"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="30dp"
+                    android:gravity="center"
+                    android:text="Switch to flood events "></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="74dp"
+                    android:layout_height="68dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/flood"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Switch to fire events."
+                    android:layout_margin="30dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    >
+                </TextView>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/okbutton"
+                android:text="Ok"
+                android:gravity="center"
+                android:layout_gravity="center"
+                >
+
+            </Button>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
