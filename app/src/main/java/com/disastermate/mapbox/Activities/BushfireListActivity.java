@@ -1,6 +1,7 @@
 package com.disastermate.mapbox.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Location;
@@ -12,8 +13,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -84,6 +88,9 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     private Spinner firespinner;
     private Spinner radiusspinner;
     double lato,longo;
+
+    private FloatingActionButton btn_help;
+    private Button dialogue_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -314,6 +321,30 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
 
                 }
             });
+
+            btn_help.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Dialog settingsDialog = new Dialog(v.getContext());
+                    settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.help_bushfirelist
+                            , null));
+                    settingsDialog.show();
+
+                    Window window = settingsDialog.getWindow();
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                    dialogue_button = settingsDialog.findViewById(R.id.okbutton);
+                    dialogue_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsDialog.dismiss();
+                        }
+                    });
+
+                }
+            });
+
 
 
 
@@ -640,6 +671,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         firespinner = findViewById(R.id.fire_spinner);
         radiusspinner = findViewById(R.id.radius_spinner);
         radiusText = findViewById(R.id.radius_text);
+        btn_help = findViewById(R.id.help);
     }
 
     public void getlatlong(){

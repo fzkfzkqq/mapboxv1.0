@@ -123,6 +123,7 @@ public class Welcome extends AppCompatActivity {
                 public void run() {
                     Intent i = new Intent(Welcome.this, MainActivity.class);
                     startActivity(i);
+                    finish();
                 }
             }, TIME_OUT);
         }

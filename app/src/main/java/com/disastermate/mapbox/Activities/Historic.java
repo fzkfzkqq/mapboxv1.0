@@ -1,16 +1,24 @@
 package com.disastermate.mapbox.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -27,10 +35,13 @@ import com.mapbox.android.core.location.LocationEngineRequest;
 import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
+import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
@@ -109,6 +120,9 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
     private List<HistoricfireModel> Oct = new ArrayList<>();
     private List<HistoricfireModel> Nov = new ArrayList<>();
     private List<HistoricfireModel> Dec = new ArrayList<>();
+    private FloatingActionButton btn_help;
+    private Button dialogue_button;
+
 
 
 
@@ -125,8 +139,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         mapView.onCreate(savedInstanceState);
         month = findViewById(R.id.month);
         count1 = findViewById(R.id.count);
-//        getDetailAsyncTask getDetailAsyncTask =new getDetailAsyncTask();
-//        getDetailAsyncTask.execute("3125");
+        btn_help = findViewById(R.id.help);
 
 
 
@@ -138,6 +151,8 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                 mapboxMap.setStyle(Style.DARK, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
+
+
                         addEarthquakeSource(style);
                         addHeatmapLayer(style);
                         GetParks getpark = new GetParks();
@@ -145,14 +160,17 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
 
                         Log.i("count", String.valueOf(Jan.size()));
 
-//                        addCircleLayer(style);
-
                         // Initialize the Seekbar slider
                         final SeekBar liveWithinMinutesSeekbar =
                                 findViewById(R.id.isochrone_minute_seekbar_slider);
                         liveWithinMinutesSeekbar.setMax(12);
                         liveWithinMinutesSeekbar.incrementProgressBy(1);
                         liveWithinMinutesSeekbar.setProgress(0);
+
+                        Animation shake;
+                        shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+
+                        liveWithinMinutesSeekbar.startAnimation(shake);
 
 
 
@@ -232,6 +250,14 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                             }
                         });
 
+
+                        LatLng latLng = new LatLng(-37.875261, 145.044102);
+                        map.animateCamera(CameraUpdateFactory.newCameraPosition(
+                                new CameraPosition.Builder()
+                                        .target(latLng)
+                                        .zoom(5)
+                                        .build()), 1000);
+
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
                     }
                 });
@@ -258,12 +284,38 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
 
             }
         });
+
+
+        btn_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog settingsDialog = new Dialog(v.getContext());
+                settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+                settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.help_historic
+                        , null));
+                settingsDialog.show();
+
+                Window window = settingsDialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
+                dialogue_button = settingsDialog.findViewById(R.id.okbutton);
+                dialogue_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        settingsDialog.dismiss();
+                    }
+                });
+
+            }
+        });
+
+
     }
 
     private void addEarthquakeSource(@NonNull Style loadedMapStyle) {
         try {
             loadedMapStyle.addSource(new GeoJsonSource(EARTHQUAKE_SOURCE_ID, new URI(EARTHQUAKE_SOURCE_URL)));
-//            Log.i("geojson",loadedMapStyle.getSource(EARTHQUAKE_SOURCE_ID).toString());
         } catch (URISyntaxException uriSyntaxException) {
             Log.e("error",uriSyntaxException.getMessage());
         }
@@ -760,8 +812,8 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
         while(itr.hasNext()){
             HistoricfireModel bushfireModel = (HistoricfireModel) itr.next();
             LatLng latLng = new LatLng(bushfireModel.getLatitude(),bushfireModel.getLongitude());
-            String markerSnippet = "Temperature: " + bushfireModel.getTemperature() +
-                    "\n Power: " + bushfireModel.getPower() + "\nDate " + bushfireModel.getDate();
+            String markerSnippet = "Temperature: " + bushfireModel.getTemperature() + " Celcius" +
+                    "\n Power: " + bushfireModel.getPower() + " kW" + "\nDate " + bushfireModel.getDate();
 
             parkMarks(latLng,markerSnippet);
         }

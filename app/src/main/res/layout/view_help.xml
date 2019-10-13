@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center">
+    <ScrollView android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +28,27 @@
             android:text="Help"></TextView>
     </LinearLayout>
 
-    <LinearLayout
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="62dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/prediction"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="30dp"
+                    android:gravity="center"
+                    android:text="This application predicts bushfires and floods in your location based on our awesome machine learning model in the backend. Our superhuman prediction is 75% accurate. "></TextView>
+            </LinearLayout>
+
+            <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -29,7 +57,7 @@
             android:layout_width="62dp"
             android:layout_height="60dp"
             android:layout_margin="16dp"
-            android:src="@drawable/fire2"></ImageView>
+            android:src="@drawable/fire_current"></ImageView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,7 +65,7 @@
             android:layout_gravity="center"
             android:layout_margin="30dp"
             android:gravity="center"
-            android:text="The current fire incidents around you and estimates distance of the floods from your location upon clicking the icon"></TextView>
+            android:text="Indicates current fires near you. On clicking the marker, you obtain the distance from your location, date of occurance and location name"></TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -46,17 +74,37 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/flood"
+            android:layout_width="74dp"
+            android:layout_height="68dp"
             android:layout_margin="16dp"
-            >
-        </ImageView>
+            android:src="@drawable/flood"></ImageView>
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Indicates current fires near you. On clicking the marker, you obtain the distance from your location, date of occurance and location name"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        >
+    </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="74dp"
+            android:layout_height="68dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/flag"></ImageView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Displays current floods around you and estimates distance of the floods from your location upon clicking the icon"
+            android:text="Relocates your to your current location. Double Check your latitude and longitude by clicking on the blue marker"
             android:layout_margin="30dp"
             android:gravity="center"
             android:layout_gravity="center"
@@ -70,23 +118,115 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/flood"
+            android:layout_width="74dp"
+            android:layout_height="68dp"
             android:layout_margin="16dp"
-            >
-        </ImageView>
+            android:src="@drawable/search"></ImageView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Displays current floods around you and estimates distance of the floods from your location upon clicking the icon"
+            android:text="Auto-Complete Search option based in all of Australia."
+
             android:layout_margin="30dp"
             android:gravity="center"
             android:layout_gravity="center"
             >
         </TextView>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="74dp"
+            android:layout_height="68dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/weather"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indicates current temperature"
+
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="74dp"
+            android:layout_height="68dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/wind"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indicates current wind speed."
+
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="74dp"
+            android:layout_height="68dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/preasure"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indicates current pressure."
+
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="74dp"
+            android:layout_height="68dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/humidity"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indicates current moisture."
+
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            >
+        </TextView>
+    </LinearLayout>
+
 
     <Button
         android:layout_width="wrap_content"
@@ -98,5 +238,6 @@
         >
 
     </Button>
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

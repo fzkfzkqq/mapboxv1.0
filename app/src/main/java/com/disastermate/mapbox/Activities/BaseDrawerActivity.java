@@ -18,11 +18,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.HeaderViewListAdapter;
@@ -78,6 +81,11 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         help = findViewById(R.id.help);
+
+        Animation shake;
+        shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+
+//        frameLayout.startAnimation(shake);
 
 
 
@@ -289,6 +297,13 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         navView.invalidate();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+
+    }
 }
 
 

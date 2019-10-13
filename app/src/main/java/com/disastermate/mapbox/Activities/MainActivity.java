@@ -22,6 +22,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -151,6 +152,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private boolean isOpen = false;
     Date date1;
     SimpleDateFormat format;
+    private SimpleDateFormat format2;
 
 
     @Override
@@ -353,7 +355,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("Relative humidity is commonly used to measure atmospheric moisture.");
+                factor_description.setText(" Relative humidity is commonly used to measure atmospheric moisture.");
                 zoomInImageView.setImageResource(R.drawable.factor_humi);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -365,7 +367,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("Adding a feature like a trough or front that changes the wind direction increases the danger.");
+                factor_description.setText(" Adding a feature like a trough or front that changes the wind direction increases the danger.");
                 zoomInImageView.setImageResource(R.drawable.factor_airpres);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -378,7 +380,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("How wind works during bush fire.");
+                factor_description.setText(" How wind works during bush fire.");
                 zoomInImageView.setImageResource(R.drawable.factor_wind);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -547,7 +549,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
                             .icon(icon)
-                            .title(address.getAddressLine(0) + "\nRisk Rate: " + risk.getText()
+                            .title(address.getAddressLine(0))
+                            .snippet("\nRisk Rate: " + risk.getText()
                                     + "\nDistance from Location: " + distance + " Km"));
                     Log.i("RRD", risk.getText().toString());
 
@@ -698,6 +701,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         super.onResume();
         mapView.onResume();
         navigationView.getMenu().getItem(0).setChecked(true);
+
     }
 
     @Override
@@ -1056,7 +1060,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
-                    risk.setBackgroundColor(Color.rgb(37,155,36));
+//                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
                     btn_temp.setText((j.get("airTemperature")).toString() + "°C");
@@ -1204,11 +1208,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
                             Log.i("DATE PARSING",date1.toString());
                             format = new SimpleDateFormat("dd-MM-yyyy");
+                            format2 = new SimpleDateFormat("hh:mm a");
 
                             format.applyPattern("dd-MM-yyyy");
 
                             String markerSnippet = "Location: " + j.getString("location") +
-                                    "\nUpdated on: " + format.format(date1) + "\nDistance from Current Location: " + distance + " Km";
+                                    "\nUpdated on: " + format.format(date1) +"\nTime: " + format2.format(date1) + "\nDistance from Current Location: " + distance + " Km";
                               Log.i("wtf happened here", j.toString());
 
                             if (j.getString("location") != null) {
