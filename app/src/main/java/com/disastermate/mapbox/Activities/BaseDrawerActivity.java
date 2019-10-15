@@ -33,12 +33,25 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.disastermate.mapbox.R;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.mapbox.api.geocoding.v5.models.CarmenFeature;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.plugins.places.autocomplete.PlaceAutocomplete;
 import com.mapbox.mapboxsdk.plugins.places.autocomplete.model.PlaceOptions;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 
@@ -46,7 +59,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
 
     private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
-    private static final String PREFS_NAME2 = "watchlist" ;
+    private static final String PREFS_NAME2 = "watchlist";
     DrawerLayout drawerLayout;
     FrameLayout frameLayout;
     static Toolbar toolbar;
@@ -56,9 +69,11 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     FloatingActionButton help;
     private CarmenFeature home;
     private CarmenFeature work;
+    ArrayList<String> arrPackage;
+    HashMap<String, String> hmap;
+    MenuItem item;
 
     private static int i = 0;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,12 +96,13 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         help = findViewById(R.id.help);
+        arrPackage = new ArrayList<>();
+        hmap = new HashMap<>();
 
         Animation shake;
         shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
 
 //        frameLayout.startAnimation(shake);
-
 
 
     }
@@ -112,20 +128,16 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         } else if (id == R.id.nav_gallery) {
-                startActivity(new Intent(getApplicationContext(), Historic.class));
-        }
-        else if (id == R.id.nav_bushtodolist) {
+            startActivity(new Intent(getApplicationContext(), Historic.class));
+        } else if (id == R.id.nav_bushtodolist) {
             startActivity(new Intent(getApplicationContext(), TodoListActivity.class));
-        }
-        else if (id == R.id.nav_floodtodolist) {
+        } else if (id == R.id.nav_floodtodolist) {
             startActivity(new Intent(getApplicationContext(), Flood2doList.class));
-        }
-         else if (id == R.id.nav_disastersList) {
+        } else if (id == R.id.nav_disastersList) {
             startActivity(new Intent(getApplicationContext(), BushfireListActivity.class));
-        }
-         else if (id == R.id.nav_notification) {
+        } else if (id == R.id.nav_notification) {
 
             // Create an Intent for the activity you want to start
             Intent resultIntent = new Intent(this, BushfireListActivity.class);
@@ -135,7 +147,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             // Get the PendingIntent containing the entire back stack
             PendingIntent resultPendingIntent =
                     stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
 
 
             notificationManager = NotificationManagerCompat.from(this);
@@ -153,16 +164,14 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
                     .setContentTitle("Test!")
                     .setContentText("This is a test for current alerts")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                    .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
+                    .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000
                     });
             builder.setContentIntent(resultPendingIntent);
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
             notificationManager.notify(2, builder.build());
 
-            }
-
-        else if (id == R.id.nav_watchlist) {
+        } else if (id == R.id.nav_watchlist) {
 //            addUserLocations();
             initSearchFab(2);
         }
@@ -171,11 +180,9 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 //        } else if (id == R.id.nav_send) {
 //            startActivity(new Intent(getApplicationContext(), SendActivity.class));
 //        }
-            drawerLayout.closeDrawer(GravityCompat.START);
-            return true;
-        }
-
-
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
 
     //    @Override
@@ -200,6 +207,9 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 //    }
 
     public void initSearchFab(int requestCode) {
+        if (getClass() != MainActivity.class) {
+            Intent intent = new Intent(this, MainActivity.class);
+        }
         Intent intent = new PlaceAutocomplete.IntentBuilder()
                 .accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.access_token))
                 .placeOptions(PlaceOptions.builder()
@@ -216,85 +226,100 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     public void addUserLocations(String name, Double lat, Double longi) {
 
 
-//        name = CarmenFeature.builder().text(name)
-//                .geometry(Point.fromLngLat(longi,lat))
-//                .placeName("")
-//                .id("mapbox-sf")
-//                .properties(new JsonObject())
-//                .build();
-//
-//        home = CarmenFeature.builder().text("Home")
-//                .geometry(Point.fromLngLat(-122.3964485, 37.7912561))
-//                .placeName("")
-//                .id("mapbox-sf")
-//                .properties(new JsonObject())
-//                .build();
-////
-//        work = CarmenFeature.builder().text("Work (Feature coming soon :D")
-//                .placeName("Somewhere on mars")
-//                .geometry(Point.fromLngLat(-77.0338348, 38.899750))
-//                .id("mapbox-dc")
-//                .properties(new JsonObject())
-//                .build();
-
-
     }
 
 
-
     public void addMenuItemInNavMenuDrawer(final String location, String risk, final String postcode) {
+
+
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
 
         Menu menu = navView.getMenu();
         final SubMenu subMenu;
 
-//        if(!menu.getItem(menu.size() - 1 ).getTitle().toString().equals("WatchList")) {
-          subMenu = menu.addSubMenu("WatchList");
-          MenuItem item = subMenu.add(location);
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME2, Context.MODE_PRIVATE);
 
-            Log.i("menu","YES");
+        Gson gsonh = new Gson();
+        String jsonh = sharedPreferences.getString("Seth", "");
+        if (jsonh.isEmpty()) {
+            Toast.makeText(this, "There is nothing to add", Toast.LENGTH_LONG).show();
+        } else {
+            menu.removeItem(menu.size() - 1);
+            subMenu = menu.addSubMenu("WatchList");
 
-//        }
-//        else{
-//             subMenu1 = menu.getItem(7);
-//            MenuItem menuItem = (SubMenu) subMenu1.add
-//            Log.i("menu","NO");
-//        }
+            Type typeh = new TypeToken<HashMap<String,String>>()    {}.getType();
 
-//        int id = item.getItemId();
-//        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME2, Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putInt("Count",i);
-//        editor.putString("WatchList" + String.valueOf(i),location);
-//        editor.putString("postcode"+ String.valueOf(i), postcode);
-//        editor.putString("Address1"+ String.valueOf(i), location);
-//        editor.apply();
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
-                intent.putExtra("postcode", postcode);
-                intent.putExtra("Address1", location);
-                startActivity(intent);
-                return true;
+            HashMap<String,String> arrPackageDatahash = gsonh.fromJson(jsonh, typeh);
+            Set set = arrPackageDatahash.entrySet();
+            Iterator iterator = set.iterator();
+            while(iterator.hasNext()) {
+                Map.Entry mentry = (Map.Entry)iterator.next();
+
+                //add logic here
+//                System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
+//                System.out.println(mentry.getValue());
+
+               MenuItem item =  subMenu.add((String) mentry.getValue());
+                item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+//                        MainActivity.location_address.setText("Location:" + address.getAddressLine(0));
+//                        MainActivity.risk.setText(j.getString("bushfireRiskRating"));
+//
+//
+//                        map.animateCamera(CameraUpdateFactory.newCameraPosition(
+//                                new CameraPosition.Builder()
+//                                        .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
+//                                                ((Point) selectedCarmenFeature.geometry()).longitude()))
+//                                        .zoom(14)
+//                                        .build()), 3000);
+                        return true;
+                    }
+                });
+
+
             }
-        });
 
-
-        //refreshing adapter
-        for (int i = 0, count = navView.getChildCount(); i < count; i++) {
-            final View child = navView.getChildAt(i);
-            if (child != null && child instanceof ListView) {
-                final ListView menuView = (ListView) child;
-                final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
-                final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
-                wrapped.notifyDataSetChanged();
-            }
         }
 
-                        Toast.makeText(getApplicationContext(), "Item Added to Navigation Drawer", Toast.LENGTH_SHORT).show();
+        Log.i("menu", "YES");
 
-        navView.invalidate();
+        if (location.toString().isEmpty() && postcode.toString().isEmpty()) {
+            Toast.makeText(this, "Plz Enter all the data", Toast.LENGTH_LONG).show();
+        } else {
+
+            hmap.put(postcode,location);
+            gsonh = new Gson();
+            jsonh = gsonh.toJson(hmap);
+            SharedPreferences.Editor editor ;
+            editor = sharedPreferences.edit();
+            editor.putString("Seth", jsonh);
+            Log.i("JSON", jsonh);
+            editor.commit();
+
+//
+//
+
+
+            //refreshing adapter
+            for (int i = 0, count = navView.getChildCount(); i < count; i++) {
+                final View child = navView.getChildAt(i);
+                if (child != null && child instanceof ListView) {
+                    final ListView menuView = (ListView) child;
+                    final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
+                    final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
+                    wrapped.notifyDataSetChanged();
+                }
+            }
+
+            Toast.makeText(getApplicationContext(), "Item Added to Navigation Drawer", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+            navView.invalidate();
+        }
     }
 
     @Override
@@ -302,8 +327,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         super.onResume();
 
 
-
     }
 }
-
 

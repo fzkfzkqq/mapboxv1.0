@@ -93,6 +93,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Set;
 
 import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
@@ -131,7 +132,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private boolean isInTrackingMode;
     private Button dialogue_button;
     private TextView lastupdated;
-    private TextView location_address;
+    public static TextView location_address;
     private ObjectAnimator objAnim;
     private NotificationManagerCompat notificationManager;
     private CarmenFeature home;
@@ -153,6 +154,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     Date date1;
     SimpleDateFormat format;
     private SimpleDateFormat format2;
+
+    private Set<String> bushfirelistpostcode;
 
 
     @Override
@@ -278,6 +281,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 final Dialog settingsDialog = new Dialog(v.getContext());
                 settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 if (risk.getText().toString().equals("LOW")){
+                    Intent intent = new Intent(MainActivity.this,Flood2doList.class);
+                    startActivity(intent);
                     settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_bushfirelow
                             , null));
                     settingsDialog.show();
@@ -343,7 +348,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     btn_temp.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            factor_description.setText("How temperature affects bush fire.");
+            factor_description.setText("How temperature affects bush fire.\nLearn More at : http://www.bom.gov.au/climate/current/annual/aus/#tabs=Temperature");
             zoomInImageView.setImageResource(R.drawable.factor_temp);
                factor_description.setVisibility(View.VISIBLE);
                zoomInImageView.setVisibility(View.VISIBLE);
@@ -355,7 +360,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
 
-                factor_description.setText(" Relative humidity is commonly used to measure atmospheric moisture.");
+                factor_description.setText(" Relative humidity is commonly used to measure atmospheric moisture.\nLearn More at : http://www.bom.gov.au/lam/humiditycalc.shtml");
                 zoomInImageView.setImageResource(R.drawable.factor_humi);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -366,8 +371,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         btn_pressure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                factor_description.setText(" Air pressure will push flames, sparks and firebrands into new fuel.\nLearn More at :http://www.bom.gov.au/australia/charts/viewer/?IDCODE=IDY00050 ");
 
-                factor_description.setText(" Adding a feature like a trough or front that changes the wind direction increases the danger.");
                 zoomInImageView.setImageResource(R.drawable.factor_airpres);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -380,7 +385,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
 
-                factor_description.setText(" How wind works during bush fire.");
+                factor_description.setText(" How wind works during bush fire.\nLearn More about: http://www.bom.gov.au/marine/about/about-forecast-wind.shtml");
                 zoomInImageView.setImageResource(R.drawable.factor_wind);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -1191,6 +1196,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         try {
 
                             JSONObject j = jsonArray.getJSONObject(i);
+                            Log.i("STATUSJSON",j.toString());
                             Double lat = Double.parseDouble(j.getString("latitude"));
                             Double longti = Double.parseDouble(j.getString("longitude"));
                             try {
@@ -1213,8 +1219,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             format.applyPattern("dd-MM-yyyy");
 
                             String markerSnippet = "Location: " + j.getString("location") +
-                                    "\nUpdated on: " + format.format(date1) +"\nTime: " + format2.format(date1) + "\nDistance from Current Location: " + distance + " Km";
+                                    "\nUpdated on: " + format.format(date1) +"\nTime: " + format2.format(date1) + "\nDistance from Current Location: " + distance + " Km" + "\nRisk Rate: Medium" + "\nStatus: " + j.getString("status");
                               Log.i("wtf happened here", j.toString());
+
 
                             if (j.getString("location") != null) {
                                 parkMarks(latLng, markerSnippet);
@@ -1238,21 +1245,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         }
 
-//    public void initSearchFab() {
-//                Intent intent = new PlaceAutocomplete.IntentBuilder()
-//                        .accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.access_token))
-//                        .placeOptions(PlaceOptions.builder()
-//                                .backgroundColor(Color.parseColor("#EEEEEE"))
-//                                .limit(10)
-//                                .country("au")
-//                                .addInjectedFeature(home)
-//                                .addInjectedFeature(work)
-//                                .build(PlaceOptions.MODE_CARDS)
-//                                )
-//                        .build(MainActivity.this);
-//                startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
-//
-//            }
 
 
 

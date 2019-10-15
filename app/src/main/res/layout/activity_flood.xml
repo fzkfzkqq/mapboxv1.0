@@ -91,6 +91,15 @@
                 android:background="@drawable/layout_rounded"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|top"
+                    android:text="Flood Prediction"
+                    android:gravity="top|center"
+                    android:textSize="20sp"
+                    ></TextView>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -169,6 +178,7 @@
                     android:scaleType="fitCenter"
                     android:src="@drawable/factor_wind"
                     android:adjustViewBounds="true"
+                    android:background="@drawable/layout_rounded"
                     android:visibility="gone"
                     />
                 <TextView
@@ -177,6 +187,7 @@
                     android:id="@+id/factor_description"
                     android:layout_gravity="center_horizontal"
                     android:textSize="18sp"
+                    android:autoLink="web"
                     android:text="123213asd"
                     android:visibility="gone"/>
                 <Button
@@ -217,7 +228,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:background="@color/cardwhite"
+                        android:background="@drawable/layout_rounded"
                         android:drawableTop="@drawable/rain"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
@@ -231,8 +242,9 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:background="@color/cardwhite"
                         android:drawableTop="@drawable/humidity"
+                        android:background="@drawable/layout_rounded"
+
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
                         android:text="No DATA"
@@ -245,7 +257,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:background="@color/cardwhite"
+                        android:background="@drawable/layout_rounded"
                         android:drawableTop="@drawable/preasure"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"

@@ -15,6 +15,7 @@ public class BushfireModel  {
     String lastUpdated;
     float distancebtwn;
 
+
     public BushfireModel(String status, String location, String lastUpdated) {
         this.status = status;
         this.location = location;

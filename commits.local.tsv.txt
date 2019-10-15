@@ -1,0 +1,160 @@
+cb9e56c	Nikhil Paliath	Sat Oct 12 15:18:58 2019	final final commit
+d312ab8	Nikhil Paliath	Sat Oct 12 14:58:43 2019	final commit
+ae0e3e0	Nikhil Paliath	Sat Oct 12 14:26:20 2019	welcome page
+053b05a	Nikhil Paliath	Sat Oct 12 13:53:26 2019	got some cleaaaaning to doooooooo
+e40d894	Nikhil Paliath	Sat Oct 12 13:39:01 2019	cleaned up stuff
+c94ac0a	Nikhil Paliath	Sat Oct 12 12:36:03 2019	blah
+becb63f	Nikhil Paliath	Sat Oct 12 11:09:47 2019	seekbar icon and animation changed
+785e99f	Nikhil Paliath	Sat Oct 12 10:24:33 2019	resolved errors
+5df6e5b	Nikhil Paliath	Sat Oct 12 10:16:14 2019	pusher notifications added
+8d42fd0	fzkfzkqq	Fri Oct 11 13:33:03 2019	UI change
+40fece5	Nikhil Paliath	Thu Oct 10 15:41:56 2019	Flood pusher added
+c967457	Nikhil Paliath	Thu Oct 10 15:38:30 2019	Pusher notification set
+5741024	Nikhil Paliath	Thu Oct 10 14:28:55 2019	flood image
+36fbad8	Nikhil Paliath	Thu Oct 10 13:21:42 2019	some minor fixes
+52325df	fzkfzkqq	Thu Oct 10 13:14:00 2019	bug fix
+fdf07f7	fzkfzkqq	Thu Oct 10 13:12:29 2019	bug fix
+6bc90e5	Nikhil Paliath	Thu Oct 10 12:10:58 2019	location fix (huge distances)
+4141801	fzkfzkqq	Thu Oct 10 11:51:51 2019	resolve conflict
+e38260c	fzkfzkqq	Thu Oct 10 11:49:21 2019	debug in flood activity
+f018919	Nikhil Paliath	Thu Oct 10 11:48:49 2019	location bug fix
+ec40302	Nikhil Paliath	Thu Oct 10 10:46:19 2019	manifest file changed
+f664655	Nikhil Paliath	Thu Oct 10 10:38:54 2019	set adapter for bushfire works
+4eda609	Nikhil Paliath	Thu Oct 10 10:26:40 2019	no crashes
+4c7baac	Nikhil Paliath	Thu Oct 10 08:31:56 2019	navigation header added
+79a4e44	Nikhil Paliath	Thu Oct 10 07:29:07 2019	location onclick does not crash
+62846fd	Nikhil Paliath	Thu Oct 10 07:19:34 2019	resolved conflicts
+2d0c522	Nikhil Paliath	Thu Oct 10 07:14:58 2019	marker logic added
+5ed176c	fzkfzkqq	Thu Oct 10 01:14:02 2019	change historic UI
+984d138	fzkfzkqq	Wed Oct 9 12:21:20 2019	reslove conflict
+ec6f208	fzkfzkqq	Wed Oct 9 12:16:22 2019	flood to do list added
+d5aa256	Nikhil Paliath	Wed Oct 9 02:17:02 2019	resolved conflicts
+bce3109	Nikhil Paliath	Wed Oct 9 02:11:31 2019	Slider for historic fires set up
+6a80ce6	fzkfzkqq	Wed Oct 9 01:21:52 2019	add to-do list for bush fire
+913cf5b	Nikhil Paliath	Wed Oct 9 01:18:04 2019	Basic Historic Fire set up
+e8dca36	fzkfzkqq	Tue Oct 8 10:01:26 2019	resolove conflict
+d50f52e	fzkfzkqq	Tue Oct 8 09:54:55 2019	add to do list activity
+e1c36ed	Nikhil Paliath	Tue Oct 8 02:49:32 2019	filters confirmed
+4097062	Nikhil Paliath	Tue Oct 8 01:03:11 2019	Flood spinner complete
+7d8d332	Nikhil Paliath	Tue Oct 8 00:06:47 2019	firespinner updated
+6feafd9	Nikhil Paliath	Mon Oct 7 15:01:57 2019	merged
+07dee62	Nikhil Paliath	Mon Oct 7 15:01:39 2019	Merge branch 'master' of https://github.com/fzkfzkqq/mapboxv1.0
+03ed63e	fzkfzkqq	Sun Oct 6 16:52:35 2019	change picture in dialog
+2b45df0	Nikhil Paliath	Sun Oct 6 15:28:09 2019	resized dialouge box
+60662f7	Nikhil Paliath	Sun Oct 6 01:27:23 2019	basic watchlist created
+bc34811	Nikhil Paliath	Fri Oct 4 14:15:35 2019	code refactor
+c9d1e9b	fzkfzkqq	Sat Sep 21 12:41:37 2019	modification for Google Play
+f207cf1	fzkfzkqq	Thu Sep 19 20:40:26 2019	last version 19th Sep
+176a2f4	fzkfzkqq	Thu Sep 19 17:01:16 2019	images change
+1b66d6a	Nikhil Paliath	Thu Sep 19 15:33:35 2019	icon color
+f64bc07	Nikhil Paliath	Thu Sep 19 15:32:26 2019	fuck this shit im done with life
+bfd361d	Nikhil Paliath	Thu Sep 19 15:30:40 2019	whooohkdfsjblkdajbsdflkjbdk
+db67fec	fzkfzkqq	Thu Sep 19 15:01:06 2019	last version before iteation 2
+2f0404e	fzkfzkqq	Thu Sep 19 14:42:25 2019	modifcation pirctures
+b5aefdb	fzkfzkqq	Thu Sep 19 13:38:10 2019	logic for different risk
+fbc4c73	fzkfzkqq	Thu Sep 19 13:37:15 2019	add logic for different risk
+15f1bfc	Nikhil Paliath	Thu Sep 19 12:41:56 2019	made the nav icons white
+e74066a	Nikhil Paliath	Thu Sep 19 12:33:18 2019	notifications made clickable
+b3a69fd	Nikhil Paliath	Thu Sep 19 06:31:02 2019	distance between added
+b9cf587	Nikhil Paliath	Thu Sep 19 06:02:18 2019	Attempt to show distance between disasters and me
+f0b13bb	Nikhil Paliath	Thu Sep 19 04:42:49 2019	some UI changes
+b558222	Nikhil Paliath	Thu Sep 19 03:58:03 2019	item list completed
+1bc552b	Nikhil Paliath	Thu Sep 19 00:09:35 2019	changes to list
+553ecca	Nikhil Paliath	Wed Sep 18 22:52:02 2019	resolved conflicts
+3bd1c96	Nikhil Paliath	Wed Sep 18 22:49:43 2019	list for bushfires works
+26f72d5	Nikhil Paliath	Wed Sep 18 22:20:08 2019	count of incidents created
+f802641	fzkfzkqq	Wed Sep 18 22:19:55 2019	implemented all actions and factors
+1688e65	Nikhil Paliath	Wed Sep 18 21:06:49 2019	list changes
+d8e786b	Nikhil Paliath	Wed Sep 18 19:51:09 2019	changes made to list
+ff667b4	fzkfzkqq	Wed Sep 18 19:23:06 2019	add factors pop up
+a41b78d	Nikhil Paliath	Wed Sep 18 15:44:04 2019	list redecorated
+141c2f3	Nikhil Paliath	Wed Sep 18 03:15:35 2019	adapter works
+8152211	Nikhil Paliath	Wed Sep 18 01:50:11 2019	fixed bugs
+e2f7824	Nikhil Paliath	Wed Sep 18 01:13:06 2019	merged changess
+a76315e	Nikhil Paliath	Wed Sep 18 01:11:30 2019	merged changes
+4f5a7c8	fzkfzkqq	Wed Sep 18 00:47:03 2019	flood activity implementation
+1ce9698	Nikhil Paliath	Wed Sep 18 00:35:32 2019	wiped of unecessary files and made all activites (except baseDrawerActivity) as a single instance
+d5ed851	Nikhil Paliath	Wed Sep 18 00:07:28 2019	recycler list created
+c917033	fzkfzkqq	Tue Sep 17 23:27:01 2019	conflict resloved
+4d6b08b	fzkfzkqq	Tue Sep 17 23:24:17 2019	debug in flood activity
+e0388e2	Nikhil Paliath	Tue Sep 17 20:55:27 2019	resolved conflicts
+86bff91	Nikhil Paliath	Tue Sep 17 20:53:29 2019	Hamburger with Activity created
+6b32e4f	Nikhil Paliath	Tue Sep 17 18:31:05 2019	Progress bar for activty update created
+5e66226	fzkfzkqq	Tue Sep 17 01:24:23 2019	create flood activity
+d9d8716	Nikhil Paliath	Mon Sep 16 22:25:15 2019	issues merged
+eb6bbad	fzkfzkqq	Mon Sep 16 21:37:18 2019	conflict resloved
+2634ed4	fzkfzkqq	Mon Sep 16 21:33:25 2019	drawers working now
+1829b83	Nikhil Paliath	Mon Sep 16 20:45:58 2019	created round borders for prediction
+323d544	Nikhil Paliath	Mon Sep 16 16:51:33 2019	Checkpoint
+2230be0	Nikhil Paliath	Mon Sep 16 06:23:23 2019	make autocomplete only for australia
+d5d25eb	Nikhil Paliath	Mon Sep 16 05:25:34 2019	fixed floater
+72ed7c4	Nikhil Paliath	Mon Sep 16 05:17:32 2019	push notifications work, now only need to configure them:
+b39e33b	Nikhil Paliath	Mon Sep 16 03:16:49 2019	drawer activity named to home activity
+03966ed	Nikhil Paliath	Mon Sep 16 03:02:42 2019	integrated changes
+0f9eb93	Nikhil Paliath	Mon Sep 16 02:44:16 2019	changes in autocomplete search and tracking
+dd827a5	fzkfzkqq	Sun Sep 15 20:40:13 2019	change activity to fragment
+68b186f	Nikhil Paliath	Sun Sep 15 01:17:53 2019	header and minor UI changes
+cb7127b	Nikhil Paliath	Sat Sep 14 18:12:44 2019	resolved conflicts
+34d4bbc	Nikhil Paliath	Sat Sep 14 17:55:23 2019	notificaitons in progress
+c3d35d2	fzkfzkqq	Sat Sep 14 14:12:22 2019	icons updated
+2414ead	fzkfzkqq	Sat Sep 14 13:43:24 2019	UI improvement with buttons registered
+fc309c4	fzkfzkqq	Sat Sep 14 12:45:25 2019	UI change
+746951f	fzkfzkqq	Thu Sep 12 15:18:32 2019	change names for google play upload
+54579b7	Nikhil Paliath	Thu Sep 12 10:45:10 2019	markers added for bushfire feed
+0a2ffae	Nikhil Paliath	Thu Sep 12 07:40:53 2019	blah
+651e124	Nikhil Paliath	Tue Sep 10 17:11:52 2019	basic notification channel created
+e38ecc3	Nikhil Paliath	Tue Sep 10 13:51:35 2019	resolved conflicts
+660b962	Nikhil Paliath	Tue Sep 10 13:49:25 2019	Updated location on Map
+7c0fa02	fzkfzkqq	Sat Sep 7 15:10:44 2019	added markers and labels in histroical bushfire
+c3a254b	fzkfzkqq	Sat Sep 7 12:23:08 2019	add srollview to detail
+ee03f90	Nikhil Paliath	Thu Aug 29 15:11:56 2019	removed logs
+caaa8a1	Nikhil Paliath	Thu Aug 29 15:09:33 2019	mapbox updated
+463d583	fzkfzkqq	Thu Aug 29 14:23:06 2019	change markers in search function.
+b04d21f	Nikhil Paliath	Thu Aug 29 13:45:46 2019	UI redesign
+aaba2b5	Nikhil Paliath	Thu Aug 29 12:46:29 2019	some changes made on tooltips and markers
+28eea42	Nikhil Paliath	Thu Aug 29 11:27:31 2019	Headers Added
+ae7a419	Nikhil Paliath	Thu Aug 29 03:35:04 2019	something
+a6d16e0	Nikhil Paliath	Thu Aug 29 03:14:56 2019	pulsing animation added
+029102f	Nikhil Paliath	Thu Aug 29 03:05:48 2019	scale added to map
+5703a4a	Nikhil Paliath	Thu Aug 29 02:33:32 2019	changes to welcome screen and dialogue
+9f5e774	Nikhil Paliath	Thu Aug 29 02:22:15 2019	dialogue interface for tooltips created
+38a9c4e	Nikhil Paliath	Thu Aug 29 01:21:35 2019	prediction animation added
+d4c0498	Nikhil Paliath	Thu Aug 29 01:05:19 2019	onclick animation added for buttons
+145fac7	Nikhil Paliath	Thu Aug 29 00:39:11 2019	minor changes to causes
+a3f1d2c	Nikhil Paliath	Wed Aug 28 23:31:23 2019	cosmetic changes to main page
+42ccdb5	Nikhil Paliath	Wed Aug 28 23:11:13 2019	historic placed inside factors
+450ab5a	Nikhil Paliath	Wed Aug 28 22:49:49 2019	conflicts resolved
+aca1540	Nikhil Paliath	Wed Aug 28 22:48:44 2019	UI redesign
+49c8261	fzkfzkqq	Wed Aug 28 22:42:28 2019	main page debug
+f7a87c9	fzkfzkqq	Wed Aug 28 22:05:33 2019	modified
+0efe7fa	fzkfzkqq	Wed Aug 28 21:59:16 2019	modified the more detail page
+5203f1e	Nikhil Paliath	Wed Aug 28 21:26:12 2019	safety commit
+be0db4f	Nikhil Paliath	Wed Aug 28 12:52:46 2019	Disclaimer Logic fixed
+4d7ce5c	Nikhil Paliath	Wed Aug 28 12:22:17 2019	disclaimer logic added
+4552a85	Nikhil Paliath	Tue Aug 27 23:38:14 2019	disclaimer added
+4046377	Nikhil Paliath	Tue Aug 27 23:19:39 2019	Added back button to navigate to home screen
+a613280	Nikhil Paliath	Tue Aug 27 22:50:25 2019	conflicts resolved
+55590e7	Nikhil Paliath	Tue Aug 27 22:48:54 2019	Main Page UI Redesign
+e0aed72	fzkfzkqq	Tue Aug 27 21:48:37 2019	fix application crash during search address
+b3e9b18	fzkfzkqq	Tue Aug 27 21:36:50 2019	fix no risk rate
+2b488df	Nikhil Paliath	Tue Aug 27 20:03:54 2019	changes merged, needs UI fixes:
+f17493d	Nikhil Paliath	Tue Aug 27 19:44:24 2019	relocation button added
+a2e4c54	fzkfzkqq	Tue Aug 27 19:10:40 2019	search location change
+e3cb6eb	fzkfzkqq	Tue Aug 27 19:07:45 2019	search location done
+ef383b9	fzkfzkqq	Tue Aug 27 18:45:09 2019	Search function in main page done
+fcf42be	fzkfzkqq	Tue Aug 27 18:26:10 2019	Search function in main page done
+f1c463e	Nikhil Paliath	Tue Aug 27 16:23:27 2019	merged conflicts and updated Historic
+28e08e9	Nikhil Paliath	Tue Aug 27 16:11:18 2019	back button added
+2659623	fzkfzkqq	Tue Aug 27 15:09:16 2019	historic bushfire in heat map done
+bd14199	fzkfzkqq	Tue Aug 27 14:54:54 2019	historic bushfire in heat map
+64a2243	Nikhil Paliath	Sun Aug 25 21:50:58 2019	Historic BushFires made into different Activity)
+ec18d86	Nikhil Paliath	Sun Aug 25 21:15:08 2019	converted Details into an activity
+2af06ef	Nikhil Paliath	Sun Aug 25 19:09:50 2019	welcome screen completed
+c3b5e56	Nikhil Paliath	Sun Aug 25 18:07:47 2019	actions page complete, needs layout adjustments
+33f7694	Nikhil Paliath	Sun Aug 25 17:18:08 2019	 minor layout changes made to homepage
+5a2ff7c	Nikhil Paliath	Sun Aug 25 15:21:55 2019	minor changes made to layout file
+74d1316	Nikhil Paliath	Sun Aug 25 13:09:25 2019	button logic for causes completed
+adff4ce	Nikhil Paliath	Sun Aug 25 12:48:03 2019	Causes basic setup
+b81e771	fzkfzkqq	Sat Aug 24 13:57:55 2019	add a fragement for details,add geocoder to reverse user's coordinate to postal code
+4d8b8b2	fzkfzkqq	Thu Aug 22 15:46:53 2019	user location
+df1e5cb	fzkfzkqq	Wed Aug 21 22:29:02 2019	first commit

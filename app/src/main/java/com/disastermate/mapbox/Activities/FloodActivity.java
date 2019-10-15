@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -214,6 +215,8 @@ public class FloodActivity extends
                 final Dialog settingsDialog = new Dialog(v.getContext());
                 settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 if (risk.getText().toString().equals("LOW")){
+                    Intent intent = new Intent(FloodActivity.this,Flood2doList.class);
+                    startActivity(intent);
                     settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_lowflood
                             , null));
                     settingsDialog.show();
@@ -283,7 +286,8 @@ public class FloodActivity extends
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("How air pressure affects floods");
+                factor_description.setText("How air pressure affects floods.\nLearn more at : http://www.bom.gov.au/australia/charts/viewer/?IDCODE=IDY00050");
+                factor_description.setMovementMethod(LinkMovementMethod.getInstance());
                 zoomInImageView.setImageResource(R.drawable.flood_air);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -295,7 +299,7 @@ public class FloodActivity extends
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("How humidity affects flood");
+                factor_description.setText("How humidity affects flood.\nLearn more at : https://www.nationalgeographic.org/encyclopedia/humidity/");
                 zoomInImageView.setImageResource(R.drawable.flood_humi);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -307,7 +311,7 @@ public class FloodActivity extends
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("How rainfall lead to a flood");
+                factor_description.setText("How rainfall lead to a flood.\nLearn more at : http://www.bom.gov.au/australia/charts/viewer/?IDCODE=IDY00050");
                 zoomInImageView.setImageResource(R.drawable.flood_rainfall);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -737,7 +741,7 @@ public class FloodActivity extends
 
 
                         String markerSnippet = "Location: " + j.getString("location") +
-                                "\nUpdated on: " + format.format(date1) + "\nTime: " + format2.format(date1) + "\nDistance from Current Location: "+ distance + " Km";
+                                "\nUpdated on: " + format.format(date1) + "\nTime: " + format2.format(date1) + "\nDistance from Current Location: "+ distance + " Km" + "\nRisk: Medium" + "\nStatus: " + j.getString("status");
 
                         if (j.getString("location") != null) {
                             parkMarks(latLng, markerSnippet);
