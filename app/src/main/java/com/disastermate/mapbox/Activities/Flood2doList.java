@@ -1,6 +1,7 @@
 package com.disastermate.mapbox.Activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -97,6 +98,12 @@ public class Flood2doList extends BaseDrawerActivity {
             }
         });
 
+        findViewById(R.id.btn_goback).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), FloodActivity.class));
+            }
+        });
     }
 
     private void updateUI(){

@@ -142,6 +142,16 @@
 
         </LinearLayout>
         <Button
+            android:id="@+id/btn_goback"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:layout_above="@+id/btn_redo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Got it!"
+            />
+        <Button
             android:id="@+id/btn_redo"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="30dp"

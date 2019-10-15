@@ -215,21 +215,7 @@ public class FloodActivity extends
                 final Dialog settingsDialog = new Dialog(v.getContext());
                 settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 if (risk.getText().toString().equals("LOW")){
-                    Intent intent = new Intent(FloodActivity.this,Flood2doList.class);
-                    startActivity(intent);
-                    settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.view_lowflood
-                            , null));
-                    settingsDialog.show();
-                    Window window = settingsDialog.getWindow();
-                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                    dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
-                    dialogue_button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            settingsDialog.dismiss();
-                        }
-                    });
+                    startActivity(new Intent(getApplicationContext(), Flood2doList.class));
 
                 }
                 else if (risk.getText().toString().equals("MEDIUM")){
