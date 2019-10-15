@@ -484,6 +484,8 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //            }
 //        });
         /*Just a stupid blinking animation that the mentors liked so I'll keep it*/
+
+//        addMenuItemInNavMenuDrawer();
         pulseAnimation();
 
 

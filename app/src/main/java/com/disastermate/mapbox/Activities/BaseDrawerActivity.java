@@ -226,6 +226,85 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
     }
 
+    public void addMenuItemInNavMenuDrawer(){
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+
+        Menu menu = navView.getMenu();
+        final SubMenu subMenu;
+
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME2, Context.MODE_PRIVATE);
+
+        Gson gsonh = new Gson();
+        String jsonh = sharedPreferences.getString("Seth", "");
+        if (jsonh.isEmpty()) {
+            Toast.makeText(this, "There is nothing to add", Toast.LENGTH_LONG).show();
+        } else {
+            Log.i("ITEMCHECK", String.valueOf(menu.getItem(menu.size() - 1)));
+            //refreshing adapter
+            for (int i = 0, count = navView.getChildCount(); i < count; i++) {
+                final View child = navView.getChildAt(i);
+                if (child != null && child instanceof ListView) {
+                    final ListView menuView = (ListView) child;
+                    final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
+                    final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
+                    wrapped.notifyDataSetChanged();
+                }
+            }
+
+            subMenu = menu.addSubMenu("WatchList");
+
+            Type typeh = new TypeToken<HashMap<String,String>>()    {}.getType();
+
+            HashMap<String,String> arrPackageDatahash = gsonh.fromJson(jsonh, typeh);
+            Set set = arrPackageDatahash.entrySet();
+            Iterator iterator = set.iterator();
+            while(iterator.hasNext()) {
+                Map.Entry mentry = (Map.Entry)iterator.next();
+
+                //add logic here
+//                System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
+//                System.out.println(mentry.getValue());
+
+                MenuItem item =  subMenu.add((String) mentry.getValue());
+                item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+//                        MainActivity.location_address.setText("Location:" + address.getAddressLine(0));
+//                        MainActivity.risk.setText(j.getString("bushfireRiskRating"));
+//
+//
+//                        map.animateCamera(CameraUpdateFactory.newCameraPosition(
+//                                new CameraPosition.Builder()
+//                                        .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
+//                                                ((Point) selectedCarmenFeature.geometry()).longitude()))
+//                                        .zoom(14)
+//                                        .build()), 3000);
+                        return true;
+                    }
+                });
+
+
+            }
+
+        }
+
+        Log.i("menu", "YES");
+
+
+
+
+
+            Toast.makeText(getApplicationContext(), "Item Added to Navigation Drawer", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+            navView.invalidate();
+        drawerLayout.openDrawer(GravityCompat.START);
+
+    }
+
 
     public void addMenuItemInNavMenuDrawer(final String location, String risk, final String postcode) {
 
