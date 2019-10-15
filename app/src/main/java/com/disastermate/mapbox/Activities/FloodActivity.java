@@ -120,6 +120,7 @@ public class FloodActivity extends
     String riskString;
     private FloatingActionButton btn_help;
 
+
     //to find distance from each marker to user location
     private float distance = 0;
     Date date1;
@@ -160,6 +161,7 @@ public class FloodActivity extends
         zoomInImageView = findViewById(R.id.factor_image);
         factor_description = findViewById(R.id.factor_description);
         btn_help = (FloatingActionButton) findViewById(R.id.help);
+
         /*Declare other variables here*/
         final Geocoder geocoder = new Geocoder(this);
         SharedPreferences sharedpreferences;
@@ -167,6 +169,7 @@ public class FloodActivity extends
         notificationManager = NotificationManagerCompat.from(this);
         Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
         riskString = "null";
+
 
         /*Fires up the map instance and style
          * Here is where you also functions such as search and adding user locations*/
@@ -379,6 +382,8 @@ public class FloodActivity extends
                 notificationManager.notify(2, notification);
             }
         });
+
+
 
         pusher.connect();
 

@@ -171,10 +171,11 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
             notificationManager.notify(2, builder.build());
 
-        } else if (id == R.id.nav_watchlist) {
-//            addUserLocations();
-            initSearchFab(2);
         }
+//        else if (id == R.id.nav_watchlist) {
+////            addUserLocations();
+////            initSearchFab(2); //TODO
+//        }
 //        else if (id == R.id.nav_share) {
 //            startActivity(new Intent(getApplicationContext(), ShareActivity.class));
 //        } else if (id == R.id.nav_send) {
@@ -207,9 +208,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 //    }
 
     public void initSearchFab(int requestCode) {
-        if (getClass() != MainActivity.class) {
-            Intent intent = new Intent(this, MainActivity.class);
-        }
         Intent intent = new PlaceAutocomplete.IntentBuilder()
                 .accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.access_token))
                 .placeOptions(PlaceOptions.builder()
@@ -244,7 +242,18 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         if (jsonh.isEmpty()) {
             Toast.makeText(this, "There is nothing to add", Toast.LENGTH_LONG).show();
         } else {
-            menu.removeItem(menu.size() - 1);
+            Log.i("ITEMCHECK", String.valueOf(menu.getItem(menu.size() - 1)));
+            //refreshing adapter
+            for (int i = 0, count = navView.getChildCount(); i < count; i++) {
+                final View child = navView.getChildAt(i);
+                if (child != null && child instanceof ListView) {
+                    final ListView menuView = (ListView) child;
+                    final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
+                    final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
+                    wrapped.notifyDataSetChanged();
+                }
+            }
+
             subMenu = menu.addSubMenu("WatchList");
 
             Type typeh = new TypeToken<HashMap<String,String>>()    {}.getType();
@@ -301,16 +310,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 //
 
 
-            //refreshing adapter
-            for (int i = 0, count = navView.getChildCount(); i < count; i++) {
-                final View child = navView.getChildAt(i);
-                if (child != null && child instanceof ListView) {
-                    final ListView menuView = (ListView) child;
-                    final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
-                    final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
-                    wrapped.notifyDataSetChanged();
-                }
-            }
 
             Toast.makeText(getApplicationContext(), "Item Added to Navigation Drawer", Toast.LENGTH_SHORT).show();
 
@@ -320,6 +319,8 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
             navView.invalidate();
         }
+        drawerLayout.openDrawer(GravityCompat.START);
+
     }
 
     @Override

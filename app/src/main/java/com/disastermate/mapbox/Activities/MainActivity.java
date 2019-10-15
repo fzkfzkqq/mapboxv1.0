@@ -146,7 +146,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private static double lati;
     private static double loni;
     private MenuInflater inflater;
-    private FloatingActionButton btn_help;
+    private FloatingActionButton btn_help,watch;
     private TextView factor_description;
     public static Location mylocation;
     private float distance = 0;
@@ -193,6 +193,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         zoomInImageView = findViewById(R.id.factor_image);
         factor_description = findViewById(R.id.factor_description);
         btn_help = (FloatingActionButton) findViewById(R.id.help);
+        watch = (FloatingActionButton) findViewById(R.id.watch);
         /*Declare other variables here*/
         final Geocoder geocoder = new Geocoder(this);
         SharedPreferences sharedpreferences;
@@ -457,6 +458,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
         pusher.connect();
 
+        watch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                initSearchFab(2);
+            }
+        });
 //        findViewById(R.id.help).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -478,6 +485,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //        });
         /*Just a stupid blinking animation that the mentors liked so I'll keep it*/
         pulseAnimation();
+
 
     }
 

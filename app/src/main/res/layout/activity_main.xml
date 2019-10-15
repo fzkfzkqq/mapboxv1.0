@@ -37,11 +37,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_above="@id/fab_location_search"
+            android:layout_above="@id/watch"
             android:layout_margin="16dp"
             android:src="@drawable/question"
             />
-
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_above="@id/fab_location_search"
+            android:layout_margin="16dp"
+            android:src="@drawable/binoculars"
+        >
+        </android.support.design.widget.FloatingActionButton>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_location_search"
             android:layout_width="wrap_content"
