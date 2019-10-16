@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/layout_rounded"
     tools:context=".Activities.BushfireListActivity">
 
     <android.support.v7.widget.Toolbar
@@ -350,48 +349,52 @@
                 android:gravity="center">
 
             </TextView>
+
         </LinearLayout>
 
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             style='style="@android:style/Holo.ButtonBar.AlertDialog" '
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            android:paddingBottom="48dp"></android.support.v7.widget.RecyclerView>
+            android:paddingBottom="48dp">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/change_flood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start"
-            android:layout_marginBottom="50dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/flood" />
+    </android.support.v7.widget.RecyclerView>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/change_fire"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start"
-            android:layout_marginBottom="50dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/fire_current"
-            android:visibility="gone"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/change_flood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/flood" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/help"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:layout_marginEnd="16dp"
-            android:layout_gravity="bottom|end"
-            android:src="@drawable/question"
-            />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/change_fire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/fire_current"
+        android:visibility="gone"/>
 
-
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/question" />
+    </FrameLayout>
 
 </LinearLayout>
