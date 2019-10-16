@@ -75,8 +75,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 
@@ -119,6 +122,8 @@ public class FloodActivity extends
     private TextView factor_description;
     String riskString;
     private FloatingActionButton btn_help;
+    private Set<String> floodlistpostcode;
+
 
 
     //to find distance from each marker to user location
@@ -169,6 +174,9 @@ public class FloodActivity extends
         notificationManager = NotificationManagerCompat.from(this);
         Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
         riskString = "null";
+        floodlistpostcode = new HashSet<>();
+
+
 
 
         /*Fires up the map instance and style
@@ -426,6 +434,13 @@ public class FloodActivity extends
                     }
 
                     risk.setText(j.getString("floodRiskRating"));
+                    for(String each:floodlistpostcode){
+                        Log.i("POSTCODEF",address.getPostalCode());
+                        if ( each.equals(address.getPostalCode())) {
+                            risk.setText("MEDIUM");
+                            break;
+                        }
+                    }
 
                     /*TODO: there is a bug here which shows low for not available locations
                      *  We must either restrict the searches or show no data for that location*/
@@ -452,6 +467,7 @@ public class FloodActivity extends
 
                 } catch (JSONException e) {
                     risk.setText("No Data");
+                    
                     e.printStackTrace();
 
 
@@ -736,6 +752,8 @@ public class FloodActivity extends
 
                         if (j.getString("location") != null) {
                             parkMarks(latLng, markerSnippet);
+                            floodlistpostcode.add(j.getString("postcode"));
+                            Log.i("LISTF",floodlistpostcode.toString());
                         }
 
                     } catch (JSONException e) {
@@ -784,6 +802,13 @@ public class FloodActivity extends
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("floodRiskRating"));
+                    for(String each:floodlistpostcode){
+                        Log.i("POSTCODEF",address.getPostalCode());
+                        if ( each.equals(address.getPostalCode())) {
+                            risk.setText("MEDIUM");
+                            break;
+                        }
+                    }
                     //risk.setText("HIGH");
 //                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));

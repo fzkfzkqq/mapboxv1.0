@@ -90,6 +90,7 @@ import java.lang.ref.WeakReference;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -202,6 +203,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
         riskString = "null";
         progressBar = findViewById(R.id.indeterminateBar);
+        bushfirelistpostcode = new HashSet<>();
 
         /*Make sure that the dialogue does not repeat twice*/
         if (isAgree == false) {
@@ -546,7 +548,14 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
                     location_address.setText("Location:" + address.getAddressLine(0));
                     risk.setText(j.getString("bushfireRiskRating"));
-                    Log.i("risktext",j.getString("bushfireRiskRating"));
+                    for(String each:bushfirelistpostcode){
+//                        Log.i("POSTCODEB",address.getPostalCode());
+                        if ( each.equals(address.getPostalCode())) {
+                            risk.setText("MEDIUM");
+                            break;
+                        }
+                    }
+//                    Log.i("risktext",j.getString("bushfireRiskRating"));
 
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
@@ -624,7 +633,13 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
                         location_address.setText("Location:" + address.getAddressLine(0));
                         risk.setText(j.getString("bushfireRiskRating"));
-
+                        for(String each:bushfirelistpostcode){
+                            Log.i("POSTCODEB",address.getPostalCode());
+                            if ( each.equals(address.getPostalCode())) {
+                                risk.setText("MEDIUM");
+                                break;
+                            }
+                        }
 
                         map.animateCamera(CameraUpdateFactory.newCameraPosition(
                                 new CameraPosition.Builder()
@@ -832,6 +847,13 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         location_address.setText("Location:" + address.getAddressLine(0));
         try {
             risk.setText(j.getString("bushfireRiskRating"));
+            for(String each:bushfirelistpostcode){
+                Log.i("POSTCODEB",address.getPostalCode());
+                if ( each.equals(address.getPostalCode())) {
+                    risk.setText("MEDIUM");
+                    break;
+                }
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -1062,6 +1084,13 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
+                    for(String each:bushfirelistpostcode){
+                        Log.i("POSTCODEB",address.getPostalCode());
+                        if ( each.equals(address.getPostalCode())) {
+                            risk.setText("MEDIUM");
+                            break;
+                        }
+                    }
 //                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
                     location_address.setText( address.getAddressLine(0));
@@ -1093,7 +1122,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 }
             } catch (JSONException e) {
                 onNodata();
-                Log.i("RRDG", "onPostExecute: ");
+//                Log.i("RRDG", "onPostExecute: ");
 
                 e.printStackTrace();
             }
@@ -1104,6 +1133,13 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
     private void onNodata(){
         risk.setText("No Data");
+//        for(String each:bushfirelistpostcode){
+//                Log.i("POSTCODEB",address.getPostalCode());
+//                if ( each.equals(address.getPostalCode())) {
+//                    risk.setText("MEDIUM");
+//                    break;
+//                }
+//        }
         risk.setBackgroundColor(Color.rgb(37,155,36));
         btn_humi.setText("No Data");
         btn_pressure.setText("No Data");
@@ -1216,12 +1252,14 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             format.applyPattern("dd-MM-yyyy");
 
                             String markerSnippet = "Location: " + j.getString("location") +
-                                    "\nUpdated on: " + format.format(date1) +"\nTime: " + format2.format(date1) + "\nDistance from Current Location: " + distance + " Km" + "\nRisk Rate: Medium" + "\nStatus: " + j.getString("status");
+                                    "\nUpdated on: " + format.format(date1) +"\nTime: " + format2.format(date1) + "\nDistance from Current Location: " + distance + " Km" + "\nRisk Rate: MEDIUM" + "\nStatus: " + j.getString("status");
                               Log.i("wtf happened here", j.toString());
 
 
                             if (j.getString("location") != null) {
                                 parkMarks(latLng, markerSnippet);
+                                bushfirelistpostcode.add(j.getString("postcode"));
+                                Log.i("LISTB",bushfirelistpostcode.toString());
                                 SharedPreferences sharedpreferences;
                                 sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor= sharedpreferences.edit();
