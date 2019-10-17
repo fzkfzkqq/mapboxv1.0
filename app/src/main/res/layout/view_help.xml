@@ -65,7 +65,7 @@
             android:layout_gravity="center"
             android:layout_margin="30dp"
             android:gravity="center"
-            android:text="Indicates current fires near you. On clicking the marker, you obtain the distance from your location, date of occurance and location name"></TextView>
+            android:text="Indicates current fires near you. On clicking the marker, you obtain the distance from your location, date of occurance and location name, risk rate and status"></TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -82,15 +82,38 @@
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Indicates current fires near you. On clicking the marker, you obtain the distance from your location, date of occurance and location name"
+        android:text="Indicates current floods near you. On clicking the marker, you obtain the distance from your location, date of occurance and location name, risk rate and status"
         android:layout_margin="30dp"
         android:gravity="center"
         android:layout_gravity="center"
         >
     </TextView>
     </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <LinearLayout
+                <ImageView
+                    android:layout_width="74dp"
+                    android:layout_height="68dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/binoculars"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adds an item to the drawer for quick reference."
+
+                    android:layout_margin="30dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    >
+                </TextView>
+            </LinearLayout>
+
+
+            <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">

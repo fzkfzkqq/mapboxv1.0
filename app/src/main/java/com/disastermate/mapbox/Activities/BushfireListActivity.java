@@ -92,11 +92,13 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     private FloatingActionButton btn_help;
     private Button dialogue_button;
 
+    double slato,slongo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        view = getLayoutInflater().inflate(R.layout.activity_bushfire_list, frameLayout);
+        getLayoutInflater().inflate(R.layout.activity_bushfire_list, frameLayout);
         BaseDrawerActivity.toolbar.setTitle("Current Alerts");
         getlatlong();
         initialise();
@@ -301,7 +303,6 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
 
 
             showFire.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("RestrictedApi")
                 @Override
                 public void onClick(View v) {
                     showFire.setVisibility(View.GONE);
@@ -734,4 +735,10 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
 
 
     }
-}
+
+
+
+
+    }
+
+

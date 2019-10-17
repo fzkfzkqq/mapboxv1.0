@@ -28,6 +28,8 @@
             mapbox:mapbox_cameraZoom="7">
 
 
+
+
         </com.mapbox.mapboxsdk.maps.MapView>
 
         <android.support.design.widget.FloatingActionButton
@@ -35,11 +37,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_above="@id/fab_location_search"
+            android:layout_above="@id/watch"
             android:layout_margin="16dp"
             android:src="@drawable/question"
             />
-
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_above="@id/fab_location_search"
+            android:layout_margin="16dp"
+            android:src="@drawable/binoculars"
+        >
+        </android.support.design.widget.FloatingActionButton>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_location_search"
             android:layout_width="wrap_content"
@@ -84,6 +95,7 @@
 
             >
 
+
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -91,6 +103,15 @@
                 android:orientation="vertical"
                 android:background="@drawable/layout_rounded"
                 >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|top"
+                    android:text="Bushfire Prediction"
+                    android:gravity="top|center"
+                    android:textSize="20sp"
+                    ></TextView>
 
                 <LinearLayout
                     android:id="@+id/main_group"
@@ -159,9 +180,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:src="@drawable/factor_wind"
-
                     android:background="@drawable/layout_rounded"
-
                     android:adjustViewBounds="true"
                     android:visibility="gone"
                     />
@@ -172,6 +191,7 @@
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:textSize="18sp"
+                    android:autoLink="web"
                     android:text="123213asd"
                     android:visibility="gone"/>
                 <Button
@@ -206,7 +226,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:background="@color/cardwhite"
+                        android:background="@drawable/layout_rounded"
                         android:drawableTop="@drawable/weather"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
@@ -220,7 +240,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:background="@color/cardwhite"
+                        android:background="@drawable/layout_rounded"
                         android:drawableTop="@drawable/humidity"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
@@ -234,7 +254,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:background="@color/cardwhite"
+                        android:background="@drawable/layout_rounded"
                         android:drawableTop="@drawable/wind"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"
@@ -248,7 +268,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:background="@color/cardwhite"
+                        android:background="@drawable/layout_rounded"
                         android:drawableTop="@drawable/preasure"
                         android:drawablePadding="10dp"
                         android:fontFamily="sans-serif"

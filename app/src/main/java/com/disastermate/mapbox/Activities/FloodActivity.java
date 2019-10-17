@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,8 +75,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 
@@ -118,6 +122,9 @@ public class FloodActivity extends
     private TextView factor_description;
     String riskString;
     private FloatingActionButton btn_help;
+    private Set<String> floodlistpostcode;
+
+
 
     //to find distance from each marker to user location
     private float distance = 0;
@@ -159,6 +166,7 @@ public class FloodActivity extends
         zoomInImageView = findViewById(R.id.factor_image);
         factor_description = findViewById(R.id.factor_description);
         btn_help = (FloatingActionButton) findViewById(R.id.help);
+
         /*Declare other variables here*/
         final Geocoder geocoder = new Geocoder(this);
         SharedPreferences sharedpreferences;
@@ -166,6 +174,10 @@ public class FloodActivity extends
         notificationManager = NotificationManagerCompat.from(this);
         Boolean isAgree = sharedpreferences.getBoolean("d_accepted",false);
         riskString = "null";
+        floodlistpostcode = new HashSet<>();
+
+
+
 
         /*Fires up the map instance and style
          * Here is where you also functions such as search and adding user locations*/
@@ -271,7 +283,8 @@ public class FloodActivity extends
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("How air pressure affects floods");
+                factor_description.setText("How air pressure affects floods.\nLearn more at : http://www.bom.gov.au/australia/charts/viewer/?IDCODE=IDY00050");
+                factor_description.setMovementMethod(LinkMovementMethod.getInstance());
                 zoomInImageView.setImageResource(R.drawable.flood_air);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -283,7 +296,7 @@ public class FloodActivity extends
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("How humidity affects flood");
+                factor_description.setText("How humidity affects flood.\nLearn more at : https://www.nationalgeographic.org/encyclopedia/humidity/");
                 zoomInImageView.setImageResource(R.drawable.flood_humi);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -295,7 +308,7 @@ public class FloodActivity extends
             @Override
             public void onClick(View view) {
 
-                factor_description.setText("How rainfall lead to a flood");
+                factor_description.setText("How rainfall lead to a flood.\nLearn more at : http://www.bom.gov.au/australia/charts/viewer/?IDCODE=IDY00050");
                 zoomInImageView.setImageResource(R.drawable.flood_rainfall);
                 factor_description.setVisibility(View.VISIBLE);
                 zoomInImageView.setVisibility(View.VISIBLE);
@@ -378,6 +391,8 @@ public class FloodActivity extends
             }
         });
 
+
+
         pusher.connect();
 
         /*Just a stupid blinking animation that the mentors liked so I'll keep it*/
@@ -419,6 +434,13 @@ public class FloodActivity extends
                     }
 
                     risk.setText(j.getString("floodRiskRating"));
+                    for(String each:floodlistpostcode){
+                        Log.i("POSTCODEF",address.getPostalCode());
+                        if ( each.equals(address.getPostalCode())) {
+                            risk.setText("MEDIUM");
+                            break;
+                        }
+                    }
 
                     /*TODO: there is a bug here which shows low for not available locations
                      *  We must either restrict the searches or show no data for that location*/
@@ -445,6 +467,7 @@ public class FloodActivity extends
 
                 } catch (JSONException e) {
                     risk.setText("No Data");
+                    
                     e.printStackTrace();
 
 
@@ -725,10 +748,12 @@ public class FloodActivity extends
 
 
                         String markerSnippet = "Location: " + j.getString("location") +
-                                "\nUpdated on: " + format.format(date1) + "\nTime: " + format2.format(date1) + "\nDistance from Current Location: "+ distance + " Km";
+                                "\nUpdated on: " + format.format(date1) + "\nTime: " + format2.format(date1) + "\nDistance from Current Location: "+ distance + " Km" + "\nRisk: Medium" + "\nStatus: " + j.getString("status");
 
                         if (j.getString("location") != null) {
                             parkMarks(latLng, markerSnippet);
+                            floodlistpostcode.add(j.getString("postcode"));
+                            Log.i("LISTF",floodlistpostcode.toString());
                         }
 
                     } catch (JSONException e) {
@@ -777,6 +802,13 @@ public class FloodActivity extends
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("floodRiskRating"));
+                    for(String each:floodlistpostcode){
+                        Log.i("POSTCODEF",address.getPostalCode());
+                        if ( each.equals(address.getPostalCode())) {
+                            risk.setText("MEDIUM");
+                            break;
+                        }
+                    }
                     //risk.setText("HIGH");
 //                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     lastupdated.setText("Updated："+ j.getString("lastUpdated"));
