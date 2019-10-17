@@ -25,9 +25,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,11 +113,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="219">
+              <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -127,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2775">
-              <caret line="281" column="95" selection-start-line="281" selection-start-column="20" selection-end-line="281" selection-end-column="95" />
+            <state relative-caret-position="2745">
+              <caret line="281" column="41" selection-start-line="281" selection-start-column="20" selection-end-line="281" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -165,8 +163,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2085">
-              <caret line="216" column="82" selection-start-line="216" selection-start-column="82" selection-end-line="216" selection-end-column="82" />
+            <state relative-caret-position="2025">
+              <caret line="216" column="19" selection-start-line="216" selection-start-column="19" selection-end-line="216" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -180,11 +178,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="116" column="83" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="83" />
+            <state relative-caret-position="121">
+              <caret line="134" column="50" lean-forward="true" selection-start-line="134" selection-start-column="50" selection-end-line="134" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -315,7 +313,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_drawer_drawer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_flood.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_historic.xml" />
@@ -326,6 +323,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Flood2doList.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java" />
       </list>
     </option>
   </component>
@@ -342,6 +340,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
@@ -355,7 +354,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -512,6 +510,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="732" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.1745283" side_tool="true" weight="0.32980332" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.6437659" visible="true" weight="0.23263328" />
@@ -527,8 +526,8 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.5040917" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5088853" side_tool="true" weight="0.325" />
       <window_info anchor="bottom" id="Version Control" order="4" weight="0.321875" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="5" sideWeight="0.49596122" visible="true" weight="0.1859375" />
-      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.4911147" weight="0.3198128" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49596122" weight="0.1859375" />
+      <window_info active="true" anchor="bottom" id="Build" order="6" sideWeight="0.4911147" visible="true" weight="0.31875" />
       <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" weight="0.7379095" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49757674" weight="0.328125" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.4977307" weight="0.32917318" />
@@ -888,15 +887,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="219">
+          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2775">
-          <caret line="281" column="95" selection-start-line="281" selection-start-column="20" selection-end-line="281" selection-end-column="95" />
+        <state relative-caret-position="2745">
+          <caret line="281" column="41" selection-start-line="281" selection-start-column="20" selection-end-line="281" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -925,8 +924,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2085">
-          <caret line="216" column="82" selection-start-line="216" selection-start-column="82" selection-end-line="216" selection-end-column="82" />
+        <state relative-caret-position="2025">
+          <caret line="216" column="19" selection-start-line="216" selection-start-column="19" selection-end-line="216" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -934,13 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1290">
           <caret line="103" column="88" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="116" column="83" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="83" />
         </state>
       </provider>
     </entry>
@@ -959,6 +951,13 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="134" column="50" lean-forward="true" selection-start-line="134" selection-start-column="50" selection-end-line="134" selection-end-column="50" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
