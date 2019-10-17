@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -35,6 +36,7 @@ public class Flood2doList extends BaseDrawerActivity {
         getLayoutInflater().inflate(R.layout.activity_flooddo_list, frameLayout);
 
         BaseDrawerActivity.toolbar.setTitle("Flood Todo List");
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         index = 0;
         final Dialog settingsDialog = new Dialog(this);
         settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);

@@ -57,9 +57,9 @@ import static com.disastermate.mapbox.other.Notifications.CHANNEL_2_ID;
 
 public class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    ActionBarDrawerToggle toggle;
     private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
-    DrawerLayout drawerLayout;
+    public DrawerLayout drawerLayout;
     FrameLayout frameLayout;
     static Toolbar toolbar;
     NavigationView navigationView;
@@ -86,12 +86,11 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 //        drawerLayout.setDrawerListener(toggle);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         help = findViewById(R.id.help);
@@ -223,16 +222,21 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
 
     }
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        toggle.syncState();
+    }
 
-
-
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-
-
+        toggle.syncState();
     }
 }
 

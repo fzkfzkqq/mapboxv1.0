@@ -20,12 +20,22 @@
     <list default="true" id="9a2857af-4957-4300-83b9-b70bf00f10bb" name="Default Changelist" comment="Merge branch 'master' of https://github.com/fzkfzkqq/mapboxv1.0&#10;&#10;# Conflicts:&#10;#&#9;.gradle/4.10.1/fileHashes/fileHashes.bin&#10;#&#9;.gradle/4.10.1/fileHashes/fileHashes.lock&#10;#&#9;.gradle/4.10.1/javaCompile/classAnalysis.bin&#10;#&#9;.gradle/4.10.1/javaCompile/javaCompile.lock&#10;#&#9;.gradle/4.10.1/javaCompile/taskHistory.bin&#10;#&#9;.gradle/4.10.1/taskHistory/taskHistory.bin&#10;#&#9;.gradle/4.10.1/taskHistory/taskHistory.lock&#10;#&#9;.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;.idea/caches/build_file_checksums.ser&#10;#&#9;.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_extensions_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_db_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_db_framework_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__android_arch_persistence_room_runtime_1_1_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_media_compat_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_v4_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_facebook_soloader_soloader_0_6_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_accounts_0_2_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_core_1_3_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_gestures_0_4_2_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_places_0_6_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_plugin_scalebar_v8_0_3_0_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_sdk_8_2_1_aar.xml&#10;#&#9;.idea/libraries/Gradle__com_mapbox_mapboxsdk_mapbox_android_telemetry_4_5_1_aar.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/app.iml&#10;#&#9;app/build.gradle">
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Flood2doList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Flood2doList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Historic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Historic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/TodoListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/TodoListActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_flood.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_flood.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,19 +124,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_high.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+            <state relative-caret-position="296">
+              <caret line="198" column="20" selection-start-line="198" selection-start-column="8" selection-end-line="198" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_low.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+            <state relative-caret-position="192">
+              <caret line="105" column="71" selection-start-line="105" selection-start-column="71" selection-end-line="105" selection-end-column="71" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/TodoListActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -134,67 +156,76 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="828" column="117" selection-start-line="828" selection-start-column="117" selection-end-line="828" selection-end-column="117" />
+            <state relative-caret-position="466">
+              <caret line="162" column="47" lean-forward="true" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Historic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="366">
+              <caret line="143" column="38" selection-start-line="143" selection-start-column="38" selection-end-line="143" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="87" column="71" lean-forward="true" selection-start-line="87" selection-start-column="7" selection-end-line="87" selection-end-column="71" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3264#3295#0" expanded="true" />
+                <element signature="e#3297#3329#0" expanded="true" />
+                <element signature="e#8618#8619#0" expanded="true" />
+                <element signature="e#8651#8652#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Flood2doList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/49b0ceef74ec179f04c697803cb4d05a/jars/classes.jar!/android/support/v4/view/GravityCompat.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_flood.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="163" column="45" selection-start-line="163" selection-start-column="45" selection-end-line="163" selection-end-column="45" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/roundedbutton.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_meduim.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_border.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="152" column="20" selection-start-line="152" selection-start-column="20" selection-end-line="152" selection-end-column="20" />
+            <state relative-caret-position="351">
+              <caret line="206" column="50" lean-forward="true" selection-start-line="206" selection-start-column="50" selection-end-line="206" selection-end-column="50" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_corner.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_flood.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="171" column="52" lean-forward="true" selection-start-line="171" selection-start-column="52" selection-end-line="171" selection-end-column="52" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -211,8 +242,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>marker</find>
-      <find>mapboxmap</find>
       <find>help</find>
       <find>bushfireDataList</find>
       <find>setAdapter(safeList);</find>
@@ -241,6 +270,8 @@
       <find>Select Radius</find>
       <find>LOW</find>
       <find>dialog</find>
+      <find>drawer</find>
+      <find>drawerlayout</find>
     </findStrings>
     <replaceStrings>
       <replace>Historic</replace>
@@ -265,7 +296,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/image_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/factor_popup_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_highbushfire.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_highflood.xml" />
@@ -292,21 +322,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_historic.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_todo_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_flooddo_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/TodoListActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Flood2doList.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/layout_rounded.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/rounded_high.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/rounded_low.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/rounded_meduim.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/help_historic.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/help_bushfirelist.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_help.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bushfire_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Welcome.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/bushfire_item_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/rounded_low.xml" />
@@ -314,14 +337,21 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/rounded_meduim.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/rounded_border.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Historic.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/TodoListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Flood2doList.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_flood.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="31" />
-    <option name="y" value="23" />
+    <option name="y" value="41" />
     <option name="width" value="1280" />
     <option name="height" value="732" />
   </component>
@@ -382,6 +412,12 @@
               <item name="mapbox" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="mapbox" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="mapbox" type="1abcf292:AndroidViewProjectNode" />
@@ -552,11 +588,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="31" y="23" width="1280" height="732" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="41" width="1280" height="732" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.1745283" side_tool="true" weight="0.32980332" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.6437659" visible="true" weight="0.23263328" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.6437659" visible="true" weight="0.23263328" />
       <window_info id="Build Variants" order="2" sideWeight="0.3562341" side_tool="true" weight="0.23298033" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -569,16 +604,16 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49924356" weight="0.5040917" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5088853" side_tool="true" weight="0.325" />
       <window_info anchor="bottom" id="Version Control" order="4" weight="0.321875" />
-      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49596122" visible="true" weight="0.1859375" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49596122" weight="0.1859375" />
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.4911147" weight="0.31875" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" weight="0.7379095" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.7379095" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49757674" weight="0.328125" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.4977307" weight="0.328125" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32980332" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32980332" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Preview" order="4" visible="true" weight="0.25040388" />
+      <window_info active="true" anchor="right" id="Preview" order="4" visible="true" weight="0.25040388" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Assistant" order="6" weight="0.3290469" />
       <window_info anchor="right" id="Codota" order="7" />
@@ -682,13 +717,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java</url>
-          <line>560</line>
+          <line>561</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java</url>
-          <line>604</line>
+          <line>605</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
@@ -700,7 +735,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java</url>
-          <line>639</line>
+          <line>640</line>
           <properties />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
@@ -717,8 +752,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/android/view/SubMenu.java" />
-    <entry file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.mapbox.mapboxsdk/mapbox-sdk-geojson/4.8.0/af8e1f5fc87a20ef90c34d4ca11bab0a48020b15/mapbox-sdk-geojson-4.8.0.jar!/com/mapbox/geojson/Point.class" />
     <entry file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.pusher/pusher-java-client/2.0.0/83d22aee8058ae81c5cbb69d412ec694860a0f29/pusher-java-client-2.0.0-sources.jar!/com/pusher/client/channel/PusherEvent.java" />
     <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/java/util/Map.java" />
     <entry file="file://$PROJECT_DIR$/../AppData/Local/Android/Sdk/sources/android-28/java/lang/String.java" />
@@ -736,22 +769,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_base_drawer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/12264d0c3342abfe7fb412029f0bc224/jars/classes.jar!/android/support/v7/app/ActionBarDrawerToggle.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -793,13 +810,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/TodoListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="108" column="11" selection-start-line="102" selection-end-line="108" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_flooddo_list.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
@@ -807,13 +817,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_flood2do_list.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -846,37 +849,13 @@
       </provider>
       <provider editor-type-id="android-manifest" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/logo1.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Flood2doList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="103" column="88" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="88" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/layout_rounded.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="53" lean-forward="true" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Historic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="89" column="13" selection-start-line="89" selection-start-column="13" selection-end-line="89" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -908,16 +887,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="702" column="31" selection-start-line="702" selection-start-column="31" selection-end-line="702" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bushfire_item_list.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
@@ -937,13 +906,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="259" selection-start-line="236" selection-start-column="9" selection-end-line="259" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/image_layout.xml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1000,25 +962,118 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_corner.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="828" column="117" selection-start-line="828" selection-start-column="117" selection-end-line="828" selection-end-column="117" />
+        <state relative-caret-position="810">
+          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="152" column="20" selection-start-line="152" selection-start-column="20" selection-end-line="152" selection-end-column="20" />
+        <state relative-caret-position="196">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_drawer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_base_drawer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/49b0ceef74ec179f04c697803cb4d05a/jars/classes.jar!/android/support/v4/view/GravityCompat.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="198" column="20" selection-start-line="198" selection-start-column="8" selection-end-line="198" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BushfireListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="105" column="71" selection-start-line="105" selection-start-column="71" selection-end-line="105" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/FloodActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="162" column="47" lean-forward="true" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Historic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="143" column="38" selection-start-line="143" selection-start-column="38" selection-end-line="143" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/TodoListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/BaseDrawerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="87" column="71" lean-forward="true" selection-start-line="87" selection-start-column="7" selection-end-line="87" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3264#3295#0" expanded="true" />
+            <element signature="e#3297#3329#0" expanded="true" />
+            <element signature="e#8618#8619#0" expanded="true" />
+            <element signature="e#8651#8652#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/disastermate/mapbox/Activities/Flood2doList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_flood.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="163" column="45" selection-start-line="163" selection-start-column="45" selection-end-line="163" selection-end-column="45" />
+        <state relative-caret-position="365">
+          <caret line="171" column="52" lean-forward="true" selection-start-line="171" selection-start-column="52" selection-end-line="171" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="206" column="50" lean-forward="true" selection-start-line="206" selection-start-column="50" selection-end-line="206" selection-end-column="50" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />

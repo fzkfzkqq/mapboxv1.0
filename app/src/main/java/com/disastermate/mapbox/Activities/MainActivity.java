@@ -22,6 +22,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -195,7 +196,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //        toolbar = (Toolbar) findViewById(R.id.toolbar);
         BaseDrawerActivity.toolbar.setTitle("Bushfire Prediction");
         mylocation = new Location("me");
-
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
         /*Declare all UI to Objects herer*/
@@ -1411,7 +1412,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
             navView.invalidate();
         }
-        drawerLayout.openDrawer(GravityCompat.START);
 
     }
 

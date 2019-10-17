@@ -19,6 +19,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -151,7 +152,7 @@ public class FloodActivity extends
 
 
         BaseDrawerActivity.toolbar.setTitle("Flood Prediction");
-
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         /*Declare all UI to Objects herer*/
         mapView = findViewById(R.id.mapView);
