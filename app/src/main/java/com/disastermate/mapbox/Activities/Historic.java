@@ -158,7 +158,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                         GetParks getpark = new GetParks();
                         getpark.execute();
 
-                        Log.i("count", String.valueOf(Jan.size()));
+                        //Log.i("count", String.valueOf(Jan.size()));
 
                         // Initialize the Seekbar slider
                         final SeekBar liveWithinMinutesSeekbar =
@@ -577,7 +577,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                 }
 
 // Create a Toast which displays the new location's coordinates
-//                Log.i("coordinate",result.toString());
+//                //Log.i("coordinate",result.toString());
                 //TODO: 2. The toast location keeps showing with even small changes in location
 //                Toast.makeText(activity,
 //                        String.valueOf(result.getLastLocation().getLatitude()),
@@ -626,7 +626,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
             if (addresses.size() > 0) {
                 Address address = addresses.get(0);
                 postCode = address.getPostalCode();
-//                Log.i("postcode",postCode);
+//                //Log.i("postcode",postCode);
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -705,7 +705,7 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
             try {
                 JSONArray jarray = jsonObject.getJSONArray("features");
                 count = jarray.length();
-                Log.i("count",count.toString());
+                //Log.i("count",count.toString());
                 if (count > 0 ) {
                     for (int i = 0; i < count;i++)
                     {
@@ -727,51 +727,51 @@ public class Historic extends BaseDrawerActivity implements OnMapReadyCallback, 
                             switch(historicfireModel.getMonth()) {
                                 case "January":
                                     Jan.add(historicfireModel);
-                                    Log.i("December","Jan Calling!");
+                                    //Log.i("December","Jan Calling!");
                                     break;
                                 case "February":
                                     Feb.add(historicfireModel);
-                                    Log.i("December","Feb Calling!");
+                                    //Log.i("December","Feb Calling!");
                                     break;
                                 case "March":
                                     Mar.add(historicfireModel);
-                                    Log.i("December","Mar Calling!");
+                                    //Log.i("December","Mar Calling!");
                                     break;
                                 case "April":
                                     Apr.add(historicfireModel);
-                                    Log.i("December","Apr Calling!");
+                                    //Log.i("December","Apr Calling!");
                                     break;
                                 case "May":
                                     May.add(historicfireModel);
-                                    Log.i("December","May Calling!");
+                                    //Log.i("December","May Calling!");
                                     break;
                                 case "June":
                                     Jun.add(historicfireModel);
-                                    Log.i("December","Jun Calling!");
+                                    //Log.i("December","Jun Calling!");
                                     break;
                                 case "July":
                                     Jul.add(historicfireModel);
-                                    Log.i("December","Jul Calling!");
+                                    //Log.i("December","Jul Calling!");
                                     break;
                                 case "August":
                                     Aug.add(historicfireModel);
-                                    Log.i("December","Aug Calling!");
+                                    //Log.i("December","Aug Calling!");
                                     break;
                                 case "September":
                                     Sep.add(historicfireModel);
-                                    Log.i("December","Sep Calling!");
+                                    //Log.i("December","Sep Calling!");
                                     break;
                                 case "October":
                                     Oct.add(historicfireModel);
-                                    Log.i("December","Oct Calling!");
+                                    //Log.i("December","Oct Calling!");
                                     break;
                                 case "November":
                                     Nov.add(historicfireModel);
-                                    Log.i("December","Nov Calling!");
+                                    //Log.i("December","Nov Calling!");
                                     break;
                                 case "December":
                                     Dec.add(historicfireModel);
-                                    Log.i("December","December Calling!");
+                                    //Log.i("December","December Calling!");
                                     break;
                             }
 

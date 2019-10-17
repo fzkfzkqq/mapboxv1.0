@@ -170,38 +170,38 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
                 break;
 
             case R.id.fire_spinner:
-              if (item.equals("All Safe")){
+              if (item.equals(" Safe")){
                     sortByDistance(safeList);
                     setAdapter(safeList);
                     radiusspinner.setSelection(0);
-                }else if (item.equals("All Under Control")){
+                }else if (item.equals(" Under Control")){
                     sortByDistance(controlList);
                     setAdapter(controlList);
                     radiusspinner.setSelection(0);
-                }else if (item.equals("All Responding")){
+                }else if (item.equals(" Responding")){
                     sortByDistance(respList);
                     setAdapter(respList);
                     radiusspinner.setSelection(0);
-                }else if (item.equals("All Not Under Control")){
+                }else if (item.equals(" Not Under Control")){
                     sortByDistance(ncontrolList);
                     setAdapter(ncontrolList);
                     radiusspinner.setSelection(0);
-                }else if (item.equals("All Bushfires")){
+                }else if (item.equals(" Bushfires")){
                     sortByDistance(bushfireDataList);
                     setAdapter(bushfireDataList);
                     radiusspinner.setSelection(0);
                 }else if (item.equals("Select  Status")) {
                     setAdapter(floodDataList);
-                }else if (item.equals("All Flooding")) {
+                }else if (item.equals(" Flooding")) {
                     sortByDistance(floodList);
                     setAdapter(floodList);
-                }else if (item.equals("All Request for Assistance")) {
+                }else if (item.equals(" Request for Assistance")) {
                     sortByDistance(assistanceList);
                     setAdapter(assistanceList);
-                }else if (item.equals("All Complete")) {
+                }else if (item.equals(" Complete")) {
                     sortByDistance(completeList);
                     setAdapter(completeList);
-                }else if (item.equals("All Floods")) {
+                }else if (item.equals(" Floods")) {
                     sortByDistance(floodDataList);
                     setAdapter(floodDataList);
                 }
@@ -262,7 +262,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
 
                        /*Parsing string to date*/
                          date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(alertUpdated);
-                        Log.i("DATE PARSING",date1.toString());
+                        //Log.i("DATE PARSING",date1.toString());
                          format = new SimpleDateFormat("dd-MM-yyyy");
 
                         format.applyPattern("dd-MM-yyyy");
@@ -390,11 +390,11 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
                         longi = j.getString("longitude");
 
                         distance = getDistance(mylocation,Double.parseDouble(lati),Double.parseDouble(longi));
-                        Log.i("DIST",String.valueOf(distance));
+                        //Log.i("DIST",String.valueOf(distance));
 
                         /*Parsing string to date*/
                         date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(alertUpdated);
-                        Log.i("DATE PARSING",date1.toString());
+                        //Log.i("DATE PARSING",date1.toString());
                         format = new SimpleDateFormat("dd-MM-yyyy");
 
                         format.applyPattern("dd-MM-yyyy");
@@ -542,11 +542,11 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         //Initialize list for fire spinner
         List<String> categories = new ArrayList<String>();
         categories.add("Select Status");
-        categories.add("All Safe");
-        categories.add("All Under Control");
-        categories.add("All Responding");
-        categories.add("All Not Under Control");
-        categories.add("All Bushfires");
+        categories.add(" Safe");
+        categories.add(" Under Control");
+        categories.add(" Responding");
+        categories.add(" Not Under Control");
+        categories.add(" Bushfires");
 
 
 
@@ -569,10 +569,10 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         //Initialize list for fire spinner
         List<String> categories = new ArrayList<String>();
         categories.add("Select  Status");
-        categories.add("All Flooding");
-        categories.add("All Request for Assistance");
-        categories.add("All Complete");
-        categories.add("All Floods");
+        categories.add(" Flooding");
+        categories.add(" Request for Assistance");
+        categories.add(" Complete");
+        categories.add(" Floods");
 
         ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 

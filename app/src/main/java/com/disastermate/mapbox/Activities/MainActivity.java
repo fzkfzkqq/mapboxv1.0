@@ -20,26 +20,34 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.disastermate.mapbox.R;
 import com.disastermate.mapbox.other.Restful;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -87,12 +95,16 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -155,8 +167,14 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     Date date1;
     SimpleDateFormat format;
     private SimpleDateFormat format2;
+    SubMenu subMenu;
 
     private Set<String> bushfirelistpostcode;
+    NavigationView navView;
+    Menu menu;
+    private static final String PREFS_NAME2 = "watchlist";
+    MenuItem menuItem ;
+
 
 
     @Override
@@ -204,6 +222,16 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         riskString = "null";
         progressBar = findViewById(R.id.indeterminateBar);
         bushfirelistpostcode = new HashSet<>();
+
+
+        navView = (NavigationView) findViewById(R.id.nav_view);
+
+        menu = navView.getMenu();
+
+        menuItem = menu.findItem(R.id.submenuWatc);
+        subMenu = menuItem.getSubMenu();
+
+
 
         /*Make sure that the dialogue does not repeat twice*/
         if (isAgree == false) {
@@ -280,7 +308,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         risk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Risk",risk.getText().toString());
                 final Dialog settingsDialog = new Dialog(v.getContext());
                 settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
                 if (risk.getText().toString().equals("LOW")){
@@ -437,7 +464,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 }
 
 
-//                Log.i("pusher",event.getProperty("location").toString());
 
 
 
@@ -542,20 +568,18 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         distance = 0;
                     }
                      String risktext = j.getString("bushfireRiskRating");
-                     Log.i("risktext",j.getString("bushfireRiskRating"));
 
 
 
                     location_address.setText("Location:" + address.getAddressLine(0));
                     risk.setText(j.getString("bushfireRiskRating"));
                     for(String each:bushfirelistpostcode){
-//                        Log.i("POSTCODEB",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
                             break;
                         }
                     }
-//                    Log.i("risktext",j.getString("bushfireRiskRating"));
+//                    //Log.i("risktext",j.getString("bushfireRiskRating"));
 
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
@@ -563,7 +587,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             .title(address.getAddressLine(0))
                             .snippet("\nRisk Rate: " + risk.getText()
                                     + "\nDistance from Location: " + distance + " Km"));
-                    Log.i("RRD", risk.getText().toString());
+//                    //Log.i("RRD", risk.getText().toString());
 
                    map.animateCamera(CameraUpdateFactory.newCameraPosition(
                             new CameraPosition.Builder()
@@ -629,12 +653,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                         map.addMarker(new MarkerOptions()
                                 .position(new LatLng(search_add.getLatitude(), search_add.getLongitude()))
                                 .title(address.getAddressLine(0) + "\n Risk Rate: " + risk.getText().toString()));
-                        Log.i("RRD", risk.getText().toString());
+//                        //Log.i("RRD", risk.getText().toString());
 
                         location_address.setText("Location:" + address.getAddressLine(0));
                         risk.setText(j.getString("bushfireRiskRating"));
                         for(String each:bushfirelistpostcode){
-                            Log.i("POSTCODEB",address.getPostalCode());
+//                            //Log.i("POSTCODEB",address.getPostalCode());
                             if ( each.equals(address.getPostalCode())) {
                                 risk.setText("MEDIUM");
                                 break;
@@ -848,7 +872,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         try {
             risk.setText(j.getString("bushfireRiskRating"));
             for(String each:bushfirelistpostcode){
-                Log.i("POSTCODEB",address.getPostalCode());
+//                //Log.i("POSTCODEB",address.getPostalCode());
                 if ( each.equals(address.getPostalCode())) {
                     risk.setText("MEDIUM");
                     break;
@@ -980,7 +1004,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 }
 
 // Create a Toast which displays the new location's coordinates
-//                Log.i("coordinate",result.toString());
+//                //Log.i("coordinate",result.toString());
                 //TODO: 2. The toast location keeps showing with even small changes in location
 //                Toast.makeText(activity,
 //                        String.valueOf(result.getLastLocation().getLatitude()),
@@ -1033,9 +1057,9 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
             if (addresses.size() > 0) {
                 Address add = addresses.get(0);
                 address = add;
-//                Log.i("address",address.getAddressLine(0));
+//                //Log.i("address",address.getAddressLine(0));
                 postCode = add.getPostalCode();
-//                Log.i("postcode",postCode);
+//                //Log.i("postcode",postCode);
                 getDetailAsyncTask getDetailAsyncTask = new getDetailAsyncTask();
                 getDetailAsyncTask.execute(postCode);
 //                progressBar.setVisibility(View.GONE);
@@ -1085,7 +1109,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
                     for(String each:bushfirelistpostcode){
-                        Log.i("POSTCODEB",address.getPostalCode());
+//                        //Log.i("POSTCODEB",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
                             break;
@@ -1122,7 +1146,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 }
             } catch (JSONException e) {
                 onNodata();
-//                Log.i("RRDG", "onPostExecute: ");
+//                //Log.i("RRDG", "onPostExecute: ");
 
                 e.printStackTrace();
             }
@@ -1134,7 +1158,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
     private void onNodata(){
         risk.setText("No Data");
 //        for(String each:bushfirelistpostcode){
-//                Log.i("POSTCODEB",address.getPostalCode());
+//                //Log.i("POSTCODEB",address.getPostalCode());
 //                if ( each.equals(address.getPostalCode())) {
 //                    risk.setText("MEDIUM");
 //                    break;
@@ -1223,20 +1247,20 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
 //                JSONArray jarray = jsonObject.getJSONArray("features");
 //                JSONObject
-//                Log.i("count", count.toString());
+//                //Log.i("count", count.toString());
                 if (count > 0) {
                     for (int i = 0; i < count; i++) {
                         try {
 
                             JSONObject j = jsonArray.getJSONObject(i);
-                            Log.i("STATUSJSON",j.toString());
+                            //Log.i("STATUSJSON",j.toString());
                             Double lat = Double.parseDouble(j.getString("latitude"));
                             Double longti = Double.parseDouble(j.getString("longitude"));
                             try {
                                 if(mylocation != null)
                                     mylocation = map.getLocationComponent().getLastKnownLocation();
                                 distance = BushfireListActivity.getDistance(mylocation, lat, longti);
-                                Log.i("distance", String.valueOf(distance) + " " + String.valueOf(mylocation));
+                                //Log.i("distance", String.valueOf(distance) + " " + String.valueOf(mylocation));
                             }catch(Exception e){
                                 Toast.makeText(MainActivity.this, "Last Known Location Selected", Toast.LENGTH_LONG).show();
                                 mylocation.setLatitude(-37.875261);
@@ -1245,7 +1269,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                             LatLng latLng = new LatLng(lat, longti);
 
                             date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
-                            Log.i("DATE PARSING",date1.toString());
+                            //Log.i("DATE PARSING",date1.toString());
                             format = new SimpleDateFormat("dd-MM-yyyy");
                             format2 = new SimpleDateFormat("hh:mm a");
 
@@ -1253,13 +1277,13 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
                             String markerSnippet = "Location: " + j.getString("location") +
                                     "\nUpdated on: " + format.format(date1) +"\nTime: " + format2.format(date1) + "\nDistance from Current Location: " + distance + " Km" + "\nRisk Rate: MEDIUM" + "\nStatus: " + j.getString("status");
-                              Log.i("wtf happened here", j.toString());
+                              //Log.i("wtf happened here", j.toString());
 
 
                             if (j.getString("location") != null) {
                                 parkMarks(latLng, markerSnippet);
                                 bushfirelistpostcode.add(j.getString("postcode"));
-                                Log.i("LISTB",bushfirelistpostcode.toString());
+                                //Log.i("LISTB",bushfirelistpostcode.toString());
                                 SharedPreferences sharedpreferences;
                                 sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor= sharedpreferences.edit();
@@ -1283,8 +1307,111 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
 
 
+    public void addMenuItemInNavMenuDrawer(final String location, String risk, final String postcode) {
+
+
+//        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+//
+//        Menu menu = navView.getMenu();
+//        final SubMenu subMenu;
+
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME2, Context.MODE_PRIVATE);
+
+        Gson gsonh = new Gson();
+        String jsonh = sharedPreferences.getString("Seth", "");
+        if (jsonh.isEmpty()) {
+            Toast.makeText(this, "There is nothing to add", Toast.LENGTH_LONG).show();
+        } else {
+            //Log.i("ITEMCHECK", String.valueOf(menu.getItem(menu.size() - 1)));
+
+
+//            //refreshing adapter
+//            for (int i = 0, count = navView.getChildCount(); i < count; i++) {
+//                final View child = navView.getChildAt(i);
+//                if (child != null && child instanceof ListView) {
+//                    final ListView menuView = (ListView) child;
+//                    final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
+//                    final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
+//                    wrapped.notifyDataSetChanged();
+//                }
+//            }
+
+
+
+
+            Type typeh = new TypeToken<HashMap<String,String>>()    {}.getType();
+
+            HashMap<String,String> arrPackageDatahash = gsonh.fromJson(jsonh, typeh);
+            Set set = arrPackageDatahash.entrySet();
+            Iterator iterator = set.iterator();
+            while(iterator.hasNext()) {
+                Map.Entry mentry = (Map.Entry)iterator.next();
+
+                //add logic here
+//                System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
+//                System.out.println(mentry.getValue());
+
+                MenuItem item =  subMenu.add((String) mentry.getValue());
+                //refreshing adapter
+//                for (int i = 0, count = navView.getChildCount(); i < count; i++) {
+//                    final View child = navView.getChildAt(i);
+//                    if (child != null && child instanceof ListView) {
+//                        final ListView menuView = (ListView) child;
+//                        final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
+//                        final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
+//                        wrapped.notifyDataSetChanged();
+//                    }
+                item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
+                        intent.putExtra("postcode", mentry.getKey().toString());
+                        intent.putExtra("Address1", mentry.getValue().toString());
+
+                        startActivity(intent);
+                        return true;
+                    }
+                });
+
+
+            }
+
+        }
+
+        //Log.i("menu", "YES");
+
+        if (location.toString().isEmpty() && postcode.toString().isEmpty()) {
+            Toast.makeText(this, "Plz Enter all the data", Toast.LENGTH_LONG).show();
+        } else {
+
+            hmap.put(postcode,location);
+            gsonh = new Gson();
+            jsonh = gsonh.toJson(hmap);
+            SharedPreferences.Editor editor ;
+            editor = sharedPreferences.edit();
+            editor.putString("Seth", jsonh);
+            //Log.i("JSON", jsonh);
+            editor.commit();
+
+//
+//
+
+
+
+            Toast.makeText(getApplicationContext(), "Item Added to Navigation Drawer", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+            navView.invalidate();
+        }
+        drawerLayout.openDrawer(GravityCompat.START);
 
     }
+
+    }
+
 
 
 

@@ -435,7 +435,7 @@ public class FloodActivity extends
 
                     risk.setText(j.getString("floodRiskRating"));
                     for(String each:floodlistpostcode){
-                        Log.i("POSTCODEF",address.getPostalCode());
+                        //Log.i("POSTCODEF",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
                             break;
@@ -450,12 +450,12 @@ public class FloodActivity extends
                             .title(address.getAddressLine(0))
                             .snippet("\nRisk Rate: " + risk.getText()
                                     + "\nDistance from Location: " + distance + " Km"));
-                    Log.i("RRD", risk.getText().toString());
+                    //Log.i("RRD", risk.getText().toString());
 
                     location_address.setText("Location:" + address.getAddressLine(0));
 
-                    //Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
-                    Log.i("Why do birds fly",j.getString(address.getAddressLine(0)));
+                    ////Log.i("What is the meaning of life", j.getString("bushfireRiskRating"));
+                    //Log.i("Why do birds fly",j.getString(address.getAddressLine(0)));
 
                     map.animateCamera(CameraUpdateFactory.newCameraPosition(
                             new CameraPosition.Builder()
@@ -623,7 +623,7 @@ public class FloodActivity extends
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        Log.i("location: ",location.toString());
+                        //Log.i("location: ",location.toString());
                     }catch (Exception e){
                         Log.d("exception",e.getMessage());
                     }
@@ -657,11 +657,11 @@ public class FloodActivity extends
 
     public void parkMarks(LatLng latLng, String snippet) {
         MarkerOptions markerOptions = new MarkerOptions();
-        //Log.i("latLng",latLng.toString());
+        ////Log.i("latLng",latLng.toString());
         markerOptions.position(latLng);
         markerOptions.title("Flood");
         markerOptions.snippet(snippet);
-       // Log.i("snippet",snippet);
+       // //Log.i("snippet",snippet);
         IconFactory iconFactory = IconFactory.getInstance(this);
         Icon icon = iconFactory.fromResource(R.drawable.flood);
         markerOptions.setIcon(icon);
@@ -681,9 +681,9 @@ public class FloodActivity extends
             if (addresses.size() > 0) {
                 Address add = addresses.get(0);
                 address = add;
-//                Log.i("address",address.getAddressLine(0));
+//                //Log.i("address",address.getAddressLine(0));
                 postCode = add.getPostalCode();
-//                Log.i("postcode",postCode);
+//                //Log.i("postcode",postCode);
                 getFloodDetailAsyncTask getFloodDetailAsyncTask= new getFloodDetailAsyncTask();
                 getFloodDetailAsyncTask.execute(postCode);
             }
@@ -726,7 +726,7 @@ public class FloodActivity extends
 
 //                JSONArray jarray = jsonObject.getJSONArray("features");
 //                JSONObject
-//                Log.i("count", count.toString());
+//                //Log.i("count", count.toString());
             if (count > 0) {
                 for (int i = 0; i < count; i++) {
                     try {
@@ -738,7 +738,7 @@ public class FloodActivity extends
                             distance = BushfireListActivity.getDistance(MainActivity.mylocation,lat,longti);
 
                         date1=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(j.getString("alertUpdated"));
-                        //Log.i("DATE PARSING",date1.toString());
+                        ////Log.i("DATE PARSING",date1.toString());
                         format = new SimpleDateFormat("dd-MM-yyyy");
                        format2 = new SimpleDateFormat("hh:mm a");
 
@@ -753,7 +753,7 @@ public class FloodActivity extends
                         if (j.getString("location") != null) {
                             parkMarks(latLng, markerSnippet);
                             floodlistpostcode.add(j.getString("postcode"));
-                            Log.i("LISTF",floodlistpostcode.toString());
+                            //Log.i("LISTF",floodlistpostcode.toString());
                         }
 
                     } catch (JSONException e) {
@@ -792,7 +792,7 @@ public class FloodActivity extends
         @Override
         protected void onPostExecute(String details) {
             JSONArray jsonArray = null;
-            Log.i("life","So boring");
+            //Log.i("life","So boring");
             try {
                 jsonArray = new JSONArray(details);
             } catch (JSONException e) {
@@ -803,7 +803,7 @@ public class FloodActivity extends
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("floodRiskRating"));
                     for(String each:floodlistpostcode){
-                        Log.i("POSTCODEF",address.getPostalCode());
+                        //Log.i("POSTCODEF",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
                             break;
@@ -831,7 +831,7 @@ public class FloodActivity extends
                 }
             } catch (JSONException e) {
                 onNodata();
-                Log.i("RRDG", "onPostExecute: ");
+                //Log.i("RRDG", "onPostExecute: ");
 
                 e.printStackTrace();
             }

@@ -24,10 +24,8 @@
             android:layout_height="fill_parent"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="5dp"
-            android:layout_marginBottom="-2dp"
+            android:layout_marginBottom="1dp"
             mapbox:mapbox_cameraZoom="7">
-
-
 
 
         </com.mapbox.mapboxsdk.maps.MapView>

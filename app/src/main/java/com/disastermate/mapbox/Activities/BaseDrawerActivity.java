@@ -59,7 +59,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
 
     private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
-    private static final String PREFS_NAME2 = "watchlist";
     DrawerLayout drawerLayout;
     FrameLayout frameLayout;
     static Toolbar toolbar;
@@ -99,6 +98,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         arrPackage = new ArrayList<>();
         hmap = new HashMap<>();
 
+
         Animation shake;
         shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
 
@@ -134,41 +134,42 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
         } else if (id == R.id.nav_disastersList) {
             startActivity(new Intent(getApplicationContext(), BushfireListActivity.class));
-        } else if (id == R.id.nav_notification) {
-
-            // Create an Intent for the activity you want to start
-            Intent resultIntent = new Intent(this, BushfireListActivity.class);
-            // Create the TaskStackBuilder and add the intent, which inflates the back stack
-            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-            stackBuilder.addNextIntentWithParentStack(resultIntent);
-            // Get the PendingIntent containing the entire back stack
-            PendingIntent resultPendingIntent =
-                    stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-
-            notificationManager = NotificationManagerCompat.from(this);
-
-//            Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
-//                        .setSmallIcon(R.drawable.logo)
-//                        .setContentTitle("Test!")
-//                        .setContentText("This is a test for current alerts")
-//                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
-//                        })
-//                        .build();
-
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_2_ID).setSmallIcon(R.drawable.logo)
-                    .setContentTitle("Test!")
-                    .setContentText("This is a test for current alerts")
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                    .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000
-                    });
-            builder.setContentIntent(resultPendingIntent);
-
-            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-            notificationManager.notify(2, builder.build());
-
         }
+//        else if (id == R.id.nav_notification) {
+//
+//            // Create an Intent for the activity you want to start
+//            Intent resultIntent = new Intent(this, BushfireListActivity.class);
+//            // Create the TaskStackBuilder and add the intent, which inflates the back stack
+//            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+//            stackBuilder.addNextIntentWithParentStack(resultIntent);
+//            // Get the PendingIntent containing the entire back stack
+//            PendingIntent resultPendingIntent =
+//                    stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//
+//            notificationManager = NotificationManagerCompat.from(this);
+//
+////            Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
+////                        .setSmallIcon(R.drawable.logo)
+////                        .setContentTitle("Test!")
+////                        .setContentText("This is a test for current alerts")
+////                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+////                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000
+////                        })
+////                        .build();
+//
+//            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_2_ID).setSmallIcon(R.drawable.logo)
+//                    .setContentTitle("Test!")
+//                    .setContentText("This is a test for current alerts")
+//                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//                    .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000
+//                    });
+//            builder.setContentIntent(resultPendingIntent);
+//
+//            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+//            notificationManager.notify(2, builder.build());
+//
+//        }
 //        else if (id == R.id.nav_watchlist) {
 ////            addUserLocations();
 ////            initSearchFab(2); //TODO
@@ -223,181 +224,9 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
     }
 
-    public void addMenuItemInNavMenuDrawer(){
-        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
-
-        Menu menu = navView.getMenu();
-        final SubMenu subMenu;
-
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME2, Context.MODE_PRIVATE);
-
-        Gson gsonh = new Gson();
-        String jsonh = sharedPreferences.getString("Seth", "");
-        if (jsonh.isEmpty()) {
-            Toast.makeText(this, "There is nothing to add", Toast.LENGTH_LONG).show();
-        } else {
-            Log.i("ITEMCHECK", String.valueOf(menu.getItem(menu.size() - 1)));
-            //refreshing adapter
-            for (int i = 0, count = navView.getChildCount(); i < count; i++) {
-                final View child = navView.getChildAt(i);
-                if (child != null && child instanceof ListView) {
-                    final ListView menuView = (ListView) child;
-                    final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
-                    final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
-                    wrapped.notifyDataSetChanged();
-                }
-            }
-
-            subMenu = menu.addSubMenu("WatchList");
-
-            Type typeh = new TypeToken<HashMap<String,String>>()    {}.getType();
-
-            HashMap<String,String> arrPackageDatahash = gsonh.fromJson(jsonh, typeh);
-            Set set = arrPackageDatahash.entrySet();
-            Iterator iterator = set.iterator();
-            while(iterator.hasNext()) {
-                Map.Entry mentry = (Map.Entry)iterator.next();
-
-                //add logic here
-//                System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
-//                System.out.println(mentry.getValue());
-
-                MenuItem item =  subMenu.add((String) mentry.getValue());
-                item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-//                        MainActivity.location_address.setText("Location:" + address.getAddressLine(0));
-//                        MainActivity.risk.setText(j.getString("bushfireRiskRating"));
-//
-//
-//                        map.animateCamera(CameraUpdateFactory.newCameraPosition(
-//                                new CameraPosition.Builder()
-//                                        .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
-//                                                ((Point) selectedCarmenFeature.geometry()).longitude()))
-//                                        .zoom(14)
-//                                        .build()), 3000);
-                        return true;
-                    }
-                });
-
-
-            }
-
-        }
-
-        Log.i("menu", "YES");
 
 
 
-
-
-            Toast.makeText(getApplicationContext(), "Item Added to Navigation Drawer", Toast.LENGTH_SHORT).show();
-
-
-
-
-
-            navView.invalidate();
-        drawerLayout.openDrawer(GravityCompat.START);
-
-    }
-
-
-    public void addMenuItemInNavMenuDrawer(final String location, String risk, final String postcode) {
-
-
-        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
-
-        Menu menu = navView.getMenu();
-        final SubMenu subMenu;
-
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME2, Context.MODE_PRIVATE);
-
-        Gson gsonh = new Gson();
-        String jsonh = sharedPreferences.getString("Seth", "");
-        if (jsonh.isEmpty()) {
-            Toast.makeText(this, "There is nothing to add", Toast.LENGTH_LONG).show();
-        } else {
-            Log.i("ITEMCHECK", String.valueOf(menu.getItem(menu.size() - 1)));
-            //refreshing adapter
-            for (int i = 0, count = navView.getChildCount(); i < count; i++) {
-                final View child = navView.getChildAt(i);
-                if (child != null && child instanceof ListView) {
-                    final ListView menuView = (ListView) child;
-                    final HeaderViewListAdapter adapter = (HeaderViewListAdapter) menuView.getAdapter();
-                    final BaseAdapter wrapped = (BaseAdapter) adapter.getWrappedAdapter();
-                    wrapped.notifyDataSetChanged();
-                }
-            }
-
-            subMenu = menu.addSubMenu("WatchList");
-
-            Type typeh = new TypeToken<HashMap<String,String>>()    {}.getType();
-
-            HashMap<String,String> arrPackageDatahash = gsonh.fromJson(jsonh, typeh);
-            Set set = arrPackageDatahash.entrySet();
-            Iterator iterator = set.iterator();
-            while(iterator.hasNext()) {
-                Map.Entry mentry = (Map.Entry)iterator.next();
-
-                //add logic here
-//                System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
-//                System.out.println(mentry.getValue());
-
-               MenuItem item =  subMenu.add((String) mentry.getValue());
-                item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-//                        MainActivity.location_address.setText("Location:" + address.getAddressLine(0));
-//                        MainActivity.risk.setText(j.getString("bushfireRiskRating"));
-//
-//
-//                        map.animateCamera(CameraUpdateFactory.newCameraPosition(
-//                                new CameraPosition.Builder()
-//                                        .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
-//                                                ((Point) selectedCarmenFeature.geometry()).longitude()))
-//                                        .zoom(14)
-//                                        .build()), 3000);
-                        return true;
-                    }
-                });
-
-
-            }
-
-        }
-
-        Log.i("menu", "YES");
-
-        if (location.toString().isEmpty() && postcode.toString().isEmpty()) {
-            Toast.makeText(this, "Plz Enter all the data", Toast.LENGTH_LONG).show();
-        } else {
-
-            hmap.put(postcode,location);
-            gsonh = new Gson();
-            jsonh = gsonh.toJson(hmap);
-            SharedPreferences.Editor editor ;
-            editor = sharedPreferences.edit();
-            editor.putString("Seth", jsonh);
-            Log.i("JSON", jsonh);
-            editor.commit();
-
-//
-//
-
-
-
-            Toast.makeText(getApplicationContext(), "Item Added to Navigation Drawer", Toast.LENGTH_SHORT).show();
-
-
-
-
-
-            navView.invalidate();
-        }
-        drawerLayout.openDrawer(GravityCompat.START);
-
-    }
 
     @Override
     protected void onResume() {

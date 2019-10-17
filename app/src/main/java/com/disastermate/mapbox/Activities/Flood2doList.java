@@ -55,7 +55,7 @@ public class Flood2doList extends BaseDrawerActivity {
                 unchecked_questions.add(questions.get(index));
                 if (index < questions.size() - 1) {
                     index++;
-                    Log.i("123","nnnnn");
+                    //Log.i("123","nnnnn");
                     image.setImageResource(questions.get(index).imageId);
                     factor_des.setText(questions.get(index).description);
                 } else
@@ -71,7 +71,7 @@ public class Flood2doList extends BaseDrawerActivity {
                 questions.get(index).setQuestion_id(true);
                 if (index < questions.size() - 1) {
                     index++;
-                    Log.i("123","yyyy");
+                    //Log.i("123","yyyy");
                     image.setImageResource(questions.get(index).imageId);
                     factor_des.setText(questions.get(index).description);
                 } else {

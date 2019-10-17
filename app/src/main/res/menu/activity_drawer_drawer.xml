@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
@@ -19,16 +20,27 @@
             android:icon="@drawable/storm"
             android:title="Current Alerts" />
         <item
-            android:id="@+id/nav_notification"
-            android:checkable="false"
-            android:icon="@drawable/turnnotificationsonbutton"
-            android:title="Test Notification" />
+            android:id="@+id/submenuWatc"
+            app:showAsAction="always"
+            android:title="WatchList" >
+        <menu>
+            <!-- empty submenu, filled programatically -->
+        </menu>
+        </item>
+        /
+<!--/>-->
 
-        <item
-            android:id="@+id/nav_floodtodolist"
-            android:checkable="false"
-            android:icon="@drawable/flood"
-            android:title="Flood Todolist" />
+<!--        <item-->
+<!--            android:id="@+id/nav_notification"-->
+<!--            android:checkable="false"-->
+<!--            android:icon="@drawable/turnnotificationsonbutton"-->
+<!--            android:title="Test Notification" />-->
+
+<!--        <item-->
+<!--            android:id="@+id/nav_floodtodolist"-->
+<!--            android:checkable="false"-->
+<!--            android:icon="@drawable/flood"-->
+<!--            android:title="Flood Todolist" />-->
 
     </group>
 
