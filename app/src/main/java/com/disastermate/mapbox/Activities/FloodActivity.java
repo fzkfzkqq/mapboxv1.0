@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -438,7 +439,7 @@ public class FloodActivity extends
                         //Log.i("POSTCODEF",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
-                            risk.setBackgroundColor(Color.rgb(255,174,55));
+                            risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_meduim));
                             break;
                         }
                     }
@@ -775,7 +776,7 @@ public class FloodActivity extends
 
     private void onNodata(){
         risk.setText("No Data");
-        risk.setBackgroundColor(Color.rgb(37,155,36));
+        risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_border));
         btn_humi.setText("No Data");
         btn_rainfall.setText("No Data");
         btn_airPressure.setText("No Data");
@@ -803,12 +804,12 @@ public class FloodActivity extends
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("floodRiskRating"));
-                    risk.setBackgroundColor(Color.rgb(37,155,36));
+                    risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_low));
                     for(String each:floodlistpostcode){
                         //Log.i("POSTCODEF",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
-                            risk.setBackgroundColor(Color.rgb(255,174,55));
+                            risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_meduim));
                             break;
                         }
                     }
@@ -821,10 +822,11 @@ public class FloodActivity extends
                     btn_rainfall.setText((j.get("rainfall")).toString() + " mm");
                     if (j.getString("floodRiskRating").equals("MEDIUM"))
                     {
-                        risk.setBackgroundColor(Color.rgb(255,174,55));
+                        risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_meduim));
+
                     }
                     if (j.getString("floodRiskRating").equals("HIGH")){
-                        risk.setBackgroundColor(Color.rgb(255,56,63));
+                        risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_high));
                     }
                 }
                 else

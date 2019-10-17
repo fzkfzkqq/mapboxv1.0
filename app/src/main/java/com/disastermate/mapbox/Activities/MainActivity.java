@@ -20,6 +20,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -576,7 +577,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     for(String each:bushfirelistpostcode){
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
-                            risk.setBackgroundColor(Color.rgb(255,174,55));
+                            risk.setBackgroundColor(R.drawable.rounded_meduim);
                             break;
                         }
                     }
@@ -662,6 +663,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //                            //Log.i("POSTCODEB",address.getPostalCode());
                             if ( each.equals(address.getPostalCode())) {
                                 risk.setText("MEDIUM");
+                                risk.setBackgroundColor(R.drawable.rounded_meduim);
                                 break;
                             }
                         }
@@ -876,7 +878,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //                //Log.i("POSTCODEB",address.getPostalCode());
                 if ( each.equals(address.getPostalCode())) {
                     risk.setText("MEDIUM");
-
+                    risk.setBackgroundColor(R.drawable.rounded_meduim);
                     break;
                 }
             }
@@ -1110,12 +1112,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
-                    risk.setBackgroundColor(Color.rgb(37,155,36));
+                    risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_low));
                     for(String each:bushfirelistpostcode){
 //                        //Log.i("POSTCODEB",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
-                            risk.setBackgroundColor(Color.rgb(255,174,55));
+                            risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_meduim));
                             break;
                         }
                     }
@@ -1128,10 +1130,10 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     btn_pressure.setText((j.get("airPressure")).toString() + " hPa");
                     if (j.getString("bushfireRiskRating").equals("MEDIUM"))
                     {
-                        risk.setBackgroundColor(Color.rgb(255,174,55));
+                        risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_meduim));
                     }
                     if (j.getString("bushfireRiskRating").equals("HIGH")){
-                        risk.setBackgroundColor(Color.rgb(255,56,63));
+                        risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_high));
                     }
                     SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -1168,7 +1170,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //                    break;
 //                }
 //        }
-        risk.setBackgroundColor(Color.rgb(37,155,36));
+        risk.setBackgroundDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.rounded_border));
         btn_humi.setText("No Data");
         btn_pressure.setText("No Data");
         btn_wind.setText("No Data");
