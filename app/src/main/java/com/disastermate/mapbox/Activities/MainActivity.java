@@ -234,29 +234,29 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 
 
 
-        /*Make sure that the dialogue does not repeat twice*/
-        if (isAgree == false) {
-
-            final Dialog settingsDialog = new Dialog(this);
-            settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-            settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.image_layout
-                    , null));
-            settingsDialog.show();
-
-            dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
-            dialogue_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putBoolean("d_accepted", true);
-                    editor.commit();
-                    settingsDialog.dismiss();
-                }
-            });
-
-        }
-
+//        /*Make sure that the dialogue does not repeat twice*/
+//        if (isAgree == false) {
+//
+//            final Dialog settingsDialog = new Dialog(this);
+//            settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+//            settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.image_layout
+//                    , null));
+//            settingsDialog.show();
+//
+//            dialogue_button = settingsDialog.findViewById(R.id.dialogue_button);
+//            dialogue_button.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = settings.edit();
+//                    editor.putBoolean("d_accepted", true);
+//                    editor.commit();
+//                    settingsDialog.dismiss();
+//                }
+//            });
+//
+//        }
+//
 
 
         /*Fires up the map instance and style
