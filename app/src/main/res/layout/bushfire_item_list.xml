@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Status"
             android:gravity="center"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:textStyle="bold">
 
         </TextView>
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Location"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         android:gravity="center">
 
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="Last Updated"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         android:gravity="center">
         </TextView>
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="Distance"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:gravity="center">
         </TextView>

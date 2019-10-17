@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:text="Indicates current floods near you. On clicking the marker, you obtain the distance from your location, date of occurance and location name, risk rate and status"
         android:layout_margin="30dp"
-        android:gravity="center"
+        android:gravity="fill_horizontal"
         android:layout_gravity="center"
         >
     </TextView>

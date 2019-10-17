@@ -190,7 +190,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
                     sortByDistance(bushfireDataList);
                     setAdapter(bushfireDataList);
                     radiusspinner.setSelection(0);
-                }else if (item.equals("Select  Status")) {
+                }else if (item.equals(" Status")) {
                     setAdapter(floodDataList);
                 }else if (item.equals(" Flooding")) {
                     sortByDistance(floodList);
@@ -541,7 +541,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
     private void showFireSpinner(){
         //Initialize list for fire spinner
         List<String> categories = new ArrayList<String>();
-        categories.add("Select Status");
+        categories.add("Status");
         categories.add(" Safe");
         categories.add(" Under Control");
         categories.add(" Responding");
@@ -568,7 +568,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         //initialising flood spinner
         //Initialize list for fire spinner
         List<String> categories = new ArrayList<String>();
-        categories.add("Select  Status");
+        categories.add(" Status");
         categories.add(" Flooding");
         categories.add(" Request for Assistance");
         categories.add(" Complete");
@@ -700,7 +700,7 @@ public class BushfireListActivity extends BaseDrawerActivity implements AdapterV
         //initialising flood spinner
         //Initialize list for fire spinner
         List<String> categories = new ArrayList<String>();
-        categories.add("Select Radius");
+        categories.add(" Radius");
         categories.add("20 km");
         categories.add("50 km");
         categories.add("100 km");
