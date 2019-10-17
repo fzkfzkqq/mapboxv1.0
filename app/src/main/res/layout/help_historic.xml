@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="30dp"
-            android:gravity="center"
+            android:gravity="fill_horizontal"
             android:text="This event denotes a Heatmap of all locations affected by past bushfires in 2018."></TextView>
     </LinearLayout>
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="30dp"
-            android:gravity="center"
+            android:gravity="fill_horizontal"
             android:text="Drag the Slider to view top 300 fires in Victoria during 2018. Clicking the marker will provide information on the Temperature, Power and Date"></TextView>
     </LinearLayout>
 

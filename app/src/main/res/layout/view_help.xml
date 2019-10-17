@@ -44,7 +44,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="30dp"
-                    android:gravity="center"
+                    android:gravity="fill_horizontal"
+
                     android:text="This application predicts bushfires and floods in your location based on our awesome machine learning model in the backend. Our superhuman prediction is 75% accurate. "></TextView>
             </LinearLayout>
 
@@ -64,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="30dp"
-            android:gravity="center"
+            android:gravity="fill_horizontal"
             android:text="Indicates current fires near you. On clicking the marker, you obtain the distance from your location, date of occurance and location name, risk rate and status"></TextView>
     </LinearLayout>
 
@@ -106,7 +107,7 @@
                     android:text="Adds an item to the drawer for quick reference."
 
                     android:layout_margin="30dp"
-                    android:gravity="center"
+                    android:gravity="fill"
                     android:layout_gravity="center"
                     >
                 </TextView>
@@ -129,7 +130,7 @@
             android:layout_height="wrap_content"
             android:text="Relocates your to your current location. Double Check your latitude and longitude by clicking on the blue marker"
             android:layout_margin="30dp"
-            android:gravity="center"
+            android:gravity="fill"
             android:layout_gravity="center"
             >
         </TextView>
@@ -152,7 +153,7 @@
             android:text="Auto-Complete Search option based in all of Australia."
 
             android:layout_margin="30dp"
-            android:gravity="center"
+            android:gravity="fill"
             android:layout_gravity="center"
             >
         </TextView>
@@ -252,10 +253,12 @@
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/okbutton"
         android:text="Ok"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:gravity="center"
         android:layout_gravity="center"
         >
