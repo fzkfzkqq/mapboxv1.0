@@ -576,6 +576,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                     for(String each:bushfirelistpostcode){
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
+                            risk.setBackgroundColor(Color.rgb(255,174,55));
                             break;
                         }
                     }
@@ -875,6 +876,7 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
 //                //Log.i("POSTCODEB",address.getPostalCode());
                 if ( each.equals(address.getPostalCode())) {
                     risk.setText("MEDIUM");
+
                     break;
                 }
             }
@@ -1108,10 +1110,12 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("bushfireRiskRating"));
+                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     for(String each:bushfirelistpostcode){
 //                        //Log.i("POSTCODEB",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
+                            risk.setBackgroundColor(Color.rgb(255,174,55));
                             break;
                         }
                     }
@@ -1211,7 +1215,6 @@ public class MainActivity extends BaseDrawerActivity implements OnMapReadyCallba
         try {
             map.addMarker(markerOptions);
         }catch (Exception e){
-            System.out.println("FUCK");
             e.getStackTrace();
         }
     }

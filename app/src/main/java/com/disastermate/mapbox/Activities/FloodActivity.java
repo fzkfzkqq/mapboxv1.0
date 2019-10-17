@@ -438,6 +438,7 @@ public class FloodActivity extends
                         //Log.i("POSTCODEF",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
+                            risk.setBackgroundColor(Color.rgb(255,174,55));
                             break;
                         }
                     }
@@ -802,10 +803,12 @@ public class FloodActivity extends
                 if (jsonArray.length()>0) {
                     j = jsonArray.getJSONObject(0);
                     risk.setText(j.getString("floodRiskRating"));
+                    risk.setBackgroundColor(Color.rgb(37,155,36));
                     for(String each:floodlistpostcode){
                         //Log.i("POSTCODEF",address.getPostalCode());
                         if ( each.equals(address.getPostalCode())) {
                             risk.setText("MEDIUM");
+                            risk.setBackgroundColor(Color.rgb(255,174,55));
                             break;
                         }
                     }

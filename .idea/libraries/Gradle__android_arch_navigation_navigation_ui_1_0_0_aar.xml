@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: android.arch.navigation:navigation-ui:1.0.0@aar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-1/files-1.1/navigation-ui-1.0.0.aar/601bbda7ca9950793e33999a8cfdb00b/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-1/files-1.1/navigation-ui-1.0.0.aar/601bbda7ca9950793e33999a8cfdb00b/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/navigation-ui-1.0.0.aar/be7efd46996cfb29aff865c606dfe6d0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/navigation-ui-1.0.0.aar/be7efd46996cfb29aff865c606dfe6d0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/android.arch.navigation/navigation-ui/1.0.0/af0365becbd715514f25876708c920033b4cdbc8/navigation-ui-1.0.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/android.arch.navigation/navigation-ui/1.0.0/af0365becbd715514f25876708c920033b4cdbc8/navigation-ui-1.0.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
