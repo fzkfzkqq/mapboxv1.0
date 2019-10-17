@@ -149,7 +149,7 @@
                     <TextView
                         android:id="@+id/text_riskrate"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="0dp"
                         android:layout_marginStart="5dp"
@@ -159,9 +159,9 @@
                         android:layout_weight="4"
                         android:background="@drawable/rounded_border"
                         android:gravity="center"
-                        android:text="Updating Risk Rate"
+                        android:text="Updating"
                         android:textColor="@color/cardwhite"
-                        android:textSize="25dp"
+                        android:textSize="25sp"
                         android:tooltipText="Updated for your location on a daily basis." />
                 </LinearLayout>
 
